@@ -1,3 +1,5 @@
+import { createPageMetadata } from "../../config/metadata";
+
 const questions = [
   ["What version does this site target?", "Enshrouded v0.9.1.2. The current-version page records the review date and links to official release information."],
   ["Is Enshrouded still in Early Access?", "Yes. Keen Games has announced the 1.0 launch for October 15, 2026."],
@@ -9,8 +11,47 @@ const questions = [
   ["Where is checklist data stored?", "The Adventure Checklist and Flame Planner use browser storage on this device. They do not require an account or send your progress to a server."],
 ];
 
-export const metadata = { title: "FAQ", description: "Common questions about Enshrouded progression and Companion tools." };
+export const metadata = createPageMetadata({
+  title: "Enshrouded FAQ",
+  description: "Clear answers to common questions about Enshrouded progression, multiplayer, resources, saves, and Companion tools.",
+  path: "/faq",
+});
 
 export default function FAQPage() {
-  return <div className="mx-auto max-w-4xl py-8"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Quick answers</p><h1 className="mt-2 text-4xl font-black tracking-tight text-stone-100">Frequently Asked Questions</h1><div className="mt-8 space-y-3">{questions.map(([question, answer]) => <details key={question} className="group rounded-2xl border border-stone-800 bg-stone-900/45 p-5 open:border-amber-400/20"><summary className="cursor-pointer list-none font-bold text-stone-100 marker:hidden">{question}<span className="float-right text-amber-400 transition group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-6 text-stone-400">{answer}</p></details>)}</div></div>;
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer,
+      },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <div className="mx-auto max-w-4xl py-8">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Quick answers</p>
+        <h1 className="mt-2 text-4xl font-black tracking-tight text-stone-100">Frequently Asked Questions</h1>
+        <div className="mt-8 space-y-3">
+          {questions.map(([question, answer]) => (
+            <details key={question} className="group rounded-2xl border border-stone-800 bg-stone-900/45 p-5 open:border-amber-400/20">
+              <summary className="cursor-pointer list-none font-bold text-stone-100 marker:hidden">
+                {question}
+                <span className="float-right text-amber-400 transition group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-stone-400">{answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }

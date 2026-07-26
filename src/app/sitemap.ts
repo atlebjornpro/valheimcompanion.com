@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import fs from "node:fs";
 import path from "node:path";
+import matter from "gray-matter";
 
 const siteUrl = "https://www.enshroudedcompanion.com";
 
@@ -15,7 +16,12 @@ const staticRoutes = [
   "/world/regions",
 ];
 
-function getContentRoutes(directory: string, contentRoot = directory): string[] {
+type ContentRoute = {
+  route: string;
+  lastModified: Date;
+};
+
+function getContentRoutes(directory: string, contentRoot = directory): ContentRoute[] {
   if (!fs.existsSync(directory)) return [];
 
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -28,17 +34,33 @@ function getContentRoutes(directory: string, contentRoot = directory): string[] 
     if (!entry.name.endsWith(".mdx")) return [];
 
     const relativePath = path.relative(contentRoot, fullPath);
-    return [`/${relativePath.replace(/\\/g, "/").replace(/\.mdx$/, "")}`];
+    const source = fs.readFileSync(fullPath, "utf8");
+    const { data } = matter(source);
+    const parsedDate = data.updated ? new Date(String(data.updated)) : null;
+
+    return [{
+      route: `/${relativePath.replace(/\\/g, "/").replace(/\.mdx$/, "")}`,
+      lastModified:
+        parsedDate && !Number.isNaN(parsedDate.getTime())
+          ? parsedDate
+          : fs.statSync(fullPath).mtime,
+    }];
   });
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const contentRoutes = getContentRoutes(path.join(process.cwd(), "content"));
-  const routes = Array.from(new Set([...staticRoutes, ...contentRoutes])).sort();
+  const entries = new Map<string, Date>(
+    staticRoutes.map((route) => [route, new Date("2026-07-26")]),
+  );
 
-  return routes.map((route) => ({
+  contentRoutes.forEach(({ route, lastModified }) => {
+    entries.set(route, lastModified);
+  });
+
+  return Array.from(entries.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([route, lastModified]) => ({
     url: route === "/" ? siteUrl : `${siteUrl}${route}`,
-    lastModified: new Date("2026-07-26"),
+    lastModified,
     changeFrequency: route === "/" ? "weekly" : "monthly",
     priority: route === "/" ? 1 : route.startsWith("/tools/") ? 0.8 : 0.7,
   }));

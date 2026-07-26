@@ -1,4 +1,5 @@
 import { Flame, Mountain, Waves, Wind } from "lucide-react";
+import { createPageMetadata } from "../../../config/metadata";
 
 const regions = [
   {
@@ -57,10 +58,11 @@ const regions = [
   },
 ];
 
-export const metadata = {
-  title: "Regions of Embervale",
+export const metadata = createPageMetadata({
+  title: "Enshrouded Regions of Embervale",
   description: "Current region levels, Flame requirements, hazards, and resources in Enshrouded.",
-};
+  path: "/world/regions",
+});
 
 export default function RegionsPage() {
   return (

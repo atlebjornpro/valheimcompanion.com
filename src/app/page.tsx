@@ -2,6 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Flame } from "lucide-react";
 import { sections } from "../config/nav";
+import { createPageMetadata } from "../config/metadata";
+
+const sectionHrefs: Record<string, string> = {
+  "Start Here": "/getting-started",
+  World: "/world",
+  Progression: "/progression",
+  "Crafting & Building": "/building",
+  Tools: "/tools",
+};
+
+export const metadata = createPageMetadata({
+  title: "Enshrouded Companion",
+  description:
+    "Explore current Enshrouded guides, Embervale resource locations, progression checklists, build advice, and practical planning tools.",
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -51,7 +67,11 @@ export default function Home() {
       <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {sections.map((section) => (
           <section key={section.title} className="rounded-2xl border border-slate-800 bg-[#111521] p-6 shadow-lg">
-            <h2 className="mb-4 text-lg font-bold text-slate-100">{section.title}</h2>
+            <h2 className="mb-4 text-lg font-bold text-slate-100">
+              <Link href={sectionHrefs[section.title] ?? "/guides"} className="transition hover:text-[#8da0ff]">
+                {section.title}
+              </Link>
+            </h2>
             <ul className="space-y-1">
               {section.links.map((link) => {
                 const Icon = link.icon;

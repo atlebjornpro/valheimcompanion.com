@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 import Search from "../components/Search";
 import MobileNav from "../components/MobileNav";
 import Breadcrumbs from "../components/Breadcrumbs";
+import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "../config/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,12 +21,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Enshrouded Companion",
-    template: "%s | Enshrouded Companion",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Current Enshrouded progression guides, resource locations, build foundations, and practical planning tools.",
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/opengraph-image"],
+  },
 };
 
 const GA_MEASUREMENT_ID = "G-2ZM9CMG4MY";
@@ -38,6 +53,31 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  url: SITE_URL,
+                  name: SITE_NAME,
+                  description: DEFAULT_DESCRIPTION,
+                  publisher: { "@id": `${SITE_URL}/#organization` },
+                },
+                {
+                  "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  logo: `${SITE_URL}/favicon.ico`,
+                },
+              ],
+            }),
+          }}
+        />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"

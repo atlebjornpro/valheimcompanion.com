@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import type { AnchorHTMLAttributes } from "react";
+import { createPageMetadata, SITE_URL } from "../../../config/metadata";
 
 type RouteParams = { slug?: string[] };
 
@@ -112,10 +113,12 @@ export async function generateMetadata({
   const doc = await getDoc(slugParts);
   if (!doc) return {};
 
-  return {
+  const routePath = `/${slugParts.join("/")}`;
+  return createPageMetadata({
     title: doc.frontmatter.title,
     description: doc.frontmatter.description,
-  };
+    path: routePath,
+  });
 }
 
 export default async function DocPage({
@@ -134,17 +137,32 @@ export default async function DocPage({
 
   const updated = formatUpdated(doc.frontmatter.updated);
   const related = getRelated(slugParts);
+  const canonical = `${SITE_URL}/${slugParts.join("/")}`;
+  const schemaType =
+    slugParts.length === 1 && !["getting-started", "privacy"].includes(slugParts[0])
+      ? "CollectionPage"
+      : slugParts[0] === "privacy"
+        ? "WebPage"
+        : "Article";
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": schemaType,
     headline: doc.frontmatter.title,
     description: doc.frontmatter.description,
     dateModified: updated ? new Date(updated).toISOString() : undefined,
     author: {
-      "@type": "Person",
+      "@type": "Organization",
       name: "Enshrouded Companion",
+      url: SITE_URL,
     },
+    publisher: {
+      "@type": "Organization",
+      name: "Enshrouded Companion",
+      url: SITE_URL,
+    },
+    mainEntityOfPage: canonical,
+    url: canonical,
   };
 
   return (

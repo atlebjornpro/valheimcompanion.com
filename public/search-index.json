@@ -63,5 +63,40 @@
     "slug": "/privacy",
     "title": "Privacy Policy & Affiliate Disclosure",
     "description": "How Enshrouded Companion uses analytics and affiliate links, including Amazon Associates and game-server hosting referrals."
+  },
+  {
+    "slug": "/guides",
+    "title": "Enshrouded Guides",
+    "description": "Practical Enshrouded guides for progression, builds, food, server hosting, home networking, and useful gaming gear."
+  },
+  {
+    "slug": "/building",
+    "title": "Enshrouded Building Guides",
+    "description": "Plan efficient Enshrouded bases, production areas, storage, NPC shelter, Comfort, and Rested duration."
+  },
+  {
+    "slug": "/crafting",
+    "title": "Enshrouded Crafting Guides",
+    "description": "Follow Enshrouded crafting progression through survivors, workstations, regional materials, food, and production upgrades."
+  },
+  {
+    "slug": "/progression",
+    "title": "Enshrouded Progression Guides",
+    "description": "Plan Enshrouded character levels, survivors, Flame upgrades, skill points, regions, and crafting progression."
+  },
+  {
+    "slug": "/tools",
+    "title": "Enshrouded Tools and Calculators",
+    "description": "Interactive Enshrouded planners for Flame upgrades, skill points, resources, Rested benefits, and adventure progression."
+  },
+  {
+    "slug": "/updates",
+    "title": "Enshrouded Updates",
+    "description": "Current Enshrouded version coverage, update status, and notes about when Companion guides and tools were reviewed."
+  },
+  {
+    "slug": "/world",
+    "title": "Enshrouded World Guides",
+    "description": "Explore Embervale's regions, Shroud hazards, resources, Flame requirements, traversal, and expedition preparation."
   }
 ]
