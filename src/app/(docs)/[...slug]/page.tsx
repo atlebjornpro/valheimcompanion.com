@@ -74,14 +74,27 @@ function getRelated(slugParts: string[]) {
 }
 
 function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const isAmazonAffiliate =
-    typeof props.href === "string" && props.href.startsWith("https://amzn.to/");
+  const affiliateHosts = [
+    "amzn.to",
+    "shockbyte.com",
+    "nitrado-aff.com",
+    "supercraft.host",
+  ];
+  const isAffiliate =
+    typeof props.href === "string" &&
+    affiliateHosts.some((host) => {
+      try {
+        return new URL(props.href as string).hostname.endsWith(host);
+      } catch {
+        return false;
+      }
+    });
 
   return (
     <a
       {...props}
-      rel={isAmazonAffiliate ? "sponsored nofollow noopener" : props.rel}
-      target={isAmazonAffiliate ? "_blank" : props.target}
+      rel={isAffiliate ? "sponsored nofollow noopener" : props.rel}
+      target={isAffiliate ? "_blank" : props.target}
     />
   );
 }
