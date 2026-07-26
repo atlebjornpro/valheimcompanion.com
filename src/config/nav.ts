@@ -1,6 +1,6 @@
 import {
   BookOpen, Boxes, Calculator, CheckSquare, Flame, Hammer, Heart,
-  History, Map, Search, Shield, Sparkles, Users, Utensils, WandSparkles,
+  History, Map, Search, Server, Shield, Sparkles, Users, Utensils, WandSparkles,
 } from "lucide-react";
 import React from "react";
 
@@ -19,6 +19,7 @@ export const sections: NavSection[] = [
     links: [
       { href: "/getting-started", label: "Getting Started", icon: BookOpen, description: "A spoiler-light route from the Cinder Vault to your first stable base." },
       { href: "/updates/current", label: "Current Version", icon: History, description: "What changed in v0.9.1.2 and what is confirmed for 1.0." },
+      { href: "/guides/server-hosting", label: "Server Hosting", icon: Server, description: "Compare managed Enshrouded hosts for persistent co-op worlds." },
       { href: "/faq", label: "FAQ", icon: Search, description: "Short answers to common progression and tool questions." },
     ],
   },

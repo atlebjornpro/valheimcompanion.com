@@ -10,6 +10,11 @@
     "description": "Food slots, food types, and a simple preparation strategy for every expedition."
   },
   {
+    "slug": "/guides/server-hosting",
+    "title": "Best Enshrouded Server Hosting",
+    "description": "Compare managed Enshrouded server hosts for persistent co-op worlds, backups, regions, and ease of setup."
+  },
+  {
     "slug": "/getting-started",
     "title": "Getting Started",
     "description": "A spoiler-light route from the Cinder Vault to a stable first base."
