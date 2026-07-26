@@ -50,13 +50,14 @@ function formatUpdated(dateStr?: string) {
 function getRelated(slugParts: string[]) {
   const slug = "/" + slugParts.join("/");
 
-  // starter mapping (keep it simple; we’ll automate later)
   const relatedMap: Record<string, { href: string; label: string }[]> = {
-    "/mechanics/work-speed": [
-      { href: "/breeding/trait-inheritance", label: "Breeding trait inheritance" },
+    "/getting-started": [
+      { href: "/world/regions", label: "Regions of Embervale" },
+      { href: "/tools/flame-planner", label: "Flame upgrade planner" },
     ],
-    "/breeding/trait-inheritance": [
-      { href: "/mechanics/work-speed", label: "Work Speed mechanics" },
+    "/building/comfort": [
+      { href: "/tools/rested", label: "Rested calculator" },
+      { href: "/building/base-planning", label: "Base planning" },
     ],
   };
 
@@ -77,7 +78,7 @@ export async function generateMetadata({
   if (!doc) return {};
 
   return {
-    title: `${doc.frontmatter.title} | Palworld Companion`,
+    title: doc.frontmatter.title,
     description: doc.frontmatter.description,
   };
 }
@@ -107,7 +108,7 @@ export default async function DocPage({
     dateModified: updated ? new Date(updated).toISOString() : undefined,
     author: {
       "@type": "Person",
-      name: "Palworld Companion Team",
+      name: "Enshrouded Companion",
     },
   };
 

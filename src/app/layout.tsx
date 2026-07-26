@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Flame } from "lucide-react";
 import "./globals.css";
 import Sidebar from "../components/Sidebar";
 import Search from "../components/Search";
@@ -19,12 +20,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Palworld Companion",
+  title: {
+    default: "Enshrouded Companion",
+    template: "%s | Enshrouded Companion",
+  },
   description:
-    "Clear explanations of Palworld mechanics, breeding systems, base optimization, and hidden formulas.",
+    "Current Enshrouded progression guides, resource locations, build foundations, and practical planning tools.",
 };
 
-const GA_MEASUREMENT_ID = "G-7B77H0BSG3";
+const GA_MEASUREMENT_ID = "G-2ZM9CMG4MY";
 
 export default function RootLayout({
   children,
@@ -32,13 +36,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
-        <Script id="ga-init" strategy="afterInteractive">
+        <Script id="google-tag" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -46,13 +50,14 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
-        <header className="border-b">
+        <header className="border-b border-slate-800 bg-[#10131e]/95 backdrop-blur">
           <nav className="max-w-6xl mx-auto p-4 flex gap-4 text-sm items-center">
-            <Link href="/" className="font-semibold">
-              Palworld Companion
+            <Link href="/" className="flex items-center gap-2 font-bold text-slate-100">
+              <Flame className="h-4 w-4 text-[#607dff]" />
+              Enshrouded Companion
             </Link>
-            <Link href="/mechanics/work-speed">Mechanics</Link>
-            <Link href="/breeding/trait-inheritance">Breeding</Link>
+            <Link href="/world/regions" className="hidden text-slate-400 hover:text-[#8da0ff] sm:block">World</Link>
+            <Link href="/tools/resources" className="hidden text-slate-400 hover:text-[#8da0ff] sm:block">Resources</Link>
             <div className="ml-auto">
               <Search />
             </div>
@@ -66,6 +71,12 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        <footer className="border-t border-slate-800 bg-[#0d1018]">
+          <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <div><strong className="text-slate-300">Enshrouded Companion</strong><span className="ml-2">Community guide. Not affiliated with Keen Games.</span></div>
+            <div className="flex gap-4"><Link href="/faq" className="hover:text-[#8da0ff]">FAQ</Link><Link href="/updates/current" className="hover:text-[#8da0ff]">Updates</Link></div>
+          </div>
+        </footer>
         <MobileNav />
       </body>
     </html>

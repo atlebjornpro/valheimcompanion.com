@@ -1,101 +1,16 @@
-import { HelpCircle, GitMerge, Database } from "lucide-react";
-import Link from "next/link";
+const questions = [
+  ["What version does this site target?", "Enshrouded v0.9.1.2. The current-version page records the review date and links to official release information."],
+  ["Is Enshrouded still in Early Access?", "Yes. Keen Games has announced the 1.0 launch for October 15, 2026."],
+  ["What is the current maximum level?", "The current character level cap is 45. A fully progressed character can spend up to 184 skill points."],
+  ["Can I choose a class?", "There are no locked classes. Any connected route through the skill tree is available, so weapons, armor, food, and selected nodes define the build."],
+  ["Why can’t I enter red Shroud?", "Red deadly Shroud is above your current passage level. Strengthen the Flame at an Altar, then return."],
+  ["Do Shroud Roots and Elixir Wells keep giving points after a reset?", "No. They respawn with the world, but each character receives their skill-point reward only once."],
+  ["Does Comfort make Rested stronger?", "Comfort extends Rested duration. Character level controls the stamina and regeneration bonuses."],
+  ["Where is checklist data stored?", "The Adventure Checklist and Flame Planner use browser storage on this device. They do not require an account or send your progress to a server."],
+];
+
+export const metadata = { title: "FAQ", description: "Common questions about Enshrouded progression and Companion tools." };
 
 export default function FAQPage() {
-  return (
-    <div className="max-w-4xl mx-auto py-12 px-4 space-y-12">
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold text-slate-900">Frequently Asked Questions</h1>
-        <p className="text-slate-600 text-lg">
-          Learn how to get the most out of Palworld Companion tools.
-        </p>
-      </div>
-
-      <div className="grid gap-8 md:grid-cols-2">
-        {/* Breeding Pathfinder */}
-        <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 space-y-4">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-sky-900/30 rounded-lg text-sky-400">
-              <GitMerge size={24} />
-            </div>
-            <h2 className="text-xl font-bold text-slate-200">Breeding Pathfinder</h2>
-          </div>
-
-          <div className="space-y-4">
-            <details className="group">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-300 hover:text-sky-300 transition-colors">
-                <span>Why does it say &quot;No breeding necessary&quot;?</span>
-                <span className="transition group-open:rotate-180">▼</span>
-              </summary>
-              <div className="mt-2 text-slate-400 text-sm leading-relaxed pl-4 border-l-2 border-slate-700">
-                This message appears when the &quot;Target Pal&quot; you selected is already in your &quot;Available Pals&quot; list (either in your saved box or added as a temporary Pal). The tool assumes you want to acquire a new species, so if you already have it, no path is needed.
-              </div>
-            </details>
-
-            <details className="group">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-300 hover:text-sky-300 transition-colors">
-                <span>How do I see the full family tree?</span>
-                <span className="transition group-open:rotate-180">▼</span>
-              </summary>
-              <div className="mt-2 text-slate-400 text-sm leading-relaxed pl-4 border-l-2 border-slate-700">
-                After finding a path, look for the toggle buttons (List/Tree icon) near the top right of the result card. Switching to &quot;Tree View&quot; visualizes the entire lineage required to breed your target.
-              </div>
-            </details>
-
-            <details className="group">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-300 hover:text-sky-300 transition-colors">
-                <span>What does the Export button do?</span>
-                <span className="transition group-open:rotate-180">▼</span>
-              </summary>
-              <div className="mt-2 text-slate-400 text-sm leading-relaxed pl-4 border-l-2 border-slate-700">
-                The &quot;Export&quot; button copies a text summary of the breeding steps to your clipboard. This format is optimized for sharing on Discord or Reddit.
-              </div>
-            </details>
-          </div>
-        </div>
-
-        {/* General & Data */}
-        <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 space-y-4">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-purple-900/30 rounded-lg text-purple-400">
-              <Database size={24} />
-            </div>
-            <h2 className="text-xl font-bold text-slate-200">General & Data</h2>
-          </div>
-
-          <div className="space-y-4">
-            <details className="group">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-300 hover:text-sky-300 transition-colors">
-                <span>Where does the data come from?</span>
-                <span className="transition group-open:rotate-180">▼</span>
-              </summary>
-              <div className="mt-2 text-slate-400 text-sm leading-relaxed pl-4 border-l-2 border-slate-700">
-                We use community-verified datamined values for breeding power and stats. Images are based on official assets or placeholders if not available.
-              </div>
-            </details>
-
-            <details className="group">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-300 hover:text-sky-300 transition-colors">
-                <span>How do I report a bug?</span>
-                <span className="transition group-open:rotate-180">▼</span>
-              </summary>
-              <div className="mt-2 text-slate-400 text-sm leading-relaxed pl-4 border-l-2 border-slate-700">
-                If you find incorrect calculations or broken features, please verify your game version matches our patch notes. You can report issues via our repository.
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-12 p-8 bg-slate-900/50 rounded-2xl border border-slate-800 text-center">
-        <h3 className="text-xl font-bold text-slate-200 mb-2">Still have questions?</h3>
-        <p className="text-slate-400 mb-6">
-          Check out our detailed guides for in-depth strategies.
-        </p>
-        <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-lg transition-colors">
-          <HelpCircle size={20} /> Browse Guides
-        </Link>
-      </div>
-    </div>
-  );
+  return <div className="mx-auto max-w-4xl py-8"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Quick answers</p><h1 className="mt-2 text-4xl font-black tracking-tight text-stone-100">Frequently Asked Questions</h1><div className="mt-8 space-y-3">{questions.map(([question, answer]) => <details key={question} className="group rounded-2xl border border-stone-800 bg-stone-900/45 p-5 open:border-amber-400/20"><summary className="cursor-pointer list-none font-bold text-stone-100 marker:hidden">{question}<span className="float-right text-amber-400 transition group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-6 text-stone-400">{answer}</p></details>)}</div></div>;
 }

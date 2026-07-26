@@ -27,7 +27,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="hidden md:flex flex-col w-72 shrink-0 border-r border-neutral-200 dark:border-neutral-800 h-screen sticky top-0 bg-neutral-50/50 dark:bg-neutral-900/50 backdrop-blur-xl">
+    <aside className="hidden md:flex flex-col w-72 shrink-0 border-r border-slate-800 h-screen sticky top-0 bg-[#111521]/95 backdrop-blur-xl">
       <div className="flex-1 overflow-y-auto py-6 px-4">
         <nav className="space-y-6">
           {sections.map((sec) => (
@@ -70,7 +70,7 @@ function NavItem({ link, pathname }: { link: NavLink; pathname: string }) {
         className={cn(
           "flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-all duration-200 group-hover:bg-neutral-100 dark:group-hover:bg-neutral-800/50",
           isActive
-            ? "bg-sky-50 text-sky-700 dark:bg-sky-900/20 dark:text-sky-300 font-medium shadow-sm ring-1 ring-sky-100 dark:ring-sky-800"
+            ? "bg-[#607dff]/10 text-[#9aabff] font-medium shadow-sm ring-1 ring-[#607dff]/25"
             : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200"
         )}
       >
@@ -78,7 +78,7 @@ function NavItem({ link, pathname }: { link: NavLink; pathname: string }) {
           <Icon
             className={cn(
               "w-4 h-4 shrink-0 transition-colors",
-              isActive ? "text-sky-600 dark:text-sky-400" : "text-neutral-400 group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-300"
+              isActive ? "text-[#738bff]" : "text-neutral-400 group-hover:text-neutral-300 dark:text-neutral-500 dark:group-hover:text-neutral-300"
             )}
           />
         )}
@@ -88,7 +88,7 @@ function NavItem({ link, pathname }: { link: NavLink; pathname: string }) {
       {/* Tooltip on hover */}
       {link.description && (
         <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 w-64 p-3 bg-neutral-900 dark:bg-neutral-800 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none translate-x-2 group-hover:translate-x-0 border border-neutral-700/50">
-          <div className="font-semibold mb-1 text-sky-300">{link.label}</div>
+          <div className="font-semibold mb-1 text-[#9aabff]">{link.label}</div>
           <div className="text-neutral-300 leading-relaxed">{link.description}</div>
           {/* Arrow */}
           <div className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 w-2 h-2 bg-neutral-900 dark:bg-neutral-800 rotate-45 border-l border-b border-neutral-700/50" />

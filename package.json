@@ -1,10 +1,10 @@
 {
-  "name": "palworld-companion",
+  "name": "enshrouded-companion",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/build-search-index.mjs && next build",
+    "build": "node scripts/build-search-index.mjs && next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },

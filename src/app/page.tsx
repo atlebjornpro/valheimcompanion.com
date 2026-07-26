@@ -1,58 +1,75 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, Flame } from "lucide-react";
 import { sections } from "../config/nav";
 
 export default function Home() {
   return (
-    <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6">
-      <section className="text-center mb-16">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
-          Palworld Companion
-        </h1>
-        <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-8">
-          Clear explanations of mechanics, breeding systems, base optimization, and tools to help you master Palworld.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link
-            href="/getting-started"
-            className="bg-neutral-900 text-white dark:bg-white dark:text-black px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity shadow-lg"
-          >
-            Start Here
-          </Link>
-          <Link
-            href="/calculators/damage"
-            className="bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white px-6 py-3 rounded-lg font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors border border-neutral-200 dark:border-neutral-700"
-          >
-            Try Damage Calculator
-          </Link>
+    <div className="mx-auto max-w-5xl py-8 sm:py-12">
+      <section className="relative min-h-[500px] overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-2xl">
+        <Image
+          src="/images/enshrouded-hero.png"
+          alt="A Flameborn adventurer overlooking the mist-covered ruins of Embervale"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="(max-width: 768px) 100vw, 960px"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0d16] via-[#0b0d16]/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d16]/60 via-transparent to-[#0b0d16]/10" />
+        <div className="relative z-10 flex min-h-[500px] max-w-xl flex-col justify-center px-7 py-12 sm:px-12">
+          <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-blue-300">
+            <Flame className="h-3.5 w-3.5" />
+            Enshrouded v0.9.1.2
+          </div>
+          <h1 className="text-5xl font-black leading-[0.94] tracking-tight text-[#607dff] sm:text-7xl">
+            Enshrouded
+            <span className="block">Companion</span>
+          </h1>
+          <p className="mt-7 max-w-lg text-lg leading-8 text-slate-300">
+            Clear progression guides, current mechanics, resource locations,
+            build foundations, and practical tools to help you master Embervale.
+          </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/world/regions"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#5876f4] px-5 py-3 font-bold text-white transition hover:bg-[#6d88ff]"
+            >
+              Explore Embervale
+            </Link>
+            <Link
+              href="/tools/flame-planner"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#5876f4] bg-[#0d1120]/80 px-5 py-3 font-bold text-[#7790ff] transition hover:bg-[#151b30]"
+            >
+              Flame Planner
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sections.map((section) => {
-          // Skip "Start Here" as it's covered in hero, unless we want it?
-          // Actually "Start Here" has "Getting Started" which is fine to list.
-          // But maybe skip if it's just one link?
-          // Let's keep it consistent.
-          return (
-            <div key={section.title} className="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-colors">
-              <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                {section.title}
-              </h2>
-              <ul className="space-y-3">
-                {section.links.map((link) => (
+      <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {sections.map((section) => (
+          <section key={section.title} className="rounded-2xl border border-slate-800 bg-[#111521] p-6 shadow-lg">
+            <h2 className="mb-4 text-lg font-bold text-slate-100">{section.title}</h2>
+            <ul className="space-y-1">
+              {section.links.map((link) => {
+                const Icon = link.icon;
+                return (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="block text-sm text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="group flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-slate-400 transition hover:bg-slate-800/60 hover:text-[#8da0ff]"
                     >
-                      {link.label}
+                      {Icon && <Icon className="h-4 w-4 shrink-0 text-slate-600 transition group-hover:text-[#6f86f8]" />}
+                      <span>{link.label}</span>
                     </Link>
                   </li>
-                ))}
-              </ul>
-            </div>
-          );
-        })}
+                );
+              })}
+            </ul>
+          </section>
+        ))}
       </div>
     </div>
   );

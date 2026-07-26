@@ -2,35 +2,26 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Database, GitMerge, Map as MapIcon, CheckSquare } from "lucide-react";
+import { Calculator, CheckSquare, Flame, Home, Map } from "lucide-react";
 import clsx from "clsx";
 
 const links = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/pals", label: "Paldeck", icon: Database },
-  { href: "/calculators/breeding", label: "Breeding", icon: GitMerge },
-  { href: "/map", label: "Map", icon: MapIcon },
+  { href: "/world/regions", label: "World", icon: Map },
+  { href: "/tools/flame-planner", label: "Flame", icon: Flame },
+  { href: "/tools/resources", label: "Resources", icon: Calculator },
   { href: "/checklist", label: "Checklist", icon: CheckSquare },
 ];
 
 export default function MobileNav() {
   const pathname = usePathname();
-
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-neutral-900 border-t border-neutral-800 flex justify-around p-2 z-50 md:hidden pb-safe">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 flex justify-around border-t border-slate-800 bg-[#10131e] p-2 md:hidden">
       {links.map(({ href, label, icon: Icon }) => {
         const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
         return (
-          <Link
-            key={href}
-            href={href}
-            className={clsx(
-              "flex flex-col items-center justify-center w-full py-1 text-[10px]",
-              isActive ? "text-orange-500" : "text-neutral-500 hover:text-neutral-300"
-            )}
-          >
-            <Icon className="w-5 h-5 mb-1" />
-            <span>{label}</span>
+          <Link key={href} href={href} className={clsx("flex w-full flex-col items-center justify-center py-1 text-[10px]", isActive ? "text-[#7188ff]" : "text-slate-500 hover:text-slate-300")}>
+            <Icon className="mb-1 h-5 w-5" /><span>{label}</span>
           </Link>
         );
       })}

@@ -2,13 +2,13 @@
 
 /* Default to Dark Mode */
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #090b12;
+  --foreground: #f1f5f9;
 
   /* subtle surfaces */
-  --muted: #171717; /* neutral-900 */
-  --muted-foreground: #a3a3a3; /* neutral-400 */
-  --border: #262626; /* neutral-800 */
+  --muted: #111521;
+  --muted-foreground: #94a3b8;
+  --border: #1e293b;
 }
 
 body {
@@ -16,6 +16,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 /* Keep anchors from hiding behind the fixed header area when using TOC links */
@@ -29,11 +30,11 @@ body {
 .prose a {
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
-  color: var(--foreground);
+  color: #8da0ff;
   font-weight: 500;
 }
 .prose a:hover {
-  text-decoration-color: #3b82f6; /* blue-500 */
+  text-decoration-color: #607dff;
 }
 
 /* --- Wiki-ish typography defaults --- */

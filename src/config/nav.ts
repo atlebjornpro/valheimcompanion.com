@@ -1,22 +1,6 @@
 import {
-  Rocket,
-  FileText,
-  Hammer,
-  Swords,
-  Zap,
-  Crosshair,
-  Calculator,
-  Trophy,
-  Droplet,
-  Dna,
-  UserCog,
-  Map as MapIcon,
-  CheckSquare,
-  Search,
-  LayoutTemplate,
-  Package,
-  Shield,
-  ListOrdered
+  BookOpen, Boxes, Calculator, CheckSquare, Flame, Hammer, Heart,
+  History, Map, Search, Shield, Sparkles, Users, Utensils, WandSparkles,
 } from "lucide-react";
 import React from "react";
 
@@ -27,208 +11,48 @@ export type NavLink = {
   description?: string;
 };
 
-export type NavSection = {
-  title: string;
-  links: NavLink[];
-};
+export type NavSection = { title: string; links: NavLink[] };
 
 export const sections: NavSection[] = [
   {
     title: "Start Here",
     links: [
-      {
-        href: "/getting-started",
-        label: "Getting Started",
-        icon: Rocket,
-        description: "New to Palworld? Begin your journey here with essential tips."
-      },
-      {
-        href: "/patch-notes",
-        label: "Patch Notes & Meta",
-        icon: FileText,
-        description: "Stay up to date with the latest game updates and meta shifts."
-      },
-      {
-        href: "/faq",
-        label: "FAQ / Help",
-        icon: CheckSquare,
-        description: "Common questions and tool guides."
-      },
+      { href: "/getting-started", label: "Getting Started", icon: BookOpen, description: "A spoiler-light route from the Cinder Vault to your first stable base." },
+      { href: "/updates/current", label: "Current Version", icon: History, description: "What changed in v0.9.1.2 and what is confirmed for 1.0." },
+      { href: "/faq", label: "FAQ", icon: Search, description: "Short answers to common progression and tool questions." },
     ],
   },
   {
-    title: "Game Guides",
+    title: "World",
     links: [
-      {
-        href: "/guides/tier-list",
-        label: "Tier List",
-        icon: ListOrdered,
-        description: "Top Pals for bases, combat, and travel."
-      },
-      {
-        href: "/guides/building",
-        label: "Build Guides & Architecture",
-        icon: Hammer,
-        description: "Learn how to construct efficient and beautiful bases."
-      },
-      {
-        href: "/guides/raids",
-        label: "Raid Strategy",
-        icon: Swords,
-        description: "Tactics to defend your base against powerful raids."
-      },
-      {
-        href: "/guides/type-chart",
-        label: "Type Chart",
-        icon: Shield,
-        description: "Strengths and weaknesses for every element."
-      },
+      { href: "/world/regions", label: "Regions of Embervale", icon: Map, description: "Level ranges, Flame requirements, hazards, and signature resources." },
+      { href: "/progression/survivors", label: "Survivors", icon: Users, description: "Craftspeople, their roles, stations, and rescue order." },
+      { href: "/world/shroud-exploration", label: "Shroud & Exploration", icon: WandSparkles, description: "Shroud timers, deadly passages, travel, and expedition preparation." },
     ],
   },
   {
-    title: "Mechanics",
+    title: "Progression",
     links: [
-      {
-        href: "/mechanics/work-speed",
-        label: "Work Speed",
-        icon: Zap,
-        description: "Understanding how work speed affects production rates."
-      },
-      {
-        href: "/mechanics/capture-chance",
-        label: "Capture Chance",
-        icon: Crosshair,
-        description: "Maximize your odds of capturing high-level Pals."
-      },
-      {
-        href: "/mechanics/damage-formula",
-        label: "Damage Formula",
-        icon: Calculator,
-        description: "Deep dive into the math behind combat damage."
-      },
-      {
-        href: "/mechanics/pvp-arena",
-        label: "PvP Arena Meta",
-        icon: Trophy,
-        description: "Top strategies and Pal picks for player-vs-player combat."
-      },
-      {
-        href: "/mechanics/oil-rig-stronghold",
-        label: "Oil Rig Stronghold",
-        icon: Droplet,
-        description: "Guide to conquering the Oil Rig Stronghold."
-      },
+      { href: "/tools/flame-planner", label: "Flame Upgrade Planner", icon: Flame, description: "Requirements and checklist for Flame levels 2 through 9." },
+      { href: "/tools/skill-points", label: "Skill Point Calculator", icon: Calculator, description: "Calculate earned and remaining skill points up to level 45." },
+      { href: "/guides/builds", label: "Build Foundations", icon: Shield, description: "Practical melee, ranged, magic, and co-op build principles." },
     ],
   },
   {
-    title: "Breeding",
+    title: "Crafting & Building",
     links: [
-      {
-        href: "/breeding/trait-inheritance",
-        label: "Trait Inheritance",
-        icon: Dna,
-        description: "How passive skills are passed down to offspring."
-      },
-      {
-        href: "/breeding/passive-skills",
-        label: "Passive Skills Info",
-        icon: Search,
-        description: "Complete list of passive skills and their effects."
-      },
-    ],
-  },
-  {
-    title: "Bases",
-    links: [
-      {
-        href: "/bases/worker-roles",
-        label: "Worker Roles",
-        icon: UserCog,
-        description: "Optimize your base with the right Pals for the job."
-      },
-      {
-        href: "/bases/pathing-ai",
-        label: "Pathing & AI",
-        icon: MapIcon, // Using MapIcon as a placeholder for pathing
-        description: "Tips to prevent your Pals from getting stuck."
-      },
+      { href: "/crafting/progression", label: "Crafting Progression", icon: Boxes, description: "Which craftsperson and workstation unlocks each production tier." },
+      { href: "/tools/resources", label: "Resource Finder", icon: Sparkles, description: "Search important materials by region, source, and use." },
+      { href: "/guides/food", label: "Food & Consumables", icon: Utensils, description: "Food slots, food types, expedition buffs, and preparation." },
+      { href: "/building/base-planning", label: "Base Planning", icon: Hammer, description: "Altar coverage, storage, production flow, water, and NPC shelter." },
+      { href: "/building/comfort", label: "Comfort Guide", icon: Heart, description: "How shelter, warmth, and comfort extend Rested duration." },
     ],
   },
   {
     title: "Tools",
     links: [
-      {
-        href: "/checklist",
-        label: "Checklist",
-        icon: CheckSquare,
-        description: "Track your daily and weekly tasks."
-      },
-      {
-        href: "/map",
-        label: "Resource Map",
-        icon: MapIcon,
-        description: "Find ore, sulfur, and other valuable resources."
-      },
-      {
-        href: "/items",
-        label: "Item Database",
-        icon: Package,
-        description: "Search items and materials."
-      },
-      {
-        href: "/calculators/damage",
-        label: "Damage Calc",
-        icon: Swords,
-        description: "Calculate potential damage output."
-      },
-      {
-        href: "/calculators/capture-chance",
-        label: "Capture Calc",
-        icon: Crosshair,
-        description: "Estimate your capture success rate."
-      },
-      {
-        href: "/calculators/work-speed",
-        label: "Work Speed Calc",
-        icon: Zap,
-        description: "Calculate production times based on Pal stats."
-      },
-      {
-        href: "/calculators/iv",
-        label: "IV Calculator",
-        icon: Calculator,
-        description: "Determine your Pal's individual values."
-      },
-      {
-        href: "/calculators/base-efficiency",
-        label: "Base Efficiency",
-        icon: LayoutTemplate,
-        description: "Analyze your base's production efficiency."
-      },
-      {
-        href: "/my-pals",
-        label: "My Pal Box",
-        icon: Package,
-        description: "Manage your saved Pals for breeding."
-      },
-      {
-        href: "/calculators/breeding",
-        label: "Breeding Pathfinder",
-        icon: Dna,
-        description: "Find the shortest breeding path to your desired Pal."
-      },
-      {
-        href: "/calculators/breeding-simulator",
-        label: "Breeding Simulator",
-        icon: Calculator,
-        description: "Calculate outcomes and find parents."
-      },
-      {
-        href: "/pals/passives",
-        label: "Passives Search",
-        icon: Search,
-        description: "Search and filter passive skills."
-      },
+      { href: "/tools/rested", label: "Rested Calculator", icon: Calculator, description: "Estimate Rested stamina and regeneration by character level." },
+      { href: "/checklist", label: "Adventure Checklist", icon: CheckSquare, description: "A locally saved progression checklist for your current world." },
     ],
   },
 ];

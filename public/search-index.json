@@ -1,72 +1,47 @@
 [
   {
-    "slug": "/bases/pathing-ai",
-    "title": "Pathing & AI Explained",
-    "description": "How Pal pathing and AI behavior works in Palworld bases, why Pals get stuck or wander off, and how to design layouts that actually function."
+    "slug": "/guides/builds",
+    "title": "Build Foundations",
+    "description": "Reliable principles for melee, ranged, magic, and co-op characters after the skill-tree rework."
   },
   {
-    "slug": "/bases/worker-roles",
-    "title": "Worker Roles & Assignments Explained",
-    "description": "How to assign Pals to the right roles in Palworld bases, avoid productivity traps, and build efficient worker setups that actually scale."
-  },
-  {
-    "slug": "/breeding/passive-skills",
-    "title": "Passive Skills Explained",
-    "description": "A practical guide to Palworld passive skills: what they are, how to evaluate them, and how to build clean breeding lines for workers, mounts, and combat Pals."
-  },
-  {
-    "slug": "/breeding/trait-inheritance",
-    "title": "Breeding Trait Inheritance Explained",
-    "description": "How breeding trait inheritance works in Palworld, and the most reliable method to create clean 3–4 passive offspring."
-  },
-  {
-    "slug": "/calculators",
-    "title": "Calculators",
-    "description": "Tools and calculators for Palworld mechanics and optimization."
+    "slug": "/guides/food",
+    "title": "Food & Consumables",
+    "description": "Food slots, food types, and a simple preparation strategy for every expedition."
   },
   {
     "slug": "/getting-started",
-    "title": "Getting Started with Palworld Mechanics",
-    "description": "A practical starting guide to Palworld systems: mechanics, breeding, base setup, and how to use this wiki effectively."
+    "title": "Getting Started",
+    "description": "A spoiler-light route from the Cinder Vault to a stable first base."
   },
   {
-    "slug": "/guides/building/ore-farm",
-    "title": "Automated Ore Farm Blueprint",
-    "description": "Maximize your ore production with this efficient base layout."
+    "slug": "/updates/current",
+    "title": "Current Version & 1.0",
+    "description": "Game status, current patch, and confirmed release information."
   },
   {
-    "slug": "/guides/raids/libero",
-    "title": "Bellanoir Libero Raid Guide",
-    "description": "Master the ultra-difficult raid with this comprehensive strategy."
+    "slug": "/progression/survivors",
+    "title": "Survivors & Craftspeople",
+    "description": "Who to rescue, what each specialist unlocks, and how assistants work."
   },
   {
-    "slug": "/mechanics/capture-chance",
-    "title": "Capture Chance Explained",
-    "description": "How capture chance works in Palworld: the factors that matter (HP, status effects, sphere tier) and a practical strategy to catch harder Pals."
+    "slug": "/world/shroud-exploration",
+    "title": "Shroud & Exploration",
+    "description": "How Shroud time, passage levels, roots, wells, and expedition preparation fit together."
   },
   {
-    "slug": "/mechanics/damage-formula",
-    "title": "Damage Formula Explained",
-    "description": "How damage works in Palworld: the factors that affect it, how to increase damage reliably, and why results can feel inconsistent."
+    "slug": "/crafting/progression",
+    "title": "Crafting Progression",
+    "description": "A practical order for workstations, materials, and production chains."
   },
   {
-    "slug": "/mechanics/oil-rig-stronghold",
-    "title": "Oil Rig Stronghold Guide (Updated 2026)",
-    "description": "The complete guide to raiding the Oil Rig Stronghold in 2026: new loot tables, level 60 cap strategies, and the Laser Syndicate."
+    "slug": "/building/base-planning",
+    "title": "Base Planning",
+    "description": "Plan Flame coverage, workshops, storage, shelter, comfort, water, and expansion."
   },
   {
-    "slug": "/mechanics/pvp-arena",
-    "title": "PvP Arena Meta Guide (Feb 2026)",
-    "description": "The current state of the Pal Arena in 2026: top tier teams, essential counters, and how to climb the ranked ladder."
-  },
-  {
-    "slug": "/mechanics/work-speed",
-    "title": "Work Speed Explained",
-    "description": "How Work Speed actually works in Palworld—what it affects, what it doesn’t, and how to optimize base productivity."
-  },
-  {
-    "slug": "/patch-notes/v0.1.5-meta",
-    "title": "Patch v0.1.5 Meta Analysis",
-    "description": "Why the Fire Pal nerf changes everything, and how to adapt."
+    "slug": "/building/comfort",
+    "title": "Comfort & Rested",
+    "description": "How shelter, warmth, and comfort create the Rested buff."
   }
 ]
