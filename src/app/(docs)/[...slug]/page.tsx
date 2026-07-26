@@ -7,6 +7,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import type { AnchorHTMLAttributes } from "react";
 
 type RouteParams = { slug?: string[] };
 
@@ -59,9 +60,30 @@ function getRelated(slugParts: string[]) {
       { href: "/tools/rested", label: "Rested calculator" },
       { href: "/building/base-planning", label: "Base planning" },
     ],
+    "/guides/best-gear-for-enshrouded": [
+      { href: "/guides/best-router-for-enshrouded-self-hosting", label: "Best router for self-hosting" },
+      { href: "/guides/server-hosting", label: "Managed server hosting" },
+    ],
+    "/guides/best-router-for-enshrouded-self-hosting": [
+      { href: "/guides/server-hosting", label: "Managed server hosting" },
+      { href: "/guides/best-gear-for-enshrouded", label: "Best gear for Enshrouded" },
+    ],
   };
 
   return relatedMap[slug] ?? [];
+}
+
+function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
+  const isAmazonAffiliate =
+    typeof props.href === "string" && props.href.startsWith("https://amzn.to/");
+
+  return (
+    <a
+      {...props}
+      rel={isAmazonAffiliate ? "sponsored nofollow noopener" : props.rel}
+      target={isAmazonAffiliate ? "_blank" : props.target}
+    />
+  );
 }
 
 export async function generateMetadata({
@@ -134,6 +156,7 @@ export default async function DocPage({
       {/* MDX body */}
       <MDXRemote
         source={doc.content}
+        components={{ a: MdxLink }}
         options={{
           mdxOptions: {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

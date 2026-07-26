@@ -1,6 +1,6 @@
 import {
-  BookOpen, Boxes, Calculator, CheckSquare, Flame, Hammer, Heart,
-  History, Map, Search, Server, Shield, Sparkles, Users, Utensils, WandSparkles,
+  BookOpen, Boxes, Calculator, CheckSquare, Flame, Gamepad2, Hammer, Heart,
+  History, Map, Router, Search, Server, Shield, Sparkles, Users, Utensils, WandSparkles,
 } from "lucide-react";
 import React from "react";
 
@@ -20,6 +20,8 @@ export const sections: NavSection[] = [
       { href: "/getting-started", label: "Getting Started", icon: BookOpen, description: "A spoiler-light route from the Cinder Vault to your first stable base." },
       { href: "/updates/current", label: "Current Version", icon: History, description: "What changed in v0.9.1.2 and what is confirmed for 1.0." },
       { href: "/guides/server-hosting", label: "Server Hosting", icon: Server, description: "Compare managed Enshrouded hosts for persistent co-op worlds." },
+      { href: "/guides/best-gear-for-enshrouded", label: "Best Gear", icon: Gamepad2, description: "Useful controller, mouse, headset, and storage picks for Enshrouded." },
+      { href: "/guides/best-router-for-enshrouded-self-hosting", label: "Best Router", icon: Router, description: "Router and network picks for a reliable home dedicated server." },
       { href: "/faq", label: "FAQ", icon: Search, description: "Short answers to common progression and tool questions." },
     ],
   },

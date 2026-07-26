@@ -74,7 +74,7 @@ export default function RootLayout({
         <footer className="border-t border-slate-800 bg-[#0d1018]">
           <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
             <div><strong className="text-slate-300">Enshrouded Companion</strong><span className="ml-2">Community guide. Not affiliated with Keen Games.</span></div>
-            <div className="flex gap-4"><Link href="/faq" className="hover:text-[#8da0ff]">FAQ</Link><Link href="/updates/current" className="hover:text-[#8da0ff]">Updates</Link></div>
+            <div className="flex gap-4"><Link href="/faq" className="hover:text-[#8da0ff]">FAQ</Link><Link href="/updates/current" className="hover:text-[#8da0ff]">Updates</Link><Link href="/privacy" className="hover:text-[#8da0ff]">Privacy & Affiliate Disclosure</Link></div>
           </div>
         </footer>
         <MobileNav />

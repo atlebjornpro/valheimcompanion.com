@@ -15,6 +15,16 @@
     "description": "Compare managed Enshrouded server hosts for persistent co-op worlds, backups, regions, and ease of setup."
   },
   {
+    "slug": "/guides/best-gear-for-enshrouded",
+    "title": "Best Gear for Enshrouded",
+    "description": "Practical controller, mouse, headset, and storage recommendations chosen around Enshrouded's combat, building, exploration, and co-op."
+  },
+  {
+    "slug": "/guides/best-router-for-enshrouded-self-hosting",
+    "title": "Best Router for Enshrouded Self-Hosting",
+    "description": "Home router, ethernet, powerline, and UPS recommendations for a stable Enshrouded dedicated server."
+  },
+  {
     "slug": "/getting-started",
     "title": "Getting Started",
     "description": "A spoiler-light route from the Cinder Vault to a stable first base."
@@ -48,5 +58,10 @@
     "slug": "/building/comfort",
     "title": "Comfort & Rested",
     "description": "How shelter, warmth, and comfort create the Rested buff."
+  },
+  {
+    "slug": "/privacy",
+    "title": "Privacy Policy & Affiliate Disclosure",
+    "description": "How Enshrouded Companion uses analytics and affiliate links, including Amazon Associates and game-server hosting referrals."
   }
 ]
