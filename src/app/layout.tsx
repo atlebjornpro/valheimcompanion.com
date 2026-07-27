@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Flame } from "lucide-react";
 import "./globals.css";
@@ -118,6 +119,7 @@ export default function RootLayout({
           </div>
         </footer>
         <MobileNav />
+        <Analytics />
       </body>
     </html>
   );
