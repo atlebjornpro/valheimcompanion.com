@@ -25,6 +25,21 @@
     "description": "Home router, ethernet, powerline, and UPS recommendations for a stable Enshrouded dedicated server."
   },
   {
+    "slug": "/guides/builds/melee-tank",
+    "title": "Enshrouded Melee Tank Build",
+    "description": "A durable one-handed melee build for solo and co-op play using current Warrior and Tank skills."
+  },
+  {
+    "slug": "/guides/builds/ranger-bow",
+    "title": "Enshrouded Ranger Bow Build",
+    "description": "A current bow build focused on Dexterity, weak-point damage, critical hits, stamina, and practical ammunition use."
+  },
+  {
+    "slug": "/guides/builds/wizard-healer",
+    "title": "Enshrouded Wizard Healer Build",
+    "description": "A current co-op magic build combining Intelligence, staff and wand damage, Water Aura, mana sustain, and emergency mobility."
+  },
+  {
     "slug": "/getting-started",
     "title": "Getting Started",
     "description": "A spoiler-light route from the Cinder Vault to a stable first base."
@@ -40,9 +55,39 @@
     "description": "Who to rescue, what each specialist unlocks, and how assistants work."
   },
   {
+    "slug": "/progression/survivors/blacksmith",
+    "title": "How to Find the Blacksmith in Enshrouded",
+    "description": "Rescue Oswald Anders from the Blacksmith Ancient Vault and unlock early melee gear, tools, metalworking, and survivor progression."
+  },
+  {
+    "slug": "/progression/survivors/hunter",
+    "title": "How to Find the Hunter in Enshrouded",
+    "description": "Rescue Athalan Skree from the Hunter Ancient Vault and unlock arrows, ranged armor, leather, and textile production."
+  },
+  {
+    "slug": "/progression/survivors/alchemist",
+    "title": "How to Find the Alchemist in Enshrouded",
+    "description": "Rescue Balthazar from the Alchemist Ancient Vault and unlock potions, spells, magic armor, and alchemical workstations."
+  },
+  {
     "slug": "/world/shroud-exploration",
     "title": "Shroud & Exploration",
     "description": "How Shroud time, passage levels, roots, wells, and expedition preparation fit together."
+  },
+  {
+    "slug": "/world/regions/springlands",
+    "title": "Enshrouded Springlands Progression Guide",
+    "description": "Plan the starting-region route through survivor rescues, early crafting, Salt, Flintstone, Shroud Roots, and Flame upgrades."
+  },
+  {
+    "slug": "/world/regions/revelwood",
+    "title": "Enshrouded Revelwood Progression Guide",
+    "description": "Plan Revelwood progression through Flame level 3, Copper, Amber, Hardwood, Pikemead's Reach, and the Blackmire."
+  },
+  {
+    "slug": "/world/regions/nomad-highlands",
+    "title": "Enshrouded Nomad Highlands Progression Guide",
+    "description": "Plan Nomad Highlands progression through Flame level 4, Tin, Bronze, Fossilized Bone, mines, and Shrouded valleys."
   },
   {
     "slug": "/crafting/progression",
@@ -98,5 +143,75 @@
     "slug": "/world",
     "title": "Enshrouded World Guides",
     "description": "Explore Embervale's regions, Shroud hazards, resources, Flame requirements, traversal, and expedition preparation."
+  },
+  {
+    "slug": "/enshrouded-1-0",
+    "title": "Enshrouded 1.0 Release Date, Confirmed Information and Guide Status",
+    "description": "Enshrouded 1.0 releases from Steam Early Access on October 15, 2026. Track confirmed information, open questions, and Companion guide updates."
+  },
+  {
+    "slug": "/about",
+    "title": "About Enshrouded Companion",
+    "description": "Why Enshrouded Companion exists, what it covers, and how this independent community guide approaches tools and game information."
+  },
+  {
+    "slug": "/editorial-policy",
+    "title": "Editorial Policy",
+    "description": "How Enshrouded Companion researches, verifies, updates, and corrects guides, tools, hosting comparisons, and affiliate-supported content."
+  },
+  {
+    "slug": "/data-sources",
+    "title": "Data Sources and Verification",
+    "description": "The official documentation, wiki references, in-game checks, community reports, and provider information used by Enshrouded Companion."
+  },
+  {
+    "slug": "/contact",
+    "title": "Contact Enshrouded Companion",
+    "description": "Report corrections, outdated locations, server problems, tool bugs, and editorial or affiliate questions."
+  },
+  {
+    "slug": "/resources/amber",
+    "title": "Where to Find Amber in Enshrouded",
+    "description": "Find Amber in the Revelwood Shroud, learn the most reliable landmark route, and see what to prepare before mining it."
+  },
+  {
+    "slug": "/resources/salt",
+    "title": "Where to Find Salt in Enshrouded",
+    "description": "Find Salt early at Egerton Salt Mines or Saline Quarry and learn the safest route and important crafting uses."
+  },
+  {
+    "slug": "/resources/copper-ore",
+    "title": "Where to Find Copper Ore in Enshrouded",
+    "description": "Find Copper Ore in Revelwood, unlock the Smelter, and calculate the ore and fuel needed for Copper Bars."
+  },
+  {
+    "slug": "/resources/tin-ore",
+    "title": "Where to Find Tin Ore in Enshrouded",
+    "description": "Find Tin Ore in the Nomad Highlands Shroud and calculate the ore, fuel, and Wood Acid needed for Tin Bars."
+  },
+  {
+    "slug": "/resources/iron-ore",
+    "title": "Where to Find Iron Ore in Enshrouded",
+    "description": "Find Iron Ore at Ridgeback Mine in the Kindlewastes and learn the quest and Shroud requirements for the trip."
+  },
+  {
+    "slug": "/servers",
+    "title": "Enshrouded Dedicated Server Guides",
+    "description": "Install, configure, troubleshoot, back up, migrate, or choose hosting for an Enshrouded dedicated server."
+  },
+  {
+    "slug": "/servers/dedicated-server-setup",
+    "title": "Enshrouded Dedicated Server Setup Guide",
+    "description": "Install and configure an Enshrouded dedicated server on Windows, open the query port, and connect through Steam."
+  },
+  {
+    "slug": "/servers/troubleshooting",
+    "title": "Enshrouded Server Not Showing or Not Connecting",
+    "description": "Diagnose an Enshrouded dedicated server that is missing from the browser, unreachable, dropping connections, or failing to start."
+  },
+  {
+    "slug": "/servers/backup-migration",
+    "title": "Enshrouded Server Backup and Migration Guide",
+    "description": "Back up, restore, roll back, or move an Enshrouded world between a local game, dedicated server, and hosting provider."
   }
 ]

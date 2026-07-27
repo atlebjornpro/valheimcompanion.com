@@ -12,6 +12,7 @@ const staticRoutes = [
   "/tools/flame-planner",
   "/tools/resources",
   "/tools/rested",
+  "/tools/server-config",
   "/tools/skill-points",
   "/world/regions",
 ];

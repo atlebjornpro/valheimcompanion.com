@@ -67,7 +67,24 @@ function getRelated(slugParts: string[]) {
     ],
     "/guides/best-router-for-enshrouded-self-hosting": [
       { href: "/guides/server-hosting", label: "Managed server hosting" },
+      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
       { href: "/guides/best-gear-for-enshrouded", label: "Best gear for Enshrouded" },
+    ],
+    "/guides/server-hosting": [
+      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
+      { href: "/servers/backup-migration", label: "Backups and migration" },
+    ],
+    "/servers/dedicated-server-setup": [
+      { href: "/servers/troubleshooting", label: "Server troubleshooting" },
+      { href: "/servers/backup-migration", label: "Backups and migration" },
+    ],
+    "/servers/troubleshooting": [
+      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
+      { href: "/guides/server-hosting", label: "Managed server hosting" },
+    ],
+    "/servers/backup-migration": [
+      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
+      { href: "/guides/server-hosting", label: "Managed server hosting" },
     ],
   };
 
@@ -138,12 +155,24 @@ export default async function DocPage({
   const updated = formatUpdated(doc.frontmatter.updated);
   const related = getRelated(slugParts);
   const canonical = `${SITE_URL}/${slugParts.join("/")}`;
+  const collectionHubs = new Set([
+    "building",
+    "crafting",
+    "guides",
+    "progression",
+    "servers",
+    "tools",
+    "updates",
+    "world",
+  ]);
   const schemaType =
-    slugParts.length === 1 && !["getting-started", "privacy"].includes(slugParts[0])
-      ? "CollectionPage"
-      : slugParts[0] === "privacy"
-        ? "WebPage"
-        : "Article";
+    slugParts[0] === "contact"
+      ? "ContactPage"
+      : slugParts.length === 1 && collectionHubs.has(slugParts[0])
+        ? "CollectionPage"
+        : ["about", "data-sources", "editorial-policy", "privacy"].includes(slugParts[0])
+          ? "WebPage"
+          : "Article";
 
   const jsonLd = {
     "@context": "https://schema.org",

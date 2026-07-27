@@ -1,9 +1,11 @@
 import { Flame, Mountain, Waves, Wind } from "lucide-react";
+import Link from "next/link";
 import { createPageMetadata } from "../../../config/metadata";
 
 const regions = [
   {
     name: "Springlands",
+    href: "/world/regions/springlands",
     levels: "1–10",
     flame: "1–2",
     tone: "from-emerald-500/20 to-lime-500/5",
@@ -13,6 +15,7 @@ const regions = [
   },
   {
     name: "Revelwood",
+    href: "/world/regions/revelwood",
     levels: "10–15",
     flame: "3",
     tone: "from-green-600/20 to-teal-500/5",
@@ -22,6 +25,7 @@ const regions = [
   },
   {
     name: "Nomad Highlands",
+    href: "/world/regions/nomad-highlands",
     levels: "15–20",
     flame: "4",
     tone: "from-yellow-600/20 to-stone-500/5",
@@ -31,6 +35,7 @@ const regions = [
   },
   {
     name: "Kindlewastes",
+    href: null,
     levels: "20–30",
     flame: "5",
     tone: "from-orange-600/20 to-amber-500/5",
@@ -40,6 +45,7 @@ const regions = [
   },
   {
     name: "Albaneve Summits",
+    href: null,
     levels: "30–40",
     flame: "6–8",
     tone: "from-sky-500/20 to-blue-500/5",
@@ -49,6 +55,7 @@ const regions = [
   },
   {
     name: "Veilwater Basin",
+    href: null,
     levels: "40–45",
     flame: "8–9",
     tone: "from-cyan-500/20 to-emerald-500/5",
@@ -88,7 +95,9 @@ export default function RegionsPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-stone-500">Stage {index + 1}</p>
-                <h2 className="mt-1 text-2xl font-bold text-stone-100">{region.name}</h2>
+                <h2 className="mt-1 text-2xl font-bold text-stone-100">
+                  {region.href ? <Link href={region.href} className="underline decoration-amber-400/30 underline-offset-4 hover:text-amber-100">{region.name}</Link> : region.name}
+                </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-400">{region.description}</p>
               </div>
               <div className="flex shrink-0 gap-2">

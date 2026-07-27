@@ -13,7 +13,7 @@ export default function RestedCalculatorPage() {
     <div className="mx-auto max-w-4xl py-8">
       <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Base & stamina tool</p>
       <h1 className="mt-2 text-4xl font-black tracking-tight text-stone-100">Rested Calculator</h1>
-      <p className="mt-4 max-w-3xl leading-7 text-stone-400">See the Rested buff's level-scaled stamina values and use Comfort as a planning target for your base.</p>
+      <p className="mt-4 max-w-3xl leading-7 text-stone-400">See the Rested buff&apos;s level-scaled stamina values and use Comfort as a planning target for your base.</p>
 
       <div className="mt-8 rounded-2xl border border-stone-800 bg-stone-900/45 p-6">
         <div className="grid gap-6 sm:grid-cols-2">
@@ -39,7 +39,7 @@ export default function RestedCalculatorPage() {
           To activate Rested, be safe, sheltered, warm, and sitting or sleeping near at least one comfort source.
         </p>
       </section>
-      <p className="mt-5 text-xs text-stone-500">Formula reviewed against the official wiki's v0.9 Rested values on July 26, 2026.</p>
+      <p className="mt-5 text-xs text-stone-500">Formula reviewed against the official wiki&apos;s v0.9 Rested values on July 26, 2026.</p>
     </div>
   );
 }

@@ -26,7 +26,10 @@ export default function FlamePlannerPage() {
   const [selected, setSelected] = useState(2);
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   useEffect(() => {
-    try { setChecked(JSON.parse(localStorage.getItem("enshrouded-flame-planner") || "{}")); } catch { setChecked({}); }
+    let stored: Record<string, boolean> = {};
+    try { stored = JSON.parse(localStorage.getItem("enshrouded-flame-planner") || "{}"); } catch { stored = {}; }
+    const frame = requestAnimationFrame(() => setChecked(stored));
+    return () => cancelAnimationFrame(frame);
   }, []);
   const current = levels.find((item) => item.level === selected) ?? levels[0];
   const completed = useMemo(() => current.requirements.filter((item) => checked[`${selected}:${item}`]).length, [checked, current, selected]);
@@ -76,6 +79,37 @@ export default function FlamePlannerPage() {
         </aside>
       </div>
       <p className="mt-5 text-xs text-stone-500">Requirements reviewed against the official wiki on July 26, 2026 for v0.9.1.2.</p>
+
+      <section className="mt-12 border-t border-stone-800 pt-10">
+        <h2 className="text-2xl font-black text-stone-100">Enshrouded Flame upgrade requirements</h2>
+        <p className="mt-3 max-w-3xl leading-7 text-stone-400">
+          This complete reference remains visible without interacting with the planner. Verify the target level, materials, Shroud time, and Altar capacity before leaving your base.
+        </p>
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-stone-800">
+          <table className="min-w-[860px] w-full border-collapse text-left text-sm">
+            <thead className="bg-stone-900 text-stone-200">
+              <tr>
+                <th className="px-4 py-3">Flame level</th>
+                <th className="px-4 py-3">Required materials</th>
+                <th className="px-4 py-3">Passage</th>
+                <th className="px-4 py-3">Shroud time</th>
+                <th className="px-4 py-3">Altars</th>
+              </tr>
+            </thead>
+            <tbody>
+              {levels.map((item) => (
+                <tr key={item.level} className="border-t border-stone-800 align-top text-stone-400">
+                  <th className="px-4 py-4 font-bold text-amber-200">Level {item.level}</th>
+                  <td className="px-4 py-4 leading-6">{item.requirements.join(", ")}</td>
+                  <td className="px-4 py-4">{item.level}</td>
+                  <td className="px-4 py-4">{item.time} min</td>
+                  <td className="px-4 py-4">{item.altars}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
   );
 }

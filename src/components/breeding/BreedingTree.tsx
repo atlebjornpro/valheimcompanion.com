@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PalData } from '../../data/pals';
 import { PathStep } from '../../utils/breedingPathfinder';
 import Image from 'next/image';
-import { ChevronDown, ChevronUp, Info } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface BreedingTreeProps {
   steps: PathStep[];
@@ -69,7 +69,7 @@ const PalNodeCard = ({
           <button
             onClick={(e) => {
                 e.stopPropagation();
-                onToggle && onToggle();
+                onToggle?.();
             }}
             className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-700 hover:bg-sky-600 text-slate-300 hover:text-white rounded-full p-1 border border-slate-600 transition-colors shadow-sm z-30"
             title={isExpanded ? "Collapse Parents" : "Show Parents"}

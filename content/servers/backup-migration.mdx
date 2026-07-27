@@ -1,0 +1,67 @@
+---
+title: Enshrouded Server Backup and Migration Guide
+description: Back up, restore, roll back, or move an Enshrouded world between a local game, dedicated server, and hosting provider.
+updated: 2026-07-27
+---
+
+For a dedicated server, the world is stored in the folder configured by `saveDirectory`, which defaults to `./savegame`. **Stop the server before copying or replacing save files**, and back up the entire save folder rather than a single file.
+
+## What is stored where?
+
+| Data | Location |
+|---|---|
+| Dedicated-server world | `saveDirectory`, default `./savegame` beside the server installation |
+| Local world saves | `%USERPROFILE%/Saved Games/enshrouded` |
+| Steam Cloud copy | Steam Remote Storage for app ID 1203620 |
+| Character progression | Player client, not the dedicated server |
+
+The dedicated server stores world progression. Character progression remains on each player's client.
+
+## Make a safe manual backup
+
+1. Ask players to log out.
+2. Stop the dedicated-server process cleanly.
+3. Confirm the process has exited.
+4. Copy the entire configured save directory to a dated backup folder.
+5. Keep at least one copy on another physical device or cloud-backup destination.
+6. Start the server and confirm the world loads.
+
+Do not copy a live save while it may be writing. Keen's dedicated-server FAQ says the server creates world saves every five minutes.
+
+## Move a world to another dedicated server
+
+1. Stop both the source and destination servers.
+2. Back up both save directories.
+3. Confirm the destination's `saveDirectory` value.
+4. Copy the source world files into the destination save directory.
+5. Preserve file names and accompanying index/info files.
+6. Start the destination server and verify the world before deleting anything from the source.
+
+With a managed host, use its file manager or SFTP access. Download a local copy before cancelling the old provider.
+
+## Move a local world to a dedicated server
+
+Local world files are under `%USERPROFILE%/Saved Games/enshrouded` when using local saves. Stop the game and server, back up both locations, then copy the complete world file set into the dedicated server's configured save directory.
+
+If Steam Cloud is active, make sure you are copying the intended current version rather than an older local copy. Keen provides a Steam Remote Storage link in its save-management article.
+
+## Roll back a damaged world
+
+Keen documents ten numbered rolling copies for each world. The accompanying `-index` file records the active copy in its `latest` value.
+
+1. Stop the game or server.
+2. Copy all save files to a separate backup first.
+3. Compare modified dates for rolling copies 0-9.
+4. Edit the world's `-index` file so `latest` points to the selected known-good copy.
+5. Restart and inspect the world before making further changes.
+
+Rolling saves are not a substitute for off-device backups: corruption, accidental deletion, disk failure, or a bad migration can affect the whole folder.
+
+## Official references
+
+- [Save Game Management](https://enshrouded.zendesk.com/hc/en-us/articles/17764283835677-Save-Game-Management)
+- [Dedicated Server FAQ](https://enshrouded.zendesk.com/hc/en-us/articles/16056312924957-Dedicated-Server-FAQ)
+- [Dedicated Server Configuration](https://enshrouded.zendesk.com/hc/en-us/articles/16055441447709-Dedicated-Server-Configuration)
+
+If self-hosting becomes more work than expected, compare [managed Enshrouded server hosts](/guides/server-hosting).
+

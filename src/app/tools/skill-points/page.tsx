@@ -25,8 +25,8 @@ export default function SkillPointCalculatorPage() {
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <NumberInput label="Character level" value={level} min={1} max={45} onChange={setLevel} />
             <NumberInput label="Points already spent" value={spent} min={0} max={184} onChange={setSpent} />
-            <NumberInput label="Shroud Roots cleared" value={roots} min={0} max={96} onChange={setRoots} />
-            <NumberInput label="Elixir Wells cleared" value={wells} min={0} max={32} onChange={setWells} />
+            <NumberInput label="Shroud Roots cleared" value={roots} min={0} max={39} onChange={setRoots} />
+            <NumberInput label="Elixir Wells cleared" value={wells} min={0} max={19} onChange={setWells} />
           </div>
           <div className="mt-6 flex gap-3 rounded-xl border border-stone-700 bg-stone-950/60 p-4 text-sm leading-6 text-stone-400">
             <Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />

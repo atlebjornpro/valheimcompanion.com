@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
+import Link from "next/link";
 
 const resources = [
   ["Flintstone", "Springlands", "Mine pale stone deposits and exposed veins.", "Early tools, building, and crafting"],
@@ -37,6 +38,14 @@ const resources = [
 ] as const;
 
 const regions = ["All", ...Array.from(new Set(resources.map((item) => item[1])))];
+
+const resourceGuides: Record<string, string> = {
+  Amber: "/resources/amber",
+  "Copper Ore": "/resources/copper-ore",
+  "Iron Ore": "/resources/iron-ore",
+  Salt: "/resources/salt",
+  "Tin Ore": "/resources/tin-ore",
+};
 
 export default function ResourceFinderPage() {
   const [query, setQuery] = useState("");
@@ -75,7 +84,13 @@ export default function ResourceFinderPage() {
         </div>
         {filtered.map(([name, location, source, use]) => (
           <article key={name} className="grid gap-3 border-t border-stone-800 bg-stone-950/40 px-5 py-5 first:border-t-0 md:grid-cols-[1fr_1.2fr_2fr_1.5fr] md:items-start">
-            <h2 className="font-bold text-amber-200">{name}</h2>
+            <h2 className="font-bold text-amber-200">
+              {resourceGuides[name] ? (
+                <Link className="underline decoration-amber-400/30 underline-offset-4 hover:text-amber-100" href={resourceGuides[name]}>
+                  {name}
+                </Link>
+              ) : name}
+            </h2>
             <p className="text-sm text-stone-300">{location}</p>
             <p className="text-sm leading-6 text-stone-400">{source}</p>
             <p className="text-sm leading-6 text-stone-400">{use}</p>

@@ -1,23 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Flame } from "lucide-react";
+import { ArrowRight, BookOpen, Flame, Search, Server, Shield } from "lucide-react";
 import { sections } from "../config/nav";
 import { createPageMetadata } from "../config/metadata";
 
 const sectionHrefs: Record<string, string> = {
   "Start Here": "/getting-started",
-  World: "/world",
-  Progression: "/progression",
-  "Crafting & Building": "/building",
+  "Game Guides": "/guides",
+  "Servers & Gear": "/servers",
   Tools: "/tools",
 };
 
 export const metadata = createPageMetadata({
-  title: "Enshrouded Companion",
+  title: "Enshrouded Companion: Guides, Builds, Tools & Server Help",
   description:
-    "Explore current Enshrouded guides, Embervale resource locations, progression checklists, build advice, and practical planning tools.",
+    "Enshrouded guides, builds, resource locations, Flame upgrade requirements, planning tools, and dedicated-server help for the current version.",
   path: "/",
 });
+
+const entryPoints = [
+  { href: "/getting-started", label: "New Player Guide", description: "Follow a practical route through your first tools, survivors, and stable base.", icon: BookOpen },
+  { href: "/tools/resources", label: "Find a Resource", description: "Search materials by Embervale region, gathering source, and crafting use.", icon: Search },
+  { href: "/guides/builds", label: "Plan a Build", description: "Understand melee, ranged, magic, and co-op character foundations.", icon: Shield },
+  { href: "/servers", label: "Set Up a Server", description: "Self-host, troubleshoot, protect a world, or compare managed providers.", icon: Server },
+];
 
 export default function Home() {
   return (
@@ -43,24 +49,37 @@ export default function Home() {
             <span className="block">Companion</span>
           </h1>
           <p className="mt-7 max-w-lg text-lg leading-8 text-slate-300">
-            Clear progression guides, current mechanics, resource locations,
-            build foundations, and practical tools to help you master Embervale.
+            Enshrouded guides, build planning, resource locations, Flame upgrade
+            requirements, and dedicated-server help—reviewed for the current version.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/world/regions"
+              href="/getting-started"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#5876f4] px-5 py-3 font-bold text-white transition hover:bg-[#6d88ff]"
             >
-              Explore Embervale
+              New Player Guide
             </Link>
             <Link
-              href="/tools/flame-planner"
+              href="/tools/resources"
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#5876f4] bg-[#0d1120]/80 px-5 py-3 font-bold text-[#7790ff] transition hover:bg-[#151b30]"
             >
-              Flame Planner
+              Find a Resource
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="mt-9" aria-labelledby="quick-start-heading">
+        <h2 id="quick-start-heading" className="text-2xl font-black text-slate-100">What do you want to do?</h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {entryPoints.map(({ href, label, description, icon: Icon }) => (
+            <Link key={href} href={href} className="group rounded-2xl border border-slate-800 bg-[#111521] p-5 transition hover:-translate-y-0.5 hover:border-[#607dff]/50">
+              <Icon className="h-5 w-5 text-[#7790ff]" />
+              <h3 className="mt-4 font-bold text-slate-100 group-hover:text-[#9aabff]">{label}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-400">{description}</p>
+            </Link>
+          ))}
         </div>
       </section>
 

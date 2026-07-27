@@ -10,6 +10,9 @@ const defaultItems: ChecklistItem[] = [
   { id: "workbench", label: "Craft a Workbench", group: "Foundation", note: "Repairs gear and unlocks core recipes" },
   { id: "grapple", label: "Craft a Grappling Hook", group: "Foundation", note: "Required for many traversal routes" },
   { id: "glider", label: "Craft the first Glider", group: "Foundation", note: "Turns Spires into travel hubs" },
+  { id: "springlands-spire", label: "Activate the Springlands Ancient Spire", group: "Exploration", note: "Unlock the first major regional fast-travel point" },
+  { id: "first-well", label: "Clear the first Elixir Well", group: "Exploration", note: "Defeat the Fell enemies and destroy the Shroud Root below" },
+  { id: "first-root", label: "Destroy a world Shroud Root", group: "Exploration", note: "Earn its one-time skill-point reward for this character" },
   { id: "blacksmith", label: "Rescue the Blacksmith", group: "Survivors", note: "Melee gear and metalworking" },
   { id: "alchemist", label: "Rescue the Alchemist", group: "Survivors", note: "Magic gear, potions, and powders" },
   { id: "hunter", label: "Rescue the Hunter", group: "Survivors", note: "Ranged gear, leather, and textiles" },
@@ -20,17 +23,28 @@ const defaultItems: ChecklistItem[] = [
   { id: "kindlewastes", label: "Reach Kindlewastes", group: "World", note: "Iron-tier progression" },
   { id: "albaneve", label: "Reach Albaneve Summits", group: "World", note: "Prepare frost resistance" },
   { id: "veilwater", label: "Reach Veilwater Basin", group: "World", note: "Current level-45 region" },
+  { id: "flame-2", label: "Strengthen the Flame to level 2", group: "Flame", note: "Increase Shroud passage and active Altar capacity" },
+  { id: "flame-3", label: "Strengthen the Flame to level 3", group: "Flame", note: "Prepare the Springlands boss trophy and regional materials" },
+  { id: "flame-4", label: "Strengthen the Flame to level 4", group: "Flame", note: "Use Revelwood materials and the Fell Wispwyvern trophy" },
+  { id: "flame-5", label: "Strengthen the Flame to level 5", group: "Flame", note: "Advance through the Nomad Highlands requirements" },
+  { id: "flame-6", label: "Strengthen the Flame to level 6", group: "Flame", note: "Complete the Kindlewastes material and boss requirements" },
+  { id: "flame-7", label: "Strengthen the Flame to level 7", group: "Flame", note: "Begin the high-level mountain progression" },
+  { id: "flame-8", label: "Strengthen the Flame to level 8", group: "Flame", note: "Gather Albaneve materials and its required boss trophy" },
+  { id: "flame-9", label: "Strengthen the Flame to level 9", group: "Flame", note: "Complete the current Veilwater endgame upgrade" },
   { id: "magic-chest", label: "Unlock Magic Chests", group: "Base", note: "Craft directly from nearby storage" },
   { id: "comfort", label: "Build a reliable Rested room", group: "Base", note: "Shelter, warmth, bed, and comfort" },
   { id: "blast-furnace", label: "Complete the Blast Furnace chain", group: "Base", note: "Efficient iron and steel production" },
+  { id: "first-legendary", label: "Equip a legendary weapon", group: "Equipment", note: "Upgrade it with runes when the relevant specialist is available" },
+  { id: "complete-food-loadout", label: "Prepare a complete food loadout", group: "Equipment", note: "Match Constitution, stamina, or damage buffs to the expedition" },
 ];
 
 export default function ChecklistPage() {
   const [checked, setChecked] = useState<Record<string, boolean>>({});
-  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    try { setChecked(JSON.parse(localStorage.getItem("enshrouded-adventure-checklist") || "{}")); } catch { setChecked({}); }
-    setLoaded(true);
+    let stored: Record<string, boolean> = {};
+    try { stored = JSON.parse(localStorage.getItem("enshrouded-adventure-checklist") || "{}"); } catch { stored = {}; }
+    const frame = requestAnimationFrame(() => setChecked(stored));
+    return () => cancelAnimationFrame(frame);
   }, []);
   const toggle = (id: string) => {
     const next = { ...checked, [id]: !checked[id] };
@@ -40,7 +54,6 @@ export default function ChecklistPage() {
   const groups = Array.from(new Set(defaultItems.map((item) => item.group)));
   const done = defaultItems.filter((item) => checked[item.id]).length;
 
-  if (!loaded) return <div className="py-12 text-stone-500">Loading checklist…</div>;
   return (
     <div className="mx-auto max-w-4xl py-8">
       <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
@@ -48,8 +61,15 @@ export default function ChecklistPage() {
         <button onClick={() => { setChecked({}); localStorage.removeItem("enshrouded-adventure-checklist"); }} className="inline-flex items-center gap-2 self-start rounded-xl border border-stone-700 px-4 py-2 text-sm text-stone-300 hover:border-amber-400/40 hover:text-amber-200"><RotateCcw className="h-4 w-4" /> Reset all</button>
       </div>
       <div className="mt-7 h-2 overflow-hidden rounded-full bg-stone-800"><div className="h-full bg-gradient-to-r from-amber-500 to-orange-400 transition-all" style={{ width: `${(done / defaultItems.length) * 100}%` }} /></div>
+      <nav aria-label="Checklist sections" className="mt-6 flex flex-wrap gap-2">
+        {groups.map((group) => (
+          <a key={group} href={`#${group.toLowerCase().replace(/\s+/g, "-")}`} className="rounded-full border border-stone-800 px-3 py-1.5 text-xs text-stone-400 hover:border-amber-400/30 hover:text-amber-200">
+            {group}
+          </a>
+        ))}
+      </nav>
       <div className="mt-8 space-y-8">
-        {groups.map((group) => <section key={group}><h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-stone-500">{group}</h2><div className="space-y-2">{defaultItems.filter((item) => item.group === group).map((item) => <button key={item.id} onClick={() => toggle(item.id)} className={`flex w-full items-center gap-4 rounded-xl border p-4 text-left transition ${checked[item.id] ? "border-amber-400/20 bg-amber-400/5" : "border-stone-800 bg-stone-900/45 hover:border-stone-600"}`}><span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 ${checked[item.id] ? "border-amber-400 bg-amber-400 text-stone-950" : "border-stone-600"}`}>{checked[item.id] && <Check className="h-4 w-4" />}</span><span className="flex-1"><strong className={`block text-sm ${checked[item.id] ? "text-stone-500 line-through" : "text-stone-100"}`}>{item.label}</strong><span className="mt-1 block text-xs text-stone-500">{item.note}</span></span></button>)}</div></section>)}
+        {groups.map((group) => <section id={group.toLowerCase().replace(/\s+/g, "-")} className="scroll-mt-6" key={group}><h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-stone-500">{group}</h2><div className="space-y-2">{defaultItems.filter((item) => item.group === group).map((item) => <button key={item.id} onClick={() => toggle(item.id)} className={`flex w-full items-center gap-4 rounded-xl border p-4 text-left transition ${checked[item.id] ? "border-amber-400/20 bg-amber-400/5" : "border-stone-800 bg-stone-900/45 hover:border-stone-600"}`}><span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 ${checked[item.id] ? "border-amber-400 bg-amber-400 text-stone-950" : "border-stone-600"}`}>{checked[item.id] && <Check className="h-4 w-4" />}</span><span className="flex-1"><strong className={`block text-sm ${checked[item.id] ? "text-stone-500 line-through" : "text-stone-100"}`}>{item.label}</strong><span className="mt-1 block text-xs text-stone-500">{item.note}</span></span></button>)}</div></section>)}
       </div>
     </div>
   );
