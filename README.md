@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Enshrouded Companion
 
-## Getting Started
+[Enshrouded Companion](https://www.enshroudedcompanion.com) is a community-built collection of current Enshrouded guides, resource locations, progression checklists, character builds, dedicated-server help, and planning tools.
 
-First, run the development server:
+## Included tools
+
+- Resource Finder
+- Flame Upgrade Planner
+- Skill Point Calculator
+- Rested Calculator
+- Dedicated Server Config Generator
+- Adventure Checklist
+
+## Local development
+
+Install dependencies and start the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run the same core checks used before deployment:
 
-## Learn More
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+The production build regenerates `public/search-index.json` from the MDX content.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `content/` — MDX guides and editorial pages
+- `src/app/` — Next.js routes and interactive tools
+- `src/config/nav.ts` — primary navigation
+- `scripts/build-search-index.mjs` — search-index generator
+- `public/` — static assets and generated search data
 
-## Deploy on Vercel
+Game information is reviewed against official Keen Games announcements, support documentation, and the Official Enshrouded Wiki. See the site's [Data Sources](https://www.enshroudedcompanion.com/data-sources) and [Editorial Policy](https://www.enshroudedcompanion.com/editorial-policy).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Enshrouded and related trademarks belong to Keen Games. This project is an independent community resource.
