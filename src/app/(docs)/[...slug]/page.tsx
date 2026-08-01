@@ -56,6 +56,38 @@ function getRelated(slugParts: string[]) {
     "/getting-started": [
       { href: "/world/regions", label: "Regions of Embervale" },
       { href: "/tools/flame-planner", label: "Flame upgrade planner" },
+      { href: "/building/best-base-locations", label: "Best base locations" },
+    ],
+    "/guides/builds": [
+      { href: "/tools/skill-points", label: "Skill point calculator" },
+      { href: "/guides/bosses", label: "Boss order and strategies" },
+      { href: "/guides/food", label: "Food and consumables" },
+    ],
+    "/guides/builds/melee-tank": [
+      { href: "/guides/builds", label: "Compare the best builds" },
+      { href: "/guides/bosses", label: "Boss order and strategies" },
+    ],
+    "/guides/builds/ranger-bow": [
+      { href: "/guides/builds", label: "Compare the best builds" },
+      { href: "/tools/skill-points", label: "Skill point calculator" },
+    ],
+    "/guides/builds/wizard-healer": [
+      { href: "/guides/builds", label: "Compare the best builds" },
+      { href: "/guides/food", label: "Food and consumables" },
+    ],
+    "/guides/bosses": [
+      { href: "/guides/builds", label: "Best Enshrouded builds" },
+      { href: "/tools/flame-planner", label: "Flame upgrade planner" },
+      { href: "/checklist", label: "Adventure checklist" },
+    ],
+    "/building/best-base-locations": [
+      { href: "/building/base-planning", label: "Base planning" },
+      { href: "/building/comfort", label: "Comfort guide" },
+      { href: "/world/regions", label: "Regions of Embervale" },
+    ],
+    "/building/base-planning": [
+      { href: "/building/best-base-locations", label: "Best base locations" },
+      { href: "/building/comfort", label: "Comfort guide" },
     ],
     "/building/comfort": [
       { href: "/tools/rested", label: "Rested calculator" },

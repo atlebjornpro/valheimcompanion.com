@@ -21,7 +21,7 @@ export const metadata = createPageMetadata({
 const entryPoints = [
   { href: "/getting-started", label: "New Player Guide", description: "Follow a practical route through your first tools, survivors, and stable base.", icon: BookOpen },
   { href: "/tools/resources", label: "Find a Resource", description: "Search materials by Embervale region, gathering source, and crafting use.", icon: Search },
-  { href: "/guides/builds", label: "Plan a Build", description: "Understand melee, ranged, magic, and co-op character foundations.", icon: Shield },
+  { href: "/guides/builds", label: "Choose a Build", description: "Compare current melee, ranger, and wizard builds for solo or co-op play.", icon: Shield },
   { href: "/servers", label: "Set Up a Server", description: "Self-host, troubleshoot, protect a world, or compare managed providers.", icon: Server },
 ];
 
