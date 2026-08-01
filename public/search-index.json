@@ -1,5 +1,40 @@
 [
   {
+    "slug": "/tools/damage-calculator",
+    "title": "Enshrouded Damage Calculator",
+    "description": "Estimate hit damage and DPS, compare two weapons or builds, and measure critical-hit or attribute changes."
+  },
+  {
+    "slug": "/tools/flame-planner",
+    "title": "Flame Upgrade Planner",
+    "description": "Plan every current Flame upgrade and track its required materials."
+  },
+  {
+    "slug": "/tools/resources",
+    "title": "Enshrouded Resource Finder",
+    "description": "Search important materials by region, gathering source, and crafting use."
+  },
+  {
+    "slug": "/tools/rested",
+    "title": "Rested Calculator",
+    "description": "Estimate level-scaled Rested benefits and plan a Comfort target."
+  },
+  {
+    "slug": "/tools/server-config",
+    "title": "Dedicated Server Config Generator",
+    "description": "Generate core Enshrouded dedicated-server settings safely."
+  },
+  {
+    "slug": "/tools/skill-points",
+    "title": "Skill Point Calculator",
+    "description": "Calculate points from levels, Shroud Roots, and Elixir Wells."
+  },
+  {
+    "slug": "/checklist",
+    "title": "Enshrouded Adventure Checklist",
+    "description": "Track major Survivors, regions, crafting unlocks, and progression milestones."
+  },
+  {
     "slug": "/guides/food",
     "title": "Food & Consumables",
     "description": "Food slots, food types, and a simple preparation strategy for every expedition."
@@ -142,7 +177,7 @@
   {
     "slug": "/tools",
     "title": "Enshrouded Tools and Calculators",
-    "description": "Interactive Enshrouded planners for Flame upgrades, skill points, resources, Rested benefits, and adventure progression."
+    "description": "Interactive Enshrouded damage, weapon, Flame, skill-point, resource, Rested, server, and adventure-planning tools."
   },
   {
     "slug": "/updates",

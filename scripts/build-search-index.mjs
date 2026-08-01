@@ -14,7 +14,15 @@ async function getFiles(dir) {
 async function buildSearchIndex() {
   const contentDir = path.join(process.cwd(), 'content');
   const files = await getFiles(contentDir);
-  const index = [];
+  const index = [
+    { slug: '/tools/damage-calculator', title: 'Enshrouded Damage Calculator', description: 'Estimate hit damage and DPS, compare two weapons or builds, and measure critical-hit or attribute changes.' },
+    { slug: '/tools/flame-planner', title: 'Flame Upgrade Planner', description: 'Plan every current Flame upgrade and track its required materials.' },
+    { slug: '/tools/resources', title: 'Enshrouded Resource Finder', description: 'Search important materials by region, gathering source, and crafting use.' },
+    { slug: '/tools/rested', title: 'Rested Calculator', description: 'Estimate level-scaled Rested benefits and plan a Comfort target.' },
+    { slug: '/tools/server-config', title: 'Dedicated Server Config Generator', description: 'Generate core Enshrouded dedicated-server settings safely.' },
+    { slug: '/tools/skill-points', title: 'Skill Point Calculator', description: 'Calculate points from levels, Shroud Roots, and Elixir Wells.' },
+    { slug: '/checklist', title: 'Enshrouded Adventure Checklist', description: 'Track major Survivors, regions, crafting unlocks, and progression milestones.' },
+  ];
 
   for (const file of files) {
     if (!file.endsWith('.mdx')) continue;

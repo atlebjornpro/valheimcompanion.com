@@ -9,6 +9,7 @@ const staticRoutes = [
   "/",
   "/checklist",
   "/faq",
+  "/tools/damage-calculator",
   "/tools/flame-planner",
   "/tools/resources",
   "/tools/rested",
@@ -52,7 +53,7 @@ function getContentRoutes(directory: string, contentRoot = directory): ContentRo
 export default function sitemap(): MetadataRoute.Sitemap {
   const contentRoutes = getContentRoutes(path.join(process.cwd(), "content"));
   const entries = new Map<string, Date>(
-    staticRoutes.map((route) => [route, new Date("2026-07-26")]),
+    staticRoutes.map((route) => [route, new Date("2026-08-01")]),
   );
 
   contentRoutes.forEach(({ route, lastModified }) => {

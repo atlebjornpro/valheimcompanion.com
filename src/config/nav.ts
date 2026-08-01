@@ -50,6 +50,7 @@ export const sections: NavSection[] = [
   {
     title: "Tools",
     links: [
+      { href: "/tools/damage-calculator", label: "Damage Calculator", icon: Calculator, description: "Estimate hit damage and DPS, then compare two weapons or builds." },
       { href: "/tools/resources", label: "Resource Finder", icon: Sparkles, description: "Search important materials by region, source, and use." },
       { href: "/tools/server-config", label: "Server Config Generator", icon: FileJson, description: "Generate the core enshrouded_server.json safely." },
       { href: "/tools/flame-planner", label: "Flame Upgrade Planner", icon: Flame, description: "Requirements and checklist for Flame levels 2 through 9." },
