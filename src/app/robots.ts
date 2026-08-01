@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "../config/metadata";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: "https://www.enshroudedcompanion.com/sitemap.xml",
-    host: "https://www.enshroudedcompanion.com",
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/_next/"],
+      },
+    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }
