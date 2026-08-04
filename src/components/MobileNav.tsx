@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Calculator, CheckSquare, Flame, Home, Map } from "lucide-react";
+import { FileText, Home, MountainSnow, Rocket, Server } from "lucide-react";
 import clsx from "clsx";
 
 const links = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/world/regions", label: "World", icon: Map },
-  { href: "/tools/flame-planner", label: "Flame", icon: Flame },
-  { href: "/tools/resources", label: "Resources", icon: Calculator },
-  { href: "/checklist", label: "Checklist", icon: CheckSquare },
+  { href: "/valheim-1-0", label: "1.0", icon: Rocket },
+  { href: "/deep-north", label: "North", icon: MountainSnow },
+  { href: "/servers", label: "Servers", icon: Server },
+  { href: "/data-sources", label: "Sources", icon: FileText },
 ];
 
 export default function MobileNav() {

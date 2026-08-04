@@ -3,20 +3,9 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-const siteUrl = "https://www.enshroudedcompanion.com";
+import { SITE_URL } from "../config/metadata";
 
-const staticRoutes = [
-  "/",
-  "/checklist",
-  "/faq",
-  "/tools/damage-calculator",
-  "/tools/flame-planner",
-  "/tools/resources",
-  "/tools/rested",
-  "/tools/server-config",
-  "/tools/skill-points",
-  "/world/regions",
-];
+const staticRoutes = ["/"];
 
 type ContentRoute = {
   route: string;
@@ -53,7 +42,7 @@ function getContentRoutes(directory: string, contentRoot = directory): ContentRo
 export default function sitemap(): MetadataRoute.Sitemap {
   const contentRoutes = getContentRoutes(path.join(process.cwd(), "content"));
   const entries = new Map<string, Date>(
-    staticRoutes.map((route) => [route, new Date("2026-08-01")]),
+    staticRoutes.map((route) => [route, new Date("2026-08-04")]),
   );
 
   contentRoutes.forEach(({ route, lastModified }) => {
@@ -61,9 +50,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   return Array.from(entries.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([route, lastModified]) => ({
-    url: route === "/" ? siteUrl : `${siteUrl}${route}`,
+    url: route === "/" ? SITE_URL : `${SITE_URL}${route}`,
     lastModified,
     changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : route.startsWith("/tools/") ? 0.8 : 0.7,
+    priority: route === "/" ? 1 : route.startsWith("/servers/") ? 0.8 : 0.7,
   }));
 }

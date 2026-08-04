@@ -1,0 +1,12 @@
+---
+title: Valheim Crossplay Server Configuration
+description: Verified differences between Valheim's Steam and PlayFab crossplay server backends.
+updated: 2026-08-04
+---
+
+The `-crossplay` launch argument selects Valheim's PlayFab backend and allows supported platforms to join. Without that argument, the server uses the Steam backend.
+
+Iron Gate states that crossplay servers use a relay and do not require port forwarding for outside access. Crossplay servers cannot be reached through a local or loopback IP address; players can use the public address and port, a join code, or the server list. Xbox consoles can join a dedicated server but cannot run the dedicated-server application.
+
+Sources: [official server guide](https://valheim.com/support/a-guide-to-dedicated-servers/) and [crossplay FAQ](https://valheim.com/support/crossplay-faq/).
+

@@ -1,30 +1,17 @@
-# Enshrouded Companion
+# Valheim Companion
 
-[Enshrouded Companion](https://www.enshroudedcompanion.com) is a community-built collection of current Enshrouded guides, resource locations, progression checklists, character builds, dedicated-server help, and planning tools.
+[Valheim Companion](https://www.valheimcompanion.com) is an independent, source-backed guide focused initially on Valheim 1.0, the Deep North, dedicated servers, crossplay, world migration, backups, and server hosting.
 
-## Included tools
-
-- Resource Finder
-- Flame Upgrade Planner
-- Skill Point Calculator
-- Rested Calculator
-- Dedicated Server Config Generator
-- Adventure Checklist
+The first public version is deliberately a factual scaffold. Detailed mechanics are added only after they can be tied to current official documentation or recorded live-game verification. The project does not attempt to replace broad Valheim wikis or seed-map sites.
 
 ## Local development
-
-Install dependencies and start the development server:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
 ## Validation
-
-Run the same core checks used before deployment:
 
 ```bash
 npm run lint
@@ -32,18 +19,16 @@ npx tsc --noEmit
 npm run build
 ```
 
-The production build regenerates `public/search-index.json` from the MDX content.
+The production build regenerates `public/search-index.json` from published MDX pages.
 
 ## Project structure
 
-- `content/` — MDX guides and editorial pages
-- `src/app/` — Next.js routes and interactive tools
-- `src/config/nav.ts` — primary navigation
+- `content/` — factual scaffold and legal pages
+- `src/app/` — Next.js routes, metadata routes, and layouts
+- `src/config/site.ts` — brand, domain, release facts, and official source URLs
+- `src/config/routes.ts` — typed route registry
+- `src/config/nav.ts` — navigation built from the route registry
+- `src/config/metadata.ts` — canonical, Open Graph, and X metadata helper
 - `scripts/build-search-index.mjs` — search-index generator
-- `public/` — static assets and generated search data
 
-Game information is reviewed against official Keen Games announcements, support documentation, and the Official Enshrouded Wiki. See the site's [Data Sources](https://www.enshroudedcompanion.com/data-sources) and [Editorial Policy](https://www.enshroudedcompanion.com/editorial-policy).
-
-Enshrouded and related trademarks belong to Keen Games. This project is an independent community resource.
-
-test
+Valheim Companion is not affiliated with Iron Gate AB or Coffee Stain Publishing. Valheim and related trademarks belong to their respective owners.

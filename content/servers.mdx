@@ -1,30 +1,22 @@
 ---
-title: Enshrouded Dedicated Server Guides
-description: Install, configure, troubleshoot, back up, migrate, or choose hosting for an Enshrouded dedicated server.
-updated: 2026-07-27
+title: Valheim Dedicated Server Guides
+description: Factual scaffolds for server setup, updates, crossplay, world migration, backups, troubleshooting, settings, requirements, and hosting.
+updated: 2026-08-04
 ---
 
-Use this hub to keep a persistent Enshrouded world online for your group. Self-hosting gives you direct control; managed hosting trades that control for simpler updates, networking, and backups.
+Valheim provides a separate dedicated-server application for persistent worlds. Iron Gate's official guide covers Windows, Linux, Docker, launch flags, permissions, automatic backups, Steam networking, and the PlayFab crossplay backend.
 
-## Start here
+## Initial coverage
 
-| Goal | Guide |
-|---|---|
-| Run a server on a Windows PC | [Dedicated server setup](/servers/dedicated-server-setup) |
-| Fix a server that is missing or unreachable | [Server troubleshooting](/servers/troubleshooting) |
-| Protect or move a world | [Backups and migration](/servers/backup-migration) |
-| Generate the core JSON config | [Server config generator](/tools/server-config) |
-| Compare managed providers | [Server hosting comparison](/guides/server-hosting) |
-| Improve a home network | [Home server network guide](/guides/best-router-for-enshrouded-self-hosting) |
+- [Dedicated server setup](/servers/dedicated-server-setup)
+- [Updating a server](/servers/updating-a-server)
+- [Existing world versus new world](/servers/existing-world-vs-new-world)
+- [World backup and restore](/servers/world-backup-restore)
+- [Move a local world to a server](/servers/move-local-world-to-server)
+- [Crossplay configuration](/servers/crossplay)
+- [Server not showing](/servers/server-not-showing)
+- [Server requirements](/servers/server-requirements)
+- [Server settings](/servers/server-settings)
+- [Server hosting](/servers/best-server-hosting)
 
-## Self-hosting requirements
-
-Keen Games recommends a 6-core/12-thread CPU, 16 GB RAM, 30 GB of free SSD storage, and roughly 2 Mbit/s of upload capacity per active player for a 4-6 player server. A 16-player server calls for an 8-core/16-thread CPU at a higher clock speed.
-
-The dedicated-server process uses about 4.4 GB of physical RAM while idle and can add up to 100 MB per player. Real performance still depends heavily on CPU speed, world activity, and the host's network.
-
-## Current platform note
-
-Keen's installation documentation currently lists **Windows as the supported dedicated-server platform** and says Linux support is planned. Re-check the official installation page before treating that as permanent.
-
-Sources: [Keen Games installation guide](https://enshrouded.zendesk.com/hc/en-us/articles/16051370691485-Dedicated-Server-Installation-on-Steam) and [recommended specifications](https://enshrouded.zendesk.com/hc/en-us/articles/16055628734109-Recommended-Server-Specifications).
+These pages begin as sourced scaffolds. Procedures will expand only when their steps can be verified.

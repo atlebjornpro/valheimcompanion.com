@@ -1,5 +1,5 @@
 {
-  "name": "enshrouded-companion",
+  "name": "valheim-companion",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",
-    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.575.0",

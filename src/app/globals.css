@@ -1,14 +1,11 @@
 @import "tailwindcss";
 
-/* Default to Dark Mode */
 :root {
-  --background: #090b12;
-  --foreground: #f1f5f9;
-
-  /* subtle surfaces */
-  --muted: #111521;
-  --muted-foreground: #94a3b8;
-  --border: #1e293b;
+  --background: #0d0e0c;
+  --foreground: #eee4d1;
+  --muted: #191b16;
+  --muted-foreground: #a79e8e;
+  --border: #393126;
 }
 
 body {
@@ -30,11 +27,11 @@ body {
 .prose a {
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
-  color: #8da0ff;
+  color: #e1ad5a;
   font-weight: 500;
 }
 .prose a:hover {
-  text-decoration-color: #607dff;
+  text-decoration-color: #8db6ba;
 }
 
 /* --- Wiki-ish typography defaults --- */
@@ -166,4 +163,24 @@ body {
 .callout.warn {
   border-left: 4px solid #f59e0b;
   background: rgba(245, 158, 11, 0.05);
+}
+
+.hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(226, 173, 90, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 173, 90, 0.12) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to right, black, transparent 76%);
+}
+
+.section-kicker {
+  color: #8db6ba;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }

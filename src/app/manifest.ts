@@ -1,0 +1,14 @@
+import type { MetadataRoute } from "next";
+import { site } from "../config/site";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: site.name,
+    short_name: site.shortName,
+    description: site.description,
+    start_url: "/",
+    display: "standalone",
+    background_color: "#0d0e0c",
+    theme_color: "#141611",
+  };
+}

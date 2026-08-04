@@ -1,62 +1,37 @@
-import {
-  BookOpen, Boxes, Calculator, CheckSquare, FileJson, Flame, Gamepad2, Hammer, Heart,
-  History, Map, Rocket, Router, Search, Server, Shield, Sparkles, Users, Utensils, WandSparkles,
-} from "lucide-react";
+import { BookOpen, DatabaseBackup, FileText, History, MountainSnow, Network, Rocket, Server, Shield, Wrench } from "lucide-react";
 import React from "react";
+import { routes, type RoutePath } from "./routes";
 
-export type NavLink = {
-  href: string;
-  label: string;
-  icon?: React.ElementType;
-  description?: string;
-};
-
+export type NavLink = { href: RoutePath; label: string; icon?: React.ElementType; description?: string };
 export type NavSection = { title: string; links: NavLink[] };
 
 export const sections: NavSection[] = [
   {
     title: "Start Here",
     links: [
-      { href: "/getting-started", label: "Getting Started", icon: BookOpen, description: "A spoiler-light route from the Cinder Vault to your first stable base." },
-      { href: "/updates/current", label: "Current Version", icon: History, description: "What changed in v0.9.1.2 and what is confirmed for 1.0." },
-      { href: "/enshrouded-1-0", label: "Enshrouded 1.0", icon: Rocket, description: "Release date, confirmed information, and site update status for launch." },
-      { href: "/faq", label: "FAQ", icon: Search, description: "Short answers to common progression and tool questions." },
+      { href: routes.valheimOne, label: "Valheim 1.0", icon: Rocket, description: "Confirmed release information and site coverage status." },
+      { href: routes.deepNorth, label: "Deep North", icon: MountainSnow, description: "Verified announcements for Valheim's final biome." },
+      { href: routes.updates, label: "Updates", icon: History, description: "Official-source monitoring and guide review status." },
     ],
   },
   {
-    title: "Game Guides",
+    title: "Servers",
     links: [
-      { href: "/world/regions", label: "Regions of Embervale", icon: Map, description: "Level ranges, Flame requirements, hazards, and signature resources." },
-      { href: "/progression/survivors", label: "Survivors", icon: Users, description: "Craftspeople, their roles, stations, and rescue order." },
-      { href: "/world/shroud-exploration", label: "Shroud & Exploration", icon: WandSparkles, description: "Shroud timers, deadly passages, travel, and expedition preparation." },
-      { href: "/guides/builds", label: "Best Builds", icon: Shield, description: "Compare current melee, ranger, and wizard builds for solo and co-op play." },
-      { href: "/guides/bosses", label: "Boss Guide", icon: Flame, description: "Major bosses in order with locations, strategies, and progression rewards." },
-      { href: "/crafting/progression", label: "Crafting Progression", icon: Boxes, description: "Which craftsperson and workstation unlocks each production tier." },
-      { href: "/guides/food", label: "Food & Consumables", icon: Utensils, description: "Food slots, food types, expedition buffs, and preparation." },
-      { href: "/building/best-base-locations", label: "Best Base Locations", icon: Map, description: "Starter, restoration, regional, co-op, and waterfront base recommendations." },
-      { href: "/building/base-planning", label: "Base Planning", icon: Hammer, description: "Altar coverage, storage, production flow, water, and NPC shelter." },
-      { href: "/building/comfort", label: "Comfort Guide", icon: Heart, description: "How shelter, warmth, and comfort extend Rested duration." },
+      { href: routes.servers, label: "Server Hub", icon: Server, description: "Dedicated-server, migration, backup, crossplay, and hosting topics." },
+      { href: routes.dedicatedServerSetup, label: "Dedicated Server Setup", icon: Wrench },
+      { href: routes.updatingServer, label: "Updating a Server", icon: History },
+      { href: routes.worldBackupRestore, label: "Backup & Restore", icon: DatabaseBackup },
+      { href: routes.moveLocalWorld, label: "Move a Local World", icon: FileText },
+      { href: routes.crossplay, label: "Crossplay", icon: Network },
+      { href: routes.serverHosting, label: "Server Hosting", icon: Shield },
     ],
   },
   {
-    title: "Servers & Gear",
+    title: "Project",
     links: [
-      { href: "/servers", label: "Dedicated Servers", icon: Server, description: "Install, configure, troubleshoot, back up, or migrate a persistent world." },
-      { href: "/guides/server-hosting", label: "Server Hosting", icon: Server, description: "Compare managed Enshrouded hosts for persistent co-op worlds." },
-      { href: "/guides/best-router-for-enshrouded-self-hosting", label: "Home Server Network", icon: Router, description: "Router and network picks for a reliable home dedicated server." },
-      { href: "/guides/best-gear-for-enshrouded", label: "Best Gear", icon: Gamepad2, description: "Useful controller, mouse, headset, and storage picks for Enshrouded." },
-    ],
-  },
-  {
-    title: "Tools",
-    links: [
-      { href: "/tools/damage-calculator", label: "Damage Calculator", icon: Calculator, description: "Estimate hit damage and DPS, then compare two weapons or builds." },
-      { href: "/tools/resources", label: "Resource Finder", icon: Sparkles, description: "Search important materials by region, source, and use." },
-      { href: "/tools/server-config", label: "Server Config Generator", icon: FileJson, description: "Generate the core enshrouded_server.json safely." },
-      { href: "/tools/flame-planner", label: "Flame Upgrade Planner", icon: Flame, description: "Requirements and checklist for Flame levels 2 through 9." },
-      { href: "/tools/skill-points", label: "Skill Point Calculator", icon: Calculator, description: "Calculate earned and remaining skill points up to level 45." },
-      { href: "/tools/rested", label: "Rested Calculator", icon: Calculator, description: "Estimate Rested stamina and regeneration by character level." },
-      { href: "/checklist", label: "Adventure Checklist", icon: CheckSquare, description: "A locally saved progression checklist for your current world." },
+      { href: routes.about, label: "About", icon: BookOpen },
+      { href: routes.dataSources, label: "Data Sources", icon: FileText },
+      { href: routes.editorialPolicy, label: "Editorial Policy", icon: Shield },
     ],
   },
 ];

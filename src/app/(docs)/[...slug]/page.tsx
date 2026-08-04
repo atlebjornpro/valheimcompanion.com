@@ -8,274 +8,87 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import type { AnchorHTMLAttributes } from "react";
-import { createPageMetadata, SITE_URL } from "../../../config/metadata";
+import { createPageMetadata, SITE_NAME, SITE_URL } from "../../../config/metadata";
 
 type RouteParams = { slug?: string[] };
+type Doc = { content: string; frontmatter: { title: string; description: string; updated?: string } };
 
-type Doc = {
-  content: string;
-  frontmatter: {
-    title: string;
-    description: string;
-    updated?: string;
-  };
-};
+async function getContentFiles(directory: string): Promise<string[]> {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  return (await Promise.all(entries.map((entry) => {
+    const target = path.join(directory, entry.name);
+    return entry.isDirectory() ? getContentFiles(target) : target;
+  }))).flat();
+}
+
+export async function generateStaticParams() {
+  const contentRoot = path.join(process.cwd(), "content");
+  return (await getContentFiles(contentRoot))
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => ({ slug: path.relative(contentRoot, file).replace(/\\/g, "/").replace(/\.mdx$/, "").split("/") }));
+}
 
 async function getDoc(slugParts: string[]): Promise<Doc | null> {
-  const relPath = slugParts.join("/") + ".mdx";
-  const fullPath = path.join(process.cwd(), "content", relPath);
-
   try {
-    const raw = await fs.readFile(fullPath, "utf8");
+    const raw = await fs.readFile(path.join(process.cwd(), "content", slugParts.join("/") + ".mdx"), "utf8");
     const { content, data } = matter(raw);
-
-    return {
-      content,
-      frontmatter: {
-        title: (data.title as string) ?? "Untitled",
-        description: (data.description as string) ?? "",
-        updated: (data.updated as string) ?? undefined,
-      },
-    };
-  } catch {
-    return null;
-  }
-}
-
-function formatUpdated(dateStr?: string) {
-  if (!dateStr) return null;
-  const d = new Date(dateStr);
-  if (Number.isNaN(d.getTime())) return dateStr;
-  return d.toISOString().slice(0, 10); // YYYY-MM-DD
-}
-
-function getRelated(slugParts: string[]) {
-  const slug = "/" + slugParts.join("/");
-
-  const relatedMap: Record<string, { href: string; label: string }[]> = {
-    "/getting-started": [
-      { href: "/world/regions", label: "Regions of Embervale" },
-      { href: "/tools/flame-planner", label: "Flame upgrade planner" },
-      { href: "/building/best-base-locations", label: "Best base locations" },
-    ],
-    "/guides/builds": [
-      { href: "/tools/skill-points", label: "Skill point calculator" },
-      { href: "/guides/bosses", label: "Boss order and strategies" },
-      { href: "/guides/food", label: "Food and consumables" },
-    ],
-    "/guides/builds/melee-tank": [
-      { href: "/guides/builds", label: "Compare the best builds" },
-      { href: "/guides/bosses", label: "Boss order and strategies" },
-    ],
-    "/guides/builds/ranger-bow": [
-      { href: "/guides/builds", label: "Compare the best builds" },
-      { href: "/tools/skill-points", label: "Skill point calculator" },
-    ],
-    "/guides/builds/wizard-healer": [
-      { href: "/guides/builds", label: "Compare the best builds" },
-      { href: "/guides/food", label: "Food and consumables" },
-    ],
-    "/guides/bosses": [
-      { href: "/guides/builds", label: "Best Enshrouded builds" },
-      { href: "/tools/flame-planner", label: "Flame upgrade planner" },
-      { href: "/checklist", label: "Adventure checklist" },
-    ],
-    "/building/best-base-locations": [
-      { href: "/building/base-planning", label: "Base planning" },
-      { href: "/building/comfort", label: "Comfort guide" },
-      { href: "/world/regions", label: "Regions of Embervale" },
-    ],
-    "/building/base-planning": [
-      { href: "/building/best-base-locations", label: "Best base locations" },
-      { href: "/building/comfort", label: "Comfort guide" },
-    ],
-    "/building/comfort": [
-      { href: "/tools/rested", label: "Rested calculator" },
-      { href: "/building/base-planning", label: "Base planning" },
-    ],
-    "/guides/best-gear-for-enshrouded": [
-      { href: "/guides/best-router-for-enshrouded-self-hosting", label: "Best router for self-hosting" },
-      { href: "/guides/server-hosting", label: "Managed server hosting" },
-    ],
-    "/guides/best-router-for-enshrouded-self-hosting": [
-      { href: "/guides/server-hosting", label: "Managed server hosting" },
-      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
-      { href: "/guides/best-gear-for-enshrouded", label: "Best gear for Enshrouded" },
-    ],
-    "/guides/server-hosting": [
-      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
-      { href: "/servers/backup-migration", label: "Backups and migration" },
-    ],
-    "/servers/dedicated-server-setup": [
-      { href: "/servers/troubleshooting", label: "Server troubleshooting" },
-      { href: "/servers/backup-migration", label: "Backups and migration" },
-    ],
-    "/servers/troubleshooting": [
-      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
-      { href: "/guides/server-hosting", label: "Managed server hosting" },
-    ],
-    "/servers/backup-migration": [
-      { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" },
-      { href: "/guides/server-hosting", label: "Managed server hosting" },
-    ],
-  };
-
-  return relatedMap[slug] ?? [];
+    return { content, frontmatter: { title: String(data.title ?? "Untitled"), description: String(data.description ?? ""), updated: data.updated ? String(data.updated) : undefined } };
+  } catch { return null; }
 }
 
 function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const affiliateHosts = [
-    "amzn.to",
-    "shockbyte.com",
-    "nitrado-aff.com",
-    "supercraft.host",
-  ];
-  const isAffiliate =
-    typeof props.href === "string" &&
-    affiliateHosts.some((host) => {
-      try {
-        return new URL(props.href as string).hostname.endsWith(host);
-      } catch {
-        return false;
-      }
-    });
-
-  return (
-    <a
-      {...props}
-      rel={isAffiliate ? "sponsored nofollow noopener" : props.rel}
-      target={isAffiliate ? "_blank" : props.target}
-    />
-  );
+  const external = typeof props.href === "string" && /^https?:\/\//.test(props.href);
+  return <a {...props} rel={external ? "noopener" : props.rel} target={external ? "_blank" : props.target} />;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<RouteParams>;
-}) {
-  const { slug } = await params;
-  const slugParts = slug ?? [];
+const relatedMap: Record<string, { href: string; label: string }[]> = {
+  "/valheim-1-0": [{ href: "/deep-north", label: "Deep North coverage" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/updates", label: "Update coverage" }],
+  "/deep-north": [{ href: "/valheim-1-0", label: "Valheim 1.0 status" }, { href: "/updates", label: "Update coverage" }],
+  "/servers": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/crossplay", label: "Crossplay configuration" }, { href: "/servers/world-backup-restore", label: "Backup and restore" }],
+  "/servers/dedicated-server-setup": [{ href: "/servers/server-settings", label: "Server settings" }, { href: "/servers/crossplay", label: "Crossplay configuration" }, { href: "/servers/server-not-showing", label: "Server not showing" }],
+  "/servers/crossplay": [{ href: "/servers/dedicated-server-setup", label: "Server setup" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
+  "/servers/world-backup-restore": [{ href: "/servers/move-local-world-to-server", label: "Move a local world" }, { href: "/servers/updating-a-server", label: "Updating a server" }],
+};
 
-  if (slugParts[0] === ".well-known") return {};
+const legalRoutes = new Set(["/about", "/contact", "/data-sources", "/editorial-policy", "/privacy", "/terms"]);
 
-  const doc = await getDoc(slugParts);
-  if (!doc) return {};
-
-  const routePath = `/${slugParts.join("/")}`;
-  return createPageMetadata({
-    title: doc.frontmatter.title,
-    description: doc.frontmatter.description,
-    path: routePath,
-  });
+export async function generateMetadata({ params }: { params: Promise<RouteParams> }) {
+  const { slug = [] } = await params;
+  const doc = await getDoc(slug);
+  return doc ? createPageMetadata({ title: doc.frontmatter.title, description: doc.frontmatter.description, path: `/${slug.join("/")}` }) : {};
 }
 
-export default async function DocPage({
-  params,
-}: {
-  params: Promise<RouteParams>;
-}) {
-  const { slug } = await params;
-  const slugParts = slug ?? [];
-
-  if (slugParts.length === 0) return notFound();
-  if (slugParts[0] === ".well-known") return notFound();
-
-  const doc = await getDoc(slugParts);
+export default async function DocPage({ params }: { params: Promise<RouteParams> }) {
+  const { slug = [] } = await params;
+  if (!slug.length || slug[0] === ".well-known") return notFound();
+  const doc = await getDoc(slug);
   if (!doc) return notFound();
 
-  const updated = formatUpdated(doc.frontmatter.updated);
-  const related = getRelated(slugParts);
-  const canonical = `${SITE_URL}/${slugParts.join("/")}`;
-  const collectionHubs = new Set([
-    "building",
-    "crafting",
-    "guides",
-    "progression",
-    "servers",
-    "tools",
-    "updates",
-    "world",
-  ]);
-  const schemaType =
-    slugParts[0] === "contact"
-      ? "ContactPage"
-      : slugParts.length === 1 && collectionHubs.has(slugParts[0])
-        ? "CollectionPage"
-        : ["about", "data-sources", "editorial-policy", "privacy"].includes(slugParts[0])
-          ? "WebPage"
-          : "Article";
-
+  const route = `/${slug.join("/")}`;
+  const canonical = `${SITE_URL}${route}`;
+  const updated = doc.frontmatter.updated && !Number.isNaN(new Date(doc.frontmatter.updated).getTime()) ? new Date(doc.frontmatter.updated).toISOString() : undefined;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": schemaType,
+    "@type": legalRoutes.has(route) ? "WebPage" : "Article",
     headline: doc.frontmatter.title,
     description: doc.frontmatter.description,
-    dateModified: updated ? new Date(updated).toISOString() : undefined,
-    author: {
-      "@type": "Organization",
-      name: "Enshrouded Companion",
-      url: SITE_URL,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Enshrouded Companion",
-      url: SITE_URL,
-    },
+    dateModified: updated,
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     mainEntityOfPage: canonical,
     url: canonical,
   };
+  const related = relatedMap[route] ?? [];
 
-  return (
-    <article className="prose prose-neutral dark:prose-invert max-w-3xl">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {/* Page header */}
-      <header className="not-prose mb-6">
-        <h1 className="text-3xl font-bold tracking-tight">{doc.frontmatter.title}</h1>
-
-        {doc.frontmatter.description ? (
-          <p className="mt-2 text-base opacity-80">{doc.frontmatter.description}</p>
-        ) : null}
-
-        {updated ? (
-          <p className="mt-2 text-sm opacity-60">Last updated: {updated}</p>
-        ) : null}
-      </header>
-
-      {/* MDX body */}
-      <MDXRemote
-        source={doc.content}
-        components={{ a: MdxLink }}
-        options={{
-          mdxOptions: {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            remarkPlugins: [remarkGfm as any],
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            rehypePlugins: [rehypeSlug as any, rehypeAutolinkHeadings as any],
-          },
-        }}
-      />
-
-      {/* Related links */}
-      {related.length > 0 ? (
-        <section className="not-prose mt-10 border-t pt-6">
-          <h2 className="text-sm font-semibold uppercase tracking-wide opacity-70">
-            Related pages
-          </h2>
-          <ul className="mt-3 flex flex-col gap-2">
-            {related.map((r) => (
-              <li key={r.href}>
-                <Link href={r.href} className="underline underline-offset-4">
-                  {r.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-    </article>
-  );
+  return <article className="prose prose-neutral dark:prose-invert max-w-3xl">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <header className="not-prose mb-8 border-b border-[#393126] pb-7">
+      <p className="section-kicker">{legalRoutes.has(route) ? "Site information" : "Verified scaffold"}</p>
+      <h1 className="mt-3 text-4xl font-black tracking-tight text-[#eee4d1]">{doc.frontmatter.title}</h1>
+      {doc.frontmatter.description ? <p className="mt-4 max-w-2xl leading-7 text-[#aaa18f]">{doc.frontmatter.description}</p> : null}
+      {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
+    </header>
+    <MDXRemote source={doc.content} components={{ a: MdxLink }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
+    {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
+  </article>;
 }

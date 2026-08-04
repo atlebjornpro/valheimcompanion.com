@@ -1,262 +1,102 @@
 [
   {
-    "slug": "/tools/damage-calculator",
-    "title": "Enshrouded Damage Calculator",
-    "description": "Estimate hit damage and DPS, compare two weapons or builds, and measure critical-hit or attribute changes."
-  },
-  {
-    "slug": "/tools/flame-planner",
-    "title": "Flame Upgrade Planner",
-    "description": "Plan every current Flame upgrade and track its required materials."
-  },
-  {
-    "slug": "/tools/resources",
-    "title": "Enshrouded Resource Finder",
-    "description": "Search important materials by region, gathering source, and crafting use."
-  },
-  {
-    "slug": "/tools/rested",
-    "title": "Rested Calculator",
-    "description": "Estimate level-scaled Rested benefits and plan a Comfort target."
-  },
-  {
-    "slug": "/tools/server-config",
-    "title": "Dedicated Server Config Generator",
-    "description": "Generate core Enshrouded dedicated-server settings safely."
-  },
-  {
-    "slug": "/tools/skill-points",
-    "title": "Skill Point Calculator",
-    "description": "Calculate points from levels, Shroud Roots, and Elixir Wells."
-  },
-  {
-    "slug": "/checklist",
-    "title": "Enshrouded Adventure Checklist",
-    "description": "Track major Survivors, regions, crafting unlocks, and progression milestones."
-  },
-  {
-    "slug": "/guides/food",
-    "title": "Food & Consumables",
-    "description": "Food slots, food types, and a simple preparation strategy for every expedition."
-  },
-  {
-    "slug": "/guides/server-hosting",
-    "title": "Best Enshrouded Server Hosting",
-    "description": "Compare managed Enshrouded server hosts for persistent co-op worlds, backups, regions, and ease of setup."
-  },
-  {
-    "slug": "/guides/best-gear-for-enshrouded",
-    "title": "Best Gear for Enshrouded",
-    "description": "Practical controller, mouse, headset, and storage recommendations chosen around Enshrouded's combat, building, exploration, and co-op."
-  },
-  {
-    "slug": "/guides/best-router-for-enshrouded-self-hosting",
-    "title": "Best Router for Enshrouded Self-Hosting",
-    "description": "Home router, ethernet, powerline, and UPS recommendations for a stable Enshrouded dedicated server."
-  },
-  {
-    "slug": "/guides/builds/melee-tank",
-    "title": "Enshrouded Melee Tank Build",
-    "description": "A durable one-handed melee build for solo and co-op play using current Warrior and Tank skills."
-  },
-  {
-    "slug": "/guides/builds/ranger-bow",
-    "title": "Enshrouded Ranger Bow Build",
-    "description": "A current bow build focused on Dexterity, weak-point damage, critical hits, stamina, and practical ammunition use."
-  },
-  {
-    "slug": "/guides/builds/wizard-healer",
-    "title": "Enshrouded Wizard Healer Build",
-    "description": "A current co-op magic build combining Intelligence, staff and wand damage, Water Aura, mana sustain, and emergency mobility."
-  },
-  {
-    "slug": "/guides/builds",
-    "title": "Best Enshrouded Builds for Solo and Co-op",
-    "description": "Compare the best Enshrouded melee, ranger, and wizard builds after the Forging the Path skill-tree rework, with skills, gear, food, and playstyle advice."
-  },
-  {
-    "slug": "/guides/bosses",
-    "title": "All Enshrouded Bosses in Order, Locations and Strategies",
-    "description": "Follow the major Enshrouded boss order with locations, preparation, practical fight strategies, important drops, and Flame progression rewards."
-  },
-  {
-    "slug": "/getting-started",
-    "title": "Getting Started",
-    "description": "A spoiler-light route from the Cinder Vault to a stable first base."
-  },
-  {
-    "slug": "/updates/current",
-    "title": "Current Version & 1.0",
-    "description": "Game status, current patch, and confirmed release information."
-  },
-  {
-    "slug": "/progression/survivors",
-    "title": "Survivors & Craftspeople",
-    "description": "Who to rescue, what each specialist unlocks, and how assistants work."
-  },
-  {
-    "slug": "/progression/survivors/blacksmith",
-    "title": "How to Find the Blacksmith in Enshrouded",
-    "description": "Rescue Oswald Anders from the Blacksmith Ancient Vault and unlock early melee gear, tools, metalworking, and survivor progression."
-  },
-  {
-    "slug": "/progression/survivors/hunter",
-    "title": "How to Find the Hunter in Enshrouded",
-    "description": "Rescue Athalan Skree from the Hunter Ancient Vault and unlock arrows, ranged armor, leather, and textile production."
-  },
-  {
-    "slug": "/progression/survivors/alchemist",
-    "title": "How to Find the Alchemist in Enshrouded",
-    "description": "Rescue Balthazar from the Alchemist Ancient Vault and unlock potions, spells, magic armor, and alchemical workstations."
-  },
-  {
-    "slug": "/world/shroud-exploration",
-    "title": "Shroud & Exploration",
-    "description": "How Shroud time, passage levels, roots, wells, and expedition preparation fit together."
-  },
-  {
-    "slug": "/world/regions/springlands",
-    "title": "Enshrouded Springlands Progression Guide",
-    "description": "Plan the starting-region route through survivor rescues, early crafting, Salt, Flintstone, Shroud Roots, and Flame upgrades."
-  },
-  {
-    "slug": "/world/regions/revelwood",
-    "title": "Enshrouded Revelwood Progression Guide",
-    "description": "Plan Revelwood progression through Flame level 3, Copper, Amber, Hardwood, Pikemead's Reach, and the Blackmire."
-  },
-  {
-    "slug": "/world/regions/nomad-highlands",
-    "title": "Enshrouded Nomad Highlands Progression Guide",
-    "description": "Plan Nomad Highlands progression through Flame level 4, Tin, Bronze, Fossilized Bone, mines, and Shrouded valleys."
-  },
-  {
-    "slug": "/crafting/progression",
-    "title": "Crafting Progression",
-    "description": "A practical order for workstations, materials, and production chains."
-  },
-  {
-    "slug": "/building/base-planning",
-    "title": "Base Planning",
-    "description": "Plan Flame coverage, workshops, storage, shelter, comfort, water, and expansion."
-  },
-  {
-    "slug": "/building/comfort",
-    "title": "Comfort & Rested",
-    "description": "How shelter, warmth, and comfort create the Rested buff."
-  },
-  {
-    "slug": "/building/best-base-locations",
-    "title": "Best Base Locations in Enshrouded",
-    "description": "Find the best Enshrouded base locations for early game, restored towns, central travel, resources, co-op, and late-game water builds."
-  },
-  {
-    "slug": "/privacy",
-    "title": "Privacy Policy & Affiliate Disclosure",
-    "description": "How Enshrouded Companion uses analytics and affiliate links, including Amazon Associates and game-server hosting referrals."
-  },
-  {
-    "slug": "/guides",
-    "title": "Enshrouded Guides",
-    "description": "Practical Enshrouded guides for builds, bosses, progression, food, server hosting, home networking, and useful gaming gear."
-  },
-  {
-    "slug": "/building",
-    "title": "Enshrouded Building Guides",
-    "description": "Find the best Enshrouded base locations and plan efficient production, storage, NPC shelter, Comfort, and Rested duration."
-  },
-  {
-    "slug": "/crafting",
-    "title": "Enshrouded Crafting Guides",
-    "description": "Follow Enshrouded crafting progression through survivors, workstations, regional materials, food, and production upgrades."
-  },
-  {
-    "slug": "/progression",
-    "title": "Enshrouded Progression Guides",
-    "description": "Plan Enshrouded character levels, survivors, Flame upgrades, skill points, regions, and crafting progression."
-  },
-  {
-    "slug": "/tools",
-    "title": "Enshrouded Tools and Calculators",
-    "description": "Interactive Enshrouded damage, weapon, Flame, skill-point, resource, Rested, server, and adventure-planning tools."
-  },
-  {
-    "slug": "/updates",
-    "title": "Enshrouded Updates",
-    "description": "Current Enshrouded version coverage, update status, and notes about when Companion guides and tools were reviewed."
-  },
-  {
-    "slug": "/world",
-    "title": "Enshrouded World Guides",
-    "description": "Explore Embervale's regions, Shroud hazards, resources, Flame requirements, traversal, and expedition preparation."
-  },
-  {
-    "slug": "/enshrouded-1-0",
-    "title": "Enshrouded 1.0 Release Date, Confirmed Information and Guide Status",
-    "description": "Enshrouded 1.0 releases from Steam Early Access on October 15, 2026. Track confirmed information, open questions, and Companion guide updates."
-  },
-  {
     "slug": "/about",
-    "title": "About Enshrouded Companion",
-    "description": "Why Enshrouded Companion exists, what it covers, and how this independent community guide approaches tools and game information."
+    "title": "About Valheim Companion",
+    "description": "The scope, independence, and purpose of Valheim Companion."
+  },
+  {
+    "slug": "/contact",
+    "title": "Contact Valheim Companion",
+    "description": "How correction, source, privacy, and site-quality reports will be handled."
+  },
+  {
+    "slug": "/data-sources",
+    "title": "Data Sources",
+    "description": "Source hierarchy and verification status used by Valheim Companion."
   },
   {
     "slug": "/editorial-policy",
     "title": "Editorial Policy",
-    "description": "How Enshrouded Companion researches, verifies, updates, and corrects guides, tools, hosting comparisons, and affiliate-supported content."
+    "description": "How Valheim Companion separates confirmed facts, testing, interpretation, and commercial content."
   },
   {
-    "slug": "/data-sources",
-    "title": "Data Sources and Verification",
-    "description": "The official documentation, wiki references, in-game checks, community reports, and provider information used by Enshrouded Companion."
+    "slug": "/servers/move-local-world-to-server",
+    "title": "Move a Local Valheim World to a Server",
+    "description": "Migration-guide scaffold for transferring a local Valheim world to a dedicated server."
   },
   {
-    "slug": "/contact",
-    "title": "Contact Enshrouded Companion",
-    "description": "Report corrections, outdated locations, server problems, tool bugs, and editorial or affiliate questions."
+    "slug": "/privacy",
+    "title": "Privacy Policy",
+    "description": "Initial privacy policy for the Valheim Companion scaffold."
   },
   {
-    "slug": "/resources/amber",
-    "title": "Where to Find Amber in Enshrouded",
-    "description": "Find Amber in the Revelwood Shroud, learn the most reliable landmark route, and see what to prepare before mining it."
+    "slug": "/terms",
+    "title": "Terms of Use",
+    "description": "Basic terms, independence, and limitations for Valheim Companion."
   },
   {
-    "slug": "/resources/salt",
-    "title": "Where to Find Salt in Enshrouded",
-    "description": "Find Salt early at Egerton Salt Mines or Saline Quarry and learn the safest route and important crafting uses."
+    "slug": "/servers/updating-a-server",
+    "title": "Updating a Valheim Dedicated Server",
+    "description": "Scope and verified source basis for a future backup-first server update guide."
   },
   {
-    "slug": "/resources/copper-ore",
-    "title": "Where to Find Copper Ore in Enshrouded",
-    "description": "Find Copper Ore in Revelwood, unlock the Smelter, and calculate the ore and fuel needed for Copper Bars."
+    "slug": "/valheim-1-0",
+    "title": "Valheim 1.0",
+    "description": "Confirmed Valheim 1.0 release information and the scope of future Companion coverage."
   },
   {
-    "slug": "/resources/tin-ore",
-    "title": "Where to Find Tin Ore in Enshrouded",
-    "description": "Find Tin Ore in the Nomad Highlands Shroud and calculate the ore, fuel, and Wood Acid needed for Tin Bars."
+    "slug": "/servers/existing-world-vs-new-world",
+    "title": "Valheim 1.0: Existing World or New World?",
+    "description": "Decision-page scaffold for existing-world and new-world choices before Valheim 1.0."
   },
   {
-    "slug": "/resources/iron-ore",
-    "title": "Where to Find Iron Ore in Enshrouded",
-    "description": "Find Iron Ore at Ridgeback Mine in the Kindlewastes and learn the quest and Shroud requirements for the trip."
+    "slug": "/servers/crossplay",
+    "title": "Valheim Crossplay Server Configuration",
+    "description": "Verified differences between Valheim's Steam and PlayFab crossplay server backends."
   },
   {
     "slug": "/servers",
-    "title": "Enshrouded Dedicated Server Guides",
-    "description": "Install, configure, troubleshoot, back up, migrate, or choose hosting for an Enshrouded dedicated server."
+    "title": "Valheim Dedicated Server Guides",
+    "description": "Factual scaffolds for server setup, updates, crossplay, world migration, backups, troubleshooting, settings, requirements, and hosting."
+  },
+  {
+    "slug": "/servers/server-requirements",
+    "title": "Valheim Dedicated Server Requirements",
+    "description": "Requirements-page scaffold that separates official facts from future measured recommendations."
+  },
+  {
+    "slug": "/servers/server-settings",
+    "title": "Valheim Dedicated Server Settings",
+    "description": "Index of officially documented Valheim server options awaiting expanded examples."
   },
   {
     "slug": "/servers/dedicated-server-setup",
-    "title": "Enshrouded Dedicated Server Setup Guide",
-    "description": "Install and configure an Enshrouded dedicated server on Windows, open the query port, and connect through Steam."
+    "title": "Valheim Dedicated Server Setup",
+    "description": "Official setup entry points and the planned scope of the Valheim dedicated-server guide."
   },
   {
-    "slug": "/servers/troubleshooting",
-    "title": "Enshrouded Server Not Showing or Not Connecting",
-    "description": "Diagnose an Enshrouded dedicated server that is missing from the browser, unreachable, dropping connections, or failing to start."
+    "slug": "/deep-north",
+    "title": "Valheim Deep North",
+    "description": "Verified Deep North announcements and a clear boundary between confirmed information and future guide content."
   },
   {
-    "slug": "/servers/backup-migration",
-    "title": "Enshrouded Server Backup and Migration Guide",
-    "description": "Back up, restore, roll back, or move an Enshrouded world between a local game, dedicated server, and hosting provider."
+    "slug": "/servers/best-server-hosting",
+    "title": "Valheim Server Hosting",
+    "description": "Editorial scope and comparison criteria for future Valheim managed-server hosting coverage."
+  },
+  {
+    "slug": "/servers/server-not-showing",
+    "title": "Valheim Server Not Showing",
+    "description": "Troubleshooting scaffold organized around verified server status, visibility, and networking facts."
+  },
+  {
+    "slug": "/updates",
+    "title": "Valheim Update Coverage",
+    "description": "Release monitoring and review status for Valheim Companion pages."
+  },
+  {
+    "slug": "/servers/world-backup-restore",
+    "title": "Valheim World Backup and Restore",
+    "description": "Verified save-location and automatic-backup facts, with detailed restore instructions reserved for later review."
   }
 ]
