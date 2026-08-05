@@ -1,11 +1,25 @@
 ---
 title: Privacy Policy
-description: Initial privacy policy for the Valheim Companion scaffold.
-updated: 2026-08-04
+description: How Valheim Companion handles hosting data, analytics consent, and browser storage.
+updated: 2026-08-05
 ---
 
-Valheim Companion does not currently provide accounts, comments, uploads, forms, advertising, affiliate tracking, or browser-storage features. No optional analytics integration is enabled in the initial scaffold.
+Valheim Companion does not provide accounts, comments, uploads, advertising, or affiliate tracking.
 
 The hosting provider may process standard request information needed to deliver and secure the site, such as IP address, requested URL, timestamp, user agent, and diagnostic logs, under its own infrastructure policies.
 
-This policy will be updated before enabling analytics, contact forms, affiliate links, personalization, or other data-processing features. The review date above identifies the current version.
+## Optional Google Analytics
+
+Google Analytics 4 is available only after a visitor explicitly selects **Allow analytics**. Before that choice, the Google tag is not downloaded and no Analytics measurement request is sent. Advertising storage, advertising user data, and advertising personalization remain disabled even when analytics is allowed.
+
+When allowed, Google Analytics may process page addresses, page titles, referral information, approximate location, and browser or device information. It may set first-party cookies beginning with `_ga` to distinguish visits and sessions. The site does not send account details, form content, server credentials, or other intentionally identifying information to Analytics.
+
+The Analytics destination is `G-MZJQXDQC4B`. Google describes its default collection in [Google Analytics data collection](https://support.google.com/analytics/answer/11593727) and explains its handling of data from partner sites in [Google's privacy information](https://policies.google.com/technologies/partner-sites).
+
+## Consent storage and withdrawal
+
+The choice is stored in the browser under the local-storage key `valheim-companion:analytics-consent:v1`. This value records only `granted` or `denied` and is not transmitted to Valheim Companion.
+
+Use **Analytics choices** in the site footer to change or withdraw consent at any time. Withdrawing consent disables further measurement and attempts to remove Google Analytics cookies for this site.
+
+This policy will be updated before enabling contact forms, affiliate links, personalization, advertising, or other data-processing features. The review date above identifies the current version.

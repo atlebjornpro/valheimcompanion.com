@@ -7,6 +7,7 @@ import Sidebar from "../components/Sidebar";
 import Search from "../components/Search";
 import MobileNav from "../components/MobileNav";
 import Breadcrumbs from "../components/Breadcrumbs";
+import AnalyticsConsent, { AnalyticsPreferencesButton } from "../components/AnalyticsConsent";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "../config/metadata";
 import { routes } from "../config/routes";
 import { site } from "../config/site";
@@ -68,9 +69,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Link href={routes.contact} className="hover:text-[#e1ad5a]">Contact</Link>
             <Link href={routes.privacy} className="hover:text-[#e1ad5a]">Privacy</Link>
             <Link href={routes.terms} className="hover:text-[#e1ad5a]">Terms</Link>
+            <AnalyticsPreferencesButton />
           </div>
         </div>
       </footer>
+      <AnalyticsConsent />
       <MobileNav />
     </body>
   </html>;

@@ -27,5 +27,10 @@ export const site = {
     serverGuide: "https://valheim.com/support/a-guide-to-dedicated-servers/",
     crossplayFaq: "https://valheim.com/support/crossplay-faq/",
   },
+  analytics: {
+    provider: "Google Analytics",
+    measurementId:
+      process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? "G-MZJQXDQC4B",
+    consentStorageKey: "valheim-companion:analytics-consent:v1",
+  },
 } as const;
-
