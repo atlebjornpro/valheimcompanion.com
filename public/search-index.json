@@ -40,19 +40,24 @@
     "description": "Scope and verified source basis for a future backup-first server update guide."
   },
   {
+    "slug": "/servers/dedicated-server-setup",
+    "title": "Valheim 1.0 Dedicated Server Setup: Windows, Linux and Crossplay",
+    "description": "Set up a Valheim 1.0 dedicated server on Windows or Linux with verified launch arguments, ports, crossplay, world files, backups, permissions, modifiers, and update steps."
+  },
+  {
     "slug": "/valheim-1-0",
-    "title": "Valheim 1.0",
-    "description": "Confirmed Valheim 1.0 release information and the scope of future Companion coverage."
+    "title": "Valheim 1.0 Release Date, Platforms, Crossplay and Confirmed Features",
+    "description": "Valheim 1.0 launches September 9, 2026. See confirmed platforms, Deep North information, crossplay, save compatibility, achievements, price, downloads, and server details."
   },
   {
     "slug": "/servers/existing-world-vs-new-world",
-    "title": "Valheim 1.0: Existing World or New World?",
-    "description": "Decision-page scaffold for existing-world and new-world choices before Valheim 1.0."
+    "title": "Valheim 1.0: Start a New World or Keep Your Old Save?",
+    "description": "Decide whether to start a new Valheim world for 1.0 or continue an existing save, with confirmed guidance on Deep North generation, backups, mods, and achievements."
   },
   {
     "slug": "/servers/crossplay",
-    "title": "Valheim Crossplay Server Configuration",
-    "description": "Verified differences between Valheim's Steam and PlayFab crossplay server backends."
+    "title": "Valheim Crossplay Guide: PC, Xbox, PS5 and Switch 2",
+    "description": "Learn how Valheim crossplay works across Steam, Xbox, PlayStation 5, Nintendo Switch 2, Mac, and Linux, including dedicated servers, join codes, backends, and save limits."
   },
   {
     "slug": "/servers",
@@ -70,14 +75,9 @@
     "description": "Index of officially documented Valheim server options awaiting expanded examples."
   },
   {
-    "slug": "/servers/dedicated-server-setup",
-    "title": "Valheim Dedicated Server Setup",
-    "description": "Official setup entry points and the planned scope of the Valheim dedicated-server guide."
-  },
-  {
     "slug": "/deep-north",
-    "title": "Valheim Deep North",
-    "description": "Verified Deep North announcements and a clear boundary between confirmed information and future guide content."
+    "title": "Valheim Deep North Guide: Release Date, Preparation and Confirmed Features",
+    "description": "Prepare for Valheim's Deep North and the 1.0 release with confirmed world-generation guidance, official feature previews, and practical character, world, and server checklists."
   },
   {
     "slug": "/servers/best-server-hosting",

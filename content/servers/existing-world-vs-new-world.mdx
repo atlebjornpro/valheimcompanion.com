@@ -1,12 +1,109 @@
 ---
-title: "Valheim 1.0: Existing World or New World?"
-description: Decision-page scaffold for existing-world and new-world choices before Valheim 1.0.
-updated: 2026-08-04
+title: "Valheim 1.0: Start a New World or Keep Your Old Save?"
+description: Decide whether to start a new Valheim world for 1.0 or continue an existing save, with confirmed guidance on Deep North generation, backups, mods, and achievements.
+updated: 2026-08-05
 ---
 
-Valheim 1.0 and the Deep North are officially scheduled for September 9, 2026. Iron Gate has not yet published final world-generation guidance for every existing-world scenario.
+**Short answer:** your current characters and worlds will still work when Valheim 1.0 launches on September 9, 2026. New biome generation works properly only in areas that have not already been explored, and Iron Gate recommends starting over for the intended complete experience.
 
-This page will compare continuity, unexplored terrain, mods, rollback options, and fresh progression after the final release documentation is available. It does not currently recommend world-conversion tools or claim how 1.0 will change previously generated terrain.
+That does not make an old world the wrong choice. It means the decision depends on what your group values more: preserving an established home or seeing version 1.0 unfold in a clean world.
 
-Source: [official release announcement](https://www.valheimgame.com/news/valheim-has-a-release-date-/).
+## Existing world versus new world
 
+| Decision factor | Keep an existing world | Start a new world |
+|---|---|---|
+| Bases and infrastructure | Preserved | Rebuilt from scratch |
+| Characters and inventories | Can continue | Old characters can still be used if desired |
+| Deep North generation | Proper generation only in unexplored areas | Clean generation across the world |
+| Progression experience | Continue from the current state | Best match for Iron Gate's restart recommendation |
+| Mod risk | Existing mod data may complicate testing | Cleaner baseline without legacy mod data |
+| Rollback | Requires a known-good backup | Old world can remain untouched as a fallback |
+| Achievements | Statistics start tracking after installing 1.0 | Fresh progression naturally repeats achievement actions |
+
+## When keeping an old world makes sense
+
+Keep the current world when the community's shared history, settlements, roads, farms, and storage matter more than replaying progression. Iron Gate explicitly says old saves remain where players left them and can continue to be used.
+
+An existing world is also a reasonable option when the group has avoided the Deep North and accepts that Iron Gate still recommends a restart. Treat the first 1.0 session as a compatibility test: update a copy or well-backed-up server, confirm that the world loads, and check critical builds before committing the community to it.
+
+## When a new world is the stronger choice
+
+Start again when:
+
+- the Deep North has already been visited extensively;
+- the group wants the complete intended progression path;
+- a heavily modded save would make launch problems difficult to diagnose;
+- achievements are a priority and the group wants a clean post-1.0 history;
+- the old world can remain archived while the new one is evaluated.
+
+Iron Gate's official answer is deliberately simple: existing worlds receive new content, but biome generation only works properly in areas that have not been explored, and starting over provides the best experience.
+
+## How exploration affects the Deep North
+
+Valheim creates world content as players explore. For 1.0, Iron Gate has confirmed that new biome generation works properly only in unexplored areas.
+
+The 1.0 FAQ does **not** publish a technical generation radius or promise that every apparently blank part of the map is untouched. For that reason, this guide does not offer a map-distance formula or guarantee that a particular coastline will regenerate. If clean Deep North generation matters, a new world is the only option that removes that uncertainty.
+
+## Back up before making the decision
+
+Do not make the first 1.0 launch your only copy of an important world.
+
+1. Stop the game or dedicated server cleanly.
+2. Copy the world files and relevant character saves to a separate location.
+3. Record the server version, launch arguments, and installed mods.
+4. Keep the pre-1.0 copy unchanged.
+5. Test the update with a duplicate before declaring the migration complete.
+
+Use the full [world backup and restore checklist](/servers/world-backup-restore) before updating a community server.
+
+## Dedicated-server considerations
+
+For a shared server, agree on the decision before launch day. Confirm who owns the authoritative world files, where the backup is stored, who can stop the server, and how the group will decide whether a test was successful.
+
+If the group starts a new world, preserve the old server files instead of overwriting them. If the group keeps the old world, schedule a maintenance window and follow the [server update guide](/servers/updating-a-server). Moving the world to a different machine at the same time adds another variable; use the [local-world migration guide](/servers/move-local-world-to-server) separately.
+
+## Mods at launch
+
+Iron Gate does not provide official mod support and cannot guarantee that mods will work when 1.0 releases. There will be no Steam Workshop integration for 1.0 and no console mod support.
+
+Before updating a modded world:
+
+- preserve the exact pre-update mod list and versions;
+- keep an untouched backup;
+- check each mod author's compatibility statement;
+- avoid saving over the only copy after a failed or partially loaded session;
+- reproduce problems without mods before attributing them to the base game.
+
+## Achievements and previous cheats
+
+Achievements begin tracking when version 1.0 is installed. Past actions are not automatically credited, so an old character may need to repeat an action after launch.
+
+Iron Gate also says most developer commands can permanently flag the current character and world against achievements. Characters that used those commands before 1.0 can be marked, spawned items are marked, and some world modifiers affect eligibility. If achievements are important, read the official FAQ before choosing an old character or world.
+
+## Recommendation by player type
+
+| Player type | Practical recommendation |
+|---|---|
+| New player | Starting now is valid; starting fresh on September 9 gives the cleanest 1.0 path |
+| Returning player with little northern exploration | An existing world can work after backup and testing |
+| Long-running server that visited the Deep North | Strongly consider a new world |
+| Large established community | Preserve the old world, test a copy, and decide as a group |
+| Heavily modded community | Wait for compatibility updates or test a clean copy first |
+| Achievement-focused player | Review the official cheat and modifier rules before reusing saves |
+
+## Pre-1.0 decision checklist
+
+- [ ] Decide whether preserved builds or clean generation is the priority.
+- [ ] Identify whether the Deep North was visited.
+- [ ] Create an offline backup of worlds and characters.
+- [ ] Record server settings, versions, and mods.
+- [ ] Review achievement eligibility if cheats or modifiers were used.
+- [ ] Choose a test window and rollback owner.
+- [ ] Keep the pre-1.0 files unchanged until the group accepts the result.
+
+## Official sources
+
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Valheim 1.0 release announcement](https://www.valheimgame.com/news/valheim-has-a-release-date-/)
+
+Continue with the [Valheim 1.0 release hub](/valheim-1-0) or the [Deep North preparation guide](/deep-north).

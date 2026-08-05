@@ -1,9 +1,223 @@
 ---
-title: Valheim Dedicated Server Setup
-description: Official setup entry points and the planned scope of the Valheim dedicated-server guide.
-updated: 2026-08-04
+title: "Valheim 1.0 Dedicated Server Setup: Windows, Linux and Crossplay"
+description: Set up a Valheim 1.0 dedicated server on Windows or Linux with verified launch arguments, ports, crossplay, world files, backups, permissions, modifiers, and update steps.
+updated: 2026-08-05
 ---
 
-Iron Gate documents installing **Valheim Dedicated Server** from Steam's Tools library and configuring the supplied Windows or Linux launch script. The official default Steam networking port range is 2456–2457. The guide recommends editing a copy of the supplied script because application updates can reset the original.
+Valheim provides a standalone dedicated-server application for persistent 1–10 player worlds. The current official setup uses **Valheim Dedicated Server** from Steam's Tools library, then configures the supplied Windows or Linux launch script.
 
-This scaffold will expand into separately verified Windows and Linux procedures. Until then, use the [official dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/) as the operational source of truth.
+Valheim 1.0 launches September 9, 2026. This guide covers the currently documented server application and identifies launch-day details that still require rechecking.
+
+## Before you start
+
+You need:
+
+- a Windows or Linux machine that can remain online;
+- Steam access to install Valheim Dedicated Server;
+- permission to edit launch files and firewall settings;
+- a server name, world name, and strong password;
+- enough storage for the application, worlds, logs, and multiple backups;
+- a rollback copy before importing or updating an important world.
+
+Iron Gate does not publish a dedicated-server CPU or memory minimum in its server guide. Do not treat an unofficial hosting calculator as a guaranteed requirement. For capacity planning, see the current [server requirements scope](/servers/server-requirements).
+
+## Install through Steam Tools
+
+1. Open the Steam Library.
+2. Use the library filter and enable **Tools**.
+3. Find **Valheim Dedicated Server**.
+4. Select **Install**.
+5. After installation, use **Manage → Browse local files** to open the server directory.
+
+The application includes `start_headless_server.bat` for Windows and `start_server.sh` for Linux.
+
+## Protect the supplied launch file
+
+Make a copy of the supplied launch script and edit the copy. Iron Gate warns that Steam updates reset the original file, which can erase custom arguments.
+
+The copied file cannot be launched through Steam's normal shortcut because that shortcut targets the original filename. Start the copy directly or through your own service configuration.
+
+## Windows configuration
+
+1. Copy `start_headless_server.bat` to a clearly named file such as `start_valheim_production.bat`.
+2. Open the copy in a plain-text editor.
+3. Find the line that starts the server executable.
+4. Set the name, port, world, password, visibility, and networking arguments.
+5. Save the file and run it.
+6. If Windows Firewall prompts, allow the server on the network profiles appropriate to your environment.
+7. Wait for **Game server connected** before testing a client.
+
+Do not publish the launch file when it contains a real password.
+
+## Linux configuration
+
+1. Copy `start_server.sh` to a production-specific filename.
+2. Edit the copied script and set the launch arguments.
+3. Ensure the script is executable.
+4. Run it from the server directory or manage it through an operating-system service.
+5. Wait for **Game server connected**.
+
+Iron Gate lists `libatomic1`, `libpulse-dev`, and `libpulse0` as additional Linux packages. The dedicated server requires at least GLIBC 2.29 and GLIBCXX 3.4.26. The official distribution also includes a Docker startup script for systems where a container is preferable.
+
+## Launch-command example
+
+The exact wrapper differs between Windows and Linux, but the server arguments follow this pattern:
+
+```text
+valheim_server -nographics -batchmode -name "My Valheim Server" -port 2456 -world "Dedicated" -password "replace-with-a-strong-password" -public 1 -crossplay
+```
+
+Core arguments:
+
+| Argument | Purpose |
+|---|---|
+| `-name "My Valheim Server"` | Name shown in the server list |
+| `-port 2456` | Base networking port; Valheim also uses port +1 |
+| `-world "Dedicated"` | Creates or loads the named world |
+| `-password "..."` | Server password |
+| `-public 1` | Shows the server publicly; `0` hides it |
+| `-crossplay` | Uses the PlayFab backend for supported platforms |
+| `-savedir [PATH]` | Overrides the default save directory |
+
+Use plain straight quotation marks in scripts. Keep each flag separate from its value and do not include the square brackets shown in argument documentation.
+
+## Ports and firewall
+
+Valheim uses the configured port and the next port. With the default base port, that is:
+
+```text
+2456–2457
+```
+
+For the Steam backend, the range must be reachable from the internet, which normally requires firewall permission and router port forwarding. Router interfaces differ, so use the router or ISP documentation rather than copying instructions for another model.
+
+With `-crossplay`, PlayFab relays traffic and does not require port forwarding for outside access. The port still distinguishes multiple servers on the same public IP.
+
+## Crossplay configuration
+
+Add `-crossplay` to allow supported non-Steam platforms to join. Without it, the Steam backend is used and only Steam users can see and join the server.
+
+Crossplay clients can join through the public address and port, a join code, or the server list. They cannot connect through a local or loopback address. See the [full Valheim crossplay guide](/servers/crossplay).
+
+## World and save locations
+
+The official defaults are:
+
+| System | Default save location |
+|---|---|
+| Windows | `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim` |
+| Linux | `~/.config/unity3d/IronGate/Valheim` |
+
+Use `-savedir` to place worlds and permission files somewhere else. When using Iron Gate's Docker script, the default game-data volume is `valheim_server_data`; it can be changed to a host filesystem path.
+
+## Use an existing world
+
+The `-world` argument can select an existing world by name. Before importing:
+
+1. Stop both the source game and destination server.
+2. Back up the source and destination.
+3. Copy the complete world-file set, not a single file chosen by extension.
+4. Place it in the destination's active save directory.
+5. Set `-world` to the world name.
+6. Start the server and confirm the expected seed, builds, and progression.
+
+Use the detailed [local-world to server migration checklist](/servers/move-local-world-to-server).
+
+## Automatic saves and backups
+
+The current documented defaults are:
+
+| Argument | Default | Meaning |
+|---|---:|---|
+| `-saveinterval` | 1800 seconds | World save every 30 minutes |
+| `-backups` | 4 | Number of automatic backups retained |
+| `-backupshort` | 7200 seconds | First backup interval: 2 hours |
+| `-backuplong` | 43200 seconds | Later backup interval: 12 hours |
+
+Automatic backups are valuable, but they are not a substitute for an offline copy. A configuration mistake, disk failure, or accidental deletion can affect the live directory and its rotating backups together.
+
+Before 1.0, follow the [world backup and restore guide](/servers/world-backup-restore).
+
+## Permissions and player lists
+
+The save directory contains:
+
+- `adminlist.txt` for administrators;
+- `bannedlist.txt` for banned users;
+- `permittedlist.txt` for an allowlist.
+
+Add one case-sensitive Platform User ID per line. Iron Gate warns that adding someone to `permittedlist.txt` excludes everyone not listed.
+
+## World modifiers
+
+The dedicated server supports preset and individual modifier arguments. For example:
+
+```text
+-preset hard
+-modifier raids none
+-setkey nomap
+```
+
+A preset overwrites previous modifiers. When combining a preset with individual modifiers, put the individual modifier after the preset. Valid values can change, so use the current official server guide rather than inventing a value.
+
+Some modifiers affect achievement eligibility in 1.0. Review the [official 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/) before applying them to an achievement-focused world.
+
+## Multiple server instances
+
+Use different ports, world names, save paths, and launch files for simultaneous instances. When multiple PlayFab servers use the same port and MAC address, Iron Gate documents `-instanceid` for assigning each server a unique PlayFab ID.
+
+Never point two running server processes at the same writable world files.
+
+## Updating to Valheim 1.0
+
+1. Announce downtime and stop logins.
+2. Shut down with `CTRL+C` and wait for the process to exit.
+3. Copy the world, permission files, and custom launch script offline.
+4. Record the current application and mod versions.
+5. Update the dedicated-server application.
+6. Recheck the supplied script for new or changed arguments.
+7. Start the copied production script.
+8. Confirm the version, world, visibility, join code, and crossplay behavior.
+9. Keep the rollback copy until the community accepts the update.
+
+The official server guide specifically recommends `CTRL+C`; closing the window can leave the process running. Continue with the [server update guide](/servers/updating-a-server).
+
+## Rollback and restore
+
+Do not assume a world saved by a newer version is backwards-compatible with an older server. A safe rollback restores the matching application environment, world backup, configuration, and mod set as a group.
+
+Never test a rollback against the only remaining copy.
+
+## Troubleshooting
+
+### The server never reaches “Game server connected”
+
+Review the launch line for broken quotes or missing values, then inspect the server output. Confirm required Linux libraries where applicable.
+
+### Steam users outside the network cannot connect
+
+Check the selected port plus port +1, the host firewall, router forwarding, and public IP. These checks apply to the Steam backend.
+
+### Crossplay users cannot connect locally
+
+PlayFab does not accept local or loopback addresses. Use the public address and port, join code, or server list.
+
+### The wrong world loads
+
+Confirm `-world`, the active save directory, and the identity of the copied world files. A `-savedir` override changes where the server looks.
+
+### The server is missing from the browser
+
+Confirm `-public 1`, wait for **Game server connected**, and try the direct join method. Use the [server-not-showing guide](/servers/server-not-showing).
+
+## Managed hosting alternative
+
+Running a server means maintaining updates, firewall or relay settings, backups, availability, and recovery. Groups that prefer a managed service can review the [Valheim server-hosting comparison criteria](/servers/best-server-hosting).
+
+That hosting page does not rank providers until current plans, renewal prices, backup policies, crossplay, world export, and affiliate relationships have been verified.
+
+## Official sources
+
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim crossplay FAQ](https://valheim.com/support/crossplay-faq/)
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)

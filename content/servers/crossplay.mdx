@@ -1,12 +1,150 @@
 ---
-title: Valheim Crossplay Server Configuration
-description: Verified differences between Valheim's Steam and PlayFab crossplay server backends.
-updated: 2026-08-04
+title: "Valheim Crossplay Guide: PC, Xbox, PS5 and Switch 2"
+description: Learn how Valheim crossplay works across Steam, Xbox, PlayStation 5, Nintendo Switch 2, Mac, and Linux, including dedicated servers, join codes, backends, and save limits.
+updated: 2026-08-05
 ---
 
-The `-crossplay` launch argument selects Valheim's PlayFab backend and allows supported platforms to join. Without that argument, the server uses the Steam backend.
+**Yes. Valheim 1.0 supports crossplay between all announced platforms.** Players on PC, Linux, Mac, Xbox, PlayStation 5, and Nintendo Switch 2 can play together when the session or dedicated server uses crossplay-compatible networking.
 
-Iron Gate states that crossplay servers use a relay and do not require port forwarding for outside access. Crossplay servers cannot be reached through a local or loopback IP address; players can use the public address and port, a join code, or the server list. Xbox consoles can join a dedicated server but cannot run the dedicated-server application.
+Crossplay does not create universal save sync. It controls multiplayer compatibility, while save files remain subject to separate platform rules.
 
-Sources: [official server guide](https://valheim.com/support/a-guide-to-dedicated-servers/) and [crossplay FAQ](https://valheim.com/support/crossplay-faq/).
+## Platform compatibility
 
+| Platform | All-platform crossplay at 1.0 | General cross-platform save sync |
+|---|---:|---:|
+| Steam on Windows | Yes | No |
+| Steam on Linux | Yes | No |
+| Steam on Mac | Yes | No |
+| Microsoft Store on Windows | Yes | Xbox saves are accessible here |
+| Xbox One / Series X|S | Yes | Sync with the Microsoft Store PC version |
+| PlayStation 5 | Yes | No |
+| Nintendo Switch 2 | Yes | No |
+| Mac App Store | Yes | No |
+
+Iron Gate's 1.0 FAQ confirms crossplay between all platforms. The save exception it documents is Xbox-to-PC access through the Microsoft Store version; beyond that, there is no cross-platform save sync.
+
+## Steam versus PlayFab dedicated servers
+
+Valheim's dedicated-server application supports two networking backends.
+
+| Server backend | Who can join | Port forwarding for outside access | How it is selected |
+|---|---|---:|---|
+| Steam | Steam users | Yes | Omit `-crossplay` |
+| PlayFab crossplay | Supported platforms | No | Add `-crossplay` |
+
+The official server guide says the Steam backend is visible and joinable only to Steam users. The PlayFab backend relays traffic and lets users from any supported platform join.
+
+## How to enable crossplay
+
+Add the following argument to the dedicated server's launch command:
+
+```text
+-crossplay
+```
+
+For example:
+
+```text
+valheim_server -nographics -batchmode -name "My server" -port 2456 -world "Dedicated" -password "change-this-password" -public 1 -crossplay
+```
+
+Keep the argument outside quoted values and restart the server after changing the launch file. A client and server must also run compatible game versions.
+
+## Joining with a code
+
+Iron Gate's crossplay FAQ documents this flow:
+
+1. Start the world or dedicated server with crossplay enabled.
+2. Open the pause menu on the host or connected server session.
+3. Copy the displayed join code.
+4. On the joining device, open **Join Game**.
+5. Choose **Add server** and enter the code.
+
+Join codes are useful when a server is difficult to locate by name. Treat a current join code as access information and share it only with intended players.
+
+## Joining through the server list or address
+
+The official server guide lists three ways to reach a PlayFab crossplay server:
+
+- public IP address and port;
+- join code;
+- server list.
+
+A PlayFab crossplay server cannot be reached through a local or loopback address. If a player is on the same home network, use the public address and port, join code, or server list rather than `127.0.0.1` or a private LAN address.
+
+## Does crossplay require port forwarding?
+
+Not for outside access through the PlayFab backend. It uses a relay. The chosen port still distinguishes multiple servers sharing one public IP address.
+
+Steam-backend servers do require the configured range to be reachable from the internet. Valheim uses the selected port and the next port; the default is `2456–2457`.
+
+## Can consoles run the dedicated-server application?
+
+Iron Gate explicitly says an Xbox console cannot run the dedicated-server application, although it can join one when crossplay is enabled. The current official material does not publish equivalent dedicated-application hosting instructions for PlayStation 5 or Nintendo Switch 2, so this guide does not claim that either console can host the standalone server process.
+
+Players can still use player-hosted worlds where supported by the game. Final 1.0 platform-specific menus and restrictions should be checked again at launch.
+
+## Can PS5 and Xbox players play together?
+
+Yes. Full crossplay between all announced platforms includes PlayStation 5 and Xbox.
+
+## Can Switch 2 and PC players play together?
+
+Yes. Nintendo Switch 2 and PC are included in the full-crossplay announcement.
+
+## Cross-platform saves
+
+Crossplay and save sync are different:
+
+- an Xbox save can be accessed from a PC running the Microsoft Store version;
+- a Steam purchase does not provide the Microsoft Store version;
+- no broader cross-platform save synchronization is announced for 1.0.
+
+Moving a world file manually is a separate operational task. Preserve backups and use the [world migration checklist](/servers/move-local-world-to-server).
+
+## Common crossplay connection problems
+
+### The server is Steam-only
+
+Confirm that the launch command includes `-crossplay`. Without it, the server uses the Steam backend.
+
+### A local IP address fails
+
+This is expected for the PlayFab backend. Use a public address and port, join code, or server-list entry.
+
+### The server is missing from the list
+
+Confirm `-public 1`, check the server name, verify the server reached **Game server connected**, and try the join code. Continue with [server-not-showing troubleshooting](/servers/server-not-showing).
+
+### Versions differ
+
+Update the server and every client to compatible versions. A platform rollout delay can temporarily prevent joining.
+
+### Xbox has no crossplay option
+
+Iron Gate notes that parental-control settings can hide the option. Review the console account's multiplayer permissions.
+
+### Multiple PlayFab servers conflict
+
+Servers using the same port and MAC address should use a unique `-instanceid` value for distinct PlayFab IDs.
+
+## Crossplay server checklist
+
+- [ ] Add `-crossplay` to the launch command.
+- [ ] Use a strong server password.
+- [ ] Decide whether the server should appear publicly with `-public 1`.
+- [ ] Confirm **Game server connected** in the server output.
+- [ ] Record the current join code.
+- [ ] Test one non-Steam platform before inviting the whole group.
+- [ ] Avoid local and loopback addresses for PlayFab connections.
+- [ ] Confirm all clients and the server use compatible versions.
+- [ ] Keep world backups independent from crossplay configuration.
+
+## Official sources
+
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim crossplay FAQ](https://valheim.com/support/crossplay-faq/)
+- [Valheim 1.0 release announcement](https://www.valheimgame.com/news/valheim-has-a-release-date-/)
+
+Next: [configure a dedicated server](/servers/dedicated-server-setup) or review [server settings](/servers/server-settings).

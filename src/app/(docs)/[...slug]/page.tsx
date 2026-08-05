@@ -43,10 +43,11 @@ function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
 
 const relatedMap: Record<string, { href: string; label: string }[]> = {
   "/valheim-1-0": [{ href: "/deep-north", label: "Deep North coverage" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/updates", label: "Update coverage" }],
-  "/deep-north": [{ href: "/valheim-1-0", label: "Valheim 1.0 status" }, { href: "/updates", label: "Update coverage" }],
+  "/deep-north": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/servers/world-backup-restore", label: "Back up a world" }],
   "/servers": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/crossplay", label: "Crossplay configuration" }, { href: "/servers/world-backup-restore", label: "Backup and restore" }],
   "/servers/dedicated-server-setup": [{ href: "/servers/server-settings", label: "Server settings" }, { href: "/servers/crossplay", label: "Crossplay configuration" }, { href: "/servers/server-not-showing", label: "Server not showing" }],
   "/servers/crossplay": [{ href: "/servers/dedicated-server-setup", label: "Server setup" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
+  "/servers/existing-world-vs-new-world": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/deep-north", label: "Deep North preparation" }, { href: "/servers/world-backup-restore", label: "Back up and restore a world" }],
   "/servers/world-backup-restore": [{ href: "/servers/move-local-world-to-server", label: "Move a local world" }, { href: "/servers/updating-a-server", label: "Updating a server" }],
 };
 
@@ -83,7 +84,7 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
   return <article className="prose prose-neutral dark:prose-invert max-w-3xl">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <header className="not-prose mb-8 border-b border-[#393126] pb-7">
-      <p className="section-kicker">{legalRoutes.has(route) ? "Site information" : "Verified scaffold"}</p>
+      <p className="section-kicker">{legalRoutes.has(route) ? "Site information" : "Source-reviewed guide"}</p>
       <h1 className="mt-3 text-4xl font-black tracking-tight text-[#eee4d1]">{doc.frontmatter.title}</h1>
       {doc.frontmatter.description ? <p className="mt-4 max-w-2xl leading-7 text-[#aaa18f]">{doc.frontmatter.description}</p> : null}
       {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
