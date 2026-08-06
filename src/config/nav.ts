@@ -23,6 +23,8 @@ export const sections: NavSection[] = [
       { href: routes.worldBackupRestore, label: "Backup & Restore", icon: DatabaseBackup },
       { href: routes.moveLocalWorld, label: "Move a Local World", icon: FileText },
       { href: routes.crossplay, label: "Crossplay", icon: Network },
+      { href: routes.serverSettings, label: "Settings Generator", icon: Wrench },
+      { href: routes.serverNotShowing, label: "Connection Help", icon: Network },
       { href: routes.serverHosting, label: "Server Hosting", icon: Shield },
     ],
   },

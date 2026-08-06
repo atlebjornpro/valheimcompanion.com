@@ -1,12 +1,213 @@
 ---
-title: Valheim Server Not Showing
-description: Troubleshooting scaffold organized around verified server status, visibility, and networking facts.
-updated: 2026-08-04
+title: "Valheim Server Not Showing or Failed to Connect"
+description: Diagnose a missing Valheim dedicated server, failed connection, join-code problem, version mismatch, Steam port issue, or PlayFab crossplay configuration.
+updated: 2026-08-06
 ---
 
-Iron Gate's guide identifies **Game server connected** as the ready-state message. It also documents that `-public 0` hides a server from the browser and that PlayFab crossplay servers cannot be tested through a local or loopback address.
+When a Valheim server does not appear or a player sees **Failed to connect**, start with the server process and selected networking backend. Steam and PlayFab crossplay require different checks, so random port changes often waste time.
 
-This page will become a step-by-step diagnostic for startup, visibility, backend selection, version matching, and connectivity. It currently avoids unsupported router- or platform-specific fixes.
+Use this order:
 
-Source: [official dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/).
+1. confirm the server reaches **Game server connected**;
+2. match server and client versions;
+3. identify Steam or PlayFab crossplay;
+4. check visibility and the correct join method;
+5. test the backend-specific network path;
+6. review passwords, permissions, mods, and platform controls.
 
+## Quick diagnosis table
+
+| Symptom | First check |
+|---|---|
+| Server window closes immediately | Broken launch line, missing value, invalid path, or missing Linux requirement |
+| Never reaches **Game server connected** | Read server output before testing clients |
+| Not visible in public list | Confirm `-public 1`, readiness, backend, and version |
+| Steam friends cannot join from outside | Check configured port and port +1 through firewall and router |
+| Crossplay user cannot join with local IP | Expected limitation; use join code, public address, or server list |
+| Join code does not work | Confirm `-crossplay`, readiness, current code, and compatible versions |
+| Xbox crossplay option is missing | Review account parental and multiplayer controls |
+| Correct server opens a new world | Check `-world` and active `-savedir` |
+| Connection fails after update | Match client, server, and mod versions |
+
+## Step 1: confirm the server is actually ready
+
+Iron Gate identifies **Game server connected** as the ready-state message. Until that appears, server-list, join-code, and port tests are premature.
+
+If the process stops or never reaches that message:
+
+- review the launch line for smart quotes, missing values, or a broken executable path;
+- confirm the world and save paths are accessible to the server account;
+- confirm the selected base port is not already used by another instance;
+- on Linux, review the documented library requirements;
+- inspect the latest server output for the first error rather than the final shutdown message;
+- temporarily return to a minimal configuration with name, port, world, password, and visibility before adding modifiers.
+
+Do not repeatedly restart a world that may be failing to save. Preserve a [current backup](/servers/world-backup-restore) first.
+
+## Step 2: match versions
+
+The server and joining clients need compatible game versions. After a patch, the dedicated-server tool and the game client can update at different times.
+
+Check:
+
+- the server application finished updating before restart;
+- every client finished updating rather than leaving a pending download;
+- nobody is still on a public-test or older branch;
+- server-side and required client-side mods target the same game version;
+- the server was restarted after files changed.
+
+If the problem began immediately after an update, follow the [safe server update guide](/servers/updating-a-server) and compare a clean, unmodded test with the production configuration.
+
+## Step 3: identify the networking backend
+
+Look at the production launch line.
+
+| Configuration | Backend | Eligible clients |
+|---|---|---|
+| `-crossplay` present | PlayFab crossplay | Supported platforms |
+| `-crossplay` absent | Steam | Steam users |
+
+Without `-crossplay`, non-Steam platforms cannot see or join the server. Adding `-crossplay` changes the network path; restart the server and wait for it to become ready before testing again.
+
+## Step 4: check visibility
+
+`-public 1` makes the server visible in the browser. `-public 0` hides it and limits joining to a direct method supported by the selected backend.
+
+A hidden server is not necessarily offline. If the intention is private access, test the correct direct join method instead of changing the server to public merely to make it searchable.
+
+When searching the public list:
+
+- use the exact server name from `-name`;
+- clear filters that may exclude it;
+- wait until **Game server connected** appears;
+- verify the client is looking through a compatible backend;
+- try a direct method to separate discovery from connectivity.
+
+## Steam-backend troubleshooting
+
+Valheim uses the configured base port and the next port. With the default base port, the range is `2456-2457`.
+
+For Steam users outside the host network, Iron Gate says the range must have internet access. Review each layer:
+
+1. The launch line uses the intended base port.
+2. The host firewall allows the server application and both ports.
+3. Router forwarding maps both ports to the correct host on the local network.
+4. The host's local address has not changed since the forwarding rule was created.
+5. The internet connection provides a reachable public address rather than carrier-grade NAT or another upstream restriction.
+6. The player uses the current public address and base port.
+
+Router interfaces and ISP setups differ. Use the router and ISP documentation for the actual forwarding steps. Do not open unrelated port ranges copied from an old guide.
+
+### Steam server works locally but not externally
+
+This points toward the host firewall, router forwarding, public address, or ISP path—not the world files. Test from a genuinely external connection rather than from the host itself.
+
+### Steam server works by address but not in the list
+
+Connectivity is working. Recheck `-public 1`, server name, filters, and list refresh rather than changing ports that already accept a direct connection.
+
+## PlayFab crossplay troubleshooting
+
+With `-crossplay`, the server uses PlayFab relay networking. Iron Gate states that outside access does not require port forwarding.
+
+Supported connection methods include:
+
+- public IP address and port;
+- join code;
+- server list.
+
+PlayFab crossplay servers cannot be reached through a private local address or loopback address. Do not test with `127.0.0.1`, `localhost`, or a private LAN address. Use the current join code, public address and port, or server-list entry—even when the player is in the same building.
+
+### Join code does not work
+
+- Confirm `-crossplay` is present in the running configuration.
+- Wait for **Game server connected** before copying the code.
+- Obtain the current code from the running session rather than an old message.
+- Confirm the joining player uses **Join Game → Add server**.
+- Check client and server versions.
+- Test another supported join method to separate code handling from server reachability.
+
+### Multiple crossplay servers conflict
+
+Iron Gate documents `-instanceid` for multiple PlayFab servers using the same port and MAC address. Give each instance a unique identity and keep its world, save directory, launch script, and logs separate.
+
+## Password and permission checks
+
+A discoverable server can still reject a player.
+
+- Confirm the player has the current password.
+- Keep the password out of screenshots, repositories, support tickets, and public launch scripts.
+- Review `bannedlist.txt` for the player's case-sensitive Platform User ID.
+- If `permittedlist.txt` is used, confirm the player is included; Iron Gate warns that everyone not listed is excluded.
+- Confirm the list files come from the active save root, especially when `-savedir` is used.
+
+## Platform-specific checks
+
+Iron Gate confirms that an Xbox console can join a dedicated server when crossplay is enabled but cannot run the standalone server application. If the Xbox crossplay option is unavailable, parental-control or multiplayer permissions may be hiding it.
+
+Valheim 1.0 is announced with full crossplay across supported PC, Mac, Linux, Xbox, PlayStation 5, and Nintendo Switch 2 platforms. At launch, recheck platform-specific menus and rollout status before treating a delayed client update as a server failure.
+
+## Modded-server checks
+
+Iron Gate does not provide official mod support and does not guarantee that mods will work with Valheim 1.0.
+
+When troubleshooting a modded server:
+
+1. preserve a backup and version list;
+2. confirm whether each mod is server-only or required on clients;
+3. compare server and client mod versions;
+4. review the mod loader's own logs separately from Valheim output;
+5. reproduce the connection on a clean test instance before changing the production world;
+6. never open the only production save in an experimental environment.
+
+A clean server working does not prove the world is damaged; it often isolates a configuration or mod compatibility issue.
+
+## Wrong world or fresh spawn
+
+This is a save-selection problem rather than a network-discovery problem.
+
+- Check the exact `-world` value.
+- Check whether `-savedir` points somewhere unexpected.
+- Confirm the transferred world data is in the active save location.
+- Stop before players build in the unintended world.
+- Return to the [world migration guide](/servers/move-local-world-to-server).
+
+## Final connection checklist
+
+- [ ] Server reaches **Game server connected**.
+- [ ] Server and client versions match.
+- [ ] Mods and branches match where applicable.
+- [ ] Backend is known: Steam or PlayFab crossplay.
+- [ ] `-public` matches the intended discovery method.
+- [ ] Steam uses the configured port and port +1 through the external network path.
+- [ ] PlayFab tests avoid local and loopback addresses.
+- [ ] The join code is current.
+- [ ] Password and player lists were checked.
+- [ ] `-world` and `-savedir` select the intended world.
+- [ ] A backup exists before further changes.
+
+## Frequently asked questions
+
+### Why is my Valheim server not showing in the list?
+
+The most common configuration checks are readiness, `-public 1`, compatible backend, correct version, and exact server name. A hidden server with `-public 0` will not appear publicly.
+
+### Which ports does a Valheim server use?
+
+Valheim uses the configured base port and the next port. The documented default is `2456-2457`. Steam-backend outside access normally requires that range to be reachable.
+
+### Does Valheim crossplay require port forwarding?
+
+Iron Gate says PlayFab crossplay uses relay networking and does not require port forwarding for outside access. Steam-backend servers follow a different network path.
+
+### Why can I not join my crossplay server with a local IP?
+
+PlayFab crossplay does not support local or loopback connections. Use the public address and port, current join code, or server list.
+
+## Official sources
+
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim crossplay FAQ](https://valheim.com/support/crossplay-faq/)
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+
+Next: [check the server configuration](/servers/server-settings) or [update server and client versions](/servers/updating-a-server).

@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import type { AnchorHTMLAttributes } from "react";
 import { createPageMetadata, SITE_NAME, SITE_URL } from "../../../config/metadata";
+import ServerConfigGenerator from "../../../components/ServerConfigGenerator";
 
 type RouteParams = { slug?: string[] };
 type Doc = { content: string; frontmatter: { title: string; description: string; updated?: string } };
@@ -48,7 +49,11 @@ const relatedMap: Record<string, { href: string; label: string }[]> = {
   "/servers/dedicated-server-setup": [{ href: "/servers/server-settings", label: "Server settings" }, { href: "/servers/crossplay", label: "Crossplay configuration" }, { href: "/servers/server-not-showing", label: "Server not showing" }],
   "/servers/crossplay": [{ href: "/servers/dedicated-server-setup", label: "Server setup" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
   "/servers/existing-world-vs-new-world": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/deep-north", label: "Deep North preparation" }, { href: "/servers/world-backup-restore", label: "Back up and restore a world" }],
-  "/servers/world-backup-restore": [{ href: "/servers/move-local-world-to-server", label: "Move a local world" }, { href: "/servers/updating-a-server", label: "Updating a server" }],
+  "/servers/world-backup-restore": [{ href: "/servers/move-local-world-to-server", label: "Move a local world" }, { href: "/servers/updating-a-server", label: "Update a server safely" }, { href: "/servers/server-settings", label: "Configure automatic backups" }],
+  "/servers/move-local-world-to-server": [{ href: "/servers/world-backup-restore", label: "Back up before migration" }, { href: "/servers/server-settings", label: "Generate the launch configuration" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
+  "/servers/server-not-showing": [{ href: "/servers/crossplay", label: "Crossplay guide" }, { href: "/servers/server-settings", label: "Check server settings" }, { href: "/servers/updating-a-server", label: "Match server and client versions" }],
+  "/servers/server-settings": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/world-backup-restore", label: "Backup and restore" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
+  "/servers/updating-a-server": [{ href: "/servers/world-backup-restore", label: "Create a rollback backup" }, { href: "/servers/server-not-showing", label: "Post-update troubleshooting" }, { href: "/valheim-1-0", label: "Valheim 1.0 release hub" }],
 };
 
 const legalRoutes = new Set(["/about", "/contact", "/data-sources", "/editorial-policy", "/privacy", "/terms"]);
@@ -89,7 +94,7 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
       {doc.frontmatter.description ? <p className="mt-4 max-w-2xl leading-7 text-[#aaa18f]">{doc.frontmatter.description}</p> : null}
       {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
     </header>
-    <MDXRemote source={doc.content} components={{ a: MdxLink }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
+    <MDXRemote source={doc.content} components={{ a: MdxLink, ServerConfigGenerator }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
     {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
   </article>;
 }

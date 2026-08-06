@@ -21,8 +21,13 @@
   },
   {
     "slug": "/servers/move-local-world-to-server",
-    "title": "Move a Local Valheim World to a Server",
-    "description": "Migration-guide scaffold for transferring a local Valheim world to a dedicated server."
+    "title": "How to Move a Valheim World to a Dedicated Server",
+    "description": "Transfer an existing local Valheim world to a Windows, Linux, Docker, or managed dedicated server with a backup-first migration and rollback plan."
+  },
+  {
+    "slug": "/servers/updating-a-server",
+    "title": "How to Update a Valheim Dedicated Server Safely",
+    "description": "Update a Valheim dedicated server through Steam, SteamCMD, Docker, or managed hosting with backup, version, mod, verification, and rollback checks for Valheim 1.0."
   },
   {
     "slug": "/privacy",
@@ -33,11 +38,6 @@
     "slug": "/terms",
     "title": "Terms of Use",
     "description": "Basic terms, independence, and limitations for Valheim Companion."
-  },
-  {
-    "slug": "/servers/updating-a-server",
-    "title": "Updating a Valheim Dedicated Server",
-    "description": "Scope and verified source basis for a future backup-first server update guide."
   },
   {
     "slug": "/servers/dedicated-server-setup",
@@ -61,8 +61,8 @@
   },
   {
     "slug": "/servers",
-    "title": "Valheim Dedicated Server Guides",
-    "description": "Factual scaffolds for server setup, updates, crossplay, world migration, backups, troubleshooting, settings, requirements, and hosting."
+    "title": "Valheim Dedicated Server Guides and Tools",
+    "description": "Set up, update, back up, migrate, configure, and troubleshoot a Valheim dedicated server with source-reviewed guides and practical tools."
   },
   {
     "slug": "/servers/server-requirements",
@@ -71,8 +71,8 @@
   },
   {
     "slug": "/servers/server-settings",
-    "title": "Valheim Dedicated Server Settings",
-    "description": "Index of officially documented Valheim server options awaiting expanded examples."
+    "title": "Valheim Dedicated Server Settings and Command Generator",
+    "description": "Generate a Valheim dedicated-server launch command and understand official settings for worlds, ports, crossplay, saves, backups, visibility, presets, modifiers, and player lists."
   },
   {
     "slug": "/deep-north",
@@ -86,8 +86,8 @@
   },
   {
     "slug": "/servers/server-not-showing",
-    "title": "Valheim Server Not Showing",
-    "description": "Troubleshooting scaffold organized around verified server status, visibility, and networking facts."
+    "title": "Valheim Server Not Showing or Failed to Connect",
+    "description": "Diagnose a missing Valheim dedicated server, failed connection, join-code problem, version mismatch, Steam port issue, or PlayFab crossplay configuration."
   },
   {
     "slug": "/updates",
@@ -96,7 +96,7 @@
   },
   {
     "slug": "/servers/world-backup-restore",
-    "title": "Valheim World Backup and Restore",
-    "description": "Verified save-location and automatic-backup facts, with detailed restore instructions reserved for later review."
+    "title": "Valheim World Save Location, Backup and Restore",
+    "description": "Find the active Valheim save location on Windows or Linux, create a complete dedicated-server backup, understand automatic retention, and restore safely."
   }
 ]

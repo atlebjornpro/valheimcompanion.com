@@ -1,12 +1,245 @@
 ---
-title: Updating a Valheim Dedicated Server
-description: Scope and verified source basis for a future backup-first server update guide.
-updated: 2026-08-04
+title: "How to Update a Valheim Dedicated Server Safely"
+description: Update a Valheim dedicated server through Steam, SteamCMD, Docker, or managed hosting with backup, version, mod, verification, and rollback checks for Valheim 1.0.
+updated: 2026-08-06
 ---
 
-The official server guide warns that the supplied launch script can be reset during updates, which is why it recommends maintaining an edited copy.
+Update a Valheim dedicated server during planned downtime, with nobody connected and a tested rollback copy available. The essential sequence is: stop cleanly, back up the active world and configuration, update the same installation that production uses, restart, verify the version and world, then keep the rollback set until players accept the result.
 
-This page is reserved for a verified update sequence covering planned downtime, world protection, application updates, version matching, and post-update checks. Detailed commands are intentionally withheld until they are reviewed against the current server distribution.
+Valheim 1.0 launches September 9, 2026. Iron Gate says existing saves remain usable, but the studio also recommends a new world for the best experience and does not guarantee mod compatibility. Treat 1.0 as a major migration even if the server application updates normally.
 
-Source: [Iron Gate dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/).
+## Before the maintenance window
 
+Record:
+
+- current server and client version;
+- production installation path;
+- active world name and `-savedir`;
+- Steam or PlayFab crossplay backend;
+- port, visibility, and join method;
+- custom launch script location;
+- mod loader, server mods, client requirements, and versions;
+- latest successful backup and its restore test date;
+- person responsible for rollback.
+
+Tell players when the server will stop and ask them to log out before the final save. Do not update the application while the process is running.
+
+## Step 1: stop the server cleanly
+
+1. Stop new logins.
+2. Ask connected players to leave.
+3. Use `CTRL+C` in the server command window.
+4. Wait for the process to exit.
+5. Confirm that a service manager, scheduled task, container policy, or hosting panel has not restarted it.
+
+Iron Gate specifically recommends `CTRL+C` and warns that closing the window with its X button can leave the process running in the background.
+
+## Step 2: create a rollback set
+
+Back up these items together:
+
+| Item | Recovery purpose |
+|---|---|
+| Active world data | Restores the pre-update world state |
+| Permission lists | Restores administrators, bans, and allowlist |
+| Custom launch script | Restores name, world, ports, backend, saves, and modifiers |
+| Mod files and configuration | Reproduces the pre-update mod environment |
+| Version record | Identifies the application build that created the save |
+| Recent logs | Helps diagnose the first failed start |
+
+Use the [world backup and restore guide](/servers/world-backup-restore). A rotating automatic backup in the live directory is not enough for a major update; copy the rollback set away from the installation being changed.
+
+## Step 3: protect the custom launch script
+
+Iron Gate recommends editing a copy of the supplied Windows or Linux launch script because Steam updates can reset the original.
+
+Before updating:
+
+- confirm production actually starts the copied script;
+- store another copy outside the application directory;
+- record newly added arguments separately;
+- do not assume the updated stock script preserves custom settings;
+- compare the new stock script and distributed server manual after the update.
+
+This is especially important when the update changes available world modifiers, save behavior, or networking arguments.
+
+## Update through Steam Tools
+
+For an installation managed through the Steam client:
+
+1. Keep the server process stopped.
+2. Open the Steam Library and enable the **Tools** filter.
+3. Find **Valheim Dedicated Server**.
+4. Allow its pending update to complete.
+5. Use **Manage → Browse local files** to confirm you are inspecting the installation used by production.
+6. Compare the supplied launch script and manual with the protected production copy.
+7. Do not start through the Steam shortcut if production normally uses a copied script; the shortcut targets the supplied filename.
+
+Updating the Valheim game client is not the same operation as updating the standalone dedicated-server tool. Confirm both sides before testing a connection.
+
+## Update a SteamCMD installation
+
+SteamCMD installations should be updated through the same installation directory and application workflow used to install them. Valve documents `app_update` and optional validation in SteamCMD, but the exact production command depends on the chosen installation path and automation.
+
+Before running it:
+
+- confirm the installation directory is the production server directory;
+- confirm the dedicated-server application identifier from the current distributed server manual or platform metadata;
+- stop the server and any automatic restart policy;
+- protect custom files stored inside the application directory;
+- run the update as the intended service account;
+- inspect the SteamCMD result for a successful completion rather than assuming the command worked;
+- compare the updated stock launch script with the production copy.
+
+Do not paste an unreviewed SteamCMD line from a forum into a production host. A wrong install directory can update a second copy while the live server remains old.
+
+## Update the official Docker-script deployment
+
+Iron Gate's distribution includes a Docker startup script and documents a data volume called `valheim_server_data` by default.
+
+For a containerized update:
+
+1. identify the active image/build process and data volume or host mapping;
+2. stop the container cleanly;
+3. back up the mapped data independently from the container image;
+4. preserve the launch script and environment configuration;
+5. rebuild or update using the current distributed script;
+6. confirm the same data volume is mounted before the first start;
+7. verify file ownership and write access;
+8. keep the previous application image or reproducible version reference until validation passes.
+
+Replacing a container is not a world backup. Persistent data and application image need separate recovery plans.
+
+## Update a managed host
+
+Hosting panels vary. Use the provider's documented update control, but apply the same operational gates:
+
+- export or download a world backup before clicking update;
+- record the selected branch and version;
+- disable automatic restart while copying or restoring files;
+- confirm whether the provider updates mods separately;
+- check whether the panel resets startup parameters;
+- verify world export remains possible after the update;
+- keep the pre-update export outside the provider account.
+
+If a provider cannot explain its rollback and world-export process, do not treat a dashboard backup badge as your only recovery copy.
+
+## Step 4: review configuration before starting
+
+Compare the updated server manual and stock script with production. Check:
+
+- executable name and wrapper;
+- `-name`, `-port`, `-world`, and `-password`;
+- `-public` and `-crossplay`;
+- `-savedir` and log path;
+- save and automatic backup intervals;
+- `-instanceid` for multiple PlayFab instances;
+- world presets, modifiers, and keys;
+- mod loader startup changes.
+
+Use the [configuration generator](/servers/server-settings) as a review aid, not as a replacement for the current distributed manual.
+
+## Step 5: first start after update
+
+Start the server with the protected production configuration and watch the output.
+
+Do not invite players until:
+
+- the server reaches **Game server connected**;
+- the expected version appears in the server output;
+- the expected world loads rather than a new one;
+- no save-conversion, mod-loader, or permission error remains unresolved;
+- crossplay produces a current join method when enabled;
+- the server remains stable long enough to complete a controlled test.
+
+If it fails, preserve the first-start log before changing more settings.
+
+## Step 6: post-update verification
+
+Use a small acceptance test:
+
+1. Join with one intended client.
+2. Confirm the expected world, seed, important builds, and progression.
+3. Check administrator and allowlist behavior.
+4. Confirm server modifiers.
+5. Make a harmless, reversible in-world change.
+6. Trigger or wait for a normal save.
+7. Stop the server cleanly.
+8. Start it again.
+9. Confirm the test change persisted and the same world returned.
+10. Test one non-Steam platform if crossplay is a production requirement.
+
+Create a new labelled post-update backup after the save-and-restart test succeeds.
+
+## Valheim 1.0 update checklist
+
+Iron Gate currently confirms:
+
+- release on September 9, 2026;
+- existing saves remain usable;
+- new biome generation works properly only in unexplored areas;
+- a new world is recommended for the best experience;
+- full crossplay between announced platforms;
+- no guarantee that mods will work;
+- no public test branch for 1.0 before release;
+- achievements begin tracking after installing 1.0;
+- some cheats and world modifiers affect achievement eligibility.
+
+Before the 1.0 maintenance window:
+
+- [ ] Decide whether production keeps the old world or starts a new one.
+- [ ] Preserve a final pre-1.0 world, character, configuration, and mod backup.
+- [ ] Stop exploring Deep North on the old world if preserving unexplored generation is important.
+- [ ] Plan for a longer first-start and verification window.
+- [ ] Disable or remove unverified mods in a separate test environment first.
+- [ ] Review world modifiers against achievement goals.
+- [ ] Confirm every platform has received a compatible client update before diagnosing crossplay.
+- [ ] Keep the pre-1.0 environment until the community accepts the migration.
+
+## Rollback after a failed update
+
+Do not simply downgrade the executable and point it at a world already saved by the newer version.
+
+A controlled rollback restores a matching set:
+
+1. stop the failed server;
+2. preserve the post-update world and logs separately;
+3. restore the pre-update application environment or reproducible version;
+4. restore the matching pre-update mod set and configuration;
+5. restore a working copy of the pre-update world backup;
+6. start on a private test port and separate save directory;
+7. verify save and restart behavior;
+8. return to production only after the matching set passes.
+
+Never test rollback against the only remaining backup.
+
+## Common update problems
+
+### Players receive a version mismatch
+
+Confirm the standalone server tool and every game client completed their updates. Check branches and mods as well as the base version.
+
+### The server starts with old settings
+
+Production may be starting a different script or installation directory. Confirm the actual process path and protected launch copy.
+
+### A new world appears
+
+Stop immediately. Recheck `-world`, `-savedir`, container volume, or hosting-panel world selection.
+
+### Server works locally but players cannot connect
+
+Review backend, visibility, ports, join code, and platform rollout with the [connection troubleshooting guide](/servers/server-not-showing).
+
+### Mods fail after the update
+
+Iron Gate does not guarantee mod compatibility. Preserve the world, isolate the modded environment, and wait for verified compatible releases rather than repeatedly opening production with changing combinations.
+
+## Official sources
+
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Valheim save-system testing announcement](https://www.valheimgame.com/news/word-from-the-devs-summoning-our-champions-/)
+- [Valve SteamCMD documentation](https://developer.valvesoftware.com/wiki/SteamCMD)
+
+Next: [create a rollback backup](/servers/world-backup-restore), [review server settings](/servers/server-settings), or [troubleshoot a post-update connection](/servers/server-not-showing).

@@ -1,12 +1,160 @@
 ---
-title: Valheim World Backup and Restore
-description: Verified save-location and automatic-backup facts, with detailed restore instructions reserved for later review.
-updated: 2026-08-04
+title: "Valheim World Save Location, Backup and Restore"
+description: Find the active Valheim save location on Windows or Linux, create a complete dedicated-server backup, understand automatic retention, and restore safely.
+updated: 2026-08-06
 ---
 
-Iron Gate's server guide documents default save roots for Windows and Linux, a `-savedir` override, and launch flags for save intervals and automatic backup retention. It also identifies world and permission data stored under the active save location.
+A useful Valheim backup is more than one copied file. It preserves the active world data, the server's player lists, the launch configuration, and enough version information to reproduce the environment that created the save.
 
-This scaffold will become a platform-specific backup, restore, verification, and retention guide. No destructive restore commands are published in this initial version.
+For an important world, use two layers: Valheim's rotating automatic backups for quick recovery and a separate offline or off-machine copy for failures that affect the whole server directory.
 
-Source: [Iron Gate dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/).
+## Valheim save locations
 
+Iron Gate documents these default dedicated-server save roots:
+
+| System | Default save root |
+|---|---|
+| Windows | `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim` |
+| Linux | `~/.config/unity3d/IronGate/Valheim` |
+
+The `-savedir` launch argument overrides the default. If the server command contains `-savedir`, that configured path is the location that matters—not the operating-system default.
+
+The official Docker startup script uses a Docker volume called `valheim_server_data` by default. The script can instead map game data to a host path. Confirm the active volume or mapping before assuming that files are stored in the normal Linux root.
+
+> **Do not copy a guessed folder.** Read the production launch script first, identify any `-savedir` override, and confirm that the files in the chosen location change when the server saves.
+
+## What a complete server backup should contain
+
+| Item | Why it matters |
+|---|---|
+| Active world data | The terrain, structures, progression, and current world state |
+| `adminlist.txt` | Platform IDs with administrator access |
+| `bannedlist.txt` | Banned Platform IDs |
+| `permittedlist.txt` | Allowlist; when used, players not listed are excluded |
+| Custom launch script | World name, ports, backend, save path, backup policy, and modifiers |
+| Mod configuration and version list | Required to reproduce a modded server environment |
+| Application/version note | Helps match a rollback save with a compatible server build |
+| Recent log copy | Useful when the backup is related to a crash or failed update |
+
+Iron Gate states that worlds and the three permission files live under the active save location. A separate copy of the custom launch script is important because Steam updates can reset the supplied original script.
+
+## Safe manual backup procedure
+
+1. Announce a short maintenance window and stop new player logins.
+2. Stop the server with `CTRL+C` in its command window.
+3. Wait for the server process to exit before copying anything.
+4. Identify the active save root from `-savedir`, Docker mapping, or the documented default.
+5. Copy the complete active save data into a new timestamped backup folder.
+6. Copy the custom launch script and record the current server version and mod state.
+7. Store a second copy away from the live server disk when the world is difficult to replace.
+8. Start the production server and wait for **Game server connected**.
+9. Confirm that the expected world loads and a player can join.
+
+Stopping first matters because copying while the server is writing can capture files from different moments. A timestamped folder prevents a new backup from silently replacing the last known-good one.
+
+## Automatic backup settings
+
+The dedicated server exposes four documented backup controls:
+
+| Argument | Documented default | Purpose |
+|---|---:|---|
+| `-saveinterval 1800` | 1,800 seconds | Saves the world every 30 minutes |
+| `-backups 4` | 4 backups | Number of automatic backups retained |
+| `-backupshort 7200` | 7,200 seconds | Interval for the first automatic backup: 2 hours |
+| `-backuplong 43200` | 43,200 seconds | Interval for subsequent backups: 12 hours |
+
+The first retained backup uses the short interval; the remaining backups use the long interval. These rotating copies help with recent corruption or mistakes, but they share the same environment as the live server. They do not protect against a failed disk, an accidental directory deletion, a damaged host, or a backup policy that rotates away the needed recovery point.
+
+Use the [server settings generator](/servers/server-settings) to create a launch line with an explicit retention policy.
+
+## A practical retention policy
+
+For a frequently used community server, maintain recovery points on more than one timescale:
+
+- automatic rotating backups for recent mistakes;
+- one manual backup before every application or mod update;
+- one manual backup before changing world modifiers, save paths, or networking backend;
+- periodic off-machine copies retained longer than the live automatic set;
+- a clearly labelled last-known-good backup after successful post-update testing.
+
+Retention is an operational decision, not a guarantee from the game. Choose intervals based on how much play time the group can accept losing and how much storage is available.
+
+## Restore without risking the last good copy
+
+The safest restore is tested in isolation before it replaces production.
+
+1. Keep the chosen backup read-only or make a working copy of it.
+2. Stop the production server with `CTRL+C`.
+3. Create a separate pre-restore copy of the current production save data.
+4. Place a working copy of the backup in a separate test save directory.
+5. Point a temporary launch script at that directory with `-savedir`.
+6. Use a different port and ensure no second process can write to the production world.
+7. Set `-world` to the restored world name and start the test server.
+8. Verify the expected world, seed, day, structures, progression, player access, and server modifiers.
+9. Stop the test server cleanly.
+10. Only then schedule the production replacement, preserving both the failed state and the original backup.
+
+Never test a restore against the only surviving copy. Never run two servers against the same writable world data.
+
+## Restore after a game update
+
+A world saved by a newer server may not be safe to open with an older application build. Treat application files, world data, launch configuration, and mods as one rollback set.
+
+Before restoring after Valheim 1.0 or another major update:
+
+- confirm which server version created the backup;
+- confirm whether mods were installed and which versions were active;
+- restore into an isolated save directory first;
+- avoid opening the only backup with a different game version;
+- preserve the post-update world separately in case the original problem is fixed later.
+
+Iron Gate confirms that existing saves remain usable for Valheim 1.0, but it also recommends a new world for the best experience and notes that biome generation works properly only in unexplored areas. Backup and world-generation decisions are separate; see [existing world versus new world](/servers/existing-world-vs-new-world).
+
+## Steam Cloud is not a server backup plan
+
+Steam explains that cloud behavior is controlled per game and that save conflicts or lost cloud data may not be recoverable. The dedicated server's active save directory and its own rotating backups remain the operational source of truth for a persistent server.
+
+If a client world is marked as cloud-managed, use the current game's save-management interface to create or move to a local working copy before migration. Do not edit a guessed Steam userdata path while synchronization is active.
+
+## Backup verification checklist
+
+- [ ] The server was stopped cleanly before the copy.
+- [ ] The active save root was confirmed from the launch configuration.
+- [ ] World and permission data were copied together.
+- [ ] The custom launch script was copied separately.
+- [ ] Server and mod versions were recorded.
+- [ ] The backup has a unique date and purpose in its name.
+- [ ] At least one copy is outside the live server disk.
+- [ ] A restore was tested against a separate save directory and port.
+- [ ] The production world was never overwritten during the test.
+
+## Common backup mistakes
+
+### The backup came from the wrong directory
+
+Check for `-savedir`, Docker volume mappings, or multiple server instances. File timestamps should align with the latest known save, but timestamps alone are not proof.
+
+### Only the launch script was copied
+
+The script describes the server but does not contain the world. Back up the active save data as well.
+
+### Automatic backups disappeared
+
+Rotating retention deliberately replaces older recovery points. Maintain longer-lived manual copies separately.
+
+### The restored server loads a new world
+
+Confirm the exact `-world` value and the active `-savedir`. If the requested world is not found, the server can create a world instead of loading the intended one.
+
+### Players cannot join after restore
+
+Restore and review the permission files, backend, port, password, and application version. Continue with [server-not-showing and connection troubleshooting](/servers/server-not-showing).
+
+## Official sources
+
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Valheim save-system testing announcement](https://www.valheimgame.com/news/word-from-the-devs-summoning-our-champions-/)
+- [Steam Cloud support](https://help.steampowered.com/en/faqs/view/68D2-35AB-09A9-7678)
+
+Next: [move a local world to a dedicated server](/servers/move-local-world-to-server) or [update a server safely](/servers/updating-a-server).

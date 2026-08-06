@@ -1,12 +1,222 @@
 ---
-title: Valheim Dedicated Server Settings
-description: Index of officially documented Valheim server options awaiting expanded examples.
-updated: 2026-08-04
+title: "Valheim Dedicated Server Settings and Command Generator"
+description: Generate a Valheim dedicated-server launch command and understand official settings for worlds, ports, crossplay, saves, backups, visibility, presets, modifiers, and player lists.
+updated: 2026-08-06
 ---
 
-Iron Gate documents launch options for the server name, port, world, password, save directory, visibility, logging, save timing, backup retention, crossplay, instance identity, presets, modifiers, and selected world keys.
+Valheim's dedicated server is configured with launch arguments. The generator below produces a Windows or Linux launch line from options documented by Iron Gate. It runs entirely in this page, stores nothing, and does not transmit the server name, path, or password.
 
-This scaffold will add validated examples without storing passwords or presenting generated commands as safer than the official documentation.
+<ServerConfigGenerator />
 
-Source: [official dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/).
+> **Review before use.** Keep a copy of the original launch script, compare generated arguments with the server manual distributed with the current dedicated-server application, and test against a backed-up world. Never commit a real password to source control.
 
+## Core server settings
+
+| Argument | Example | Purpose |
+|---|---|---|
+| `-name` | `-name "My Server"` | Name shown in the server list |
+| `-port` | `-port 2456` | Base port; Valheim also uses port +1 |
+| `-world` | `-world "Dedicated"` | Creates or loads the named world |
+| `-password` | `-password "change-me"` | Password required to join |
+| `-public` | `-public 1` | `1` shows the server publicly; `0` hides it |
+| `-savedir` | `-savedir "D:\Valheim\Saves"` | Overrides the default save root |
+| `-logFile` | `-logFile "D:\Valheim\server.log"` | Writes the server log to a selected location |
+| `-crossplay` | `-crossplay` | Uses the PlayFab crossplay backend |
+| `-instanceid` | `-instanceid "north-1"` | Distinguishes multiple PlayFab instances |
+
+Values containing spaces need plain straight quotation marks. Avoid typographic quotes copied from formatted documents.
+
+## Windows and Linux executable names
+
+The arguments are shared, but the executable wrapper differs:
+
+```text
+valheim_server.exe -nographics -batchmode [arguments]
+```
+
+```text
+./valheim_server.x86_64 -nographics -batchmode [arguments]
+```
+
+Use the supplied `start_headless_server.bat` on Windows or `start_server.sh` on Linux as the current reference. Iron Gate recommends editing a copy because Steam updates can reset the supplied original.
+
+## Server name, world name, and password
+
+These three values are related but not interchangeable:
+
+- `-name` controls what players see in the server browser;
+- `-world` controls which world the server creates or loads;
+- `-password` protects joining and should remain private.
+
+Changing the visible server name does not rename the world. Changing `-world` can load a different existing world or create one when the requested world cannot be found. Before changing it, confirm the active save location and create a [world backup](/servers/world-backup-restore).
+
+The generator deliberately accepts a restricted character set so that its output cannot contain obvious batch or shell control characters. If the production configuration needs other characters, edit manually and review the escaping rules for that operating system.
+
+## Ports
+
+Valheim uses the selected base port and the next port. The documented default base is `2456`, which means `2456-2457`.
+
+For the Steam backend, the range must be reachable from the internet for outside players. That normally involves the host firewall and router forwarding.
+
+With PlayFab crossplay, outside traffic uses a relay and does not require port forwarding. The port still distinguishes multiple servers sharing a public address.
+
+When running multiple instances, assign each one:
+
+- a unique port range;
+- a unique world name;
+- a separate save directory;
+- a separate launch script and log;
+- a unique `-instanceid` when Iron Gate's documented PlayFab condition applies.
+
+Never run two server processes against the same writable world data.
+
+## Public versus hidden servers
+
+Use:
+
+```text
+-public 1
+```
+
+to make the server visible in the public browser, or:
+
+```text
+-public 0
+```
+
+to hide it. A hidden server can still be reachable through an appropriate direct method, but it will not appear merely because the process is online.
+
+If a public server does not appear, confirm that it reached **Game server connected**, then use the [server-not-showing guide](/servers/server-not-showing).
+
+## Steam or PlayFab crossplay
+
+| Launch configuration | Backend | Who can join | Outside port forwarding |
+|---|---|---|---:|
+| Omit `-crossplay` | Steam | Steam users | Required for normal outside access |
+| Add `-crossplay` | PlayFab | Supported platforms | Not required through the relay |
+
+PlayFab supports public address and port, join code, and server-list connections. It does not support local or loopback connections. Use the [crossplay guide](/servers/crossplay) before switching a production community.
+
+## Save directory
+
+The official default save roots are:
+
+| System | Default save root |
+|---|---|
+| Windows | `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim` |
+| Linux | `~/.config/unity3d/IronGate/Valheim` |
+
+`-savedir` overrides the default. An explicit production directory can make migration and backup checks clearer, but moving it is a data migration—not merely a launch-line edit.
+
+Before changing `-savedir`:
+
+1. stop the server with `CTRL+C`;
+2. back up the current active location;
+3. copy the complete required data to the new location;
+4. confirm the server account can write there;
+5. update the launch line;
+6. verify the world, permission lists, save, and restart behavior;
+7. preserve the old directory until the move is accepted.
+
+## Save and automatic backup settings
+
+| Argument | Documented default | Meaning |
+|---|---:|---|
+| `-saveinterval 1800` | 30 minutes | How often the active world saves |
+| `-backups 4` | 4 | Automatic backups retained |
+| `-backupshort 7200` | 2 hours | First backup interval |
+| `-backuplong 43200` | 12 hours | Later backup interval |
+
+Shorter save intervals reduce potential progress loss but increase write frequency. More automatic backups increase recovery coverage but still remain on the live server environment. Maintain a separate manual or off-machine backup policy.
+
+## World presets
+
+Iron Gate currently documents these preset names:
+
+- Normal
+- Casual
+- Easy
+- Hard
+- Hardcore
+- Immersive
+- Hammer
+
+The launch pattern is:
+
+```text
+-preset hard
+```
+
+A preset overwrites previous modifiers. When combining a preset with a specific modifier, place the individual modifier after the preset so the intended override is explicit.
+
+## Individual modifiers
+
+The current server guide documents modifier categories for combat, death penalty, resources, raids, and portals. The syntax is:
+
+```text
+-modifier raids none
+```
+
+Documented values include:
+
+| Category | Current documented values |
+|---|---|
+| Combat | `veryeasy`, `easy`, `hard`, `veryhard` |
+| DeathPenalty | `casual`, `veryeasy`, `easy`, `hard`, `hardcore` |
+| Resources | `muchless`, `less`, `more`, `muchmore`, `most` |
+| Raids | `none`, `muchless`, `less`, `more`, `muchmore` |
+| Portals | `casual`, `hard`, `veryhard` |
+
+Use the spelling from the current server manual. Do not invent combinations based on the in-game label alone.
+
+## World keys
+
+Iron Gate currently documents these `-setkey` values:
+
+- `nobuildcost`
+- `playerevents`
+- `passivemobs`
+- `nomap`
+
+Example:
+
+```text
+-setkey nomap
+```
+
+Some world modifiers affect achievement eligibility in Valheim 1.0. The 1.0 FAQ specifically identifies Hammer mode as a temporary cheat state. Review achievement implications before applying modifiers to a long-term achievement-focused world.
+
+## Administrator, banned, and permitted lists
+
+The active save location includes:
+
+- `adminlist.txt`;
+- `bannedlist.txt`;
+- `permittedlist.txt`.
+
+Add one case-sensitive Platform User ID per line. Iron Gate notes that using `permittedlist.txt` excludes everyone who is not listed. Obtain Platform User IDs from the server log or the in-game F2 panel.
+
+These files follow the active save location. If `-savedir` changes, verify that the intended permission files moved with the world.
+
+## Configuration review checklist
+
+- [ ] The supplied launch script was copied before editing.
+- [ ] Server name and world name serve the intended separate purposes.
+- [ ] The password is private and absent from source control.
+- [ ] The base port and port +1 do not conflict with another instance.
+- [ ] Steam or PlayFab crossplay was selected deliberately.
+- [ ] `-public` matches the intended discovery method.
+- [ ] `-savedir` points to a backed-up, writable location.
+- [ ] Save and backup retention values are explicit.
+- [ ] Presets appear before individual modifier overrides.
+- [ ] Achievement implications were reviewed.
+- [ ] The line was compared with the current distributed server manual.
+- [ ] The server reaches **Game server connected** and survives a save/restart test.
+
+## Official sources
+
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim crossplay FAQ](https://valheim.com/support/crossplay-faq/)
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+
+Next: [set up the dedicated server](/servers/dedicated-server-setup), [back up the world](/servers/world-backup-restore), or [troubleshoot a connection](/servers/server-not-showing).

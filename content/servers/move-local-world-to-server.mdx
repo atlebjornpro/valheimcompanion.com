@@ -1,11 +1,218 @@
 ---
-title: Move a Local Valheim World to a Server
-description: Migration-guide scaffold for transferring a local Valheim world to a dedicated server.
-updated: 2026-08-04
+title: "How to Move a Valheim World to a Dedicated Server"
+description: Transfer an existing local Valheim world to a Windows, Linux, Docker, or managed dedicated server with a backup-first migration and rollback plan.
+updated: 2026-08-06
 ---
 
-The dedicated-server application can launch a named world from its configured save location. Exact source folders can vary with platform and save configuration, while `-savedir` can override the server's default location.
+You can use an existing Valheim world on a dedicated server. Iron Gate's server documentation confirms that the `-world` argument can select an existing named world from the server's active save location.
 
-This page will document local, cloud-managed, Windows, Linux, and managed-host transfers after each path is verified. The initial scaffold deliberately avoids file-moving commands that could overwrite a player's only copy.
+The safe migration pattern is: stop writes, make two source copies, identify the destination save location, transfer the complete world data, point `-world` at the exact name, and verify before retiring the original.
 
-Source: [Iron Gate dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/).
+## Before moving the world
+
+Collect these details first:
+
+| Detail | Why it matters |
+|---|---|
+| Exact world name | Used by the destination server's `-world` argument |
+| Source save type | Local and cloud-managed client saves require different handling |
+| Destination operating system | Determines the documented default save root |
+| Destination `-savedir` | Overrides the operating-system default when present |
+| Server version | Should be compatible with the version that last saved the world |
+| Mod list and versions | A modded world may depend on matching server and client components |
+| Networking backend | Steam and PlayFab crossplay have different connection tests |
+| Rollback owner | Someone should know which copy is the untouched source backup |
+
+Do not begin the transfer while someone is playing in the world.
+
+## Step 1: create an untouched source backup
+
+1. Ask every player to leave the source world.
+2. Exit Valheim completely so it is no longer writing save data.
+3. Identify the world through the current in-game save-management screen.
+4. If it is cloud-managed, use the game's current save controls to create or move to a local working copy before editing files.
+5. Make one untouched backup and one separate transfer copy.
+6. Label both with the world name, date, source platform, and game version.
+
+The untouched backup is for rollback. Only the transfer copy should be handled during migration.
+
+Cloud synchronization is not a substitute for this copy. Steam warns that developers control cloud behavior and that lost or conflicted data may not be recoverable.
+
+## Step 2: identify the destination save root
+
+Iron Gate documents these defaults for the dedicated server:
+
+| Destination | Default save root |
+|---|---|
+| Windows | `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim` |
+| Linux | `~/.config/unity3d/IronGate/Valheim` |
+| Official Docker script | `valheim_server_data` volume unless remapped |
+
+If the launch line contains `-savedir`, use that path instead. For a new production server, an explicit dedicated save directory reduces ambiguity and makes backups easier to audit.
+
+The account running the server must be able to read and write the destination. On Linux, copying as an administrator does not automatically give the server service account ownership or permission.
+
+## Step 3: stop the destination server
+
+If the destination has already been started:
+
+1. Stop it with `CTRL+C`.
+2. Wait for the process to exit.
+3. Back up its current save root and launch configuration.
+4. Confirm that no service manager or hosting panel immediately restarts it.
+
+Never copy a world into a directory that an active server process is writing.
+
+## Step 4: transfer the complete world data
+
+Copy the complete set of files belonging to the selected world from the transfer copy into the destination's active save location. Do not choose one file by extension and assume it represents the whole world.
+
+Preserve the original filenames and world name. If a file with the same name already exists on the destination, move the destination copy into its own backup rather than overwriting it without a rollback path.
+
+For a managed host, use its documented world-import or file-management workflow. Before uploading, confirm:
+
+- where the provider stores active world data;
+- whether the panel expects an archive or individual files;
+- whether the panel changes the configured world name;
+- whether the server is fully stopped during import;
+- how to export the world again if the service is cancelled.
+
+Provider-specific instructions should come from that provider because panel paths and automated restore behavior vary.
+
+## Step 5: configure the destination world name
+
+Set the server's `-world` value to the transferred world's name:
+
+```text
+-world "My Existing World"
+```
+
+Check the active save path at the same time:
+
+```text
+-savedir "D:\Valheim\Saves"
+```
+
+or on Linux:
+
+```text
+-savedir "/srv/valheim/saves"
+```
+
+These are example paths, not universal defaults. Use the [server configuration generator](/servers/server-settings) to prepare a full launch line.
+
+If the server cannot find the named world in its active save location, it may create a different world. Treat an unexpected fresh spawn or seed as a failed migration and stop before players begin building.
+
+## Step 6: start and verify privately
+
+For the first test, keep access limited and use a test port if the production instance still exists elsewhere.
+
+Verify all of the following:
+
+- the server reaches **Game server connected**;
+- the expected world and seed load;
+- important bases, portals, storage, and progression are present;
+- the in-game day and recent changes are plausible;
+- the server can save and restart without losing the verification changes;
+- administrator and allowlist behavior is correct;
+- one intended client can join through the selected backend;
+- mods and world modifiers match the planned configuration.
+
+After the save-and-restart test passes, take a new post-migration backup. Keep the original source backup until the group has used the destination successfully for several sessions.
+
+## Windows-to-Linux migration checks
+
+The world data can be transferred between server operating systems, but the surrounding configuration is not portable as-is.
+
+- Replace Windows paths with Linux paths.
+- Use the Linux executable and launch script.
+- Confirm the server account owns or can write the save directory.
+- Preserve the world name exactly in `-world`.
+- Recreate firewall rules on the destination host.
+- Reinstall compatible mods for the Linux server rather than copying an entire Windows application directory.
+- Record any service-manager configuration separately from the world backup.
+
+The world data and the server application serve different purposes. Copy the world; install the current server application for the destination platform.
+
+## Moving a world before Valheim 1.0
+
+Iron Gate says existing saves remain usable in Valheim 1.0, but biome generation works properly only in unexplored areas and the studio recommends starting over for the best experience.
+
+If migrating an established world for 1.0:
+
+1. preserve a final pre-1.0 source backup;
+2. decide whether this server will keep the established world or start fresh;
+3. avoid treating migration as a way to regenerate already explored Deep North terrain;
+4. record mods and world modifiers that may affect compatibility or achievements;
+5. do not discard the old host until the 1.0 server has saved and restarted successfully.
+
+Use [existing world versus new world](/servers/existing-world-vs-new-world) for that separate decision.
+
+## Crossplay after migration
+
+World migration does not automatically enable crossplay. Add `-crossplay` to use the PlayFab backend.
+
+With crossplay enabled:
+
+- supported platforms can join;
+- outside access does not require port forwarding through the PlayFab relay;
+- players can use a public address and port, join code, or server list;
+- local and loopback addresses do not work for a PlayFab crossplay connection.
+
+Without `-crossplay`, the server uses the Steam backend and only Steam users can see and join it. See the [crossplay guide](/servers/crossplay).
+
+## Rollback plan
+
+If verification fails:
+
+1. stop the destination server;
+2. preserve the failed destination state for diagnosis;
+3. do not open the untouched source backup with a different game version;
+4. restore the destination's pre-migration state if it previously hosted another world;
+5. return players to the original host only if it has not diverged from the backup;
+6. resolve the world name, save path, permission, version, or mod mismatch before retrying with a fresh transfer copy.
+
+Do not alternate play between two writable copies of the same world. Once the migration is accepted, designate one authoritative server.
+
+## Migration checklist
+
+- [ ] All players left and the source game was closed.
+- [ ] An untouched source backup exists.
+- [ ] A separate transfer copy exists.
+- [ ] Cloud-managed data was moved or exported through current game controls.
+- [ ] The destination server is stopped.
+- [ ] The destination save root and any `-savedir` override are confirmed.
+- [ ] The complete world data was transferred without overwriting the only copy.
+- [ ] `-world` matches the transferred name.
+- [ ] Destination permissions allow the server account to write.
+- [ ] Version, mods, and world modifiers were recorded.
+- [ ] The world loaded, saved, restarted, and accepted a test connection.
+- [ ] A post-migration backup was created.
+- [ ] The original backup remains available.
+
+## Common migration failures
+
+### A new empty world loads
+
+The requested world was not found. Recheck `-world`, `-savedir`, the destination path, and the transferred file set.
+
+### The correct world loads but cannot save
+
+Check free space and destination permissions. On Linux, confirm the service account—not only the administrator—can write to the save location.
+
+### The world is older than expected
+
+The transfer copy may have come from a stale or cloud-synchronized location. Return to the in-game save manager and the untouched source environment before choosing another copy.
+
+### Players cannot find the migrated server
+
+World transfer and networking are separate. Confirm backend, visibility, ports, version, and join method with the [server-not-showing guide](/servers/server-not-showing).
+
+## Official sources
+
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim crossplay FAQ](https://valheim.com/support/crossplay-faq/)
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Steam Cloud support](https://help.steampowered.com/en/faqs/view/68D2-35AB-09A9-7678)
+
+Next: [generate the destination launch configuration](/servers/server-settings) or [troubleshoot a missing server](/servers/server-not-showing).
