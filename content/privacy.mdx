@@ -1,18 +1,22 @@
 ---
 title: Privacy Policy
 description: How Valheim Companion handles hosting data, analytics consent, and browser storage.
-updated: 2026-08-05
+updated: 2026-08-10
 ---
 
 Valheim Companion does not provide accounts, comments, uploads, advertising, or affiliate tracking.
 
 The hosting provider may process standard request information needed to deliver and secure the site, such as IP address, requested URL, timestamp, user agent, and diagnostic logs, under its own infrastructure policies.
 
-## Optional Google Analytics
+## Consent-aware Google Analytics
 
-Google Analytics 4 is available only after a visitor explicitly selects **Allow analytics**. Before that choice, the Google tag is not downloaded and no Analytics measurement request is sent. Advertising storage, advertising user data, and advertising personalization remain disabled even when analytics is allowed.
+Valheim Companion uses Google Analytics 4 with Advanced Consent Mode. The Google tag loads with Analytics and advertising storage denied by default. Before a visitor selects **Allow analytics**, or after a visitor selects **Reject analytics**, Google may receive consent-state and cookieless measurement requests. These requests do not read or write Analytics cookies.
 
-When allowed, Google Analytics may process page addresses, page titles, referral information, approximate location, and browser or device information. It may set first-party cookies beginning with `_ga` to distinguish visits and sessions. The site does not send account details, form content, server credentials, or other intentionally identifying information to Analytics.
+Cookieless measurements may include the current page address, timestamp, referrer, browser-provided user agent, consent state, and a random number generated for the page load. Google describes this behavior in its [Consent Mode overview](https://developers.google.com/tag-platform/security/concepts/consent-mode).
+
+Advertising storage, advertising user data, and advertising personalization remain disabled regardless of the visitor's Analytics choice.
+
+When Analytics is allowed, Google Analytics may process page addresses, page titles, referral information, approximate location, and browser or device information. It may set first-party cookies beginning with `_ga` to distinguish visits and sessions. The site does not send account details, form content, server credentials, or other intentionally identifying information to Analytics.
 
 The Analytics destination is `G-MZJQXDQC4B`. Google describes its default collection in [Google Analytics data collection](https://support.google.com/analytics/answer/11593727) and explains its handling of data from partner sites in [Google's privacy information](https://policies.google.com/technologies/partner-sites).
 
@@ -20,6 +24,6 @@ The Analytics destination is `G-MZJQXDQC4B`. Google describes its default collec
 
 The choice is stored in the browser under the local-storage key `valheim-companion:analytics-consent:v1`. This value records only `granted` or `denied` and is not transmitted to Valheim Companion.
 
-Use **Analytics choices** in the site footer to change or withdraw consent at any time. Withdrawing consent disables further measurement and attempts to remove Google Analytics cookies for this site.
+Use **Analytics choices** in the site footer to change or withdraw consent at any time. Withdrawing consent prevents further Analytics-cookie storage and attempts to remove Google Analytics cookies for this site. Consent-aware cookieless measurements may continue as described above.
 
 This policy will be updated before enabling contact forms, affiliate links, personalization, advertising, or other data-processing features. The review date above identifies the current version.

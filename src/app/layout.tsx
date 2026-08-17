@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Axe } from "lucide-react";
 import "./globals.css";
@@ -45,6 +46,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return <html lang={site.language} className="dark">
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <Script id="google-consent-defaults" strategy="beforeInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  wait_for_update: 500
+});
+gtag('set', 'ads_data_redaction', true);`}
+      </Script>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header className="border-b border-[#3a3124] bg-[#11120f]/95 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center gap-5 p-4 text-sm">

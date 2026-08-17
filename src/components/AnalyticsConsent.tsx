@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import Link from "next/link";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { routes } from "../config/routes";
 import { site } from "../config/site";
@@ -29,14 +29,11 @@ function initializeDataLayer() {
   window.dataLayer = window.dataLayer ?? [];
   window.gtag =
     window.gtag ??
-    ((...args: unknown[]) => {
-      window.dataLayer?.push(args);
+    (function () {
+      // The documented gtag queue format uses the function's Arguments object.
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer?.push(arguments);
     });
-}
-
-function setGoogleAnalyticsDisabled(disabled: boolean) {
-  const windowFlags = window as unknown as Record<string, unknown>;
-  windowFlags[`ga-disable-${site.analytics.measurementId}`] = disabled;
 }
 
 function clearGoogleAnalyticsCookies() {
@@ -95,19 +92,17 @@ export default function AnalyticsConsent() {
   const consent = useSyncExternalStore(subscribeToConsent, readConsent, () => null);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [tagReady, setTagReady] = useState(false);
+  const lastTrackedPath = useRef<string | null>(null);
 
   useEffect(() => {
     initializeDataLayer();
-    window.gtag?.("consent", "default", deniedConsent);
 
     if (consent === "granted") {
-      setGoogleAnalyticsDisabled(false);
       window.gtag?.("consent", "update", {
         ...deniedConsent,
         analytics_storage: "granted",
       });
     } else {
-      setGoogleAnalyticsDisabled(true);
       window.gtag?.("consent", "update", deniedConsent);
       if (consent === "denied") clearGoogleAnalyticsCookies();
     }
@@ -120,14 +115,22 @@ export default function AnalyticsConsent() {
   }, []);
 
   useEffect(() => {
-    if (consent !== "granted" || !tagReady) return;
+    if (!tagReady) return;
+
+    if (lastTrackedPath.current === null) {
+      lastTrackedPath.current = pathname;
+      return;
+    }
+
+    if (lastTrackedPath.current === pathname) return;
+    lastTrackedPath.current = pathname;
 
     window.gtag?.("event", "page_view", {
       page_location: window.location.href,
       page_path: pathname,
       page_title: document.title,
     });
-  }, [consent, pathname, tagReady]);
+  }, [pathname, tagReady]);
 
   function saveConsent(nextConsent: AnalyticsConsentState) {
     try {
@@ -138,7 +141,6 @@ export default function AnalyticsConsent() {
 
     initializeDataLayer();
     const granted = nextConsent === "granted";
-    setGoogleAnalyticsDisabled(!granted);
     window.gtag?.("consent", "update", {
       ...deniedConsent,
       analytics_storage: granted ? "granted" : "denied",
@@ -146,7 +148,6 @@ export default function AnalyticsConsent() {
 
     if (!granted) {
       clearGoogleAnalyticsCookies();
-      setTagReady(false);
     }
 
     window.dispatchEvent(new Event(consentChangedEvent));
@@ -155,23 +156,20 @@ export default function AnalyticsConsent() {
 
   return (
     <>
-      {consent === "granted" ? (
-        <Script
-          id="google-analytics-loader"
-          src={`https://www.googletagmanager.com/gtag/js?id=${site.analytics.measurementId}`}
-          strategy="afterInteractive"
-          onReady={() => {
-            initializeDataLayer();
-            window.gtag?.("js", new Date());
-            window.gtag?.("config", site.analytics.measurementId, {
-              allow_ad_personalization_signals: false,
-              allow_google_signals: false,
-              send_page_view: false,
-            });
-            setTagReady(true);
-          }}
-        />
-      ) : null}
+      <Script
+        id="google-analytics-loader"
+        src={`https://www.googletagmanager.com/gtag/js?id=${site.analytics.measurementId}`}
+        strategy="afterInteractive"
+        onReady={() => {
+          initializeDataLayer();
+          window.gtag?.("js", new Date());
+          window.gtag?.("config", site.analytics.measurementId, {
+            allow_ad_personalization_signals: false,
+            allow_google_signals: false,
+          });
+          setTagReady(true);
+        }}
+      />
 
       {consent === null || preferencesOpen ? (
         <div
@@ -184,8 +182,9 @@ export default function AnalyticsConsent() {
             Optional analytics
           </h2>
           <p className="mt-2 text-sm leading-6 text-[#b9b09f]">
-            Allow Google Analytics to measure visits and help improve this site. The tag stays off until you
-            choose Allow. Advertising storage and personalization remain disabled. Read the{" "}
+            Allow Google Analytics storage to help measure visits and improve this site. Until you choose Allow,
+            Google receives consent-aware measurements without Analytics cookies. Advertising storage and
+            personalization remain disabled. Read the{" "}
             <Link href={routes.privacy} className="font-bold text-[#e1ad5a] hover:underline">
               privacy policy
             </Link>
