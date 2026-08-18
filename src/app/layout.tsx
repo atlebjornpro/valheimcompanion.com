@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { cookies } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Axe } from "lucide-react";
@@ -14,7 +13,6 @@ import AnalyticsConsent, { AnalyticsPreferencesButton } from "../components/Anal
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "../config/metadata";
 import { routes } from "../config/routes";
 import { site } from "../config/site";
-import { CONSENT_REGION_COOKIE, type ConsentRegion } from "../config/consent";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -38,10 +36,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: SITE_NAME, description: DEFAULT_DESCRIPTION, images: ["/og.jpg"] },
 };
 
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const cookieStore = await cookies();
-  const region: ConsentRegion = cookieStore.get(CONSENT_REGION_COOKIE)?.value === "eea" ? "eea" : "row";
-  const initialAnalyticsStorage = region === "row" ? "granted" : "denied";
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -52,6 +47,14 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return <html lang={site.language} className="dark">
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      {/*
+        Always starts denied here, even for the row (rest-of-world) region that
+        AnalyticsConsent later flips to granted. Reading the region on the
+        server (e.g. via cookies()) would force this whole site out of static
+        rendering and into per-request SSR, which isn't worth it for a value
+        that AnalyticsConsent already resolves client-side within milliseconds
+        of hydration, well before the actual GA config/page_view call fires.
+      */}
       <Script id="google-consent-defaults" strategy="beforeInteractive">
         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -59,7 +62,7 @@ gtag('consent', 'default', {
   ad_storage: 'denied',
   ad_user_data: 'denied',
   ad_personalization: 'denied',
-  analytics_storage: '${initialAnalyticsStorage}',
+  analytics_storage: 'denied',
   wait_for_update: 500
 });
 gtag('set', 'ads_data_redaction', true);`}
@@ -92,7 +95,7 @@ gtag('set', 'ads_data_redaction', true);`}
           </div>
         </div>
       </footer>
-      <AnalyticsConsent region={region} />
+      <AnalyticsConsent />
       <Analytics />
       <MobileNav />
     </body>

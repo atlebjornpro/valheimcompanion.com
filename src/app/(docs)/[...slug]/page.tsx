@@ -40,7 +40,13 @@ async function getDoc(slugParts: string[]): Promise<Doc | null> {
 
 function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const external = typeof props.href === "string" && /^https?:\/\//.test(props.href);
-  return <a {...props} rel={external ? "noopener" : props.rel} target={external ? "_blank" : props.target} />;
+  // Preserve any rel values already set on the link (e.g. "sponsored" on
+  // affiliate links) instead of clobbering them — just make sure "noopener"
+  // is present for external links.
+  const rel = external
+    ? Array.from(new Set([...(props.rel ?? "").split(/\s+/).filter(Boolean), "noopener"])).join(" ")
+    : props.rel;
+  return <a {...props} rel={rel} target={external ? "_blank" : props.target} />;
 }
 
 const relatedMap: Record<string, { href: string; label: string }[]> = {
@@ -56,6 +62,7 @@ const relatedMap: Record<string, { href: string; label: string }[]> = {
   "/servers/server-settings": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/world-backup-restore", label: "Backup and restore" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
   "/servers/updating-a-server": [{ href: "/servers/world-backup-restore", label: "Create a rollback backup" }, { href: "/servers/server-not-showing", label: "Post-update troubleshooting" }, { href: "/valheim-1-0", label: "Valheim 1.0 release hub" }],
   "/servers/server-requirements": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/server-settings", label: "Configuration generator" }, { href: "/servers/best-server-hosting", label: "Compare hosting options" }],
+  "/servers/best-server-hosting": [{ href: "/servers/dedicated-server-setup", label: "Self-host instead" }, { href: "/servers/server-requirements", label: "Server requirements" }, { href: "/servers/crossplay", label: "Crossplay configuration" }],
 };
 
 const legalRoutes = new Set(["/about", "/contact", "/data-sources", "/editorial-policy", "/privacy", "/terms"]);

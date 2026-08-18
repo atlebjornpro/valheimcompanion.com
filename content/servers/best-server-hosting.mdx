@@ -1,11 +1,94 @@
 ---
-title: Valheim Server Hosting
-description: Editorial scope and comparison criteria for future Valheim managed-server hosting coverage.
-updated: 2026-08-04
+title: "Best Valheim Server Hosting (2026 Comparison)"
+description: "An honest, sourced comparison of managed Valheim server hosts — Shockbyte, Supercraft, Nitrado, GPORTAL, Apex, Sparked Host, and BisectHosting. Real starting prices, player slots, crossplay support, and who each one is actually best for."
+updated: 2026-08-18
 ---
 
-This page will compare managed Valheim hosts by world-file access, backup export and restore, region availability, update control, crossplay support, resource disclosure, support, renewal price, and cancellation portability.
+If you've decided not to [self-host](/servers/dedicated-server-setup), the next question is *which managed host*. They all run the same Valheim dedicated-server binary under the hood, so the real differences are **price per slot, crossplay support, datacenter regions, and support quality**. This page compares the main options honestly, including where each one loses — see the [data sources](/data-sources) and [editorial policy](/editorial-policy) this site follows.
 
-No provider is ranked in this initial scaffold. Prices, features, affiliate relationships, and product availability must be checked at publication time. Any future commercial relationship will be disclosed and will not determine recommendation order.
+## Self-host vs managed hosting
 
-See the [Editorial Policy](/editorial-policy) and [Privacy Policy](/privacy).
+**Self-hosting** means running `valheim_server.exe` or `valheim_server.x86_64` on your own hardware or a VPS you already control. It's free apart from electricity, but you're the one handling updates, port forwarding, and uptime. The full walkthrough is in [dedicated server setup](/servers/dedicated-server-setup), and the [configuration generator](/servers/server-settings) will build the exact launch line either way.
+
+**Managed hosting** means paying a provider to run the server on their hardware — a web control panel, one-click updates, DDoS protection, automated backups, and a location near your players, without touching a router. A small Valheim plan typically runs a few dollars a month. The rest of this page covers that side.
+
+> *This page includes affiliate links. If you buy hosting through one, this site may earn a commission at no extra cost to you — see the [full disclosure](#disclosure) below. The comparison is not ranked by payout.*
+
+## Crossplay matters for which backend you pick
+
+Valheim's dedicated server runs on either the **Steam backend** (Steam users only, requires port forwarding for outside players) or the **PlayFab crossplay backend** (`-crossplay`, works across all launch platforms, traffic goes through a relay so port forwarding isn't required). Not every managed host defaults to the same backend or makes it equally easy to switch — confirm PlayFab/crossplay support with the host directly if your group spans platforms, and see the [crossplay guide](/servers/crossplay) for what each backend actually changes.
+
+## At a glance
+
+| Host | Starting price | Notable for | Watch out for |
+| :--- | :--- | :--- | :--- |
+| <a href="https://shockbyte.com/billing/aff.php?aff=11289" rel="sponsored noopener" target="_blank">**Shockbyte**</a> | $14.99/mo (10 players, 4GB+) | Simple flat pricing, 72h refund, instant setup | Discounts require quarterly/annual billing |
+| <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">**Supercraft**</a> | $7.99/mo (5p) · $12.99/mo (10p) · $24.99/mo (30p) | Crossplay enabled on every tier, 5 regions, 2-day money-back | Lowest tier has no mod support |
+| <a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">**Nitrado**</a> | ≈€13.09/30 days (10 players, EU store)* | Established brand, daily backups | Officially supports only ValheimPlus; other mods unsupported |
+| <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">**GPORTAL**</a> | From $6.23/3 days · $15.59/30 days (10 players) | Short-term flexible billing, explicit 1.0/Deep North and crossplay support | Short-term rate adds up if left running long-term |
+| <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">**Apex Hosting**</a> | From $7.49/mo (2GB, 10 players)* | 18+ locations, beginner-friendly panel | Entry tier is low RAM; check upgrade pricing for larger worlds |
+| <a href="https://billing.sparkedhost.com/aff.php?aff=3350" rel="sponsored noopener" target="_blank">**Sparked Host**</a> | $6/mo (Thor, 4GB) · $9/mo (Odin, 6GB) · $12/mo (Valhalla, 8GB) | 9 global datacenters, enterprise Ryzen 7950X hardware, 1-day free trial | Game management, dedicated IP, and Discord support are paid add-ons |
+| **BisectHosting** | From $12.99/mo (unlimited players, 50GB NVMe)* | 10 datacenters, 7 days of backups | No affiliate link here — their program pays in store credit, not cash |
+
+*Marked prices came from third-party review coverage rather than the provider's own pricing page, which loads pricing dynamically via JavaScript and couldn't be read directly — confirm the live number before buying. See [sources](#official-and-third-party-sources) below.
+
+## The hosts, honestly
+
+### Shockbyte — simple and cheap for a 10-player world
+
+<a href="https://shockbyte.com/billing/aff.php?aff=11289" rel="sponsored noopener" target="_blank">Shockbyte</a>'s Valheim plan is **$14.99/month for 10 players on 4GB+ RAM**, with quarterly and annual billing discounts. The product page advertises **instant setup, full BepInEx and ValheimPlus mod support, 24/7 support, DDoS protection, automatic backups and updates, full FTP access, and a 72-hour self-serve refund window**. It's a straightforward "spin up a server today" pick if you don't need multiple RAM tiers. <a href="https://shockbyte.com/billing/aff.php?aff=11289" rel="sponsored noopener" target="_blank">See Shockbyte's Valheim plan</a>.
+
+### Supercraft — crossplay on every tier, three real sizes
+
+<a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">Supercraft</a> offers three tiers — **S ($7.99/mo, 5 players), M ($12.99/mo, 10 players), and L ($24.99/mo, 30 players)** — across five regions (US West, US East, US North-East, Europe West, Australia), with **Xbox/PC crossplay, daily backups, and 17 Tbit/s DDoS protection on every tier**. Mod support (BepInEx, one-click Thunderstore installs) starts at the M tier; the S tier is vanilla-only. A **2-day money-back guarantee** de-risks trying it. <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">See Supercraft's Valheim plans</a>.
+
+### Nitrado — established brand, narrower mod support
+
+<a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">Nitrado</a> sells Valheim by the slot, 10 by default, on runtimes from 3 to 365 days; third-party pricing coverage puts a 30-day, 10-slot plan at roughly **€13.09 on the EU store**. Nitrado officially supports only ValheimPlus through its one-click add-on system — other mods aren't officially supported, which is worth knowing if your group runs a heavier modpack. <a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">See Nitrado's Valheim hosting</a>.
+
+### GPORTAL — flexible short-term billing, explicit 1.0 support
+
+<a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">GPORTAL</a> bills from **$6.23 for a 3-day entry plan** up through **$15.59/30 days, $42.08/90 days, and $79.48/180 days** for 10 players, and its product page explicitly calls out **Valheim 1.0 and Deep North support, full PC/Xbox crossplay, ValheimPlus and BepInEx pre-installed, 50GB of backup storage, and multi-layered DDoS protection**. The short-term entry plan is genuinely useful for a launch-week or event server; left running continuously, a monthly plan works out cheaper. <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">See GPORTAL's Valheim plans</a>.
+
+### Apex Hosting — easiest panel, RAM-tiered pricing
+
+<a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">Apex Hosting</a> prices Valheim by RAM starting around **$7.49/month for 2GB** (10 players), scaling up through their standard tiers, across **18+ server locations**. Apex is consistently reported as the most beginner-friendly control panel with responsive support — worth the premium over the cheapest options if this is your first time running any game server. <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">See Apex's Valheim hosting</a>.
+
+### Sparked Host — enterprise hardware, widest datacenter spread here
+
+<a href="https://billing.sparkedhost.com/aff.php?aff=3350" rel="sponsored noopener" target="_blank">Sparked Host</a> prices by RAM on enterprise-only hardware (AMD Ryzen 7950X, DDR5, RAID 1 NVMe): **Thor ($6/mo, 4GB, 3 vCPU), Odin ($9/mo, 6GB, 3.25 vCPU), and Valhalla ($12/mo, 8GB, 3.5 vCPU)**, all with 100GB storage. Datacenters span **Ashburn, Dallas, Salt Lake City, Miami, Paris, Helsinki, Vienna, London, and Singapore** — nine locations, the widest spread on this page. A **1-day free trial** and **48-hour refund guarantee** apply; game management, a dedicated IP, and Discord support are separate paid add-ons ($20, $3, and $3/month respectively). <a href="https://billing.sparkedhost.com/aff.php?aff=3350" rel="sponsored noopener" target="_blank">See Sparked Host's Valheim plans</a>.
+
+### BisectHosting — established, no affiliate link here
+
+BisectHosting's Valheim plans start around **$12.99/month with unlimited player slots and 50GB of NVMe storage**, across roughly 10 datacenters with 7 days of backup retention, per third-party pricing coverage (their own pricing page loads via JavaScript and couldn't be confirmed directly). There's no affiliate link for BisectHosting on this page — their referral program pays in store credit rather than cash, which didn't feel worth listing as a "recommendation" the way a cash-commission link is.
+
+## Which should you pick?
+
+For a **flat, no-fuss 10-player server**, <a href="https://shockbyte.com/billing/aff.php?aff=11289" rel="sponsored noopener" target="_blank">Shockbyte</a> is the simplest option. If **crossplay matters and you want a confirmed-working setup across three real size tiers**, <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">Supercraft</a> or <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">GPORTAL</a> both explicitly support it. For a **temporary or launch-week server**, GPORTAL's 3-day entry plan avoids paying for a full month. If your group is **heavily modded**, avoid Nitrado's ValheimPlus-only limitation and look at Shockbyte, Supercraft (M/L), or Sparked Host instead. If it's your **first time running any game server**, <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">Apex</a>'s panel and support reputation are worth the premium. And for **enterprise hardware with the widest datacenter footprint on this page**, <a href="https://billing.sparkedhost.com/aff.php?aff=3350" rel="sponsored noopener" target="_blank">Sparked Host</a> is the pick.
+
+There's no single "best" — it depends on your group size, whether you need crossplay, and how much setup effort you want to avoid.
+
+## Already leaning toward self-hosting?
+
+The [dedicated server setup guide](/servers/dedicated-server-setup) walks through the launch scripts and required libraries, [server requirements](/servers/server-requirements) covers the official minimums Iron Gate has actually published, and the [configuration generator](/servers/server-settings) builds the exact launch line for either the Steam or PlayFab backend.
+
+## Related
+
+- [Dedicated server setup](/servers/dedicated-server-setup) — the free self-host route
+- [Server requirements](/servers/server-requirements) — official platform, library, and port requirements
+- [Crossplay configuration](/servers/crossplay) — Steam vs PlayFab backend, and what crossplay actually covers
+
+## Disclosure
+
+This page contains affiliate links to Shockbyte, Supercraft, Nitrado, GPORTAL, Apex Hosting, and Sparked Host. If you buy hosting through one of them, this site may earn a commission at no extra cost to you. The comparison is **not ranked by payout** — each host is recommended where it genuinely wins. BisectHosting is included without an affiliate link because their program pays in store credit rather than cash. See the [Privacy Policy](/privacy) for the full data-handling and affiliate-tracking disclosure.
+
+**On pricing:** figures above were researched in **August 2026** from each provider's own pricing page where it loaded without client-side rendering, and from third-party hosting-comparison coverage where it didn't (marked with * in the table above). Prices, promo codes, and regional availability change — confirm the live number on the host's own page before buying.
+
+## Official and third-party sources
+
+- [Shockbyte Valheim hosting](https://shockbyte.com/games/valheim-server-hosting)
+- [Supercraft Valheim hosting](https://supercraft.host/valheim-server-hosting/)
+- [Sparked Host Valheim hosting](https://sparkedhost.com/game-server-hosting/valheim)
+- [GPORTAL Valheim hosting](https://www.g-portal.com/en/gameserver/valheim-server-hosting)
+- Nitrado and Nitrado pricing referenced via [MamboServer's Valheim hosting comparison](https://www.mamboserver.com/gaming-servers/best-valheim-server-hosting/)
+- Apex Hosting and BisectHosting pricing referenced via [Codeless's Valheim hosting comparison](https://codeless.co/best-valheim-server-hosting/)

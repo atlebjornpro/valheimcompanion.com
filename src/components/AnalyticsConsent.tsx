@@ -6,10 +6,9 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { routes } from "../config/routes";
 import { site } from "../config/site";
-import type { ConsentRegion } from "../config/consent";
+import { CONSENT_REGION_COOKIE, type ConsentRegion } from "../config/consent";
 
 type AnalyticsConsentState = "granted" | "denied";
-type AnalyticsConsentProps = { region: ConsentRegion };
 
 declare global {
   interface Window {
@@ -77,6 +76,22 @@ function subscribeToConsent(onStoreChange: () => void) {
   };
 }
 
+// The region cookie is set by src/proxy.ts on every request based on visitor
+// geography. Read client-side (rather than via cookies() in a Server
+// Component) so the root layout stays statically rendered instead of being
+// forced into per-request SSR — see the comment in src/app/layout.tsx.
+function readRegion(): ConsentRegion | null {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${CONSENT_REGION_COOKIE}=([^;]*)`));
+  const value = match ? decodeURIComponent(match[1]) : null;
+  return value === "eea" || value === "row" ? value : null;
+}
+
+function subscribeToRegion() {
+  // The region cookie doesn't change during a session, so there's nothing to
+  // subscribe to — this just satisfies useSyncExternalStore's contract.
+  return () => {};
+}
+
 export function AnalyticsPreferencesButton() {
   return (
     <button
@@ -89,9 +104,10 @@ export function AnalyticsPreferencesButton() {
   );
 }
 
-export default function AnalyticsConsent({ region }: AnalyticsConsentProps) {
+export default function AnalyticsConsent() {
   const pathname = usePathname();
   const consent = useSyncExternalStore(subscribeToConsent, readConsent, () => null);
+  const region = useSyncExternalStore(subscribeToRegion, readRegion, () => null);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [tagReady, setTagReady] = useState(false);
   const lastTrackedPath = useRef<string | null>(null);
@@ -100,6 +116,9 @@ export default function AnalyticsConsent({ region }: AnalyticsConsentProps) {
   // practice: visitors start counted, and can opt out at any time via the
   // "Analytics choices" control. Inside that region, nothing is granted until
   // the visitor explicitly chooses "Allow" (consent === null stays denied).
+  // region is briefly null on the very first server-matched render before
+  // the cookie read settles client-side; treat that the same as "eea" (the
+  // stricter, safer default) rather than assuming implied consent.
   const impliedGranted = region === "row";
   const effectiveConsent: AnalyticsConsentState = consent ?? (impliedGranted ? "granted" : "denied");
   const showDialog = preferencesOpen || (consent === null && !impliedGranted);
