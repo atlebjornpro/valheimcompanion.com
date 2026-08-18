@@ -6,8 +6,10 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { routes } from "../config/routes";
 import { site } from "../config/site";
+import type { ConsentRegion } from "../config/consent";
 
 type AnalyticsConsentState = "granted" | "denied";
+type AnalyticsConsentProps = { region: ConsentRegion };
 
 declare global {
   interface Window {
@@ -87,26 +89,36 @@ export function AnalyticsPreferencesButton() {
   );
 }
 
-export default function AnalyticsConsent() {
+export default function AnalyticsConsent({ region }: AnalyticsConsentProps) {
   const pathname = usePathname();
   const consent = useSyncExternalStore(subscribeToConsent, readConsent, () => null);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [tagReady, setTagReady] = useState(false);
   const lastTrackedPath = useRef<string | null>(null);
 
+  // Outside the EEA/UK/Switzerland, an opt-out model is standard, compliant
+  // practice: visitors start counted, and can opt out at any time via the
+  // "Analytics choices" control. Inside that region, nothing is granted until
+  // the visitor explicitly chooses "Allow" (consent === null stays denied).
+  const impliedGranted = region === "row";
+  const effectiveConsent: AnalyticsConsentState = consent ?? (impliedGranted ? "granted" : "denied");
+  const showDialog = preferencesOpen || (consent === null && !impliedGranted);
+
   useEffect(() => {
     initializeDataLayer();
 
-    if (consent === "granted") {
+    if (effectiveConsent === "granted") {
       window.gtag?.("consent", "update", {
         ...deniedConsent,
         analytics_storage: "granted",
       });
     } else {
       window.gtag?.("consent", "update", deniedConsent);
+      // Only actively clear cookies on an explicit rejection — not merely
+      // because no choice has been recorded yet.
       if (consent === "denied") clearGoogleAnalyticsCookies();
     }
-  }, [consent]);
+  }, [effectiveConsent, consent]);
 
   useEffect(() => {
     const openPreferences = () => setPreferencesOpen(true);
@@ -171,7 +183,7 @@ export default function AnalyticsConsent() {
         }}
       />
 
-      {consent === null || preferencesOpen ? (
+      {showDialog ? (
         <div
           role="dialog"
           aria-modal="true"
@@ -182,9 +194,20 @@ export default function AnalyticsConsent() {
             Optional analytics
           </h2>
           <p className="mt-2 text-sm leading-6 text-[#b9b09f]">
-            Allow Google Analytics storage to help measure visits and improve this site. Until you choose Allow,
-            Google receives consent-aware measurements without Analytics cookies. Advertising storage and
-            personalization remain disabled. Read the{" "}
+            {impliedGranted ? (
+              <>
+                Google Analytics storage is on by default for visitors outside the EEA, UK, and Switzerland, to
+                help measure visits and improve this site. Choose Reject at any time to turn it off. Advertising
+                storage and personalization remain disabled regardless.
+              </>
+            ) : (
+              <>
+                Allow Google Analytics storage to help measure visits and improve this site. Until you choose
+                Allow, Google receives consent-aware measurements without Analytics cookies. Advertising storage
+                and personalization remain disabled.
+              </>
+            )}{" "}
+            Read the{" "}
             <Link href={routes.privacy} className="font-bold text-[#e1ad5a] hover:underline">
               privacy policy
             </Link>

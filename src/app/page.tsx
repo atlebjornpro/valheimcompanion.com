@@ -21,7 +21,7 @@ export default function Home() {
   return <div className="mx-auto max-w-6xl py-4 sm:py-8">
     <section className="hero-grid relative min-h-[34rem] overflow-hidden rounded-[2rem] border border-[#4a3926] bg-[#141611] px-7 py-14 shadow-2xl sm:px-12 sm:py-20">
       <Image
-        src="/images/valheim-companion-hero.png"
+        src="/images/valheim-companion-hero.webp"
         alt="A snowy northern coast with a sheltered timber home and boat beneath an aurora"
         fill
         priority

@@ -1,12 +1,61 @@
 ---
 title: Valheim Dedicated Server Requirements
-description: Requirements-page scaffold that separates official facts from future measured recommendations.
-updated: 2026-08-04
+description: Official Windows and Linux requirements, Docker library minimums, and port requirements for a Valheim dedicated server. Hardware sizing is withheld until it can be sourced or measured.
+updated: 2026-08-18
 ---
 
-Valheim's official FAQ states that servers are capped at ten players. The official dedicated-server guide documents current Linux library requirements and a Docker alternative for older distributions.
+Valheim's official FAQ states dedicated servers are capped at ten players. The official dedicated-server guide documents the software, library, and network requirements below. It does not publish minimum or recommended CPU, RAM, storage, or bandwidth figures, so this page does not invent any either.
 
-This initial page does not publish unofficial CPU, memory, storage, or bandwidth formulas. Hardware guidance will be added only after repeatable measurements or current first-party recommendations can be cited.
+## Supported platforms
 
-Sources: [official Valheim FAQ](https://valheim.com/faq/) and [dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/).
+| Platform | Launch script | Notes |
+|---|---|---|
+| Windows | `start_headless_server.bat` | No additional packages documented |
+| Linux | `start_server.sh` | Requires the packages below |
+| Linux (older distributions) | `docker_start_server.sh` | Docker path for systems below the documented library versions |
 
+## Linux package and library requirements
+
+The official guide lists three additional packages needed to run the native Linux binary:
+
+- `libatomic1`
+- `libpulse-dev`
+- `libpulse0`
+
+For Docker specifically, the guide states the dedicated server has minimum requirements of:
+
+- `GLIBC_2.29`
+- `GLIBCXX_3.4.26`
+
+If your distribution's library versions are older than these, use `docker_start_server.sh` rather than the native binary.
+
+## Network and port requirements
+
+| Item | Documented value |
+|---|---|
+| Default port range | `2456-2457` (base port and base port + 1) |
+| Steam backend | Port forwarding required for outside players |
+| PlayFab crossplay backend | Port forwarding not required; traffic uses a relay |
+
+See the [configuration generator](/servers/server-settings) for the full set of launch arguments, and the [crossplay guide](/servers/crossplay) before choosing a backend.
+
+## Player cap
+
+Valheim's official FAQ states dedicated servers support up to **ten players**. Iron Gate has not published a supported path beyond that limit.
+
+## What Iron Gate has not published
+
+- Minimum or recommended CPU.
+- Minimum or recommended RAM.
+- Minimum or recommended storage.
+- Bandwidth or throughput guidance.
+- A supported way to exceed the ten-player cap.
+
+Hardware sizing guidance will be added to this page only after Iron Gate publishes a specification or after repeatable, disclosed measurements can be cited — consistent with the [editorial policy](/editorial-policy).
+
+## Official sources
+
+- [Official Valheim FAQ](https://valheim.com/faq/)
+- [A Guide to Dedicated Servers](https://valheim.com/support/a-guide-to-dedicated-servers/)
+
+Next: [set up the dedicated server](/servers/dedicated-server-setup), [generate a launch configuration](/servers/server-settings), or [compare hosting options](/servers/best-server-hosting).

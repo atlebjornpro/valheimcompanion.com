@@ -19,9 +19,11 @@ export const sections: NavSection[] = [
     links: [
       { href: routes.servers, label: "Server Hub", icon: Server, description: "Dedicated-server, migration, backup, crossplay, and hosting topics." },
       { href: routes.dedicatedServerSetup, label: "Dedicated Server Setup", icon: Wrench },
+      { href: routes.serverRequirements, label: "Server Requirements", icon: FileText },
       { href: routes.updatingServer, label: "Updating a Server", icon: History },
       { href: routes.worldBackupRestore, label: "Backup & Restore", icon: DatabaseBackup },
       { href: routes.moveLocalWorld, label: "Move a Local World", icon: FileText },
+      { href: routes.existingOrNewWorld, label: "Existing or New World?", icon: FileText },
       { href: routes.crossplay, label: "Crossplay", icon: Network },
       { href: routes.serverSettings, label: "Settings Generator", icon: Wrench },
       { href: routes.serverNotShowing, label: "Connection Help", icon: Network },

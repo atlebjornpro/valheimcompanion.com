@@ -1,16 +1,23 @@
 ---
 title: Privacy Policy
 description: How Valheim Companion handles hosting data, analytics consent, and browser storage.
-updated: 2026-08-10
+updated: 2026-08-18
 ---
 
 Valheim Companion does not provide accounts, comments, uploads, advertising, or affiliate tracking.
 
 The hosting provider may process standard request information needed to deliver and secure the site, such as IP address, requested URL, timestamp, user agent, and diagnostic logs, under its own infrastructure policies.
 
+The site also uses Vercel Web Analytics, a cookieless, aggregate page-view measurement that does not use Analytics-style identifiers and is not affected by the Analytics choice described below.
+
 ## Consent-aware Google Analytics
 
-Valheim Companion uses Google Analytics 4 with Advanced Consent Mode. The Google tag loads with Analytics and advertising storage denied by default. Before a visitor selects **Allow analytics**, or after a visitor selects **Reject analytics**, Google may receive consent-state and cookieless measurement requests. These requests do not read or write Analytics cookies.
+Valheim Companion uses Google Analytics 4 with Advanced Consent Mode. Your country, detected from your network location, determines the starting state:
+
+- **Visitors in the EEA, UK, or Switzerland** start with Analytics and advertising storage **denied**. Analytics storage only turns on after you select **Allow analytics**.
+- **Visitors elsewhere** start with Analytics storage **granted** by default, an opt-out model consistent with guidance outside that region. Advertising storage stays denied everywhere regardless of location. You can select **Reject analytics** at any time to turn Analytics storage off.
+
+Before analytics storage is granted, or after it is rejected, Google may still receive consent-state and cookieless measurement requests. These requests do not read or write Analytics cookies.
 
 Cookieless measurements may include the current page address, timestamp, referrer, browser-provided user agent, consent state, and a random number generated for the page load. Google describes this behavior in its [Consent Mode overview](https://developers.google.com/tag-platform/security/concepts/consent-mode).
 

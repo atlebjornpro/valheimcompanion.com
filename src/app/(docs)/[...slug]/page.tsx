@@ -10,6 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import type { AnchorHTMLAttributes } from "react";
 import { createPageMetadata, SITE_NAME, SITE_URL } from "../../../config/metadata";
 import ServerConfigGenerator from "../../../components/ServerConfigGenerator";
+import { extractFaq } from "../../../utils/faq";
 
 type RouteParams = { slug?: string[] };
 type Doc = { content: string; frontmatter: { title: string; description: string; updated?: string } };
@@ -54,6 +55,7 @@ const relatedMap: Record<string, { href: string; label: string }[]> = {
   "/servers/server-not-showing": [{ href: "/servers/crossplay", label: "Crossplay guide" }, { href: "/servers/server-settings", label: "Check server settings" }, { href: "/servers/updating-a-server", label: "Match server and client versions" }],
   "/servers/server-settings": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/world-backup-restore", label: "Backup and restore" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
   "/servers/updating-a-server": [{ href: "/servers/world-backup-restore", label: "Create a rollback backup" }, { href: "/servers/server-not-showing", label: "Post-update troubleshooting" }, { href: "/valheim-1-0", label: "Valheim 1.0 release hub" }],
+  "/servers/server-requirements": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/server-settings", label: "Configuration generator" }, { href: "/servers/best-server-hosting", label: "Compare hosting options" }],
 };
 
 const legalRoutes = new Set(["/about", "/contact", "/data-sources", "/editorial-policy", "/privacy", "/terms"]);
@@ -85,9 +87,22 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
     url: canonical,
   };
   const related = relatedMap[route] ?? [];
+  const faq = extractFaq(doc.content);
+  const faqJsonLd = faq.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map(({ question, answer }) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer },
+        })),
+      }
+    : null;
 
   return <article className="prose prose-neutral dark:prose-invert max-w-3xl">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    {faqJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} /> : null}
     <header className="not-prose mb-8 border-b border-[#393126] pb-7">
       <p className="section-kicker">{legalRoutes.has(route) ? "Site information" : "Source-reviewed guide"}</p>
       <h1 className="mt-3 text-4xl font-black tracking-tight text-[#eee4d1]">{doc.frontmatter.title}</h1>

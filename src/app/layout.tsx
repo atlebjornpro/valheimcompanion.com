@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
+import { cookies } from "next/headers";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Axe } from "lucide-react";
 import "./globals.css";
@@ -12,6 +14,7 @@ import AnalyticsConsent, { AnalyticsPreferencesButton } from "../components/Anal
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "../config/metadata";
 import { routes } from "../config/routes";
 import { site } from "../config/site";
+import { CONSENT_REGION_COOKIE, type ConsentRegion } from "../config/consent";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -30,12 +33,15 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: SITE_NAME,
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Valheim Companion — 1.0, Deep North, and server guides" }],
+    images: [{ url: "/og.jpg", width: 1731, height: 909, alt: "Valheim Companion — 1.0, Deep North, and server guides" }],
   },
-  twitter: { card: "summary_large_image", title: SITE_NAME, description: DEFAULT_DESCRIPTION, images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: SITE_NAME, description: DEFAULT_DESCRIPTION, images: ["/og.jpg"] },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const cookieStore = await cookies();
+  const region: ConsentRegion = cookieStore.get(CONSENT_REGION_COOKIE)?.value === "eea" ? "eea" : "row";
+  const initialAnalyticsStorage = region === "row" ? "granted" : "denied";
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -53,7 +59,7 @@ gtag('consent', 'default', {
   ad_storage: 'denied',
   ad_user_data: 'denied',
   ad_personalization: 'denied',
-  analytics_storage: 'denied',
+  analytics_storage: '${initialAnalyticsStorage}',
   wait_for_update: 500
 });
 gtag('set', 'ads_data_redaction', true);`}
@@ -86,7 +92,8 @@ gtag('set', 'ads_data_redaction', true);`}
           </div>
         </div>
       </footer>
-      <AnalyticsConsent />
+      <AnalyticsConsent region={region} />
+      <Analytics />
       <MobileNav />
     </body>
   </html>;

@@ -18,8 +18,8 @@ export function createPageMetadata({ title, description, path }: { title: string
       siteName: SITE_NAME,
       title,
       description,
-      images: [{ url: "/og.png", width: 1731, height: 909, alt: `${SITE_NAME}: ${title}` }],
+      images: [{ url: "/og.jpg", width: 1731, height: 909, alt: `${SITE_NAME}: ${title}` }],
     },
-    twitter: { card: "summary_large_image", title, description, images: ["/og.png"] },
+    twitter: { card: "summary_large_image", title, description, images: ["/og.jpg"] },
   };
 }
