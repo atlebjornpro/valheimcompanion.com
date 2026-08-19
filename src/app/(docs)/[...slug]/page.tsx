@@ -50,8 +50,8 @@ function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
 }
 
 const relatedMap: Record<string, { href: string; label: string }[]> = {
-  "/valheim-1-0": [{ href: "/deep-north", label: "Deep North coverage" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/updates", label: "Update coverage" }],
-  "/deep-north": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/servers/world-backup-restore", label: "Back up a world" }],
+  "/valheim-1-0": [{ href: "/deep-north", label: "Deep North coverage" }, { href: "/world", label: "World guide: current biomes" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/updates", label: "Update coverage" }],
+  "/deep-north": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/world/regions/ashlands", label: "Current endgame: Ashlands" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/servers/world-backup-restore", label: "Back up a world" }],
   "/servers": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/crossplay", label: "Crossplay configuration" }, { href: "/servers/world-backup-restore", label: "Backup and restore" }],
   "/servers/dedicated-server-setup": [{ href: "/servers/server-settings", label: "Server settings" }, { href: "/servers/crossplay", label: "Crossplay configuration" }, { href: "/servers/server-not-showing", label: "Server not showing" }],
   "/servers/crossplay": [{ href: "/servers/dedicated-server-setup", label: "Server setup" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
@@ -63,6 +63,14 @@ const relatedMap: Record<string, { href: string; label: string }[]> = {
   "/servers/updating-a-server": [{ href: "/servers/world-backup-restore", label: "Create a rollback backup" }, { href: "/servers/server-not-showing", label: "Post-update troubleshooting" }, { href: "/valheim-1-0", label: "Valheim 1.0 release hub" }],
   "/servers/server-requirements": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/server-settings", label: "Configuration generator" }, { href: "/servers/best-server-hosting", label: "Compare hosting options" }],
   "/servers/best-server-hosting": [{ href: "/servers/dedicated-server-setup", label: "Self-host instead" }, { href: "/servers/server-requirements", label: "Server requirements" }, { href: "/servers/crossplay", label: "Crossplay configuration" }],
+  "/world": [{ href: "/world/regions/meadows", label: "Start in Meadows" }, { href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/deep-north", label: "Deep North coverage" }],
+  "/world/regions/meadows": [{ href: "/world", label: "World guide" }, { href: "/world/regions/black-forest", label: "Next: Black Forest" }, { href: "/servers/server-requirements", label: "Server requirements" }],
+  "/world/regions/black-forest": [{ href: "/world", label: "World guide" }, { href: "/world/regions/meadows", label: "Previous: Meadows" }, { href: "/world/regions/swamp", label: "Next: Swamp" }],
+  "/world/regions/swamp": [{ href: "/world", label: "World guide" }, { href: "/world/regions/black-forest", label: "Previous: Black Forest" }, { href: "/world/regions/mountain", label: "Next: Mountain" }],
+  "/world/regions/mountain": [{ href: "/world", label: "World guide" }, { href: "/world/regions/swamp", label: "Previous: Swamp" }, { href: "/world/regions/plains", label: "Next: Plains" }],
+  "/world/regions/plains": [{ href: "/world", label: "World guide" }, { href: "/world/regions/mountain", label: "Previous: Mountain" }, { href: "/world/regions/mistlands", label: "Next: Mistlands" }],
+  "/world/regions/mistlands": [{ href: "/world", label: "World guide" }, { href: "/world/regions/plains", label: "Previous: Plains" }, { href: "/world/regions/ashlands", label: "Next: Ashlands" }],
+  "/world/regions/ashlands": [{ href: "/world", label: "World guide" }, { href: "/world/regions/mistlands", label: "Previous: Mistlands" }, { href: "/valheim-1-0", label: "What's next: Valheim 1.0" }],
 };
 
 const legalRoutes = new Set(["/about", "/contact", "/data-sources", "/editorial-policy", "/privacy", "/terms"]);

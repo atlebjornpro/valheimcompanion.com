@@ -76,6 +76,7 @@ gtag('set', 'ads_data_redaction', true);`}
           </Link>
           <Link href={routes.valheimOne} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">1.0</Link>
           <Link href={routes.deepNorth} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Deep North</Link>
+          <Link href={routes.world} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">World</Link>
           <Link href={routes.servers} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Servers</Link>
           <div className="ml-auto"><Search /></div>
         </nav>
