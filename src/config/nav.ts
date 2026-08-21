@@ -1,4 +1,4 @@
-import { BookOpen, DatabaseBackup, FileText, Flame, History, Map, MountainSnow, Network, Rocket, Server, Shield, Sparkles, TreePine, Trees, Waves, Wheat, Wrench } from "lucide-react";
+import { BookOpen, Bug, Crown, DatabaseBackup, FileText, Flame, History, Map, MountainSnow, Network, Rocket, Server, Shield, Skull, Snowflake, Sparkles, Swords, TreePine, Trees, Waves, Wheat, Wrench, Zap } from "lucide-react";
 import React from "react";
 import { routes, type RoutePath } from "./routes";
 
@@ -25,6 +25,19 @@ export const sections: NavSection[] = [
       { href: routes.regionPlains, label: "Plains", icon: Wheat },
       { href: routes.regionMistlands, label: "Mistlands", icon: Sparkles },
       { href: routes.regionAshlands, label: "Ashlands", icon: Flame },
+    ],
+  },
+  {
+    title: "Bosses",
+    links: [
+      { href: routes.bosses, label: "Boss Guide", icon: Swords, description: "How to summon and beat every released boss, in progression order." },
+      { href: routes.bossEikthyr, label: "Eikthyr", icon: Zap },
+      { href: routes.bossTheElder, label: "The Elder", icon: TreePine },
+      { href: routes.bossBonemass, label: "Bonemass", icon: Skull },
+      { href: routes.bossModer, label: "Moder", icon: Snowflake },
+      { href: routes.bossYagluth, label: "Yagluth", icon: Flame },
+      { href: routes.bossTheQueen, label: "The Queen", icon: Bug },
+      { href: routes.bossFader, label: "Fader", icon: Crown },
     ],
   },
   {
