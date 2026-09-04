@@ -80,6 +80,11 @@
     "description": "How Valheim 1.0 achievements work with old characters, developer commands, spawned items, world modifiers, and multiplayer saves."
   },
   {
+    "slug": "/guides/getting-started",
+    "title": "Valheim 1.0 Beginner Guide: Your First Days and Progression Route",
+    "description": "Start Valheim 1.0 with a practical, spoiler-light route through food, shelter, crafting, bosses, biomes, multiplayer, and safe world choices."
+  },
+  {
     "slug": "/servers/dedicated-server-setup",
     "title": "Valheim 1.0 Dedicated Server Setup: Windows, Linux and Crossplay",
     "description": "Set up a Valheim 1.0 dedicated server on Windows or Linux with verified launch arguments, ports, crossplay, world files, backups, permissions, modifiers, and update steps."
@@ -88,6 +93,11 @@
     "slug": "/valheim-1-0/mods-compatibility",
     "title": "Valheim 1.0 Mods: Compatibility, BepInEx and Server Checklist",
     "description": "What Valheim 1.0 means for mods, BepInEx, modded worlds, dedicated servers, Steam Workshop, and console players at launch."
+  },
+  {
+    "slug": "/updates",
+    "title": "Valheim 1.0 Patch Notes, Release Status and Known Issues",
+    "description": "Track the Valheim 1.0 release, official patch notes, confirmed changes, server checks, and verified known issues for the September 9 launch."
   },
   {
     "slug": "/valheim-1-0/preparation-checklist",
@@ -215,14 +225,14 @@
     "description": "How taming actually works in Valheim, food and fencing for each tameable creature, and how breeding works once they're tame."
   },
   {
-    "slug": "/updates",
-    "title": "Valheim Update Coverage",
-    "description": "Release monitoring and review status for Valheim Companion pages."
-  },
-  {
     "slug": "/world",
     "title": "Valheim World Guide — All Biomes, Creatures, and Bosses",
     "description": "A biome-by-biome Valheim world guide covering creatures, resources, building tips, and the boss unlocked in each of the game's seven released biomes."
+  },
+  {
+    "slug": "/world/world-modifiers",
+    "title": "Valheim World Modifiers Guide for Solo and Dedicated Servers",
+    "description": "Understand Valheim world presets, combat, death, resources, raids, portals, server launch arguments, backups, and 1.0 achievement considerations."
   },
   {
     "slug": "/servers/world-backup-restore",

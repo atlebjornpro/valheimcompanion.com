@@ -15,11 +15,17 @@ npm run dev
 
 ```bash
 npm run lint
+npm run check:links
 npx tsc --noEmit
 npm run build
 ```
 
 The production build regenerates `public/search-index.json` from published MDX pages.
+
+Next.js production builds require a filesystem that supports standard link and
+junction operations. If a removable or exFAT workspace reports `EISDIR` from
+`readlink`, or Turbopack reports that it cannot create a junction, validate the
+same commit from an NTFS workspace or the Linux deployment environment.
 
 ## Project structure
 

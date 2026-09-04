@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CalendarDays, DatabaseBackup, MountainSnow, Network, Server } from "lucide-react";
+import { ArrowRight, CalendarDays, Compass, DatabaseBackup, MountainSnow, Network, Server } from "lucide-react";
 import { createPageMetadata } from "../config/metadata";
 import { routes } from "../config/routes";
 import { site } from "../config/site";
@@ -12,6 +12,7 @@ export const metadata = createPageMetadata({
 });
 
 const focus = [
+  { href: routes.gettingStarted, icon: Compass, title: "Getting started", text: "A spoiler-light first-days route for new and returning players." },
   { href: routes.valheimOne, icon: CalendarDays, title: "Valheim 1.0", text: "Confirmed release information and preparation coverage." },
   { href: routes.deepNorth, icon: MountainSnow, title: "Deep North", text: "Official announcements for Valheim's final biome." },
   { href: routes.servers, icon: Server, title: "Dedicated servers", text: "Setup, updates, crossplay, migration, backups, and hosting." },
@@ -44,7 +45,7 @@ export default function Home() {
     <section className="mt-10" aria-labelledby="focus-heading">
       <p className="section-kicker">First public release</p><h2 id="focus-heading" className="mt-2 text-3xl font-black text-[#eee4d1]">A focused companion, not another broad wiki</h2>
       <p className="mt-4 max-w-3xl leading-7 text-[#a79e8e]">The site covers time-sensitive release and server decisions with primary sources, visible review dates, and a clear line between confirmed information and launch-day unknowns.</p>
-      <div className="mt-6 grid gap-5 lg:grid-cols-3">{focus.map(({ href, icon: Icon, title, text }) => <Link key={href} href={href} className="group rounded-2xl border border-[#393126] bg-[#171914] p-6 hover:border-[#8b6538]"><Icon className="h-5 w-5 text-[#8db6ba]" /><h3 className="mt-6 text-xl font-black text-[#e9dfcb] group-hover:text-[#f0bd68]">{title}</h3><p className="mt-3 text-sm leading-6 text-[#a79e8e]">{text}</p></Link>)}</div>
+      <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{focus.map(({ href, icon: Icon, title, text }) => <Link key={href} href={href} className="group rounded-2xl border border-[#393126] bg-[#171914] p-6 hover:border-[#8b6538]"><Icon className="h-5 w-5 text-[#8db6ba]" /><h3 className="mt-6 text-xl font-black text-[#e9dfcb] group-hover:text-[#f0bd68]">{title}</h3><p className="mt-3 text-sm leading-6 text-[#a79e8e]">{text}</p></Link>)}</div>
     </section>
     <section className="mt-10 rounded-2xl border border-[#35504e] bg-[#14211e] p-6 sm:p-8"><div className="flex gap-4"><DatabaseBackup className="mt-1 h-6 w-6 shrink-0 text-[#8db6ba]" /><div><h2 className="text-xl font-black text-[#e8e0cf]">Backup-first server guidance</h2><p className="mt-2 leading-7 text-[#aebdb7]">Migration, update, and restore pages begin as factual scopes. Procedures will expand only where current official sources support the steps.</p><Link href={routes.servers} className="mt-4 inline-flex items-center gap-2 font-bold text-[#e1ad5a]">Browse server topics <Network className="h-4 w-4" /></Link></div></div></section>
   </div>;

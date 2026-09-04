@@ -1,4 +1,4 @@
-import { BookOpen, Bug, Crown, DatabaseBackup, FileText, Flame, Hammer, History, Map, Milestone, MountainSnow, Network, PawPrint, Rocket, Server, Shield, Skull, Snowflake, Soup, Sparkles, Swords, Terminal, TreePine, Trees, Waves, Wheat, Wrench, Zap } from "lucide-react";
+import { BookOpen, Bug, Compass, Crown, DatabaseBackup, FileText, Flame, Hammer, History, Map, Milestone, MountainSnow, Network, PawPrint, Rocket, Server, Shield, Skull, SlidersHorizontal, Snowflake, Soup, Sparkles, Swords, Terminal, TreePine, Trees, Waves, Wheat, Wrench, Zap } from "lucide-react";
 import React from "react";
 import { routes, type RoutePath } from "./routes";
 
@@ -9,6 +9,7 @@ export const sections: NavSection[] = [
   {
     title: "Start Here",
     links: [
+      { href: routes.gettingStarted, label: "Beginner Guide", icon: Compass, description: "A spoiler-light route through the first days, biomes, bosses, and multiplayer." },
       { href: routes.valheimOne, label: "Valheim 1.0", icon: Rocket, description: "Release date, platforms, saves, achievements, price, and crossplay." },
       { href: routes.deepNorth, label: "Deep North", icon: MountainSnow, description: "Confirmed features and launch preparation for Valheim's final biome." },
       { href: routes.updates, label: "Updates", icon: History, description: "Official-source monitoring and guide review status." },
@@ -55,6 +56,7 @@ export const sections: NavSection[] = [
     title: "Guides",
     links: [
       { href: routes.progressionRoadmap, label: "Progression Roadmap", icon: Milestone, description: "Biomes, bosses, and crafting stations tied together in order." },
+      { href: routes.worldModifiers, label: "World Modifiers", icon: SlidersHorizontal, description: "Presets, resources, raids, portals, server arguments, and achievements." },
       { href: routes.buildingGuide, label: "Building & Base Locations", icon: Hammer },
       { href: routes.foodAndCooking, label: "Food & Cooking", icon: Soup },
       { href: routes.taming, label: "Taming", icon: PawPrint },

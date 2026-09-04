@@ -10,6 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import type { AnchorHTMLAttributes } from "react";
 import { createPageMetadata, SITE_NAME, SITE_URL } from "../../../config/metadata";
 import ServerConfigGenerator from "../../../components/ServerConfigGenerator";
+import WorldMigrationChecklist from "../../../components/WorldMigrationChecklist";
 import { extractFaq } from "../../../utils/faq";
 
 type RouteParams = { slug?: string[] };
@@ -50,6 +51,8 @@ function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
 }
 
 const relatedMap: Record<string, { href: string; label: string }[]> = {
+  "/updates": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/valheim-1-0/preparation-checklist", label: "Launch preparation checklist" }, { href: "/servers/updating-a-server", label: "Update a dedicated server" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }],
+  "/guides/getting-started": [{ href: "/progression/roadmap", label: "Progression roadmap" }, { href: "/world", label: "World and biome guide" }, { href: "/resources/food-and-cooking", label: "Food and cooking" }, { href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }],
   "/valheim-1-0": [{ href: "/valheim-1-0/preparation-checklist", label: "1.0 preparation checklist" }, { href: "/deep-north", label: "Deep North coverage" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/valheim-1-0/system-requirements-download-size", label: "Requirements and download size" }],
   "/valheim-1-0/preparation-checklist": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/servers/world-backup-restore", label: "Back up and restore a world" }, { href: "/servers/existing-world-vs-new-world", label: "Existing or new world?" }, { href: "/valheim-1-0/mods-compatibility", label: "Mod compatibility" }],
   "/valheim-1-0/achievements-cheats": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/tools/console-commands", label: "Console commands" }, { href: "/valheim-1-0/preparation-checklist", label: "Preparation checklist" }],
@@ -70,6 +73,7 @@ const relatedMap: Record<string, { href: string; label: string }[]> = {
   "/servers/server-requirements": [{ href: "/servers/dedicated-server-setup", label: "Dedicated server setup" }, { href: "/servers/server-settings", label: "Configuration generator" }, { href: "/servers/best-server-hosting", label: "Compare hosting options" }],
   "/servers/best-server-hosting": [{ href: "/servers/dedicated-server-setup", label: "Self-host instead" }, { href: "/servers/server-requirements", label: "Server requirements" }, { href: "/servers/crossplay", label: "Crossplay configuration" }],
   "/world": [{ href: "/world/regions/meadows", label: "Start in Meadows" }, { href: "/bosses", label: "Boss guide" }, { href: "/progression/roadmap", label: "Progression roadmap" }, { href: "/valheim-1-0", label: "Valheim 1.0 release hub" }],
+  "/world/world-modifiers": [{ href: "/servers/server-settings", label: "Server settings generator" }, { href: "/servers/world-backup-restore", label: "Back up and restore a world" }, { href: "/valheim-1-0/achievements-cheats", label: "Achievement eligibility" }, { href: "/servers/move-local-world-to-server", label: "Move a world to a server" }],
   "/world/regions/meadows": [{ href: "/world", label: "World guide" }, { href: "/bosses/eikthyr", label: "Boss: Eikthyr" }, { href: "/world/regions/black-forest", label: "Next: Black Forest" }, { href: "/servers/server-requirements", label: "Server requirements" }],
   "/world/regions/black-forest": [{ href: "/world", label: "World guide" }, { href: "/bosses/the-elder", label: "Boss: The Elder" }, { href: "/world/regions/meadows", label: "Previous: Meadows" }, { href: "/world/regions/swamp", label: "Next: Swamp" }],
   "/world/regions/swamp": [{ href: "/world", label: "World guide" }, { href: "/bosses/bonemass", label: "Boss: Bonemass" }, { href: "/world/regions/black-forest", label: "Previous: Black Forest" }, { href: "/world/regions/mountain", label: "Next: Mountain" }],
@@ -143,7 +147,7 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
       {doc.frontmatter.description ? <p className="mt-4 max-w-2xl leading-7 text-[#aaa18f]">{doc.frontmatter.description}</p> : null}
       {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
     </header>
-    <MDXRemote source={doc.content} components={{ a: MdxLink, ServerConfigGenerator }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
+    <MDXRemote source={doc.content} components={{ a: MdxLink, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
     {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
   </article>;
 }

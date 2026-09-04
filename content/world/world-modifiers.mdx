@@ -1,0 +1,150 @@
+---
+title: Valheim World Modifiers Guide for Solo and Dedicated Servers
+description: Understand Valheim world presets, combat, death, resources, raids, portals, server launch arguments, backups, and 1.0 achievement considerations.
+updated: 2026-09-04
+---
+
+World modifiers change the rules of a Valheim world. They can adjust difficulty, resource availability, death penalties, raids, portals, and several optional play styles without requiring a mod.
+
+For a shared or long-running world, treat modifier changes like configuration changes: record the current state, make a backup, change one planned setting, and verify it before the next session.
+
+## Available presets
+
+Iron Gate's dedicated-server guide documents these preset names:
+
+| Preset | Intended direction |
+|---|---|
+| Normal | Standard Valheim rules |
+| Casual | A more forgiving configuration |
+| Easy | Reduced overall difficulty |
+| Hard | Increased overall difficulty |
+| Hardcore | High-consequence configuration |
+| Immersive | Exploration-oriented restrictions |
+| Hammer | Building-focused configuration |
+
+The preset name communicates the broad intent, but players should still review the resulting modifier summary in the current game. Avoid relying on an old screenshot as a permanent specification.
+
+On a dedicated server, the documented pattern is:
+
+```text
+-preset hard
+```
+
+Setting a preset overwrites earlier individual modifier choices. When combining a preset with individual modifiers, put the preset first and the overrides afterward.
+
+## Individual dedicated-server modifiers
+
+The official server guide documents five configurable categories:
+
+| Modifier | Documented values |
+|---|---|
+| `combat` | `veryeasy`, `easy`, `hard`, `veryhard` |
+| `deathpenalty` | `casual`, `veryeasy`, `easy`, `hard`, `hardcore` |
+| `resources` | `muchless`, `less`, `more`, `muchmore`, `most` |
+| `raids` | `none`, `muchless`, `less`, `more`, `muchmore` |
+| `portals` | `casual`, `hard`, `veryhard` |
+
+Example syntax:
+
+```text
+-preset normal -modifier resources more -modifier raids less
+```
+
+This example is syntax guidance, not a recommended configuration for every community. Confirm the generated summary after startup.
+
+## Checkbox-style world keys
+
+The official dedicated-server guide lists these `-setkey` values:
+
+- `nobuildcost`
+- `playerevents`
+- `passivemobs`
+- `nomap`
+
+Example:
+
+```text
+-setkey nomap
+```
+
+Do not confuse world keys with server visibility, crossplay, passwords, or save paths. Those are separate launch settings.
+
+## What each category changes
+
+### Combat
+
+Combat settings alter the intended difficulty of fighting enemies. Review the setting with every member of a shared world; changing it can affect preparation and recovery expectations even when no map data changes.
+
+### Death penalty
+
+Death-penalty settings change the consequences of dying. Before increasing the penalty, verify that players understand the setting and that a world backup exists.
+
+### Resources
+
+Resource settings alter the rate at which supported resources are obtained. This affects the time needed for building and progression, so agree on it before a community begins gathering at scale.
+
+### Raids
+
+Raid settings adjust event frequency. The separate `playerevents` key makes raid progression player-based rather than relying only on shared world progression, which may suit groups whose members advance at different speeds.
+
+### Portals
+
+Portal modifiers change travel restrictions. Record the setting before planning transport routes; a world designed around one portal rule may be inconvenient when moved to another server with different modifiers.
+
+## World modifiers and Valheim 1.0 achievements
+
+Iron Gate has confirmed that some world modifiers can affect achievement eligibility in Valheim 1.0. The official FAQ specifically identifies Hammer mode as a temporary cheat state that blocks certain achievements while active.
+
+Do not assume that every preset or slider has the same effect. Review the current in-game warning and the official 1.0 FAQ before changing an achievement-focused world. Valheim Companion will update this guide after the public 1.0 build can be checked.
+
+## Changing an existing world safely
+
+1. Ask all players to disconnect.
+2. Stop the local game or dedicated server cleanly.
+3. Create a dated offline backup of the world and configuration.
+4. Record the current preset and individual modifiers.
+5. Make the new configuration explicit rather than relying on memory.
+6. Start the world privately and inspect the modifier summary.
+7. Test saving and restarting before reopening the server.
+
+Modifier changes do not replace world migration or terrain-generation decisions. Back up separately before Valheim 1.0 and review whether an old or new world is appropriate.
+
+## Dedicated-server configuration order
+
+A readable launch configuration keeps related settings together:
+
+```text
+valheim_server.exe -nographics -batchmode \
+  -name "My Valheim Server" \
+  -world "Dedicated" \
+  -password "change-me" \
+  -preset normal \
+  -modifier resources more \
+  -modifier raids less
+```
+
+The line breaks are illustrative. Use the format required by the operating system and hosting panel. Never publish a real server password.
+
+Use the [server configuration generator](/servers/server-settings) for the complete documented launch line.
+
+## Moving modifiers with a world
+
+When transferring a world to another machine or provider, record the effective modifiers separately from the world files. A hosting panel may store launch arguments outside the save directory, and importing a world does not guarantee that the destination recreates the same server configuration.
+
+After migration, check:
+
+- the intended preset and individual overrides;
+- portal and raid behavior;
+- the networking backend and visibility;
+- whether the expected world, rather than a new world, loaded;
+- save and restart behavior.
+
+Follow the [interactive world migration checklist](/servers/move-local-world-to-server).
+
+## Official sources
+
+- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Valheim support](https://valheim.com/support/)
+
+Next: [generate server settings](/servers/server-settings) or [back up the world](/servers/world-backup-restore).
