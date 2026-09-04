@@ -34,8 +34,9 @@ export default function Home() {
         <p className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-[#e2ad5a]">Verified guidance, deliberately focused</p>
         <h1 className="text-5xl font-black leading-[0.96] tracking-[-0.055em] text-[#f4ead4] sm:text-7xl">Valheim 1.0.<br /><span className="text-[#9bc2c7]">Worlds worth protecting.</span></h1>
         <p className="mt-7 max-w-2xl text-lg leading-8 text-[#b9b09f]">{site.description}</p>
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Link href={routes.valheimOne} className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#b56f2a] px-5 py-3 font-bold text-white hover:bg-[#ce8234]">View confirmed 1.0 information <ArrowRight className="h-4 w-4" /></Link>
+          <Link href={routes.serverHosting} className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#d69a45] bg-[#2b2117]/90 px-5 py-3 font-bold text-[#f0bd68] hover:bg-[#3a2b1c]"><Server className="h-4 w-4" /> Compare server hosting</Link>
           <Link href={routes.dataSources} className="inline-flex items-center justify-center rounded-lg border border-[#786044] px-5 py-3 font-bold text-[#e6dcc8] hover:border-[#b8884e]">How sources are verified</Link>
         </div>
       </div>
