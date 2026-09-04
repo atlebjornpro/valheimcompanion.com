@@ -1,0 +1,123 @@
+---
+title: "Valheim 1.0 Mods: Compatibility, BepInEx and Server Checklist"
+description: "What Valheim 1.0 means for mods, BepInEx, modded worlds, dedicated servers, Steam Workshop, and console players at launch."
+updated: 2026-09-04
+---
+
+Valheim 1.0 is a major game update, and existing mods should be treated as **unconfirmed until their authors test the final release**. Iron Gate does not provide official mod support and does not guarantee that mods will function when 1.0 launches.
+
+There will be no public test branch for 1.0 before September 9, so mod authors and server operators cannot fully validate against the final public build in advance.
+
+## The confirmed mod situation
+
+Iron Gate's 1.0 FAQ confirms:
+
+- Valheim has no official mod support.
+- Existing mod compatibility is not guaranteed for 1.0.
+- There will be no Steam Workshop integration at launch.
+- Consoles will not support mods at launch.
+- There is no 1.0 public test branch before release.
+
+That does not mean every mod will break. It means there is no official compatibility promise, and the correct status for an untested mod is **unknown**, not compatible.
+
+## What to do before September 9
+
+For every modded character, world, or server:
+
+1. Stop the game or server cleanly.
+2. Create an offline backup of the world and character data.
+3. Export the exact mod list, loader version, and configuration files.
+4. Record the current Valheim application version.
+5. Keep a copy of the working pre-1.0 installation where licensing and platform tools permit it.
+6. Decide which mods are essential and which can be removed for the first test.
+
+Do not depend on an automatic backup stored beside the live world. A launcher, hosting panel, or synchronization tool may update more than expected.
+
+## A safe compatibility test order
+
+Use a duplicate world and add complexity in stages:
+
+1. Launch the 1.0 client without mods.
+2. Load a disposable copy of the world locally.
+3. Confirm terrain, builds, storage, portals, and character inventories.
+4. Install a loader version explicitly marked for the final 1.0 build.
+5. Add required framework mods.
+6. Add gameplay or content mods one at a time or in small groups.
+7. Review logs after each stage.
+8. Start the dedicated server only after the local baseline is understood.
+9. Require clients to use the compatible versions expected by the server.
+
+Never save a partially loaded modded world over the only good copy. A missing building or inventory object may become permanent once the altered state is saved.
+
+## BepInEx and other community tooling
+
+BepInEx, mod managers, and individual mods are community projects rather than supported Valheim features. Their compatibility announcements should come from their maintainers.
+
+A hosting panel offering a one-click BepInEx installer does not prove that the installed version supports Valheim 1.0. Check the installed version, the provider's update status, and the upstream release notes before loading a valuable world.
+
+Avoid downloading replacement DLLs from repost sites or links shared without provenance. Use the mod author's documented distribution channel and keep a record of what was installed.
+
+## Dedicated-server checklist
+
+Modded servers add four compatibility layers: the Valheim server build, the loader, server-side mods, and player-client mods.
+
+- [ ] Back up the live world and permission files.
+- [ ] Copy loader and mod configuration.
+- [ ] Record every mod and version.
+- [ ] Disable automatic restarts during the maintenance window.
+- [ ] Update the base server before adding mods.
+- [ ] Test the server without mods on a duplicate save.
+- [ ] Confirm each required mod supports the final build.
+- [ ] Tell players which client mods and versions are required.
+- [ ] Verify crossplay expectations; consoles cannot install client mods.
+- [ ] Keep the rollback set until several successful sessions have completed.
+
+See [updating a Valheim server](/servers/updating-a-server) and [world backup and restore](/servers/world-backup-restore).
+
+## Mods and crossplay
+
+Valheim 1.0 supports crossplay between all launch platforms, but consoles have no mod support. Therefore, do not assume a modded PC server remains compatible with PlayStation, Xbox, or Nintendo Switch 2 clients.
+
+Some server-side changes may appear transparent to clients, while others require matching files or change network behavior. That distinction is defined by each mod, not by Valheim's general crossplay promise. For a mixed-platform group, a clean server is the dependable launch baseline.
+
+## Mods and achievements
+
+Iron Gate's achievement FAQ describes restrictions for developer commands, spawned items, and some world modifiers. It does not publish a blanket rule for third-party mods.
+
+Do not interpret that silence as a guarantee. Mods can invoke commands, create items, alter statistics, or change game state. If achievements matter, use an unmodded character and world until the release behavior is verified. See [achievements and cheat eligibility](/valheim-1-0/achievements-cheats).
+
+## Steam Workshop and console support
+
+There will be **no Steam Workshop** support at the 1.0 launch. PC modding continues through community tooling at the user's own risk.
+
+There will also be **no console mod support** for 1.0. This applies to the newly released PlayStation 5 and Nintendo Switch 2 versions as well as existing console players.
+
+## Frequently asked questions
+
+### Will Valheim mods work after the 1.0 update?
+
+Some may work, but Iron Gate guarantees none of them. Wait for the author of each required mod to test the final 1.0 build.
+
+### Will Valheim 1.0 have Steam Workshop support?
+
+No. Iron Gate says Steam Workshop will not be featured for version 1.0.
+
+### Will BepInEx work with Valheim 1.0?
+
+Treat compatibility as unknown until the BepInEx maintainers and the relevant Valheim modding tools confirm support for the final release. A preinstalled hosting-panel option is not itself proof.
+
+### Can console players use Valheim mods?
+
+No. Iron Gate says consoles will not have mod support for 1.0.
+
+### Should a modded server start a new world?
+
+Not automatically. Back up the existing world and test a copy without mods first. A new world provides a cleaner diagnostic baseline, but preserving the original save is still essential.
+
+## Official sources
+
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Valheim modding FAQ](https://valheim.com/support/modding-faq-for-the-asset-bundle-update-post-0-217-40/)
+- [Valheim's position on mods](https://www.valheimgame.com/news/regarding-mods/)
+
+Continue with the [1.0 preparation checklist](/valheim-1-0/preparation-checklist) or [server update guide](/servers/updating-a-server).

@@ -1,4 +1,4 @@
-import { BookOpen, Bug, Crown, DatabaseBackup, FileText, Flame, History, Map, MountainSnow, Network, Rocket, Server, Shield, Skull, Snowflake, Sparkles, Swords, TreePine, Trees, Waves, Wheat, Wrench, Zap } from "lucide-react";
+import { BookOpen, Bug, Crown, DatabaseBackup, FileText, Flame, Hammer, History, Map, Milestone, MountainSnow, Network, PawPrint, Rocket, Server, Shield, Skull, Snowflake, Soup, Sparkles, Swords, Terminal, TreePine, Trees, Waves, Wheat, Wrench, Zap } from "lucide-react";
 import React from "react";
 import { routes, type RoutePath } from "./routes";
 
@@ -12,6 +12,17 @@ export const sections: NavSection[] = [
       { href: routes.valheimOne, label: "Valheim 1.0", icon: Rocket, description: "Release date, platforms, saves, achievements, price, and crossplay." },
       { href: routes.deepNorth, label: "Deep North", icon: MountainSnow, description: "Confirmed features and launch preparation for Valheim's final biome." },
       { href: routes.updates, label: "Updates", icon: History, description: "Official-source monitoring and guide review status." },
+    ],
+  },
+  {
+    title: "1.0 Launch",
+    links: [
+      { href: routes.valheimOnePreparation, label: "Preparation Checklist", icon: FileText, description: "Backups, worlds, servers, mods, and launch-day verification." },
+      { href: routes.valheimAchievements, label: "Achievements & Cheats", icon: Shield, description: "Old saves, devcommands, spawned items, and eligibility." },
+      { href: routes.valheimMods, label: "Mod Compatibility", icon: Wrench, description: "A rollback-first plan for mods, BepInEx, and servers." },
+      { href: routes.valheimRequirements, label: "Requirements & Download", icon: FileText, description: "Current PC, Mac, Linux requirements and download estimates." },
+      { href: routes.valheimPs5, label: "PlayStation 5", icon: Rocket, description: "Release date, PS Plus, crossplay, saves, and mods." },
+      { href: routes.valheimSwitch2, label: "Nintendo Switch 2", icon: Rocket, description: "Crossplay, platform features, saves, and online play." },
     ],
   },
   {
@@ -38,6 +49,16 @@ export const sections: NavSection[] = [
       { href: routes.bossYagluth, label: "Yagluth", icon: Flame },
       { href: routes.bossTheQueen, label: "The Queen", icon: Bug },
       { href: routes.bossFader, label: "Fader", icon: Crown },
+    ],
+  },
+  {
+    title: "Guides",
+    links: [
+      { href: routes.progressionRoadmap, label: "Progression Roadmap", icon: Milestone, description: "Biomes, bosses, and crafting stations tied together in order." },
+      { href: routes.buildingGuide, label: "Building & Base Locations", icon: Hammer },
+      { href: routes.foodAndCooking, label: "Food & Cooking", icon: Soup },
+      { href: routes.taming, label: "Taming", icon: PawPrint },
+      { href: routes.consoleCommands, label: "Console Commands", icon: Terminal },
     ],
   },
   {

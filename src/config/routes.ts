@@ -1,6 +1,12 @@
 export const routes = {
   home: "/",
   valheimOne: "/valheim-1-0",
+  valheimOnePreparation: "/valheim-1-0/preparation-checklist",
+  valheimAchievements: "/valheim-1-0/achievements-cheats",
+  valheimMods: "/valheim-1-0/mods-compatibility",
+  valheimRequirements: "/valheim-1-0/system-requirements-download-size",
+  valheimPs5: "/valheim-1-0/playstation-5",
+  valheimSwitch2: "/valheim-1-0/nintendo-switch-2",
   deepNorth: "/deep-north",
   updates: "/updates",
   servers: "/servers",
@@ -30,6 +36,11 @@ export const routes = {
   bossYagluth: "/bosses/yagluth",
   bossTheQueen: "/bosses/the-queen",
   bossFader: "/bosses/fader",
+  progressionRoadmap: "/progression/roadmap",
+  buildingGuide: "/builds/base-building-guide",
+  foodAndCooking: "/resources/food-and-cooking",
+  taming: "/resources/taming",
+  consoleCommands: "/tools/console-commands",
   about: "/about",
   contact: "/contact",
   dataSources: "/data-sources",
@@ -39,4 +50,3 @@ export const routes = {
 } as const;
 
 export type RoutePath = (typeof routes)[keyof typeof routes];
-

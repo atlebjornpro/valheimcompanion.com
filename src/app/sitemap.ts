@@ -53,6 +53,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: route === "/" ? SITE_URL : `${SITE_URL}${route}`,
     lastModified,
     changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : route.startsWith("/servers/") ? 0.8 : 0.7,
+    priority:
+      route === "/"
+        ? 1
+        : route === "/valheim-1-0" || route.startsWith("/valheim-1-0/")
+          ? 0.9
+          : route.startsWith("/servers/")
+            ? 0.8
+            : 0.7,
   }));
 }

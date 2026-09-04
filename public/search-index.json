@@ -5,6 +5,16 @@
     "description": "The scope, independence, and purpose of Valheim Companion."
   },
   {
+    "slug": "/servers/best-server-hosting",
+    "title": "Best Valheim Server Hosting (2026 Comparison)",
+    "description": "An honest, sourced comparison of managed Valheim server hosts — DatHost, Shockbyte, Supercraft, Nitrado, GPORTAL, Apex, Sparked Host, and BisectHosting. Real starting prices, player slots, crossplay support, and who each one is actually best for."
+  },
+  {
+    "slug": "/bosses/bonemass",
+    "title": "Bonemass Boss Guide: How to Summon and Beat Valheim's Third Boss",
+    "description": "How to summon and defeat Bonemass in Valheim — poison mechanics, blunt weakness, gear, arena tips, and common mistakes."
+  },
+  {
     "slug": "/contact",
     "title": "Contact Valheim Companion",
     "description": "How correction, source, privacy, and site-quality reports will be handled."
@@ -20,6 +30,16 @@
     "description": "How Valheim Companion separates confirmed facts, testing, interpretation, and commercial content."
   },
   {
+    "slug": "/bosses/eikthyr",
+    "title": "Eikthyr Boss Guide: How to Summon and Beat Valheim's First Boss",
+    "description": "How to summon and defeat Eikthyr, Valheim's first boss — attacks, gear, arena tips, and common mistakes."
+  },
+  {
+    "slug": "/bosses/fader",
+    "title": "Fader Boss Guide: How to Beat Valheim's Current Final Boss",
+    "description": "How to summon and defeat Fader in Valheim's Ashlands — attacks, fire resistance, gear, and arena tips for the endgame coliseum fight."
+  },
+  {
     "slug": "/servers/move-local-world-to-server",
     "title": "How to Move a Valheim World to a Dedicated Server",
     "description": "Transfer an existing local Valheim world to a Windows, Linux, Docker, or managed dedicated server with a backup-first migration and rollback plan."
@@ -30,9 +50,14 @@
     "description": "Update a Valheim dedicated server through Steam, SteamCMD, Docker, or managed hosting with backup, version, mod, verification, and rollback checks for Valheim 1.0."
   },
   {
+    "slug": "/bosses/moder",
+    "title": "Moder Boss Guide: How to Summon and Beat Valheim's Fourth Boss",
+    "description": "How to summon and defeat Moder in Valheim — flying and grounded phases, gear, arena tips, and common mistakes."
+  },
+  {
     "slug": "/privacy",
     "title": "Privacy Policy",
-    "description": "How Valheim Companion handles hosting data, analytics consent, and browser storage."
+    "description": "How Valheim Companion handles hosting data, analytics consent, browser storage, and affiliate links."
   },
   {
     "slug": "/terms",
@@ -40,9 +65,34 @@
     "description": "Basic terms, independence, and limitations for Valheim Companion."
   },
   {
+    "slug": "/bosses/the-elder",
+    "title": "The Elder Boss Guide: How to Summon and Beat Valheim's Second Boss",
+    "description": "How to summon and defeat The Elder in Valheim — fire weakness, attacks, gear, arena tips, and common mistakes."
+  },
+  {
+    "slug": "/bosses/the-queen",
+    "title": "The Queen Boss Guide: How to Beat Valheim's Sixth Boss",
+    "description": "How to reach and defeat The Queen in Valheim's Infested Citadel — attack patterns, add management, gear, and arena tips."
+  },
+  {
+    "slug": "/valheim-1-0/achievements-cheats",
+    "title": "Valheim 1.0 Achievements: Cheats, Old Saves and Eligibility",
+    "description": "How Valheim 1.0 achievements work with old characters, developer commands, spawned items, world modifiers, and multiplayer saves."
+  },
+  {
     "slug": "/servers/dedicated-server-setup",
     "title": "Valheim 1.0 Dedicated Server Setup: Windows, Linux and Crossplay",
     "description": "Set up a Valheim 1.0 dedicated server on Windows or Linux with verified launch arguments, ports, crossplay, world files, backups, permissions, modifiers, and update steps."
+  },
+  {
+    "slug": "/valheim-1-0/mods-compatibility",
+    "title": "Valheim 1.0 Mods: Compatibility, BepInEx and Server Checklist",
+    "description": "What Valheim 1.0 means for mods, BepInEx, modded worlds, dedicated servers, Steam Workshop, and console players at launch."
+  },
+  {
+    "slug": "/valheim-1-0/preparation-checklist",
+    "title": "Valheim 1.0 Preparation Checklist: Worlds, Servers and Mods",
+    "description": "Prepare safely for Valheim 1.0 on September 9, 2026 with a practical checklist for world saves, dedicated servers, characters, mods, achievements, and the Deep North."
   },
   {
     "slug": "/valheim-1-0",
@@ -50,9 +100,39 @@
     "description": "Valheim 1.0 launches September 9, 2026. See confirmed platforms, Deep North information, crossplay, save compatibility, achievements, price, downloads, and server details."
   },
   {
+    "slug": "/valheim-1-0/system-requirements-download-size",
+    "title": "Valheim 1.0 System Requirements and Download Size",
+    "description": "Current Valheim PC, Mac and Linux system requirements plus the official 1.0 download-size estimates for each platform."
+  },
+  {
     "slug": "/servers/existing-world-vs-new-world",
     "title": "Valheim 1.0: Start a New World or Keep Your Old Save?",
     "description": "Decide whether to start a new Valheim world for 1.0 or continue an existing save, with confirmed guidance on Deep North generation, backups, mods, and achievements."
+  },
+  {
+    "slug": "/world/regions/ashlands",
+    "title": "Valheim Ashlands Guide: Creatures, Flametal, and Fader",
+    "description": "Ashlands biome guide for Valheim — Charred enemies, Flametal ore, cinder rain survival, and how to summon the boss Fader."
+  },
+  {
+    "slug": "/world/regions/black-forest",
+    "title": "Valheim Black Forest Guide: Creatures, Resources, and The Elder",
+    "description": "Black Forest biome guide for Valheim — Greydwarves, Trolls, Copper and Tin, Haldor the Trader, and how to summon The Elder."
+  },
+  {
+    "slug": "/bosses",
+    "title": "Valheim Boss Guide — How to Summon and Beat Every Boss",
+    "description": "A boss-by-boss Valheim guide covering summon requirements, attack patterns, gear, and arena tips for all seven released bosses."
+  },
+  {
+    "slug": "/builds/base-building-guide",
+    "title": "Valheim Building Guide: Structural Integrity and Best Base Locations",
+    "description": "How Valheim's building support system actually works, material tiers in unlock order, and what makes a good base location."
+  },
+  {
+    "slug": "/tools/console-commands",
+    "title": "Valheim Console Commands and Cheats (Full List)",
+    "description": "How to enable Valheim's console and devcommands, the full list of cheat commands, and what actually happens to your save when you use them."
   },
   {
     "slug": "/servers/crossplay",
@@ -67,7 +147,7 @@
   {
     "slug": "/servers/server-requirements",
     "title": "Valheim Dedicated Server Requirements",
-    "description": "Requirements-page scaffold that separates official facts from future measured recommendations."
+    "description": "Official Windows and Linux requirements, Docker library minimums, and port requirements for a Valheim dedicated server. Hardware sizing is withheld until it can be sourced or measured."
   },
   {
     "slug": "/servers/server-settings",
@@ -80,9 +160,44 @@
     "description": "Prepare for Valheim's Deep North and the 1.0 release with confirmed world-generation guidance, official feature previews, and practical character, world, and server checklists."
   },
   {
-    "slug": "/servers/best-server-hosting",
-    "title": "Valheim Server Hosting",
-    "description": "Editorial scope and comparison criteria for future Valheim managed-server hosting coverage."
+    "slug": "/resources/food-and-cooking",
+    "title": "Valheim Food and Cooking Guide",
+    "description": "How Valheim's food system works — active food limits, cooking station progression, and what to eat at each stage of the game."
+  },
+  {
+    "slug": "/world/regions/meadows",
+    "title": "Valheim Meadows Guide: Creatures, Resources, and Eikthyr",
+    "description": "Meadows biome guide for Valheim — creatures, resources, the Eikthyr boss fight, and building tips for the starting biome."
+  },
+  {
+    "slug": "/world/regions/mistlands",
+    "title": "Valheim Mistlands Guide: Creatures, Eitr, and The Queen",
+    "description": "Mistlands biome guide for Valheim — Seekers, Dvergr, Black Cores, Eitr crafting, and how to reach The Queen."
+  },
+  {
+    "slug": "/world/regions/mountain",
+    "title": "Valheim Mountain Guide: Creatures, Silver, and Moder",
+    "description": "Mountain biome guide for Valheim — Wolves, Drakes, Frost Caves, Silver ore, and how to summon Moder."
+  },
+  {
+    "slug": "/valheim-1-0/nintendo-switch-2",
+    "title": "Valheim Nintendo Switch 2 Release: Date, Crossplay and Features",
+    "description": "Confirmed Valheim Nintendo Switch 2 launch details for September 9, 2026, including crossplay, touch controls, mouse mode, online play, saves, and mods."
+  },
+  {
+    "slug": "/world/regions/plains",
+    "title": "Valheim Plains Guide: Creatures, Black Metal, and Yagluth",
+    "description": "Plains biome guide for Valheim — Deathsquitos, Fuling villages, Black Metal, Lox taming, and how to summon Yagluth."
+  },
+  {
+    "slug": "/progression/roadmap",
+    "title": "Valheim Progression Roadmap: What to Do in Order",
+    "description": "A full Valheim progression roadmap tying together biomes, bosses, and crafting stations — what unlocks what, in order."
+  },
+  {
+    "slug": "/valheim-1-0/playstation-5",
+    "title": "Valheim PS5 Release: Date, Crossplay, PS Plus and Saves",
+    "description": "Confirmed Valheim PlayStation 5 launch details for September 9, 2026, including crossplay, PS Plus, player count, saves, mods, and what remains unknown."
   },
   {
     "slug": "/servers/server-not-showing",
@@ -90,13 +205,33 @@
     "description": "Diagnose a missing Valheim dedicated server, failed connection, join-code problem, version mismatch, Steam port issue, or PlayFab crossplay configuration."
   },
   {
+    "slug": "/world/regions/swamp",
+    "title": "Valheim Swamp Guide: Creatures, Iron, and Bonemass",
+    "description": "Swamp biome guide for Valheim — Draugr, Iron via Sunken Crypts, poison hazards, and how to summon Bonemass."
+  },
+  {
+    "slug": "/resources/taming",
+    "title": "Valheim Taming Guide: Boar, Wolf, Lox, and Asksvin",
+    "description": "How taming actually works in Valheim, food and fencing for each tameable creature, and how breeding works once they're tame."
+  },
+  {
     "slug": "/updates",
     "title": "Valheim Update Coverage",
     "description": "Release monitoring and review status for Valheim Companion pages."
   },
   {
+    "slug": "/world",
+    "title": "Valheim World Guide — All Biomes, Creatures, and Bosses",
+    "description": "A biome-by-biome Valheim world guide covering creatures, resources, building tips, and the boss unlocked in each of the game's seven released biomes."
+  },
+  {
     "slug": "/servers/world-backup-restore",
     "title": "Valheim World Save Location, Backup and Restore",
     "description": "Find the active Valheim save location on Windows or Linux, create a complete dedicated-server backup, understand automatic retention, and restore safely."
+  },
+  {
+    "slug": "/bosses/yagluth",
+    "title": "Yagluth Boss Guide: How to Summon and Beat Valheim's Fifth Boss",
+    "description": "How to summon and defeat Yagluth in Valheim — fire and lightning attacks, gear, arena tips, and common mistakes."
   }
 ]

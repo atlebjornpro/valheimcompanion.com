@@ -1,0 +1,117 @@
+---
+title: "Valheim 1.0 Achievements: Cheats, Old Saves and Eligibility"
+description: "How Valheim 1.0 achievements work with old characters, developer commands, spawned items, world modifiers, and multiplayer saves."
+updated: 2026-09-04
+---
+
+Valheim 1.0 adds **more than 50 achievements**. Existing characters and worlds can earn them, but statistics begin tracking only after version 1.0 is installed. Previous accomplishments are not automatically credited in every case.
+
+Iron Gate has also introduced cheat-state rules. Most developer commands can permanently mark a character and world as cheated, while spawned items and certain world modifiers can create additional restrictions.
+
+## What is confirmed for launch
+
+- More than 50 achievements are planned for Valheim 1.0.
+- Achievement statistics start tracking after the 1.0 update is installed.
+- An old save remains usable, but previous activity may need to be repeated.
+- Most developer commands permanently flag the current character and world.
+- Some commands, including `freefly`, are exceptions.
+- Entering a cheated state after 1.0 requires confirmation.
+- Characters that used affected commands before 1.0 can also be marked.
+- Items created with spawn commands are visibly marked.
+- Picking up a cheated item causes a temporary cheat state until all such items are discarded.
+- Some world modifiers block particular achievements; Hammer mode is a temporary cheat state.
+
+The complete achievement list and the exact unlock conditions have not been officially published. This page will be reviewed against the release build before adding individual requirements.
+
+## Do old saves earn achievements?
+
+Yes, but Valheim starts recording achievement statistics from the moment version 1.0 is installed. Iron Gate uses killing Eikthyr as its example: a player who defeated Eikthyr many times before 1.0 must defeat the boss again if an achievement depends on that action.
+
+That means an old world is not automatically disqualified. It simply lacks a complete pre-1.0 activity history for the new system. Keep the existing world if its builds and progression matter, then repeat relevant actions after the update as the official conditions become known.
+
+## Permanent and temporary cheat states
+
+The official FAQ describes more than one kind of restriction.
+
+| Situation | Confirmed effect |
+|---|---|
+| Most developer commands, such as `spawn` | Permanently marks the current character and world against achievements |
+| `freefly` | Named as an exception |
+| Using affected commands before 1.0 | Existing character can still be marked |
+| Carrying a spawned item | Temporary cheat state while the item remains in inventory |
+| Discarding every cheated item | Temporary item-based state can clear |
+| Hammer mode | Temporary cheat state and can block relevant achievements |
+| Other world modifiers | Some achievements may be blocked, depending on the modifier and achievement |
+
+Do not infer that every command is safe because one exception is named. Until the release UI identifies eligibility clearly, the conservative approach is to keep achievement-focused saves separate from command-testing saves.
+
+## Spawned items in multiplayer
+
+Spawned items are marked. If an otherwise clean character picks one up, that character becomes temporarily ineligible while carrying cheated items. Iron Gate says eligibility can return after every cheated item is thrown out.
+
+For shared servers, this makes item provenance relevant. Server administrators should tell players whether commands have been used and avoid distributing spawned materials into an achievement-focused world. A clean personal inventory is not enough if the character or world already has a permanent flag.
+
+## World modifiers and Hammer mode
+
+The FAQ says some world modifiers block certain achievements rather than promising that every modifier blocks everything. Hammer mode is specifically described as a temporary cheat.
+
+The release build will need to show which combinations are eligible. Until then:
+
+- record the current modifier configuration before updating;
+- do not promise achievement eligibility for a modified server;
+- keep a clean copy if the group wants an achievement run;
+- check the in-game confirmation or eligibility messaging before changing modes.
+
+## A safe achievement-focused setup
+
+1. Create backups of the character and world before installing 1.0.
+2. Use a world and character that have not used affected developer commands.
+3. Remove spawned items from the character inventory.
+4. Review active world modifiers.
+5. Update to the release build before beginning tracked activity.
+6. Repeat older milestones when an achievement requires them.
+7. Avoid copying command-generated items from a test world.
+
+For backups, use the [world backup and restore guide](/servers/world-backup-restore). For the broader launch procedure, use the [1.0 preparation checklist](/valheim-1-0/preparation-checklist).
+
+## What is not confirmed yet
+
+Before the final patch notes and live achievement list arrive, these details remain unknown:
+
+- every achievement name and unlock condition;
+- whether platform trophy lists map one-to-one to the in-game list;
+- which specific world modifiers affect which achievements;
+- whether every safe developer command will be identified in advance;
+- how multiplayer participation is credited for each objective.
+
+Pages claiming a complete launch list before those details are public are relying on leaks, guesses, or pre-release data. Valheim Companion will add individual achievement guidance only after it can be checked against the final build or an official source.
+
+## Frequently asked questions
+
+### Will Valheim 1.0 achievements unlock retroactively?
+
+Not generally. Tracking begins after installing 1.0, so earlier actions may need to be repeated. Iron Gate specifically says a prior Eikthyr kill must be performed again for an achievement tied to that action.
+
+### Can an old Valheim world earn achievements?
+
+Yes, provided its cheat state and modifiers allow the relevant achievement. Age alone does not make a world ineligible.
+
+### Does using devcommands disable achievements?
+
+Most developer commands permanently flag the current character and world. Iron Gate names `freefly` as an exception, but does not publish a complete safe-command list in the pre-release FAQ.
+
+### Can picking up a spawned item disable achievements?
+
+It creates a temporary cheat state. The character can become eligible again after discarding every cheated item, according to Iron Gate.
+
+### Does Hammer mode disable every achievement?
+
+Iron Gate says Hammer mode is a temporary cheat and that some modifiers block certain achievements. The exact achievement-by-achievement restrictions require confirmation in the release build.
+
+## Official sources
+
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [First official look at Valheim achievements](https://www.valheimgame.com/news/word-from-the-devs-summoning-our-champions-/)
+- [How to enable developer mode](https://valheim.com/support/how-to-enable-developer-mode/)
+
+See also the [console command reference](/tools/console-commands) and [Valheim 1.0 release hub](/valheim-1-0).

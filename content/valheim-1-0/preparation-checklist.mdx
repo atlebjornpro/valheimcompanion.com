@@ -1,0 +1,127 @@
+---
+title: "Valheim 1.0 Preparation Checklist: Worlds, Servers and Mods"
+description: "Prepare safely for Valheim 1.0 on September 9, 2026 with a practical checklist for world saves, dedicated servers, characters, mods, achievements, and the Deep North."
+updated: 2026-09-04
+---
+
+Valheim 1.0 releases on **September 9, 2026**. Existing worlds and characters remain usable, but Iron Gate recommends starting over for the intended full experience. New biome generation works properly only in areas that have not already been explored.
+
+The safest launch plan is therefore simple: preserve an untouched copy, decide whether clean Deep North generation matters more than established builds, and change one thing at a time.
+
+## The short launch-week checklist
+
+- [ ] Stop Valheim or the dedicated server cleanly.
+- [ ] Make an offline copy of every important world and character save.
+- [ ] Record the current game version, server launch arguments, world modifiers, and mod versions.
+- [ ] Decide whether to keep the existing world or begin a new one.
+- [ ] Avoid exploring the Deep North before release if you intend to keep the world.
+- [ ] Remove or disable mods until their authors confirm 1.0 compatibility.
+- [ ] Update the server and clients to matching versions.
+- [ ] Test world loading, portals, important builds, permissions, and crossplay.
+- [ ] Keep the pre-1.0 backup unchanged until the group accepts the updated world.
+
+## 1. Back up the authoritative save
+
+For a local game, exit to the menu and close the application before copying save data. For a dedicated server, announce a maintenance window, prevent new logins, stop the process cleanly, and wait for it to exit.
+
+Do not assume the default save directory is authoritative. A server can use a custom `-savedir`, a hosting panel may store files elsewhere, and a container may map the save directory to a host volume. Identify the location from the active launch configuration.
+
+Copy the complete save data, not only the world name you recognize. Preserve the server launch script, permission lists, modifier settings, and mod configuration with the backup. Store at least one copy away from the live server disk.
+
+Follow the [world backup and restore guide](/servers/world-backup-restore) for the full procedure.
+
+## 2. Choose an existing world or a new world
+
+Iron Gate confirms that existing saves remain usable in 1.0. It also says biome generation works properly only in unexplored areas and recommends a fresh start for the best experience.
+
+Choose an **existing world** when preserving bases, roads, farms, and community history is the priority. Choose a **new world** when clean Deep North generation and the intended complete progression are more important.
+
+If you keep an old world, avoiding northern exploration before release is the conservative choice. The official FAQ does not publish a reliable map-distance formula for deciding whether terrain is untouched. A new world is the only way to remove that uncertainty.
+
+Use the detailed [existing world versus new world comparison](/servers/existing-world-vs-new-world) before the group votes.
+
+## 3. Protect achievement eligibility
+
+Valheim 1.0 introduces more than 50 achievements. Statistics begin tracking after installing 1.0, so previous actions are not automatically credited. An old character may need to repeat an activity after launch.
+
+Iron Gate says most developer commands can permanently mark the current character and world as cheated. Spawned items are marked too. Some exceptions exist, including `freefly`, while some world modifiers can block particular achievements.
+
+If achievements matter, preserve a clean character and world before experimenting. Read the [achievement and cheat eligibility guide](/valheim-1-0/achievements-cheats) before using commands.
+
+## 4. Make a mod rollback plan
+
+Valheim has no official mod support. Iron Gate does not guarantee that existing mods will work with 1.0, and there is no planned Steam Workshop or console mod support at launch.
+
+Before updating a modded world:
+
+1. Export or record the exact mod list and versions.
+2. Copy configuration files with the world backup.
+3. Wait for each required mod author to confirm compatibility.
+4. Test a duplicate world without mods first.
+5. Never save over the only pre-update copy after a partial or failed load.
+
+The [Valheim 1.0 mod compatibility guide](/valheim-1-0/mods-compatibility) separates confirmed facts from community-tool assumptions.
+
+## 5. Prepare a dedicated server maintenance window
+
+Server owners should know who can stop the process, where the authoritative saves live, and who owns the rollback decision before launch day.
+
+During the window:
+
+1. Stop the server and create the backup.
+2. Record the existing server build and configuration.
+3. Update the server application.
+4. Start it without changing unrelated settings.
+5. Confirm the expected world loaded.
+6. Verify that server and clients report compatible versions.
+7. Test Steam-only or crossplay joining as appropriate.
+8. Check admin, permitted, and banned lists.
+
+Use the [server update procedure](/servers/updating-a-server) and [crossplay configuration guide](/servers/crossplay).
+
+## 6. Leave enough download and maintenance time
+
+Iron Gate estimates a download of roughly **4.3 GiB on most platforms**, around **3.0 GiB on Xbox One**, and around **6.5 GiB for the Mac App Store and Microsoft Store versions**. Available disk space should exceed the download itself because storefronts may need temporary room while applying an update.
+
+There is no public test branch for the 1.0 release. Launch day is the first opportunity for the wider community and mod authors to validate the final build, so allow more time than an ordinary patch.
+
+See the [system requirements and download-size guide](/valheim-1-0/system-requirements-download-size) for the current platform details.
+
+## 7. Verify before declaring the migration complete
+
+Test a representative slice of the world rather than only reaching the login screen:
+
+- load the expected seed and character;
+- visit important bases and portals;
+- verify storage and crafted items;
+- check server visibility and join codes;
+- have a second player connect if the world is multiplayer;
+- confirm the intended world modifiers;
+- watch for save or network errors;
+- keep the old files until multiple sessions complete successfully.
+
+## Frequently asked questions
+
+### Do I have to start a new world for Valheim 1.0?
+
+No. Iron Gate says existing worlds remain usable. A new world is recommended for the intended experience, and new biome generation works properly only in areas that were not previously explored.
+
+### Will old characters work after the update?
+
+Yes. Old characters remain available, but achievement statistics start when 1.0 is installed rather than being granted retroactively for every previous action.
+
+### Should I remove mods before updating?
+
+For the lowest-risk first launch, test without mods and wait for required mod authors to confirm compatibility. Keep the exact old mod set with an untouched pre-update backup.
+
+### Is there a Valheim 1.0 public test branch?
+
+No. Iron Gate says everyone will receive the 1.0 experience at the same time.
+
+## Official sources
+
+- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Valheim 1.0 release announcement](https://www.valheimgame.com/news/valheim-has-a-release-date-/)
+- [August 2026 development update](https://www.valheimgame.com/news/word-from-the-devs-almost-there/)
+
+Continue with the [Valheim 1.0 release hub](/valheim-1-0) or [Deep North preparation guide](/deep-north).
