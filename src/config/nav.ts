@@ -67,6 +67,7 @@ export const sections: NavSection[] = [
     title: "Servers",
     links: [
       { href: routes.servers, label: "Server Hub", icon: Server, description: "Dedicated-server, migration, backup, crossplay, and hosting topics." },
+      { href: routes.serverHosting, label: "Compare Server Hosting", icon: Shield, description: "Prices, player tiers, crossplay, backups, regions, and renewal costs." },
       { href: routes.dedicatedServerSetup, label: "Dedicated Server Setup", icon: Wrench },
       { href: routes.serverRequirements, label: "Server Requirements", icon: FileText },
       { href: routes.updatingServer, label: "Updating a Server", icon: History },
@@ -76,7 +77,6 @@ export const sections: NavSection[] = [
       { href: routes.crossplay, label: "Crossplay", icon: Network },
       { href: routes.serverSettings, label: "Settings Generator", icon: Wrench },
       { href: routes.serverNotShowing, label: "Connection Help", icon: Network },
-      { href: routes.serverHosting, label: "Server Hosting", icon: Shield },
     ],
   },
   {

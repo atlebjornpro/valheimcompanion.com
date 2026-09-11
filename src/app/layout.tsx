@@ -83,6 +83,7 @@ gtag('set', 'ads_data_redaction', true);`}
           <Link href={routes.world} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">World</Link>
           <Link href={routes.bosses} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Bosses</Link>
           <Link href={routes.servers} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Servers</Link>
+          <Link href={routes.serverHosting} className="hidden font-semibold text-[#e1ad5a] hover:text-[#f5ca81] lg:block">Hosting</Link>
           <div className="ml-auto"><Search /></div>
         </nav>
       </header>
