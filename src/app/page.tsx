@@ -22,8 +22,8 @@ export default function Home() {
   return <div className="mx-auto max-w-6xl py-4 sm:py-8">
     <section className="hero-grid relative min-h-[34rem] overflow-hidden rounded-[2rem] border border-[#4a3926] bg-[#141611] px-7 py-14 shadow-2xl sm:px-12 sm:py-20">
       <Image
-        src="/images/valheim-companion-hero.webp"
-        alt="A snowy northern coast with a sheltered timber home and boat beneath an aurora"
+        src="/images/valheim-1-0-official-hero.webp"
+        alt="Vikings confronting a colossal stone creature in the snowy Deep North"
         fill
         priority
         sizes="(max-width: 768px) 100vw, 1200px"
@@ -41,6 +41,7 @@ export default function Home() {
           <Link href={routes.dataSources} className="inline-flex items-center justify-center rounded-lg border border-[#786044] px-5 py-3 font-bold text-[#e6dcc8] hover:border-[#b8884e]">How sources are verified</Link>
         </div>
       </div>
+      <a href="https://www.valheim.com/news/valheim-1-0-has-arrived-/" target="_blank" rel="noopener" className="absolute bottom-3 right-4 z-10 text-[10px] font-medium text-white/55 hover:text-white/80">Official Valheim 1.0 artwork · Iron Gate</a>
     </section>
     <section className="mt-10" aria-labelledby="focus-heading">
       <p className="section-kicker">First public release</p><h2 id="focus-heading" className="mt-2 text-3xl font-black text-[#eee4d1]">A focused companion, not another broad wiki</h2>
