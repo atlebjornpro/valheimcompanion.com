@@ -36,7 +36,7 @@
   },
   {
     "slug": "/bosses/fader",
-    "title": "Fader Boss Guide: How to Beat Valheim's Current Final Boss",
+    "title": "Fader Boss Guide: Valheim Ashlands Fight and Preparation",
     "description": "How to summon and defeat Fader in Valheim's Ashlands — attacks, fire resistance, gear, and arena tips for the endgame coliseum fight."
   },
   {
@@ -48,6 +48,11 @@
     "slug": "/servers/updating-a-server",
     "title": "How to Update a Valheim Dedicated Server Safely",
     "description": "Update a Valheim dedicated server through Steam, SteamCMD, Docker, or managed hosting with backup, version, mod, verification, and rollback checks for Valheim 1.0."
+  },
+  {
+    "slug": "/bosses/kall-fimbulbringer",
+    "title": "Kall Fimbulbringer: Valheim Deep North Boss Guide",
+    "description": "What Iron Gate confirms about Kall Fimbulbringer in Valheim 1.0, with explicit gaps for summoning, attacks, arena, gear, drops, and Forsaken Power."
   },
   {
     "slug": "/bosses/moder",
@@ -76,8 +81,8 @@
   },
   {
     "slug": "/valheim-1-0/achievements-cheats",
-    "title": "Valheim 1.0 Achievements: Cheats, Old Saves and Eligibility",
-    "description": "How Valheim 1.0 achievements work with old characters, developer commands, spawned items, world modifiers, and multiplayer saves."
+    "title": "Valheim 1.0 Achievements: Cheats, Old Saves and Opt-In",
+    "description": "How Valheim 1.0 achievements work with old saves, cheat flags, spawned items and modifiers, including the September Steam hotfix opt-in command."
   },
   {
     "slug": "/guides/getting-started",
@@ -95,19 +100,14 @@
     "description": "What Valheim 1.0 means for mods, BepInEx, modded worlds, dedicated servers, Steam Workshop, and console players at launch."
   },
   {
-    "slug": "/updates",
-    "title": "Valheim 1.0 Patch Notes, Release Status and Known Issues",
-    "description": "Track the Valheim 1.0 release, official patch notes, confirmed changes, server checks, and verified known issues for the September 9 launch."
+    "slug": "/patch-notes/v1-0-release",
+    "title": "Valheim 1.0 Patch Notes: Deep North Release",
+    "description": "The September 9 Valheim 1.0 release: Deep North, Kall Fimbulbringer, crafting and gear additions, achievements, platform scope, and server implications."
   },
   {
     "slug": "/valheim-1-0/preparation-checklist",
     "title": "Valheim 1.0 Preparation Checklist: Worlds, Servers and Mods",
-    "description": "Prepare safely for Valheim 1.0 on September 9, 2026 with a practical checklist for world saves, dedicated servers, characters, mods, achievements, and the Deep North."
-  },
-  {
-    "slug": "/valheim-1-0",
-    "title": "Valheim 1.0 Release Date, Platforms, Crossplay and Confirmed Features",
-    "description": "Valheim 1.0 launches September 9, 2026. See confirmed platforms, Deep North information, crossplay, save compatibility, achievements, price, downloads, and server details."
+    "description": "Update safely to the released Valheim 1.0 with a practical checklist for world saves, dedicated servers, characters, mods, achievements, and the Deep North."
   },
   {
     "slug": "/valheim-1-0/system-requirements-download-size",
@@ -115,9 +115,24 @@
     "description": "Current Valheim PC, Mac and Linux system requirements plus the official 1.0 download-size estimates for each platform."
   },
   {
+    "slug": "/valheim-1-0",
+    "title": "Valheim 1.0: Deep North, Platforms, Saves and Crossplay",
+    "description": "Valheim 1.0 is released. Review Deep North, supported platforms, existing-world generation, achievements, mods, downloads, and September hotfixes."
+  },
+  {
     "slug": "/servers/existing-world-vs-new-world",
     "title": "Valheim 1.0: Start a New World or Keep Your Old Save?",
     "description": "Decide whether to start a new Valheim world for 1.0 or continue an existing save, with confirmed guidance on Deep North generation, backups, mods, and achievements."
+  },
+  {
+    "slug": "/patch-notes/v1-0-10",
+    "title": "Valheim 1.0.10 Hotfix: Armor, Snow and Sound Fixes",
+    "description": "September 11 hotfix summary for Valheim 1.0.10: Deep North armor repairs, Shaman balance, snow behavior, sounds, platform labels, and server checks."
+  },
+  {
+    "slug": "/patch-notes/v1-0-12",
+    "title": "Valheim 1.0.12 Hotfix: Steam Achievements and Server IDs",
+    "description": "September 11 Steam hotfix: achievement opt-in, legacy permission IDs, Forge of Potential recipes, unloaded-zone crash, and the item-stand limitation."
   },
   {
     "slug": "/world/regions/ashlands",
@@ -132,7 +147,7 @@
   {
     "slug": "/bosses",
     "title": "Valheim Boss Guide — How to Summon and Beat Every Boss",
-    "description": "A boss-by-boss Valheim guide covering summon requirements, attack patterns, gear, and arena tips for all seven released bosses."
+    "description": "A boss-by-boss Valheim guide covering summon requirements, attack patterns, gear, and arena tips for the released bosses."
   },
   {
     "slug": "/builds/base-building-guide",
@@ -141,8 +156,8 @@
   },
   {
     "slug": "/tools/console-commands",
-    "title": "Valheim Console Commands and Cheats (Full List)",
-    "description": "How to enable Valheim's console and devcommands, the full list of cheat commands, and what actually happens to your save when you use them."
+    "title": "Valheim Console Commands: Cheats, Admin and 1.0 Additions",
+    "description": "How to enable Valheim's console and devcommands, common cheat commands and the new 1.0 command names, and what actually happens to your save when you use them."
   },
   {
     "slug": "/servers/crossplay",
@@ -166,8 +181,13 @@
   },
   {
     "slug": "/deep-north",
-    "title": "Valheim Deep North Guide: Release Date, Preparation and Confirmed Features",
-    "description": "Prepare for Valheim's Deep North and the 1.0 release with confirmed world-generation guidance, official feature previews, and practical character, world, and server checklists."
+    "title": "Valheim Deep North Guide: Biome, Boss, Resources and Crafting",
+    "description": "Explore Valheim's released Deep North: snow and ice hazards, named creatures, Kall Fimbulbringer, crafting stations, gear, and existing-world guidance."
+  },
+  {
+    "slug": "/world/regions/deep-north",
+    "title": "Valheim Deep North: Creatures, Resources and Hazards",
+    "description": "Deep North region reference for Valheim 1.0: named creatures and materials, snow and ice hazards, crafting stations, dungeons, and Kall Fimbulbringer."
   },
   {
     "slug": "/resources/food-and-cooking",
@@ -193,6 +213,11 @@
     "slug": "/valheim-1-0/nintendo-switch-2",
     "title": "Valheim Nintendo Switch 2 Release: Date, Crossplay and Features",
     "description": "Confirmed Valheim Nintendo Switch 2 launch details for September 9, 2026, including crossplay, touch controls, mouse mode, online play, saves, and mods."
+  },
+  {
+    "slug": "/patch-notes",
+    "title": "Valheim Patch Notes: 1.0 Release and Hotfixes",
+    "description": "Official-source summaries of Valheim 1.0 and its September hotfixes, including platform scope, server changes, achievements, and known limitations."
   },
   {
     "slug": "/world/regions/plains",
@@ -221,13 +246,18 @@
   },
   {
     "slug": "/resources/taming",
-    "title": "Valheim Taming Guide: Boar, Wolf, Lox, and Asksvin",
+    "title": "Valheim Taming Guide: Boar, Wolf, Lox, Asksvin and Moose",
     "description": "How taming actually works in Valheim, food and fencing for each tameable creature, and how breeding works once they're tame."
+  },
+  {
+    "slug": "/updates",
+    "title": "Valheim Updates: Release Status and Known Issues",
+    "description": "Valheim 1.0 review status and officially acknowledged issues, including September hotfixes, item stands, achievements, server checks, and source limits."
   },
   {
     "slug": "/world",
     "title": "Valheim World Guide — All Biomes, Creatures, and Bosses",
-    "description": "A biome-by-biome Valheim world guide covering creatures, resources, building tips, and the boss unlocked in each of the game's seven released biomes."
+    "description": "A biome-by-biome Valheim world guide covering creatures, resources, building tips, and the boss unlocked in each of the game's released progression biomes."
   },
   {
     "slug": "/world/world-modifiers",

@@ -1,12 +1,14 @@
 ---
 title: "How to Update a Valheim Dedicated Server Safely"
 description: Update a Valheim dedicated server through Steam, SteamCMD, Docker, or managed hosting with backup, version, mod, verification, and rollback checks for Valheim 1.0.
-updated: 2026-08-06
+updated: 2026-09-17
 ---
+
+> **Update — September 2026**: Valheim 1.0 and Deep North were released on September 9, 2026. Launch-era guidance below should be read alongside the September 11 hotfixes, including the Steam achievement opt-in. See [patch notes](/patch-notes).
 
 Update a Valheim dedicated server during planned downtime, with nobody connected and a tested rollback copy available. The essential sequence is: stop cleanly, back up the active world and configuration, update the same installation that production uses, restart, verify the version and world, then keep the rollback set until players accept the result.
 
-Valheim 1.0 launches September 9, 2026. Iron Gate says existing saves remain usable, but the studio also recommends a new world for the best experience and does not guarantee mod compatibility. Treat 1.0 as a major migration even if the server application updates normally.
+Valheim 1.0 launched September 9, 2026. Iron Gate says existing saves remain usable, but the studio also recommends a new world for the best experience and does not guarantee mod compatibility. Treat 1.0 as a major migration even if the server application updates normally.
 
 ## Before the maintenance window
 
@@ -181,7 +183,7 @@ Iron Gate currently confirms:
 - a new world is recommended for the best experience;
 - full crossplay between announced platforms;
 - no guarantee that mods will work;
-- no public test branch for 1.0 before release;
+- no pre-release public test branch was provided for 1.0;
 - achievements begin tracking after installing 1.0;
 - some cheats and world modifiers affect achievement eligibility.
 
@@ -189,7 +191,7 @@ Before the 1.0 maintenance window:
 
 - [ ] Decide whether production keeps the old world or starts a new one.
 - [ ] Preserve a final pre-1.0 world, character, configuration, and mod backup.
-- [ ] Stop exploring Deep North on the old world if preserving unexplored generation is important.
+- [ ] Check whether Deep North terrain was explored before updating; test generation on a copy.
 - [ ] Plan for a longer first-start and verification window.
 - [ ] Disable or remove unverified mods in a separate test environment first.
 - [ ] Review world modifiers against achievement goals.
@@ -235,11 +237,11 @@ Review backend, visibility, ports, join code, and platform rollout with the [con
 
 Iron Gate does not guarantee mod compatibility. Preserve the world, isolate the modded environment, and wait for verified compatible releases rather than repeatedly opening production with changing combinations.
 
-## Official sources
+## Related
 
-- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
-- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
-- [Valheim save-system testing announcement](https://www.valheimgame.com/news/word-from-the-devs-summoning-our-champions-/)
-- [Valve SteamCMD documentation](https://developer.valvesoftware.com/wiki/SteamCMD)
+- [patch notes](/patch-notes)
+- [world backup and restore guide](/servers/world-backup-restore)
+- [configuration generator](/servers/server-settings)
+- [connection troubleshooting guide](/servers/server-not-showing)
 
-Next: [create a rollback backup](/servers/world-backup-restore), [review server settings](/servers/server-settings), or [troubleshoot a post-update connection](/servers/server-not-showing).
+**Sources**: [Official 1.0 patch notes](https://www.valheim.com/news/valheim-1-0-has-arrived-/), [September 11 hotfix](https://valheim.com/news/hotfix-1-0-10-1-0-12/), [1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/), [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/), [Valheim save-system testing announcement](https://www.valheimgame.com/news/word-from-the-devs-summoning-our-champions-/), [Valve SteamCMD documentation](https://developer.valvesoftware.com/wiki/SteamCMD).

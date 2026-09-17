@@ -11,7 +11,8 @@ export const sections: NavSection[] = [
     links: [
       { href: routes.gettingStarted, label: "Beginner Guide", icon: Compass, description: "A spoiler-light route through the first days, biomes, bosses, and multiplayer." },
       { href: routes.valheimOne, label: "Valheim 1.0", icon: Rocket, description: "Release date, platforms, saves, achievements, price, and crossplay." },
-      { href: routes.deepNorth, label: "Deep North", icon: MountainSnow, description: "Confirmed features and launch preparation for Valheim's final biome." },
+      { href: routes.deepNorth, label: "Deep North", icon: MountainSnow, description: "Released biome, creatures, crafting, gear, and world migration." },
+      { href: routes.patchNotes, label: "Patch Notes", icon: FileText, description: "Release summaries, hotfixes, platform scope, and server changes." },
       { href: routes.updates, label: "Updates", icon: History, description: "Official-source monitoring and guide review status." },
     ],
   },
@@ -37,6 +38,7 @@ export const sections: NavSection[] = [
       { href: routes.regionPlains, label: "Plains", icon: Wheat },
       { href: routes.regionMistlands, label: "Mistlands", icon: Sparkles },
       { href: routes.regionAshlands, label: "Ashlands", icon: Flame },
+      { href: routes.regionDeepNorth, label: "Deep North", icon: MountainSnow },
     ],
   },
   {
@@ -50,6 +52,7 @@ export const sections: NavSection[] = [
       { href: routes.bossYagluth, label: "Yagluth", icon: Flame },
       { href: routes.bossTheQueen, label: "The Queen", icon: Bug },
       { href: routes.bossFader, label: "Fader", icon: Crown },
+      { href: routes.bossKallFimbulbringer, label: "Kall Fimbulbringer", icon: Crown },
     ],
   },
   {

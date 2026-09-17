@@ -1,10 +1,10 @@
 ---
-title: "Valheim Console Commands and Cheats (Full List)"
-description: How to enable Valheim's console and devcommands, the full list of cheat commands, and what actually happens to your save when you use them.
-updated: 2026-08-25
+title: "Valheim Console Commands: Cheats, Admin and 1.0 Additions"
+description: How to enable Valheim's console and devcommands, common cheat commands and the new 1.0 command names, and what actually happens to your save when you use them.
+updated: 2026-09-17
 ---
 
-Valheim ships with a debug console for testing, admin work, and — if you want it — cheating. This covers how to turn it on, the commands people actually search for, and the one consequence worth knowing about before you use it: **most cheat commands permanently flag your save against ever earning achievements.**
+Valheim ships with a debug console for testing, admin work, and — if you want it — cheating. This covers how to turn it on, the commands people actually search for, and the one consequence worth knowing about before you use it: **most cheat commands mark your character and world; the Steam hotfix adds an achievement opt-in.**
 
 ## Enabling the console
 
@@ -16,35 +16,57 @@ Valheim ships with a debug console for testing, admin work, and — if you want 
 
 ## Command list
 
-Commands marked ✦ require `devcommands` to be active first.
+Commands marked (devcommands) require `devcommands` to be active first.
 
-**God mode:** `god` ✦ — toggles invulnerability.
+**God mode:** `god` (devcommands) — toggles invulnerability.
 
-**Free building:** `nocost` ✦ — toggles no-resource-cost building and crafting. `debugmode` ✦ enables a broader creative mode that also adds flight and build-without-workbench.
+**Free building:** `nocost` (devcommands) — toggles no-resource-cost building and crafting. `debugmode` (devcommands) enables a broader creative mode that also adds flight and build-without-workbench.
 
-**Spawning:** `spawn <name> [amount] [level] [radius]` ✦ — spawns an item or creature by its internal ID (case-sensitive, not always the display name). `itemset <name> [level]` ✦ spawns a premade gear set.
+**Spawning:** `spawn <name> [amount] [level] [radius]` (devcommands) — spawns an item or creature by its internal ID (case-sensitive, not always the display name). `itemset <name> [level]` (devcommands) spawns a premade gear set.
 
-**Killing enemies:** `killall` ✦ kills everything nearby, including tamed animals. `killenemies` ✦ kills only hostile creatures. `tame` ✦ instantly tames every nearby tameable creature.
+**Killing enemies:** `killall` (devcommands) kills everything nearby, including tamed animals. `killenemies` (devcommands) kills only hostile creatures. `tame` (devcommands) instantly tames every nearby tameable creature.
 
-**Teleporting:** `goto <x> <z>` ✦ teleports to coordinates. `pos` prints your current coordinates. `findtp <text>` ✦ teleports to the nearest match for a search term.
+**Teleporting:** `goto <x> <z>` (devcommands) teleports to coordinates. `pos` prints your current coordinates. `findtp <text>` (devcommands) teleports to the nearest match for a search term.
 
-**Time and weather:** `tod <0-1 or -1>` ✦ sets time of day (0.5 = noon, -1 restores the normal cycle). `env <name>` ✦ forces a weather type; `resetenv` ✦ clears it. `sleep` skips to morning.
+**Time and weather:** `tod <0-1 or -1>` (devcommands) sets time of day (0.5 = noon, -1 restores the normal cycle). `env <name>` (devcommands) forces a weather type; `resetenv` (devcommands) clears it. `sleep` skips to morning.
 
-**Flying:** `fly` ✦ toggles flight. `freefly` ✦ enables a detached camera-only flight mode for screenshots — notably, this one doesn't trigger the achievement lock (see below).
+**Flying:** `fly` (devcommands) toggles flight. `freefly` (devcommands) enables a detached camera-only flight mode for screenshots — notably, this one doesn't trigger the achievement lock (see below).
 
-**Healing and status:** `heal` ✦ restores full health and stamina. `clearstatus` ✦ clears negative effects. `puke` ✦ empties your food buffs so you can re-eat different food.
+**Healing and status:** `heal` (devcommands) restores full health and stamina. `clearstatus` (devcommands) clears negative effects. `puke` (devcommands) empties your food buffs so you can re-eat different food.
 
-**Skills:** `raiseskill <skill id> <amount>` ✦ raises a skill by a number of levels (negative to lower it) — e.g. `raiseskill swords 10`. `resetskill <skill id>` ✦ resets one skill to 0.
+**Skills:** `raiseskill <skill id> <amount>` (devcommands) raises a skill by a number of levels (negative to lower it) — e.g. `raiseskill swords 10`. `resetskill <skill id>` (devcommands) resets one skill to 0.
 
-**Other frequently used commands:** `exploremap` ✦ reveals the full map. `resetmap` ✦ hides it again. `resetcharacter` resets all skill progression without touching your inventory. `ghost` ✦ makes you invisible to other players.
+**Other frequently used commands:** `exploremap` (devcommands) reveals the full map. `resetmap` (devcommands) hides it again. `resetcharacter` resets all skill progression without touching your inventory. `ghost` (devcommands) makes you invisible to other players.
 
-## What using cheats actually costs you
+## New commands in 1.0
 
-This is documented directly by Iron Gate in the official 1.0 FAQ, not just community consensus: using most commands — `spawn` is the FAQ's own example — **permanently flags your character and world save** as ineligible for any achievement, for that save, indefinitely. It's not cleared by restarting. It applies to the whole world, not just the character who typed the command, and items spawned this way carry the flag too — if another, non-cheating player on your server picks one up, they get temporarily locked out of achievements as well, until they drop it.
+Iron Gate's release notes list these commands and direct players to the in-game `help` output for descriptions. Descriptions and arguments are not published in those notes as of September 17, 2026, and were not verified in-game for this page. Names alone are not enough to infer their effects or achievement safety.
 
-`freefly` is the one exception — it's a camera tool, not a gameplay cheat, and doesn't trigger the flag. Since 1.0, the game also shows a confirmation prompt before `devcommands` locks your save, specifically so you don't do this by accident.
+- `confirmcheats`
+- `achievements`
+- `getstat`
+- `haslocation`
+- `snow`
+- `updatecover`
+- `cinematic`
+- `cinematicsleep`
+- `inventorysize`
+- `inventoryclean`
+- `clearpopups`
+- `height`
+- `pevents`
+- `repairall`
+- `resetbuildui`
+- `biomeinfo`
+- `altbiomes`
+- `findbiome`
+- `findbiometp`
 
-A few commands carry their own destructive-use warnings independent of the achievement system: `location` without specifying `SAVE`, and `nextseed`, can both permanently disable saving for that session, and `forcedelete` force-deletes world objects. Back up your save file before experimenting with any of these.
+## What using cheats means for achievements
+
+The July FAQ describes command-based character and world flags, with `freefly` among the exceptions, and temporary restrictions from marked spawned items. The September 11 Steam hotfix changes the original permanent-lock policy with the command `yesiuseddevcommandsbutiwantmyachievementsanyway`. Iron Gate says it enables opting into achievements after developer-command or mod use. Its announcement labels this fix Steam only.
+
+Read the [achievement guide](/valheim-1-0/achievements-cheats) and check the installed game's eligibility messages. The hotfix does not document every command as safe or promise retroactive achievement credit.
 
 ## Dedicated servers and admin commands
 
@@ -54,20 +76,13 @@ Separately, **admin commands work natively** for anyone listed in `adminlist.txt
 
 ## Legitimate, non-cheating uses
 
-Not everything here is about cheating. `save` forces an immediate world save. `pos` is handy for sharing a location with teammates. `resetcharacter` lets a returning player re-roll their skill investment on a private world without touching their inventory. `info` and `ping` are basic diagnostic tools. All of these are genuinely useful for server admins and builders, not just for cheating.
+Not everything here is about cheating. `save` forces an immediate world save. `pos` is handy for sharing a location with teammates. `resetcharacter` lets a returning player re-roll their skill investment on a private world without touching their inventory. `info` and `ping` are basic diagnostic tools. All of these are useful for server admins and builders, not just for cheating.
 
 ## Related
 
 - [Server settings and configuration generator](/servers/server-settings)
 - [Dedicated server setup](/servers/dedicated-server-setup)
 - [Progression roadmap](/progression/roadmap)
+- [achievement guide](/valheim-1-0/achievements-cheats)
 
-## Sources
-
-- [Valheim 1.0 FAQ — official (valheimgame.com)](https://www.valheimgame.com/support/valheim-1-0-faq/)
-- [Valheim Console Commands — Fextralife Wiki](https://valheim.wiki.fextralife.com/Valheim_Console_Commands)
-- [Valheim cheats: all codes and console commands — PCGamer](https://www.pcgamer.com/valheim-cheats-console-commands/)
-- [Valheim Console Commands: Cheats and Admin Commands — GameServerKings](https://www.gameserverkings.com/knowledge-base/valheim/valheim-console-commands/)
-- [Setting Server Admins — Valheim Dedicated Server Help](https://valheim-server-help.github.io/howAdmin/)
-
-Cross-referenced per this site's [sourcing methodology](/data-sources).
+**Sources**: [Official 1.0 patch notes](https://www.valheim.com/news/valheim-1-0-has-arrived-/), [September 11 hotfix](https://valheim.com/news/hotfix-1-0-10-1-0-12/), [1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/), [Valheim 1.0 FAQ — official (valheimgame.com)](https://www.valheimgame.com/support/valheim-1-0-faq/), [Valheim Console Commands — Fextralife Wiki](https://valheim.wiki.fextralife.com/Valheim_Console_Commands), [Valheim cheats: all codes and console commands — PCGamer](https://www.pcgamer.com/valheim-cheats-console-commands/), [Valheim Console Commands: Cheats and Admin Commands — GameServerKings](https://www.gameserverkings.com/knowledge-base/valheim/valheim-console-commands/), [Setting Server Admins — Valheim Dedicated Server Help](https://valheim-server-help.github.io/howAdmin/).

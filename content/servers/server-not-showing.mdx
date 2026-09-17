@@ -1,7 +1,7 @@
 ---
 title: "Valheim Server Not Showing or Failed to Connect"
 description: Diagnose a missing Valheim dedicated server, failed connection, join-code problem, version mismatch, Steam port issue, or PlayFab crossplay configuration.
-updated: 2026-08-06
+updated: 2026-09-17
 ---
 
 When a Valheim server does not appear or a player sees **Failed to connect**, start with the server process and selected networking backend. Steam and PlayFab crossplay require different checks, so random port changes often waste time.
@@ -100,7 +100,7 @@ Router interfaces and ISP setups differ. Use the router and ISP documentation fo
 
 ### Steam server works locally but not externally
 
-This points toward the host firewall, router forwarding, public address, or ISP path—not the world files. Test from a genuinely external connection rather than from the host itself.
+This points toward the host firewall, router forwarding, public address, or ISP path—not the world files. Test from an external connection rather than from the host itself.
 
 ### Steam server works by address but not in the list
 
@@ -145,7 +145,7 @@ A discoverable server can still reject a player.
 
 Iron Gate confirms that an Xbox console can join a dedicated server when crossplay is enabled but cannot run the standalone server application. If the Xbox crossplay option is unavailable, parental-control or multiplayer permissions may be hiding it.
 
-Valheim 1.0 is announced with full crossplay across supported PC, Mac, Linux, Xbox, PlayStation 5, and Nintendo Switch 2 platforms. At launch, recheck platform-specific menus and rollout status before treating a delayed client update as a server failure.
+Valheim 1.0 released with full crossplay across supported PC, Mac, Linux, Xbox, PlayStation 5, and Nintendo Switch 2 platforms. Check platform-specific menus and rollout status before treating a delayed client update as a server failure.
 
 ## Modded-server checks
 
@@ -204,10 +204,11 @@ Iron Gate says PlayFab crossplay uses relay networking and does not require port
 
 PlayFab crossplay does not support local or loopback connections. Use the public address and port, current join code, or server list.
 
-## Official sources
+## Related
 
-- [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/)
-- [Valheim crossplay FAQ](https://valheim.com/support/crossplay-faq/)
-- [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/)
+- [Patch notes](/patch-notes)
+- [Dedicated server setup](/servers/dedicated-server-setup)
+- [Server settings](/servers/server-settings)
+- [Update a server](/servers/updating-a-server)
 
-Next: [check the server configuration](/servers/server-settings) or [update server and client versions](/servers/updating-a-server).
+**Sources**: [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/), [Valheim crossplay FAQ](https://valheim.com/support/crossplay-faq/), [Valheim 1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/), [September hotfix announcement](https://valheim.com/news/hotfix-1-0-10-1-0-12/).

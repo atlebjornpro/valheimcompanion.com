@@ -4,6 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight, Home } from "lucide-react";
 import { SITE_URL } from "../config/metadata";
+import { routes } from "../config/routes";
+
+const registeredRoutes = new Set<string>(Object.values(routes));
 
 export default function Breadcrumbs() {
   const pathname = usePathname();
@@ -11,6 +14,11 @@ export default function Breadcrumbs() {
   if (pathname === "/") return null;
 
   const segments = pathname.split("/").filter(Boolean);
+  const crumbs = segments.map((segment, index) => ({
+    href: `/${segments.slice(0, index + 1).join("/")}`,
+    label: segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+    isLast: index === segments.length - 1,
+  })).filter(({ href, isLast }) => isLast || registeredRoutes.has(href));
   const breadcrumbItems = [
     {
       "@type": "ListItem",
@@ -18,13 +26,11 @@ export default function Breadcrumbs() {
       name: "Home",
       item: SITE_URL,
     },
-    ...segments.map((segment, index) => ({
+    ...crumbs.map(({ href, label }, index) => ({
       "@type": "ListItem",
       position: index + 2,
-      name: segment
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (character) => character.toUpperCase()),
-      item: `${SITE_URL}/${segments.slice(0, index + 1).join("/")}`,
+      name: label,
+      item: `${SITE_URL}${href}`,
     })),
   ];
 
@@ -47,13 +53,7 @@ export default function Breadcrumbs() {
             <Home className="w-4 h-4" />
           </Link>
         </li>
-        {segments.map((segment, index) => {
-          const href = `/${segments.slice(0, index + 1).join("/")}`;
-          const isLast = index === segments.length - 1;
-          const label = segment
-            .replace(/-/g, " ")
-            .replace(/\b\w/g, (c) => c.toUpperCase());
-
+        {crumbs.map(({ href, label, isLast }) => {
           return (
             <li key={href} className="flex items-center space-x-2">
               <ChevronRight className="w-4 h-4" />
