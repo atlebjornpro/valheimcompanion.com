@@ -10,7 +10,7 @@ export const sections: NavSection[] = [
     title: "Start Here",
     links: [
       { href: routes.gettingStarted, label: "Beginner Guide", icon: Compass, description: "A spoiler-light route through the first days, biomes, bosses, and multiplayer." },
-      { href: routes.valheimOne, label: "Valheim 1.0", icon: Rocket, description: "Release date, platforms, saves, achievements, price, and crossplay." },
+      { href: routes.valheimOne, label: "Valheim 1.0", icon: Rocket, description: "Post-launch guides, save compatibility, achievements, hotfixes, and crossplay." },
       { href: routes.deepNorth, label: "Deep North", icon: MountainSnow, description: "Released biome, creatures, crafting, gear, and world migration." },
       { href: routes.patchNotes, label: "Patch Notes", icon: FileText, description: "Release summaries, hotfixes, platform scope, and server changes." },
       { href: routes.updates, label: "Updates", icon: History, description: "Official-source monitoring and guide review status." },
