@@ -1,4 +1,4 @@
-import { BookOpen, Bug, Compass, Crown, DatabaseBackup, FileText, Flame, Hammer, History, Map, Milestone, MountainSnow, Network, PawPrint, Rocket, Server, Shield, Skull, SlidersHorizontal, Snowflake, Soup, Sparkles, Swords, Terminal, TreePine, Trees, Waves, Wheat, Wrench, Zap } from "lucide-react";
+import { BookOpen, Bug, Compass, Crown, DatabaseBackup, FileText, Flame, Hammer, History, Map, MapPinned, Milestone, MountainSnow, Network, Package, PawPrint, Rocket, Server, Shield, Skull, SlidersHorizontal, Snowflake, Soup, Sparkles, Swords, Terminal, TreePine, Trees, Waves, Wheat, Wrench, Zap } from "lucide-react";
 import React from "react";
 import { routes, type RoutePath } from "./routes";
 
@@ -39,6 +39,7 @@ export const sections: NavSection[] = [
       { href: routes.regionMistlands, label: "Mistlands", icon: Sparkles },
       { href: routes.regionAshlands, label: "Ashlands", icon: Flame },
       { href: routes.regionDeepNorth, label: "Deep North", icon: MountainSnow },
+      { href: routes.locations, label: "Locations", icon: MapPinned, description: "Deep North dungeons, points of interest, stations, and events." },
     ],
   },
   {
@@ -58,6 +59,7 @@ export const sections: NavSection[] = [
   {
     title: "Guides",
     links: [
+      { href: routes.items, label: "Items", icon: Package, description: "Deep North materials, keys, gear, tools, and crafting chains." },
       { href: routes.progressionRoadmap, label: "Progression Roadmap", icon: Milestone, description: "Biomes, bosses, and crafting stations tied together in order." },
       { href: routes.worldModifiers, label: "World Modifiers", icon: SlidersHorizontal, description: "Presets, resources, raids, portals, server arguments, and achievements." },
       { href: routes.buildingGuide, label: "Building & Base Locations", icon: Hammer },

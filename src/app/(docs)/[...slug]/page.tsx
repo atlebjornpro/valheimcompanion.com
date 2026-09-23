@@ -11,10 +11,11 @@ import type { AnchorHTMLAttributes } from "react";
 import { createPageMetadata, SITE_NAME, SITE_URL } from "../../../config/metadata";
 import ServerConfigGenerator from "../../../components/ServerConfigGenerator";
 import WorldMigrationChecklist from "../../../components/WorldMigrationChecklist";
+import DatHostBanner from "../../../components/DatHostBanner";
 import { extractFaq } from "../../../utils/faq";
 
 type RouteParams = { slug?: string[] };
-type Doc = { content: string; frontmatter: { title: string; description: string; updated?: string } };
+type Doc = { content: string; frontmatter: { title: string; description: string; updated?: string; category?: string; biome?: string; sourceCount?: number; type?: string } };
 
 async function getContentFiles(directory: string): Promise<string[]> {
   const entries = await fs.readdir(directory, { withFileTypes: true });
@@ -35,8 +36,23 @@ async function getDoc(slugParts: string[]): Promise<Doc | null> {
   try {
     const raw = await fs.readFile(path.join(process.cwd(), "content", slugParts.join("/") + ".mdx"), "utf8");
     const { content, data } = matter(raw);
-    return { content, frontmatter: { title: String(data.title ?? "Untitled"), description: String(data.description ?? ""), updated: data.updated ? String(data.updated) : undefined } };
+    return { content, frontmatter: { title: String(data.title ?? "Untitled"), description: String(data.description ?? ""), updated: data.updated ? String(data.updated) : undefined, category: data.category ? String(data.category) : undefined, biome: data.biome ? String(data.biome) : undefined, sourceCount: data.sourceCount ? Number(data.sourceCount) : undefined, type: data.type ? String(data.type) : undefined } };
   } catch { return null; }
+}
+
+function extractHowToSteps(content: string) {
+  const match = content.match(/^## (How to obtain|How to reach it|How to trigger it)\s*$([\s\S]*?)(?=^##\s|(?![\s\S]))/m);
+  if (!match) return [];
+  return [...match[2].matchAll(/^\d+\.\s+(.+)$/gm)].map((step) => step[1].replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"));
+}
+
+async function getCollectionEntries(directory: "items" | "world/locations") {
+  const root = path.join(process.cwd(), "content", ...directory.split("/"));
+  const files = (await fs.readdir(root)).filter((file) => file.endsWith(".mdx"));
+  return Promise.all(files.map(async (file) => {
+    const { data } = matter(await fs.readFile(path.join(root, file), "utf8"));
+    return { name: String(data.title ?? file.replace(/\.mdx$/, "")), url: `${SITE_URL}/${directory}/${file.replace(/\.mdx$/, "")}` };
+  }));
 }
 
 function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
@@ -102,6 +118,43 @@ const relatedMap: Record<string, { href: string; label: string }[]> = {
   "/bosses/fader": [{ href: "/bosses", label: "Boss guide" }, { href: "/world/regions/ashlands", label: "Ashlands biome" }, { href: "/bosses/the-queen", label: "Previous: The Queen" }, { href: "/bosses/kall-fimbulbringer", label: "Next: Kall Fimbulbringer" }],
 };
 
+const itemSlugs = ["bloodgold", "frostcore", "ice", "liquid-frost", "frostfire-essence", "thunderblood-essence", "memorial-coal", "nornathread", "petrified-tissue", "frozen-branch", "elaking-hair-bundle", "long-claws", "lingonberries", "seal-pelt", "seal-blubber", "moose-meat", "moose-hide", "moose-sinew", "intricate-key", "malicious-blood", "sacrificial-blood", "crown-jewel", "crown-of-valheim", "ember-charge", "snow-shovel", "grappling-hook"];
+const locationSlugs = ["winding-tunnels", "morkhalla", "aesir-passage", "ancient-altar", "forge-of-potential", "abandoned-village", "stave-hall", "ice-pond", "memorial-site", "jotun-invasion"];
+const labelSlug = (slug: string) => slug.split("-").map((word) => word[0].toUpperCase() + word.slice(1)).join(" ");
+
+for (const slug of itemSlugs) {
+  relatedMap[`/items/${slug}`] = [
+    { href: "/items", label: "All Deep North items" },
+    { href: "/world/regions/deep-north", label: "Deep North biome" },
+    { href: "/world/locations", label: "Deep North locations" },
+  ];
+}
+for (const slug of locationSlugs) {
+  relatedMap[`/world/locations/${slug}`] = [
+    { href: "/world/locations", label: "All Deep North locations" },
+    { href: "/world/regions/deep-north", label: "Deep North biome" },
+    { href: "/items", label: "Deep North items" },
+  ];
+}
+relatedMap["/items"] = itemSlugs.slice(0, 6).map((slug) => ({ href: `/items/${slug}`, label: labelSlug(slug) }));
+relatedMap["/world/locations"] = locationSlugs.slice(0, 6).map((slug) => ({ href: `/world/locations/${slug}`, label: labelSlug(slug) }));
+
+Object.assign(relatedMap, {
+  "/items/intricate-key": [{ href: "/world/locations/winding-tunnels", label: "Winding Tunnels" }, { href: "/world/locations/morkhalla", label: "Mörkhalla" }, { href: "/items/bloodgold", label: "Bloodgold" }],
+  "/world/locations/winding-tunnels": [{ href: "/items/intricate-key", label: "Intricate Key" }, { href: "/world/locations/morkhalla", label: "Mörkhalla" }, { href: "/items/frostcore", label: "Frostcore" }],
+  "/world/locations/morkhalla": [{ href: "/world/locations/winding-tunnels", label: "Winding Tunnels" }, { href: "/items/malicious-blood", label: "Malicious Blood" }, { href: "/world/locations/aesir-passage", label: "Aesir Passage" }],
+  "/items/malicious-blood": [{ href: "/world/locations/morkhalla", label: "Mörkhalla" }, { href: "/world/locations/aesir-passage", label: "Aesir Passage" }, { href: "/bosses/kall-fimbulbringer", label: "Kall Fimbulbringer" }],
+  "/world/locations/aesir-passage": [{ href: "/items/malicious-blood", label: "Malicious Blood" }, { href: "/bosses/kall-fimbulbringer", label: "Kall Fimbulbringer" }, { href: "/items/sacrificial-blood", label: "Sacrificial Blood" }],
+  "/items/crown-of-valheim": [{ href: "/bosses/kall-fimbulbringer", label: "Kall Fimbulbringer" }, { href: "/items/crown-jewel", label: "Crown Jewel" }, { href: "/items/sacrificial-blood", label: "Sacrificial Blood" }],
+  "/items/sacrificial-blood": [{ href: "/items/crown-of-valheim", label: "Crown of Valheim" }, { href: "/bosses/kall-fimbulbringer", label: "Kall Fimbulbringer" }, { href: "/world/locations/aesir-passage", label: "Aesir Passage" }],
+  "/items/bloodgold": [{ href: "/items/petrified-tissue", label: "Petrified Tissue" }, { href: "/items/ember-charge", label: "Ember Charge" }, { href: "/world/regions/deep-north", label: "Gammeltroll drops" }],
+  "/items/petrified-tissue": [{ href: "/items/bloodgold", label: "Bloodgold" }, { href: "/items/ember-charge", label: "Ember Charge" }, { href: "/world/regions/deep-north", label: "Gammeltroll drops" }],
+  "/items/ember-charge": [{ href: "/items/petrified-tissue", label: "Petrified Tissue" }, { href: "/items/bloodgold", label: "Bloodgold" }, { href: "/world/regions/deep-north", label: "Gammeltroll drops" }, { href: "/bosses/fader", label: "Fader" }],
+});
+
+relatedMap["/bosses/kall-fimbulbringer"] = [{ href: "/world/locations/aesir-passage", label: "Aesir Passage" }, { href: "/items/crown-of-valheim", label: "Crown of Valheim" }, { href: "/items/sacrificial-blood", label: "Sacrificial Blood" }, ...relatedMap["/bosses/kall-fimbulbringer"]];
+relatedMap["/world/regions/deep-north"] = [{ href: "/items/bloodgold", label: "Bloodgold" }, { href: "/items/petrified-tissue", label: "Petrified Tissue" }, { href: "/items/ember-charge", label: "Ember Charge" }, ...relatedMap["/world/regions/deep-north"]];
+
 const legalRoutes = new Set(["/about", "/contact", "/data-sources", "/editorial-policy", "/privacy", "/terms"]);
 
 export async function generateMetadata({ params }: { params: Promise<RouteParams> }) {
@@ -119,7 +172,15 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
   const route = `/${slug.join("/")}`;
   const canonical = `${SITE_URL}${route}`;
   const updated = doc.frontmatter.updated && !Number.isNaN(new Date(doc.frontmatter.updated).getTime()) ? new Date(doc.frontmatter.updated).toISOString() : undefined;
-  const jsonLd = {
+  const isItem = route.startsWith("/items/");
+  const jsonLd = isItem ? {
+    "@context": "https://schema.org",
+    "@type": "Thing",
+    name: doc.frontmatter.title,
+    description: doc.frontmatter.description,
+    image: `${SITE_URL}/og.jpg`,
+    url: canonical,
+  } : {
     "@context": "https://schema.org",
     "@type": legalRoutes.has(route) ? "WebPage" : "Article",
     headline: doc.frontmatter.title,
@@ -130,6 +191,21 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
     mainEntityOfPage: canonical,
     url: canonical,
   };
+  const howToSteps = extractHowToSteps(doc.content);
+  const howToJsonLd = howToSteps.length ? {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `${doc.frontmatter.title}: ${doc.content.includes("## How to trigger it") ? "How to trigger it" : doc.content.includes("## How to reach it") ? "How to reach it" : "How to obtain"}`,
+    step: howToSteps.map((text, index) => ({ "@type": "HowToStep", position: index + 1, text })),
+  } : null;
+  const collectionDirectory = route === "/items" ? "items" : route === "/world/locations" ? "world/locations" : null;
+  const collectionEntries = collectionDirectory ? await getCollectionEntries(collectionDirectory) : [];
+  const itemListJsonLd = collectionEntries.length ? {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    numberOfItems: collectionEntries.length,
+    itemListElement: collectionEntries.map((entry, index) => ({ "@type": "ListItem", position: index + 1, ...entry })),
+  } : null;
   const related = relatedMap[route] ?? [];
   const faq = extractFaq(doc.content);
   const faqJsonLd = faq.length
@@ -147,13 +223,15 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
   return <article className="prose prose-neutral dark:prose-invert max-w-3xl">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     {faqJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} /> : null}
+    {howToJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} /> : null}
+    {itemListJsonLd ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} /> : null}
     <header className="not-prose mb-8 border-b border-[#393126] pb-7">
       <p className="section-kicker">{legalRoutes.has(route) ? "Site information" : "Source-reviewed guide"}</p>
       <h1 className="mt-3 text-4xl font-black tracking-tight text-[#eee4d1]">{doc.frontmatter.title}</h1>
       {doc.frontmatter.description ? <p className="mt-4 max-w-2xl leading-7 text-[#aaa18f]">{doc.frontmatter.description}</p> : null}
       {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
     </header>
-    <MDXRemote source={doc.content} components={{ a: MdxLink, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
+    <MDXRemote source={doc.content} components={{ a: MdxLink, DatHostBanner, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
     {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
   </article>;
 }

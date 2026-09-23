@@ -1,13 +1,33 @@
 [
   {
+    "slug": "/world/locations/abandoned-village",
+    "title": "Abandoned Village: Finding Winding Tunnels",
+    "description": "Abandoned Village guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+  },
+  {
     "slug": "/about",
     "title": "About Valheim Companion",
     "description": "The scope, independence, and purpose of Valheim Companion."
   },
   {
+    "slug": "/world/locations/aesir-passage",
+    "title": "Aesir Passage: Strange Bowl and Kall's Prison",
+    "description": "Aesir Passage guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+  },
+  {
+    "slug": "/world/locations/ancient-altar",
+    "title": "Ancient Altar: Memorial Coal and Fallen Warriors",
+    "description": "Ancient Altar guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+  },
+  {
     "slug": "/servers/best-server-hosting",
     "title": "Best Valheim Server Hosting (2026 Comparison)",
     "description": "An honest, sourced comparison of managed Valheim server hosts — DatHost, Shockbyte, WinterNode, Supercraft, Nitrado, GPORTAL, Apex, Sparked Host, and BisectHosting. Real starting prices, player slots, crossplay support, and who each one is actually best for."
+  },
+  {
+    "slug": "/items/bloodgold",
+    "title": "Bloodgold: How to Get It and What It Crafts",
+    "description": "Bloodgold guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
     "slug": "/bosses/bonemass",
@@ -18,6 +38,16 @@
     "slug": "/contact",
     "title": "Contact Valheim Companion",
     "description": "How correction, source, privacy, and site-quality reports will be handled."
+  },
+  {
+    "slug": "/items/crown-jewel",
+    "title": "Crown Jewel: Kall Drop and Crown Recipe",
+    "description": "Crown Jewel guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/crown-of-valheim",
+    "title": "Crown of Valheim: Recipe, Stats and Effects",
+    "description": "Crown of Valheim guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
     "slug": "/data-sources",
@@ -35,9 +65,44 @@
     "description": "How to summon and defeat Eikthyr, Valheim's first boss — attacks, gear, arena tips, and common mistakes."
   },
   {
+    "slug": "/items/elaking-hair-bundle",
+    "title": "Elaking Hair Bundle: Drop and Uses",
+    "description": "Elaking Hair Bundle guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/ember-charge",
+    "title": "Ember Charge: Fader Relic to Bloodgold Guide",
+    "description": "Ember Charge guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
     "slug": "/bosses/fader",
     "title": "Fader Boss Guide: Valheim Ashlands Fight and Preparation",
     "description": "How to summon and defeat Fader in Valheim's Ashlands — attacks, fire resistance, gear, and arena tips for the endgame coliseum fight."
+  },
+  {
+    "slug": "/world/locations/forge-of-potential",
+    "title": "Forge of Potential: How the Upgrade Forge Works",
+    "description": "Forge of Potential guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+  },
+  {
+    "slug": "/items/frostcore",
+    "title": "Frostcore: Locations and Crafting Uses",
+    "description": "Frostcore guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/frostfire-essence",
+    "title": "Frostfire Essence: Ancient Altar Reward",
+    "description": "Frostfire Essence guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/frozen-branch",
+    "title": "Frozen Branch: Barka Drop and Crafting Uses",
+    "description": "Frozen Branch guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/grappling-hook",
+    "title": "Grappling Hook: Recipe and How to Get the Hook",
+    "description": "Grappling Hook guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
     "slug": "/servers/move-local-world-to-server",
@@ -50,9 +115,59 @@
     "description": "Update a Valheim dedicated server through Steam, SteamCMD, Docker, or managed hosting with backup, version, mod, verification, and rollback checks for Valheim 1.0."
   },
   {
+    "slug": "/world/locations/ice-pond",
+    "title": "Ice Pond: Deep North Terrain and Safety",
+    "description": "Ice Pond guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+  },
+  {
+    "slug": "/items/ice",
+    "title": "Ice: How to Get It in the Deep North",
+    "description": "Ice guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/intricate-key",
+    "title": "Intricate Key: Mould, Cast and Finished Key",
+    "description": "Intricate Key guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/world/locations/jotun-invasion",
+    "title": "Jotun Invasion: Trigger, Ice Core and Reward",
+    "description": "Jotun Invasion guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+  },
+  {
     "slug": "/bosses/kall-fimbulbringer",
     "title": "Kall Fimbulbringer: Valheim Deep North Boss Guide",
     "description": "How to summon and defeat Kall Fimbulbringer: Malicious Blood, the Aesir Passage, three fight phases, gear, Crown Jewel rewards, and Valheim's ending."
+  },
+  {
+    "slug": "/items/lingonberries",
+    "title": "Lingonberries: Where to Find Them and Uses",
+    "description": "Lingonberries guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/liquid-frost",
+    "title": "Liquid Frost: How to Make and Use It",
+    "description": "Liquid Frost guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/long-claws",
+    "title": "Long Claws: Eyeless One Drop and Uses",
+    "description": "Long Claws guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/malicious-blood",
+    "title": "Malicious Blood: How to Get Kall's Offering",
+    "description": "Malicious Blood guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/memorial-coal",
+    "title": "Memorial Coal: Drops and Ancient Altar Use",
+    "description": "Memorial Coal guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/world/locations/memorial-site",
+    "title": "Memorial Site: Ancient Altar Location and Rewards",
+    "description": "Memorial Site guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
   },
   {
     "slug": "/bosses/moder",
@@ -60,9 +175,64 @@
     "description": "How to summon and defeat Moder in Valheim — flying and grounded phases, gear, arena tips, and common mistakes."
   },
   {
+    "slug": "/items/moose-hide",
+    "title": "Moose Hide: How to Get It and What It Crafts",
+    "description": "Moose Hide guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/moose-meat",
+    "title": "Moose Meat: Deep North Food Ingredient",
+    "description": "Moose Meat guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/moose-sinew",
+    "title": "Moose Sinew: How to Get It and Uses",
+    "description": "Moose Sinew guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/world/locations/morkhalla",
+    "title": "Mörkhalla: Key, Malicious Ice and Rewards",
+    "description": "Mörkhalla guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+  },
+  {
+    "slug": "/items/nornathread",
+    "title": "Nornathread: Hexen Drop and Crafting Uses",
+    "description": "Nornathread guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/petrified-tissue",
+    "title": "Petrified Tissue: How to Mine and Smelt It",
+    "description": "Petrified Tissue guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
     "slug": "/privacy",
     "title": "Privacy Policy",
     "description": "How Valheim Companion handles hosting data, analytics consent, browser storage, and affiliate links."
+  },
+  {
+    "slug": "/items/sacrificial-blood",
+    "title": "Sacrificial Blood: Kall Reward and Ending Use",
+    "description": "Sacrificial Blood guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/seal-blubber",
+    "title": "Seal Blubber: Deep North Drop and Uses",
+    "description": "Seal Blubber guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/seal-pelt",
+    "title": "Seal Pelt: How to Get It and Craft Ember Charges",
+    "description": "Seal Pelt guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/items/snow-shovel",
+    "title": "Snow Shovel: Recipe and Deep Snow Use",
+    "description": "Snow Shovel guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/world/locations/stave-hall",
+    "title": "Stave Hall: Deep North Point of Interest",
+    "description": "Stave Hall guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
   },
   {
     "slug": "/terms",
@@ -78,6 +248,11 @@
     "slug": "/bosses/the-queen",
     "title": "The Queen Boss Guide: How to Beat Valheim's Sixth Boss",
     "description": "How to reach and defeat The Queen in Valheim's Infested Citadel — attack patterns, add management, gear, and arena tips."
+  },
+  {
+    "slug": "/items/thunderblood-essence",
+    "title": "Thunderblood Essence: Ancient Altar Reward",
+    "description": "Thunderblood Essence guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
     "slug": "/valheim-1-0/achievements-cheats",
@@ -185,6 +360,11 @@
     "description": "Progress through Valheim's Deep North: turn Petrified Tissue into Bloodgold, build the Frost Foundry, clear Mörkhalla, and reach Kall Fimbulbringer."
   },
   {
+    "slug": "/world/locations",
+    "title": "Valheim Deep North Locations and Dungeons",
+    "description": "Browse Valheim 1.0 Deep North dungeons, points of interest, stations, and events in progression order, with requirements, rewards, and tactics."
+  },
+  {
     "slug": "/world/regions/deep-north",
     "title": "Valheim Deep North: Creatures, Resources and Hazards",
     "description": "Deep North biome reference: creature drops, Bloodgold and Frostcore uses, crafting stations, Winding Tunnels, Mörkhalla, and the route to Kall Fimbulbringer."
@@ -193,6 +373,11 @@
     "slug": "/resources/food-and-cooking",
     "title": "Valheim Food and Cooking Guide",
     "description": "How Valheim's food system works — active food limits, cooking station progression, and what to eat at each stage of the game."
+  },
+  {
+    "slug": "/items",
+    "title": "Valheim Items: Deep North Materials, Keys and Gear",
+    "description": "Browse every new Valheim 1.0 item in the Deep North collection, grouped by category with links to acquisition, crafting, and progression guides."
   },
   {
     "slug": "/world/regions/meadows",
@@ -268,6 +453,11 @@
     "slug": "/servers/world-backup-restore",
     "title": "Valheim World Save Location, Backup and Restore",
     "description": "Find the active Valheim save location on Windows or Linux, create a complete dedicated-server backup, understand automatic retention, and restore safely."
+  },
+  {
+    "slug": "/world/locations/winding-tunnels",
+    "title": "Winding Tunnels: Entrances, Loot and Route",
+    "description": "Winding Tunnels guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
   },
   {
     "slug": "/bosses/yagluth",
