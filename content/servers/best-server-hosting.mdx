@@ -1,94 +1,103 @@
 ---
 title: "Best Valheim Server Hosting (2026 Comparison)"
-description: "An honest, sourced comparison of managed Valheim server hosts — DatHost, Shockbyte, WinterNode, Supercraft, Nitrado, GPORTAL, and Apex. Real starting prices, player slots, crossplay support, and who each one is actually best for."
-updated: 2026-09-21
+description: "An October 2026 comparison of Valheim server hosts, with current prices, renewal costs, player limits, crossplay support, backups, and mod support."
+updated: 2026-10-07
 ---
 
 <DatHostBanner />
 
-> **Valheim 1.0 launch deal — €1 for the first month. Offer confirmed September 17, 2026.** **Launch pricing is time-limited; it is not the renewal price.** DatHost is running a limited Valheim campaign on every billing cycle. The monthly option is **€1 now, then €14.90/month**; longer prepaid terms show lower effective renewal rates. It includes 10 player slots, automatic updates and backups, a world manager, mods and crossplay. <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">Claim the DatHost Valheim launch deal</a>. This is a sponsored affiliate link; Valheim Companion may earn a commission at no extra cost to you. Offer terms and availability can change, so confirm them on DatHost before purchasing.
+> **Current DatHost offer: €1 for the first month. Rechecked October 7, 2026.** The monthly plan renews at **€14.90/month**. Six- and twelve-month prepaid plans currently show lower effective renewal rates of **€8.90/month** and **€6.90/month**. All include 10 player slots, automatic updates and backups, a world manager, mods, and crossplay. <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">See the DatHost Valheim offer</a>. This is a sponsored affiliate link; Valheim Companion may earn a commission at no extra cost to you. Confirm the checkout total before purchasing because promotions can change.
 
-If you've decided not to [self-host](/servers/dedicated-server-setup), the next question is *which managed host*. They all run the same Valheim dedicated-server binary under the hood, so the real differences are **price per slot, crossplay support, datacenter regions, and support quality**. This page compares the main options with source notes, including where each one loses — see the [data sources](/data-sources) and [editorial policy](/editorial-policy) this site follows.
+If you've decided not to [self-host](/servers/dedicated-server-setup), the next question is *which managed host*. They all run the same Valheim dedicated-server software, so compare the **renewal price, group size, crossplay support, backup policy, mod support, and server location** rather than choosing on the introductory price alone. This page uses documented provider terms and calls out the main drawback of each option. See the site's [data sources](/data-sources) and [editorial policy](/editorial-policy).
 
 ## Self-host vs managed hosting
 
-**Self-hosting** means running `valheim_server.exe` or `valheim_server.x86_64` on your own hardware or a VPS you already control. It's free apart from electricity, but you're the one handling updates, port forwarding, and uptime. The full walkthrough is in [dedicated server setup](/servers/dedicated-server-setup), and the [configuration generator](/servers/server-settings) will build the exact launch line either way.
+**Self-hosting** means running `valheim_server.exe` or `valheim_server.x86_64` on your own hardware or a VPS you control. You avoid a hosting bill, but you handle updates, port forwarding, backups, security, and uptime. The [dedicated server setup guide](/servers/dedicated-server-setup) covers the process, and the [configuration generator](/servers/server-settings) builds the launch command.
 
-**Managed hosting** means paying a provider to run the server on their hardware — a web control panel, one-click updates, DDoS protection, automated backups, and a location near your players, without touching a router. A small Valheim plan typically runs a few dollars a month. The rest of this page covers that side.
+**Managed hosting** puts the server on a provider's hardware and gives you a web control panel, automated updates and backups, DDoS protection, and a choice of datacenter. It is the simpler option when nobody in the group wants to maintain a machine.
 
-> *This page includes affiliate links. If you buy hosting through one, this site may earn a commission at no extra cost to you — see the [full disclosure](#disclosure) below. The comparison is not ranked by payout.*
+> *This page includes affiliate links. If you buy hosting through one, this site may earn a commission at no extra cost to you. See the [full disclosure](#disclosure). Placement is based on the offer and fit described here, not commission size.*
 
 ## Crossplay matters for which backend you pick
 
-Valheim's dedicated server runs on either the **Steam backend** (Steam users only, requires port forwarding for outside players) or the **PlayFab crossplay backend** (`-crossplay`, works across all launch platforms, traffic goes through a relay so port forwarding isn't required). Not every managed host defaults to the same backend or makes it equally easy to switch — confirm PlayFab/crossplay support with the host directly if your group spans platforms, and see the [crossplay guide](/servers/crossplay) for what each backend actually changes.
+Valheim's dedicated server can use the **Steam backend** or the **PlayFab crossplay backend** (`-crossplay`). PlayFab is required when your group spans PC and console platforms. A host may support crossplay without enabling it by default, so confirm the setting before inviting players. The [crossplay guide](/servers/crossplay) explains the practical differences.
 
 ## At a glance
 
-| Host | Starting price | Notable for | Watch out for |
+| Host | Current price | Best fit | Watch out for |
 | :--- | :--- | :--- | :--- |
-| <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">**DatHost**</a> | **€1 first month** (offer confirmed September 17, 2026) during the Valheim 1.0 campaign; then €14.90/mo monthly | 10 slots, unrestricted CPU/RAM, automatic updates and backups, world manager, crossplay | Limited-time campaign; renewal price depends on billing cycle |
-| <a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">**Shockbyte**</a> | From **$6.99 first month** (4 players, 3GB); then $9.99/mo | Three player/RAM tiers, instant setup, crossplay, mods, 72h refund | Introductory price applies to the first month; compare renewal prices by tier |
-| <a href="https://clients.winternode.com/aff.php?aff=122&pid=45" rel="sponsored noopener" target="_blank">**WinterNode**</a> | Advertised from **$11.94/mo**; RAM-based plans | Crossplay, twice-daily backups with 45-day retention, BepInEx/ValheimPlus support | Price increases with RAM; unmetered resources have fair-use limits |
-| <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">**Supercraft**</a> | $7.99/mo (5p) · $12.99/mo (10p) · $24.99/mo (30p) | Crossplay enabled on every tier, 5 regions, 2-day money-back | Lowest tier has no mod support |
-| <a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">**Nitrado**</a> | ≈€13.09/30 days (10 players, EU store)* | Established brand, daily backups | Officially supports only ValheimPlus; other mods unsupported |
-| <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">**GPORTAL**</a> | From $6.23/3 days · $15.59/30 days (10 players) | Short-term flexible billing, explicit 1.0/Deep North and crossplay support | Short-term rate adds up if left running long-term |
-| <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">**Apex Hosting**</a> | From $7.49/mo (2GB, 10 players)* | 18+ locations, beginner-friendly panel | Entry tier is low RAM; check upgrade pricing for larger worlds |
+| <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">**DatHost**</a> | **€1 first month**, then €14.90/mo on monthly billing | A 10-player group wanting broad location choice, mods, and easy world management | The €1 price is promotional; compare the renewal total and prepaid term |
+| <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">**Supercraft**</a> | **$7.99/mo** (5 players), **$12.99/mo** (10), **$24.99/mo** (30) | Clear player-based plans and crossplay on every tier | The $7.99 tier is vanilla-only; mod support starts at $12.99 |
+| <a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">**Shockbyte**</a> | **$9.99/mo** (4 players), **$12.99/mo** (7), **$16.99/mo** (10) | Groups that want a plan sized by both players and RAM | The smallest plan has 3GB RAM; larger worlds or mods may need a higher tier |
+| <a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">**Nitrado**</a> | **$9.72/30 days** promotional; **$16.19 regular** (10 slots) | Cross-platform groups wanting a large established provider | The promotion requires code `DEEPNORTH40`; check renewal pricing |
+| <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">**GPORTAL**</a> | **$6.24/3 days** or **$15.59/30 days** (10 slots) | Short events or groups wanting built-in mod tools and 50GB of backup space | The 3-day offer is poor value for a server kept online continuously |
+| <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">**Apex Hosting**</a> | **$5.99 first month**, then **$7.99/mo** for 2GB | A small vanilla group that values a guided control panel | Entry pricing is for only 2GB; compare the recurring price of the RAM tier you need |
 
-*Marked prices came from third-party review coverage rather than the provider's own pricing page, which loads pricing dynamically via JavaScript and couldn't be read directly — confirm the live number before buying. See the sources at the end of this page below.
+Prices above were checked on October 7, 2026. Taxes, currencies, promotions, and regional availability can change.
 
 ## The hosts, with source notes
 
-### DatHost — the Valheim 1.0 launch campaign
+### DatHost — strongest introductory offer for 10 slots
 
-**Offer confirmed September 17, 2026** on the provider's pricing page. Launch pricing is time-limited.
+<a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">DatHost</a> currently charges **€1 for the first month**, followed by **€14.90/month** on monthly billing. The six-month plan costs **€45.50 upfront** and shows an effective renewal rate of €8.90/month; the yearly plan costs **€76.90 upfront** and shows €6.90/month at renewal. Longer terms reduce the effective monthly price but require a larger prepayment.
 
-<a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">DatHost's Valheim campaign</a> reduces the first month to **€1 on every billing cycle**. The monthly option renews at **€14.90/month**; the six-month option shows an effective **€8.90/month** renewal rate, and the yearly option shows **€6.90/month**, with those longer terms prepaid. DatHost advertises **10 player slots, unrestricted CPU and RAM, automatic updates within 15 minutes, daily backups, one-click world management, mods and plugins, and Steam/Xbox crossplay**. The provider labels the offer as a limited Valheim 1.0 launch deal, so verify the countdown and checkout total before buying. <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">Claim the €1 Valheim deal</a>.
+Every Valheim plan includes **10 slots, automatic updates and backups, a world manager, mod and plugin support, and Steam/Xbox crossplay**. DatHost also advertises 49 locations, 30GB NVMe storage, up to 2Tbps DDoS protection, and a 14-day refund policy. The €1 offer is the clearest reason to try it, but use the renewal price when comparing long-term cost. <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">Check DatHost's current Valheim price</a>.
 
-After the campaign, the standard monthly renewal is €14.90, with lower effective rates on longer prepaid terms. The product page lists modern AMD or Intel CPUs, **16 GB DDR5 RAM, 30 GB NVMe storage, up to 2 Tbps DDoS protection, 49 locations, a 14-day money-back guarantee**, and the ability to switch the subscription between supported games.
+### Supercraft — straightforward tiers for 5, 10, or 30 players
 
-### Shockbyte — three tiers from small groups to 10 players
+<a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">Supercraft</a> offers **S at $7.99/month for 5 players, M at $12.99/month for 10, and L at $24.99/month for 30**. All tiers include crossplay, automatic daily backups, and 17Tbit/s DDoS protection. The four listed locations are Oregon, Toronto, Paris, and Sydney.
 
-<a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">Shockbyte</a> currently lists three Valheim tiers: **Eikthyr at $6.99 for the first month, then $9.99/month** (3GB, 4 players); **Bonemass at $9.09, then $12.99/month** (4GB, 7 players); and **Yagluth at $11.89, then $16.99/month** (6GB+, 10 players). Those first-month figures reflect the provider's current 30% introductory offer, so check the live checkout before paying. The product page advertises **instant setup, BepInEx and ValheimPlus mod support, crossplay, 24/7 support, DDoS protection, automatic backups and updates, full FTP access, and a 72-hour self-serve refund window**. <a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">See Shockbyte's Valheim plans</a>.
+Choose M or L if you need BepInEx or one-click Thunderstore installs; S is a vanilla-only plan. Supercraft offers a 48-hour refund window. It is a clear value choice when its four-region network puts a server close enough to your group. <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">Compare Supercraft's three plans</a>.
 
-### WinterNode — RAM-based plans with long backup retention
+### Shockbyte — useful sizing for small and medium groups
 
-**Pricing and features checked September 21, 2026.** <a href="https://clients.winternode.com/aff.php?aff=122&pid=45" rel="sponsored noopener" target="_blank">WinterNode</a> advertises Valheim hosting from **$11.94/month**, with plans priced by RAM. Its configurator also displays **$15.92/month**, so check the selected package and checkout total. The provider lists **crossplay, BepInEx and ValheimPlus support, twice-daily backups, and 45-day backup retention**. CPU and NVMe storage are advertised as unmetered but remain subject to fair-use limits. This makes it an option to consider when backup history matters; these are provider-advertised features, not our own performance benchmarks. <a href="https://clients.winternode.com/aff.php?aff=122&pid=45" rel="sponsored noopener" target="_blank">Configure a WinterNode Valheim server</a>.
+<a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">Shockbyte</a> lists **Eikthyr at $9.99/month** (3GB, 4 players), **Bonemass at $12.99/month** (4GB, 7 players), and **Yagluth at $16.99/month** (6GB+, 10 players). This makes the real monthly cost easy to compare with the size of your group.
 
-### Supercraft — crossplay on every tier, three real sizes
+The provider advertises instant setup, crossplay, BepInEx and ValheimPlus support, automatic backups and updates, FTP access, 24/7 support, and a 72-hour self-service refund period. The tradeoff is that modest entry RAM can force an upgrade when a world grows or a modpack becomes heavier. <a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">See Shockbyte's Valheim tiers</a>.
 
-<a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">Supercraft</a> offers three tiers — **S ($7.99/mo, 5 players), M ($12.99/mo, 10 players), and L ($24.99/mo, 30 players)** — across five regions (US West, US East, US North-East, Europe West, Australia), with **Xbox/PC crossplay, daily backups, and 17 Tbit/s DDoS protection on every tier**. Mod support (BepInEx, one-click Thunderstore installs) starts at the M tier; the S tier is vanilla-only. A **2-day money-back guarantee** de-risks trying it. <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">See Supercraft's Valheim plans</a>.
+### Nitrado — broad cross-platform support with a promo-dependent price
 
-### Nitrado — established brand, narrower mod support
+<a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">Nitrado</a> currently lists a 10-slot Valheim server at **$9.72 for 30 days with code `DEEPNORTH40`**, down from a regular **$16.19**. The same campaign shows $2.46 for three days and $26.16 for 90 days. Treat those as promotional checkout prices and compare the regular rate before subscribing.
 
-<a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">Nitrado</a> sells Valheim by the slot, 10 by default, on runtimes from 3 to 365 days; third-party pricing coverage puts a 30-day, 10-slot plan at roughly **€13.09 on the EU store**. Nitrado officially supports only ValheimPlus through its one-click add-on system — other mods aren't officially supported, which is worth knowing if your group runs a heavier modpack. <a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">See Nitrado's Valheim hosting</a>.
+Nitrado advertises crossplay across PC and current console platforms, daily backups, and locations in Frankfurt, London, New York, Miami, Los Angeles, Singapore, Tokyo, and Sydney. A subscription can also switch among several supported games. It suits groups that value provider scale and platform coverage more than the lowest regular monthly price. <a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">Check Nitrado's live Valheim offer</a>.
 
-### GPORTAL — flexible short-term billing, explicit 1.0 support
+### GPORTAL — flexible short-term rental and strong built-in tools
 
-<a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">GPORTAL</a> bills from **$6.23 for a 3-day entry plan** up through **$15.59/30 days, $42.08/90 days, and $79.48/180 days** for 10 players, and its product page explicitly calls out **Valheim 1.0 and Deep North support, full PC/Xbox crossplay, ValheimPlus and BepInEx pre-installed, 50GB of backup storage, and multi-layered DDoS protection**. The short-term entry plan is useful for a launch-week or event server; left running continuously, a monthly plan works out cheaper. <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">See GPORTAL's Valheim plans</a>.
+<a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">GPORTAL</a> lists **$6.24 for three days, $15.59 for 30 days, $42.09 for 90 days, and $79.51 for 180 days** with 10 slots. The three-day term is useful for a weekend event or returning-player session; use a longer term for a persistent world.
 
-### Apex Hosting — easiest panel, RAM-tiered pricing
+The product page advertises PC and console crossplay, one-click BepInEx and Thunderstore support, ValheimPlus, 50GB of backup space, 24/7 support, and DDoS protection. GPORTAL is the most flexible short-term choice in this comparison, although it is not the cheapest regular monthly option. <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">See GPORTAL's Valheim terms</a>.
 
-<a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">Apex Hosting</a> prices Valheim by RAM starting around **$7.49/month for 2GB** (10 players), scaling up through their standard tiers, across **18+ server locations**. Apex is consistently reported as the most beginner-friendly control panel with responsive support — worth the premium over the cheapest options if this is your first time running any game server. <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">See Apex's Valheim hosting</a>.
+### Apex Hosting — low entry price, but compare RAM tiers
+
+<a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">Apex Hosting</a> currently applies code `APEX25` to the first order. Its **2GB plan is $5.99 for the first month and $7.99 recurring**, 4GB is $11.24 then $14.99, and 8GB is $20.99 then $27.99. Apex also lists a seven-day refund policy.
+
+The low headline price fits a small vanilla world. For a larger group or mods, compare the recurring price of a 4GB or 8GB plan rather than judging Apex by its 2GB entry tier. <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">Check Apex's current RAM-tier pricing</a>.
 
 ## Which should you pick?
 
-For a **launch-week server**, <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">DatHost</a>'s €1 first-month campaign is the strongest current introductory price here, and its 49-location spread is useful when players are geographically distributed. For a **small group that wants to choose by player count and RAM**, <a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">Shockbyte</a> offers clear 4-, 7-, and 10-player tiers. For **longer backup history**, <a href="https://clients.winternode.com/aff.php?aff=122&pid=45" rel="sponsored noopener" target="_blank">WinterNode</a> advertises 45-day retention. If **crossplay matters and you want three size tiers**, <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">Supercraft</a> or <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">GPORTAL</a> both explicitly support it. If your group is **heavily modded**, avoid Nitrado's ValheimPlus-only limitation and look at Shockbyte or Supercraft's M and L tiers instead. If it's your **first time running any game server**, <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">Apex</a>'s panel and support reputation are worth the premium.
+- Choose <a href="https://dathost.com/r/atlebj/valheim" rel="sponsored noopener" target="_blank">DatHost</a> for the strongest current introductory offer, 10 slots, and broad location choice.
+- Choose <a href="https://supercraft.host/valheim-server-hosting/?fpr=atle10" rel="sponsored noopener" target="_blank">Supercraft</a> when its four locations work for your group and you want simple player-based pricing.
+- Choose <a href="https://shockbyte.com/partner/valheimcompanion" rel="sponsored noopener" target="_blank">Shockbyte</a> when you want a smaller plan sized by both player count and RAM.
+- Choose <a href="https://www.nitrado-aff.com/5NMFN6T/2N721M/" rel="sponsored noopener" target="_blank">Nitrado</a> for broad cross-platform support, after comparing the regular price behind its promo.
+- Choose <a href="https://g-portal.com/?ref=palcompanion" rel="sponsored noopener" target="_blank">GPORTAL</a> for a short event server or built-in mod and backup tools.
+- Choose <a href="https://billing.apexminecrafthosting.com/aff.php?aff=16993" rel="sponsored noopener" target="_blank">Apex</a> for a small world and guided hosting experience, after checking the RAM tier you need.
 
-There's no single "best" — it depends on your group size, whether you need crossplay, and how much setup effort you want to avoid.
+For most groups, the best shortlist starts with DatHost, Supercraft, and Shockbyte. Compare the renewal total, nearest server location, and required RAM before buying.
+
+## Other option: WinterNode
+
+**WinterNode** remains a reasonable RAM-priced alternative, but its realistic price needs context. A 6GB configuration starts at **$11.94/month**, while the provider's recommended 8GB configuration starts at **$15.92/month**. It advertises nine global locations, crossplay, BepInEx and ValheimPlus support, twice-daily backups with 45-day retention, and a 48-hour refund window. CPU and storage are described as unmetered but remain subject to fair-use terms.
+
+Consider it when long backup retention is a priority. At the recommended 8GB price, compare it directly with the primary options above before ordering. <a href="https://clients.winternode.com/aff.php?aff=122&pid=45" rel="sponsored noopener" target="_blank">Review WinterNode's current configuration</a>.
 
 ## Already leaning toward self-hosting?
 
-The [dedicated server setup guide](/servers/dedicated-server-setup) walks through the launch scripts and required libraries, [server requirements](/servers/server-requirements) covers the official minimums Iron Gate has actually published, and the [configuration generator](/servers/server-settings) builds the exact launch line for either the Steam or PlayFab backend.
+The [dedicated server setup guide](/servers/dedicated-server-setup) walks through the launch scripts and required libraries, [server requirements](/servers/server-requirements) covers the official minimums Iron Gate has published, and the [configuration generator](/servers/server-settings) builds the exact launch line for the Steam or PlayFab backend.
 
 ## Disclosure
 
-This page contains affiliate links to Shockbyte, WinterNode, Supercraft, Nitrado, GPORTAL, Apex Hosting, and DatHost. If you buy hosting through one of them, this site may earn a commission at no extra cost to you. The comparison is **not ranked by payout** — each host is recommended where it has documented advantages. See the [Privacy Policy](/privacy) for the full data-handling and affiliate-tracking disclosure.
+This page contains affiliate links to DatHost, Supercraft, Shockbyte, Nitrado, GPORTAL, Apex Hosting, and WinterNode. If you buy hosting through one, this site may earn a commission at no extra cost to you. Placement is based on the documented price and product fit described on this page, not affiliate payout. See the [Privacy Policy](/privacy) for the full data-handling and affiliate-tracking disclosure.
 
-**DatHost offer confirmed September 17, 2026.** Launch pricing is time-limited.
+**Prices and features checked October 7, 2026** against the providers' own product and pricing pages. Promotional codes, taxes, currencies, renewal terms, and availability can change; confirm the final amount at checkout.
 
-**WinterNode pricing and features checked September 21, 2026** against its product page.
-
-**On pricing:** other figures above were researched in **August 2026**, with the DatHost campaign and Shockbyte plans rechecked on **September 11, 2026**, from each provider's own pricing page where it loaded without client-side rendering and from third-party hosting-comparison coverage where it didn't (marked with * in the table above). Prices, campaign dates, promo codes, and regional availability change — confirm the live number on the host's own page before buying.
-
-
-**Sources**: [WinterNode Valheim hosting](https://winternode.com/games/valheim), [WinterNode fair-use terms](https://winternode.com/legal), [DatHost pricing](https://dathost.com/valheim-server-hosting), [Shockbyte](https://shockbyte.com/games/valheim-server-hosting), [Supercraft](https://supercraft.host/valheim-server-hosting/), [GPORTAL](https://www.g-portal.com/en/gameserver/valheim-server-hosting), [MamboServer comparison](https://www.mamboserver.com/gaming-servers/best-valheim-server-hosting/), [Codeless comparison](https://codeless.co/best-valheim-server-hosting/), [HostAdvice DatHost review](https://hostadvice.com/hosting-company/dathost-reviews/).
+**Sources**: [DatHost Valheim hosting](https://dathost.com/valheim-server-hosting), [Supercraft Valheim hosting](https://www.supercraft.host/valheim-server-hosting/), [Shockbyte Valheim hosting](https://shockbyte.com/games/valheim-server-hosting), [Nitrado Valheim hosting](https://server.nitrado.net/en-US/offers/valheim?platform=pc), [GPORTAL Valheim hosting](https://www.g-portal.com/en/gameserver/valheim-server-hosting), [Apex Valheim pricing](https://apexminecrafthosting.com/pricing/?game=valheim), [WinterNode Valheim hosting](https://winternode.com/games/valheim), and [WinterNode fair-use terms](https://winternode.com/legal).
