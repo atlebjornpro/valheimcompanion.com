@@ -12,6 +12,7 @@ import { createPageMetadata, SITE_NAME, SITE_URL } from "../../../config/metadat
 import ServerConfigGenerator from "../../../components/ServerConfigGenerator";
 import WorldMigrationChecklist from "../../../components/WorldMigrationChecklist";
 import DatHostBanner from "../../../components/DatHostBanner";
+import HostingRecommendations from "../../../components/HostingRecommendations";
 import { extractFaq } from "../../../utils/faq";
 
 type RouteParams = { slug?: string[] };
@@ -231,7 +232,7 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
       {doc.frontmatter.description ? <p className="mt-4 max-w-2xl leading-7 text-[#aaa18f]">{doc.frontmatter.description}</p> : null}
       {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
     </header>
-    <MDXRemote source={doc.content} components={{ a: MdxLink, DatHostBanner, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
+    <MDXRemote source={doc.content} components={{ a: MdxLink, DatHostBanner, HostingRecommendations, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
     {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
   </article>;
 }
