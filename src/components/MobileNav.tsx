@@ -20,7 +20,7 @@ export default function MobileNav() {
       {links.map(({ href, label, icon: Icon }) => {
         const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
         return (
-          <Link key={href} href={href} className={clsx("flex w-full flex-col items-center justify-center py-1 text-[10px]", isActive ? "text-[#7188ff]" : "text-slate-500 hover:text-slate-300")}>
+          <Link key={href} href={href} prefetch={false} className={clsx("flex w-full flex-col items-center justify-center py-1 text-[10px]", isActive ? "text-[#7188ff]" : "text-slate-500 hover:text-slate-300")}>
             <Icon className="mb-1 h-5 w-5" /><span>{label}</span>
           </Link>
         );

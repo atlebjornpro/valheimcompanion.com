@@ -233,6 +233,6 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
       {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
     </header>
     <MDXRemote source={doc.content} components={{ a: MdxLink, DatHostBanner, HostingRecommendations, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
-    {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
+    {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} prefetch={false} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
   </article>;
 }

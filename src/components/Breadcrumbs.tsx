@@ -49,7 +49,7 @@ export default function Breadcrumbs() {
       <nav aria-label="Breadcrumb" className="mb-4 text-sm">
         <ol className="flex items-center space-x-2 text-neutral-500">
         <li>
-          <Link href="/" className="hover:text-neutral-300 transition-colors flex items-center">
+          <Link href="/" prefetch={false} className="hover:text-neutral-300 transition-colors flex items-center">
             <Home className="w-4 h-4" />
           </Link>
         </li>
@@ -62,7 +62,7 @@ export default function Breadcrumbs() {
                   {label}
                 </span>
               ) : (
-                <Link href={href} className="hover:text-neutral-300 transition-colors">
+                <Link href={href} prefetch={false} className="hover:text-neutral-300 transition-colors">
                   {label}
                 </Link>
               )}

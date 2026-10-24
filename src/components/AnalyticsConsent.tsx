@@ -227,7 +227,7 @@ export default function AnalyticsConsent() {
               </>
             )}{" "}
             Read the{" "}
-            <Link href={routes.privacy} className="font-bold text-[#e1ad5a] hover:underline">
+            <Link href={routes.privacy} prefetch={false} className="font-bold text-[#e1ad5a] hover:underline">
               privacy policy
             </Link>
             .

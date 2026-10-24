@@ -67,6 +67,7 @@ function NavItem({ link, pathname }: { link: NavLink; pathname: string }) {
     <li className="relative group">
       <Link
         href={link.href}
+        prefetch={false}
         className={cn(
           "flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-all duration-200 group-hover:bg-neutral-100 dark:group-hover:bg-neutral-800/50",
           isActive

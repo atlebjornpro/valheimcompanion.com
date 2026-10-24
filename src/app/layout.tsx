@@ -74,16 +74,16 @@ gtag('set', 'ads_data_redaction', true);`}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header className="border-b border-[#3a3124] bg-[#11120f]/95 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center gap-5 p-4 text-sm">
-          <Link href={routes.home} className="flex items-center gap-2 font-black tracking-tight text-[#f2e8d0]">
+          <Link href={routes.home} prefetch={false} className="flex items-center gap-2 font-black tracking-tight text-[#f2e8d0]">
             <span className="grid h-8 w-8 place-items-center rounded-full border border-[#aa7a3d]/60 bg-[#2b2117]"><Axe className="h-4 w-4 text-[#e1ad5a]" /></span>
             {SITE_NAME}
           </Link>
-          <Link href={routes.valheimOne} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">1.0</Link>
-          <Link href={routes.deepNorth} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Deep North</Link>
-          <Link href={routes.world} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">World</Link>
-          <Link href={routes.bosses} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Bosses</Link>
-          <Link href={routes.servers} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Servers</Link>
-          <Link href={routes.serverHosting} className="hidden font-semibold text-[#e1ad5a] hover:text-[#f5ca81] lg:block">Hosting</Link>
+          <Link href={routes.valheimOne} prefetch={false} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">1.0</Link>
+          <Link href={routes.deepNorth} prefetch={false} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Deep North</Link>
+          <Link href={routes.world} prefetch={false} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">World</Link>
+          <Link href={routes.bosses} prefetch={false} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Bosses</Link>
+          <Link href={routes.servers} prefetch={false} className="hidden text-[#aaa18f] hover:text-[#f0bd68] sm:block">Servers</Link>
+          <Link href={routes.serverHosting} prefetch={false} className="hidden font-semibold text-[#e1ad5a] hover:text-[#f5ca81] lg:block">Hosting</Link>
           <div className="ml-auto"><Search /></div>
         </nav>
       </header>
@@ -92,12 +92,12 @@ gtag('set', 'ads_data_redaction', true);`}
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-xs text-[#827a6c] sm:flex-row sm:items-center sm:justify-between">
           <div><strong className="text-[#d5cbb7]">{SITE_NAME}</strong><span className="ml-2">Independent community project. Not affiliated with Iron Gate.</span></div>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <Link href={routes.about} className="hover:text-[#e1ad5a]">About</Link>
-            <Link href={routes.dataSources} className="hover:text-[#e1ad5a]">Sources</Link>
-            <Link href={routes.editorialPolicy} className="hover:text-[#e1ad5a]">Editorial</Link>
-            <Link href={routes.contact} className="hover:text-[#e1ad5a]">Contact</Link>
-            <Link href={routes.privacy} className="hover:text-[#e1ad5a]">Privacy</Link>
-            <Link href={routes.terms} className="hover:text-[#e1ad5a]">Terms</Link>
+            <Link href={routes.about} prefetch={false} className="hover:text-[#e1ad5a]">About</Link>
+            <Link href={routes.dataSources} prefetch={false} className="hover:text-[#e1ad5a]">Sources</Link>
+            <Link href={routes.editorialPolicy} prefetch={false} className="hover:text-[#e1ad5a]">Editorial</Link>
+            <Link href={routes.contact} prefetch={false} className="hover:text-[#e1ad5a]">Contact</Link>
+            <Link href={routes.privacy} prefetch={false} className="hover:text-[#e1ad5a]">Privacy</Link>
+            <Link href={routes.terms} prefetch={false} className="hover:text-[#e1ad5a]">Terms</Link>
             <AnalyticsPreferencesButton />
           </div>
         </div>

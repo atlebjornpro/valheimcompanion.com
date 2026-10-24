@@ -14,15 +14,10 @@ export default function Search() {
   const [query, setQuery] = useState('');
   const [index, setIndex] = useState<SearchResult[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const indexRequestedRef = useRef(false);
   const router = useRouter();
 
   useEffect(() => {
-    // Load search index
-    fetch('/search-index.json')
-      .then((res) => res.json())
-      .then((data) => setIndex(data))
-      .catch((err) => console.error('Failed to load search index', err));
-
     // Keyboard shortcut (Cmd+K)
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -36,6 +31,19 @@ export default function Search() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen || indexRequestedRef.current) return;
+    indexRequestedRef.current = true;
+
+    fetch('/search-index.json')
+      .then((res) => res.json())
+      .then((data) => setIndex(data))
+      .catch((err) => {
+        indexRequestedRef.current = false;
+        console.error('Failed to load search index', err);
+      });
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
