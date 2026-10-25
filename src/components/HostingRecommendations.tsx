@@ -47,7 +47,7 @@ export default function HostingRecommendations() {
             <p className="mt-3 leading-7 text-[#d7cdbb]">{recommendation.summary}</p>
             <p className="mt-4 text-sm leading-6 text-[#e1ad5a]">{recommendation.price}</p>
             <p className="mt-2 text-sm leading-6 text-[#aaa18f]">{recommendation.detail}</p>
-            <a
+            <TrackedAnchor
               className="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg border border-[#8db6ba] px-4 py-2 text-center text-sm font-bold text-[#eee4d1] no-underline transition hover:bg-[#202820]"
               href={recommendation.href}
               rel="sponsored noopener"
@@ -55,10 +55,11 @@ export default function HostingRecommendations() {
               target="_blank"
             >
               {recommendation.cta}
-            </a>
+            </TrackedAnchor>
           </article>
         ))}
       </div>
     </section>
   );
 }
+import TrackedAnchor from "./TrackedAnchor";

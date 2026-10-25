@@ -1,14 +1,16 @@
 ---
 title: "How to Update a Valheim Dedicated Server Safely"
 description: Update a Valheim dedicated server through Steam, SteamCMD, Docker, or managed hosting with backup, version, mod, verification, and rollback checks for Valheim 1.0.
-updated: 2026-09-17
+updated: 2026-10-25
 ---
 
-> **Update — September 2026**: Valheim 1.0 and Deep North were released on September 9, 2026. Launch-era guidance below should be read alongside the September 11 hotfixes, including the Steam achievement opt-in. See [patch notes](/patch-notes).
+> **Current patch — October 2026**: Patch 1.0.20 released October 15. Updates since launch include multiplayer-terrain repairs, safer world-chunk splitting, Deep North fixes, and a dedicated-server CPU fix. Review the [patch archive](/patch-notes) before maintenance.
 
 Update a Valheim dedicated server during planned downtime, with nobody connected and a tested rollback copy available. The essential sequence is: stop cleanly, back up the active world and configuration, update the same installation that production uses, restart, verify the version and world, then keep the rollback set until players accept the result.
 
 Valheim 1.0 launched September 9, 2026. Iron Gate says existing saves remain usable, but the studio also recommends a new world for the best experience and does not guarantee mod compatibility. Treat 1.0 as a major migration even if the server application updates normally.
+
+Patch 1.0.17 fixed a rare bug that could erase objects when a large world-save chunk was split, and 1.0.20 fixed an uncapped dedicated-server frame rate when v-sync was enabled in a client on the same machine. Those fixes make updating preferable to leaving a persistent server on an affected build, provided you create and test a rollback copy first.
 
 ## Before the maintenance window
 
@@ -236,5 +238,7 @@ Review backend, visibility, ports, join code, and platform rollout with the [con
 ### Mods fail after the update
 
 Iron Gate does not guarantee mod compatibility. Preserve the world, isolate the modded environment, and wait for verified compatible releases rather than repeatedly opening production with changing combinations.
+
+<ManagedHostingCallout context="updates" />
 
 **Sources**: [Official 1.0 patch notes](https://www.valheim.com/news/valheim-1-0-has-arrived-/), [September 11 hotfix](https://valheim.com/news/hotfix-1-0-10-1-0-12/), [1.0 FAQ](https://valheim.com/support/valheim-1-0-faq/), [Valheim dedicated-server guide](https://valheim.com/support/a-guide-to-dedicated-servers/), [Valheim save-system testing announcement](https://www.valheimgame.com/news/word-from-the-devs-summoning-our-champions-/), [Valve SteamCMD documentation](https://developer.valvesoftware.com/wiki/SteamCMD).

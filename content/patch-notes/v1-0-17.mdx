@@ -1,0 +1,22 @@
+---
+title: "Valheim 1.0.17 Patch Notes: World Save Safety and Invalid Items"
+description: "Valheim 1.0.17 explained: a rare world-object deletion fix, invalid item-style recovery, placeholder text, and restored credits."
+updated: 2026-10-25
+---
+
+**Valheim 1.0.17 released on October 6, 2026.** The headline fix addressed a rare but serious world-save problem. Iron Gate said crossplay remained functional while the patch moved through each platform's release process.
+
+## What changed
+
+- Fixed a rare bug that could erase every object in parts of a world when one large world-save chunk file was divided into smaller files.
+- Made invalid item styles fall back to the default style instead of causing broken behavior. Iron Gate specifically mentioned an invalid Shield of Root variant that had been available on PS5 in 1.0.15.
+- Replaced placeholder text.
+- Restored credits that had been hidden in 1.0.16.
+
+## What server owners should do
+
+Update important persistent worlds rather than remaining on a build with the chunk-splitting defect. Before the first post-update start, copy the complete world pair and the platform's managed backup where available. Do not treat a successful launch as proof that recovery works: verify a restore copy separately when the world matters to your group.
+
+For a dedicated server, stop the process cleanly before copying saves and keep the previous known-good server build available until the updated world has been opened, saved, restarted, and checked. The [server update guide](/servers/updating-a-server) and [backup guide](/servers/world-backup-restore) cover that sequence.
+
+**Source**: [Official Valheim 1.0.17 notes](https://www.valheim.com/news/patch-1-0-17/).

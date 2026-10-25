@@ -13,6 +13,8 @@ import ServerConfigGenerator from "../../../components/ServerConfigGenerator";
 import WorldMigrationChecklist from "../../../components/WorldMigrationChecklist";
 import DatHostBanner from "../../../components/DatHostBanner";
 import HostingRecommendations from "../../../components/HostingRecommendations";
+import TrackedAnchor from "../../../components/TrackedAnchor";
+import ManagedHostingCallout from "../../../components/ManagedHostingCallout";
 import { extractFaq } from "../../../utils/faq";
 
 type RouteParams = { slug?: string[] };
@@ -64,14 +66,19 @@ function MdxLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const rel = external
     ? Array.from(new Set([...(props.rel ?? "").split(/\s+/).filter(Boolean), "noopener"])).join(" ")
     : props.rel;
-  return <a {...props} rel={rel} target={external ? "_blank" : props.target} />;
+  return <TrackedAnchor {...props} rel={rel} target={external ? "_blank" : props.target} />;
 }
 
 const relatedMap: Record<string, { href: string; label: string }[]> = {
+  "/patch-notes/v1-0-20": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/patch-notes/v1-0-17", label: "Previous: 1.0.17" }, { href: "/servers/updating-a-server", label: "Update a dedicated server" }, { href: "/world/locations/forge-of-potential", label: "Forge of Potential" }],
+  "/patch-notes/v1-0-17": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/patch-notes/v1-0-20", label: "Next: 1.0.20" }, { href: "/patch-notes/v1-0-16", label: "Previous: 1.0.16" }, { href: "/servers/world-backup-restore", label: "World backup and restore" }],
+  "/patch-notes/v1-0-16": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/patch-notes/v1-0-17", label: "Next: 1.0.17" }, { href: "/patch-notes/v1-0-15", label: "Previous: 1.0.15" }, { href: "/deep-north", label: "Deep North guide" }],
+  "/patch-notes/v1-0-15": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/patch-notes/v1-0-16", label: "Next: 1.0.16" }, { href: "/patch-notes/v1-0-14", label: "Previous: 1.0.14" }, { href: "/servers/world-backup-restore", label: "World backup and restore" }],
+  "/patch-notes/v1-0-14": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/patch-notes/v1-0-15", label: "Next: 1.0.15" }, { href: "/patch-notes/v1-0-12", label: "Previous: 1.0.12" }, { href: "/servers/server-not-showing", label: "Server connection troubleshooting" }],
   "/patch-notes/v1-0-12": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/patch-notes/v1-0-10", label: "All-platform hotfix" }, { href: "/valheim-1-0/achievements-cheats", label: "Achievement eligibility" }, { href: "/servers/world-backup-restore", label: "World backup and restore" }],
   "/patch-notes/v1-0-10": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/patch-notes/v1-0-12", label: "Steam hotfix" }, { href: "/world/regions/deep-north", label: "Deep North" }, { href: "/servers/updating-a-server", label: "Server update checklist" }],
   "/patch-notes/v1-0-release": [{ href: "/patch-notes", label: "Patch notes" }, { href: "/deep-north", label: "Deep North" }, { href: "/servers/updating-a-server", label: "Update a server" }, { href: "/bosses/kall-fimbulbringer", label: "Kall Fimbulbringer" }],
-  "/patch-notes": [{ href: "/updates", label: "Updates and known issues" }, { href: "/patch-notes/v1-0-12", label: "Hotfix 1.0.12" }, { href: "/patch-notes/v1-0-10", label: "Hotfix 1.0.10" }, { href: "/patch-notes/v1-0-release", label: "1.0 release" }, { href: "/deep-north", label: "Deep North guide" }, { href: "/servers/updating-a-server", label: "Update a dedicated server" }, { href: "/valheim-1-0/achievements-cheats", label: "Achievements and cheats" }],
+  "/patch-notes": [{ href: "/patch-notes/v1-0-20", label: "Latest: 1.0.20" }, { href: "/patch-notes/v1-0-17", label: "World-save fix: 1.0.17" }, { href: "/patch-notes/v1-0-16", label: "Deep North fixes: 1.0.16" }, { href: "/updates", label: "Updates and known issues" }, { href: "/deep-north", label: "Deep North guide" }, { href: "/servers/updating-a-server", label: "Update a dedicated server" }],
   "/bosses/kall-fimbulbringer": [{ href: "/world/regions/deep-north", label: "Deep North biome" }, { href: "/deep-north", label: "Deep North guide" }, { href: "/bosses/fader", label: "Previous: Fader" }, { href: "/bosses", label: "Boss guide" }, { href: "/patch-notes/v1-0-release", label: "1.0 release notes" }],
   "/world/regions/deep-north": [{ href: "/deep-north", label: "Deep North guide" }, { href: "/bosses/kall-fimbulbringer", label: "Boss: Kall Fimbulbringer" }, { href: "/world/regions/ashlands", label: "Previous: Ashlands" }, { href: "/world", label: "World guide" }, { href: "/patch-notes", label: "Patch notes" }],
   "/updates": [{ href: "/valheim-1-0", label: "Valheim 1.0 release hub" }, { href: "/valheim-1-0/preparation-checklist", label: "Launch preparation checklist" }, { href: "/servers/updating-a-server", label: "Update a dedicated server" }, { href: "/servers/server-not-showing", label: "Connection troubleshooting" }, { href: "/patch-notes", label: "Patch notes archive" }, { href: "/deep-north", label: "Deep North guide" }],
@@ -232,7 +239,7 @@ export default async function DocPage({ params }: { params: Promise<RouteParams>
       {doc.frontmatter.description ? <p className="mt-4 max-w-2xl leading-7 text-[#aaa18f]">{doc.frontmatter.description}</p> : null}
       {updated ? <p className="mt-4 text-xs uppercase tracking-wider text-[#756f63]">Reviewed {updated.slice(0, 10)}</p> : null}
     </header>
-    <MDXRemote source={doc.content} components={{ a: MdxLink, DatHostBanner, HostingRecommendations, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
+    <MDXRemote source={doc.content} components={{ a: MdxLink, DatHostBanner, HostingRecommendations, ManagedHostingCallout, ServerConfigGenerator, WorldMigrationChecklist }} options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] } }} />
     {related.length ? <section className="not-prose mt-10 border-t border-[#393126] pt-6"><h2 className="text-sm font-bold uppercase tracking-wider text-[#8db6ba]">Related coverage</h2><ul className="mt-4 grid gap-2">{related.map((item) => <li key={item.href}><Link href={item.href} prefetch={false} className="text-[#e1ad5a] hover:text-[#f0bd68]">{item.label} →</Link></li>)}</ul></section> : null}
   </article>;
 }

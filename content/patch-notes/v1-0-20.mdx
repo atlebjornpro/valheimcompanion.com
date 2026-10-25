@@ -1,0 +1,31 @@
+---
+title: "Valheim 1.0.20 Patch Notes: Trophy Drops and Dedicated Server CPU Fix"
+description: "Valheim 1.0.20 explained: improved trophy drops, fairer rare-drop tracking, Forge of Potential and cheated-item fixes, plus dedicated-server CPU usage."
+updated: 2026-10-25
+---
+
+**Valheim 1.0.20 released on October 15, 2026.** It improves trophy acquisition, repairs item flags left by early 1.0 builds, closes a Forge of Potential exploit, and fixes unnecessary CPU use on some dedicated-server setups.
+
+## Loot and item changes
+
+- Trophy drop chance now increases with a monster's star level.
+- Pseudo-random rare-drop tracking no longer resets between play sessions, producing a fairer distribution over time.
+- Valid items and build pieces incorrectly marked as cheated by an early 1.0 bug have their flag reset.
+- Cheat Sword and Cheat Sledge are now recognized as cheated in the affected cases.
+- A possible Forge of Potential exploit was fixed.
+
+The drop change makes starred enemies a better trophy target and removes an incentive to keep long sessions running solely to preserve rare-drop tracking. Existing trophy guides based on launch behavior should be read with this change in mind.
+
+## Dedicated-server CPU fix
+
+The patch fixes a dedicated server running with an uncapped frame rate when v-sync was enabled in a client on the same computer. That combination could waste substantial CPU time. Operators who host and play on one machine should update both applications, restart them, and compare CPU use after the server returns to an idle state.
+
+If usage remains high, verify that no mod, backup process, world-generation task, or connected client is creating the load before changing server hardware. Follow the [safe update procedure](/servers/updating-a-server) and preserve a rollback copy first.
+
+## Platform note
+
+Iron Gate initially reported a delay for the Mac App Store version and temporary crossplay incompatibility with other platforms until that build caught up. Treat that as a dated release warning: compare the current build numbers when diagnosing a new crossplay problem.
+
+The patch also adjusted sheathed-weapon attachment points and fixed settings failing to save on Xbox One and Xbox Series consoles.
+
+**Source**: [Official Valheim 1.0.20 notes](https://www.valheim.com/news/patch-1-0-20/).

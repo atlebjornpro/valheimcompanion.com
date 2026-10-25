@@ -256,8 +256,8 @@
   },
   {
     "slug": "/valheim-1-0/achievements-cheats",
-    "title": "Valheim 1.0 Achievements: Cheats, Old Saves and Opt-In",
-    "description": "How Valheim 1.0 achievements work with old saves, cheat flags, spawned items and modifiers, including the September Steam hotfix opt-in command."
+    "title": "Valheim 1.0 Achievements: Cheats, Fixes, Old Saves and Opt-In",
+    "description": "How Valheim 1.0 achievements work with old saves, cheat flags, spawned items and modifiers, including the opt-in command and fixes through patch 1.0.20."
   },
   {
     "slug": "/guides/getting-started",
@@ -308,6 +308,31 @@
     "slug": "/patch-notes/v1-0-12",
     "title": "Valheim 1.0.12 Hotfix: Steam Achievements and Server IDs",
     "description": "September 11 Steam hotfix: achievement opt-in, legacy permission IDs, Forge of Potential recipes, unloaded-zone crash, and the item-stand limitation."
+  },
+  {
+    "slug": "/patch-notes/v1-0-14",
+    "title": "Valheim 1.0.14 Patch Notes: Multiplayer, Terrain and Deep North Fixes",
+    "description": "What Valheim 1.0.14 changed: new controls, multiplayer terrain repairs, Deep North tools and music, achievements, saves, and platform fixes."
+  },
+  {
+    "slug": "/patch-notes/v1-0-15",
+    "title": "Valheim 1.0.15 Patch Notes: Terrain, Armor Moulds and Writhan Spawns",
+    "description": "Valheim 1.0.15 explained: terrain-duplication repair, Deep North armor-mould drop changes, more Writhan spawns, and item-stand recovery advice."
+  },
+  {
+    "slug": "/patch-notes/v1-0-16",
+    "title": "Valheim 1.0.16 Patch Notes: Deep North Terrain and Achievement Fixes",
+    "description": "Valheim 1.0.16 explained: persistent Deep North terrain, raid spawns, achievements, Kall arena spawns, snow, crashes, and console fixes."
+  },
+  {
+    "slug": "/patch-notes/v1-0-17",
+    "title": "Valheim 1.0.17 Patch Notes: World Save Safety and Invalid Items",
+    "description": "Valheim 1.0.17 explained: a rare world-object deletion fix, invalid item-style recovery, placeholder text, and restored credits."
+  },
+  {
+    "slug": "/patch-notes/v1-0-20",
+    "title": "Valheim 1.0.20 Patch Notes: Trophy Drops and Dedicated Server CPU Fix",
+    "description": "Valheim 1.0.20 explained: improved trophy drops, fairer rare-drop tracking, Forge of Potential and cheated-item fixes, plus dedicated-server CPU usage."
   },
   {
     "slug": "/world/regions/ashlands",
@@ -401,8 +426,8 @@
   },
   {
     "slug": "/patch-notes",
-    "title": "Valheim Patch Notes: 1.0 Release and Hotfixes",
-    "description": "Official-source summaries of Valheim 1.0 and its September hotfixes, including platform scope, server changes, achievements, and known limitations."
+    "title": "Valheim Patch Notes: 1.0 Release Through 1.0.20",
+    "description": "Official-source summaries of Valheim 1.0 through patch 1.0.20, including Deep North balance, world saves, achievements, servers, and platform notes."
   },
   {
     "slug": "/world/regions/plains",

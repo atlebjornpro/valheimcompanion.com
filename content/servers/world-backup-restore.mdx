@@ -1,12 +1,14 @@
 ---
 title: "Valheim World Save Location, Backup and Restore"
 description: Find the active Valheim save location on Windows or Linux, create a complete dedicated-server backup, understand automatic retention, and restore safely.
-updated: 2026-08-06
+updated: 2026-10-25
 ---
 
 A useful Valheim backup is more than one copied file. It preserves the active world data, the server's player lists, the launch configuration, and enough version information to reproduce the environment that created the save.
 
 For an important world, use two layers: Valheim's rotating automatic backups for quick recovery and a separate offline or off-machine copy for failures that affect the whole server directory.
+
+Patch 1.0.17 fixed a rare defect that could erase objects in parts of a world while one large save chunk was being divided into smaller files. Update the server, but preserve a complete pre-update rollback set until the world has loaded, saved, restarted, and been checked in the affected areas.
 
 ## Valheim save locations
 
@@ -158,3 +160,5 @@ Restore and review the permission files, backend, port, password, and applicatio
 - [Steam Cloud support](https://help.steampowered.com/en/faqs/view/68D2-35AB-09A9-7678)
 
 Next: [move a local world to a dedicated server](/servers/move-local-world-to-server) or [update a server safely](/servers/updating-a-server).
+
+<ManagedHostingCallout context="backups" />

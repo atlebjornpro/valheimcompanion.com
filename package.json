@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "node scripts/build-search-index.mjs && next build --webpack",
     "check:links": "node scripts/check-internal-links.mjs",
+    "check:mdx": "node scripts/check-mdx.mjs",
     "start": "next start",
     "lint": "eslint"
   },

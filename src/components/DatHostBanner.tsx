@@ -4,7 +4,7 @@ const BANNER_URL = "/images/dathost-dark-leaderboard-728x90.png";
 export default function DatHostBanner() {
   return (
     <figure className="not-prose my-8 max-w-[728px]">
-      <a
+      <TrackedAnchor
         href={AFFILIATE_URL}
         rel="sponsored noopener"
         target="_blank"
@@ -22,10 +22,11 @@ export default function DatHostBanner() {
           decoding="async"
           className="block h-auto w-full"
         />
-      </a>
+      </TrackedAnchor>
       <figcaption className="mt-2 text-xs leading-5 text-[#827a6c]">
         Sponsored affiliate link. Valheim Companion may earn a commission at no extra cost to you.
       </figcaption>
     </figure>
   );
 }
+import TrackedAnchor from "./TrackedAnchor";
