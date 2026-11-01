@@ -30,19 +30,14 @@
     "description": "Bloodgold guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
-    "slug": "/bosses/bonemass",
-    "title": "Bonemass Boss Guide: How to Summon and Beat Valheim's Third Boss",
-    "description": "How to summon and defeat Bonemass in Valheim — poison mechanics, blunt weakness, gear, arena tips, and common mistakes."
-  },
-  {
     "slug": "/contact",
     "title": "Contact Valheim Companion",
     "description": "How correction, source, privacy, and site-quality reports will be handled."
   },
   {
     "slug": "/items/crown-jewel",
-    "title": "Crown Jewel: Kall Drop and Crown Recipe",
-    "description": "Crown Jewel guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+    "title": "Crown Jewel in Valheim: Kall Drop and Crown Recipe",
+    "description": "Get the Crown Jewel from Kall and craft the Crown of Valheim with five Bloodgold at a level 4 Black Forge. Includes stats and boss-loot tips."
   },
   {
     "slug": "/items/crown-of-valheim",
@@ -60,11 +55,6 @@
     "description": "How Valheim Companion separates confirmed facts, testing, interpretation, and commercial content."
   },
   {
-    "slug": "/bosses/eikthyr",
-    "title": "Eikthyr Boss Guide: How to Summon and Beat Valheim's First Boss",
-    "description": "How to summon and defeat Eikthyr, Valheim's first boss — attacks, gear, arena tips, and common mistakes."
-  },
-  {
     "slug": "/items/elaking-hair-bundle",
     "title": "Elaking Hair Bundle: Drop and Uses",
     "description": "Elaking Hair Bundle guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
@@ -75,19 +65,9 @@
     "description": "Ember Charge guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
-    "slug": "/bosses/fader",
-    "title": "Fader Boss Guide: Valheim Ashlands Fight and Preparation",
-    "description": "How to summon and defeat Fader in Valheim's Ashlands — attacks, fire resistance, gear, and arena tips for the endgame coliseum fight."
-  },
-  {
     "slug": "/world/locations/forge-of-potential",
     "title": "Forge of Potential: How the Upgrade Forge Works",
     "description": "Forge of Potential guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
-  },
-  {
-    "slug": "/items/frostcore",
-    "title": "Frostcore: Locations and Crafting Uses",
-    "description": "Frostcore guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
     "slug": "/items/frostfire-essence",
@@ -103,6 +83,56 @@
     "slug": "/items/grappling-hook",
     "title": "Grappling Hook: Recipe and How to Get the Hook",
     "description": "Grappling Hook guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+  },
+  {
+    "slug": "/bosses/bonemass",
+    "title": "How to Beat Bonemass in Valheim: Swamp Boss Guide",
+    "description": "Summon and beat Bonemass in Valheim with Withered Bones, blunt weapons, Poison Resistance Mead, arena preparation, and attack counters."
+  },
+  {
+    "slug": "/bosses/eikthyr",
+    "title": "How to Beat Eikthyr in Valheim: First Boss Guide",
+    "description": "Summon and beat Eikthyr in Valheim with two Deer Trophies, early-game gear, attack counters, arena tips, and the best first-boss strategy."
+  },
+  {
+    "slug": "/bosses/fader",
+    "title": "How to Beat Fader in Valheim: Ashlands Boss Guide",
+    "description": "Summon and beat Fader in Valheim with Bells, fire resistance, Flametal gear, attack counters, add control, and Ashlands coliseum tactics."
+  },
+  {
+    "slug": "/bosses/kall-fimbulbringer",
+    "title": "How to Beat Kall Fimbulbringer in Valheim",
+    "description": "Summon and beat Kall Fimbulbringer with Malicious Blood, three-phase tactics, Aspect counters, damage types, gear, rewards, and the ending step."
+  },
+  {
+    "slug": "/bosses/moder",
+    "title": "How to Beat Moder in Valheim: Mountain Boss Guide",
+    "description": "Summon and beat Moder in Valheim with Dragon Eggs, frost protection, ranged and melee tactics, arena preparation, and attack counters."
+  },
+  {
+    "slug": "/bosses/the-elder",
+    "title": "How to Beat The Elder in Valheim: Boss Guide",
+    "description": "Summon and beat The Elder in Valheim with Ancient Seeds, fire damage, attack counters, arena preparation, and a practical Black Forest strategy."
+  },
+  {
+    "slug": "/bosses/the-queen",
+    "title": "How to Beat The Queen in Valheim: Mistlands Boss Guide",
+    "description": "Reach and beat The Queen in Valheim with the Sealbreaker, Mistlands gear, add control, attack counters, and Infested Citadel arena tactics."
+  },
+  {
+    "slug": "/bosses/yagluth",
+    "title": "How to Beat Yagluth in Valheim: Plains Boss Guide",
+    "description": "Summon and beat Yagluth in Valheim with Fuling Totems, fire resistance, attack counters, arena cover, and a practical Plains boss strategy."
+  },
+  {
+    "slug": "/items/frostcore",
+    "title": "How to Get Frostcores in Valheim's Winding Tunnels",
+    "description": "Find Frostcores in Winding Tunnels and budget 20 to build the Frigid Kiln and Frost Foundry. Includes station costs, stack size, and route tips."
+  },
+  {
+    "slug": "/items/petrified-tissue",
+    "title": "How to Get Petrified Tissue in Valheim",
+    "description": "Get Petrified Tissue from Gammeltroll remains with Ember Charges, then smelt it into Bloodgold. Includes weight, portal limits, and logistics."
   },
   {
     "slug": "/servers/move-local-world-to-server",
@@ -135,19 +165,14 @@
     "description": "Jotun Invasion guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
   },
   {
-    "slug": "/bosses/kall-fimbulbringer",
-    "title": "Kall Fimbulbringer: Valheim Deep North Boss Guide",
-    "description": "How to summon and defeat Kall Fimbulbringer: Malicious Blood, the Aesir Passage, three fight phases, gear, Crown Jewel rewards, and Valheim's ending."
-  },
-  {
     "slug": "/items/lingonberries",
     "title": "Lingonberries: Where to Find Them and Uses",
     "description": "Lingonberries guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
     "slug": "/items/liquid-frost",
-    "title": "Liquid Frost: How to Make and Use It",
-    "description": "Liquid Frost guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+    "title": "Liquid Frost in Valheim: Frigid Kiln Recipe and Uses",
+    "description": "Make Liquid Frost from five Ice in the Frigid Kiln and use it as Frost Foundry fuel. Includes processing time, stack size, portals, and key-crafting tips."
   },
   {
     "slug": "/items/long-claws",
@@ -168,11 +193,6 @@
     "slug": "/world/locations/memorial-site",
     "title": "Memorial Site: Ancient Altar Location and Rewards",
     "description": "Memorial Site guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
-  },
-  {
-    "slug": "/bosses/moder",
-    "title": "Moder Boss Guide: How to Summon and Beat Valheim's Fourth Boss",
-    "description": "How to summon and defeat Moder in Valheim — flying and grounded phases, gear, arena tips, and common mistakes."
   },
   {
     "slug": "/items/moose-hide",
@@ -200,19 +220,14 @@
     "description": "Nornathread guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
   },
   {
-    "slug": "/items/petrified-tissue",
-    "title": "Petrified Tissue: How to Mine and Smelt It",
-    "description": "Petrified Tissue guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
-  },
-  {
     "slug": "/privacy",
     "title": "Privacy Policy",
     "description": "How Valheim Companion handles hosting data, analytics consent, browser storage, and affiliate links."
   },
   {
     "slug": "/items/sacrificial-blood",
-    "title": "Sacrificial Blood: Kall Reward and Ending Use",
-    "description": "Sacrificial Blood guide for Valheim 1.0: where to get it, its Deep North progression role, what it crafts, and the mistakes that can slow the route."
+    "title": "Sacrificial Blood in Valheim: Kall Ending Item",
+    "description": "Find out where Kall's Sacrificial Blood is used, how it differs from Malicious Blood, whether it can use portals, and how it triggers the ending."
   },
   {
     "slug": "/items/seal-blubber",
@@ -238,16 +253,6 @@
     "slug": "/terms",
     "title": "Terms of Use",
     "description": "Basic terms, independence, and limitations for Valheim Companion."
-  },
-  {
-    "slug": "/bosses/the-elder",
-    "title": "The Elder Boss Guide: How to Summon and Beat Valheim's Second Boss",
-    "description": "How to summon and defeat The Elder in Valheim — fire weakness, attacks, gear, arena tips, and common mistakes."
-  },
-  {
-    "slug": "/bosses/the-queen",
-    "title": "The Queen Boss Guide: How to Beat Valheim's Sixth Boss",
-    "description": "How to reach and defeat The Queen in Valheim's Infested Citadel — attack patterns, add management, gear, and arena tips."
   },
   {
     "slug": "/items/thunderblood-essence",
@@ -483,10 +488,5 @@
     "slug": "/world/locations/winding-tunnels",
     "title": "Winding Tunnels: Entrances, Loot and Route",
     "description": "Winding Tunnels guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
-  },
-  {
-    "slug": "/bosses/yagluth",
-    "title": "Yagluth Boss Guide: How to Summon and Beat Valheim's Fifth Boss",
-    "description": "How to summon and defeat Yagluth in Valheim — fire and lightning attacks, gear, arena tips, and common mistakes."
   }
 ]
