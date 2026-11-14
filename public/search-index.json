@@ -66,8 +66,8 @@
   },
   {
     "slug": "/world/locations/forge-of-potential",
-    "title": "Forge of Potential: How the Upgrade Forge Works",
-    "description": "Forge of Potential guide for Valheim 1.0: how to reach or trigger it, required items, useful rewards, tactics, and its Deep North progression role."
+    "title": "Forge of Potential: Location, Idols and Upgrade Odds",
+    "description": "Find Valheim's Forge of Potential in the Mountains and learn its 65% upgrade chance, 35% destruction risk, idol types, tiers, and material returns."
   },
   {
     "slug": "/items/frostfire-essence",
@@ -262,7 +262,7 @@
   {
     "slug": "/valheim-1-0/achievements-cheats",
     "title": "Valheim 1.0 Achievements: Cheats, Fixes, Old Saves and Opt-In",
-    "description": "How Valheim 1.0 achievements work with old saves, cheat flags, spawned items and modifiers, including the opt-in command and fixes through patch 1.0.20."
+    "description": "How Valheim 1.0 achievements work with old saves, cheat flags, spawned items and modifiers, including the opt-in command and fixes through patch 1.0.21."
   },
   {
     "slug": "/guides/getting-started",
@@ -340,6 +340,11 @@
     "description": "Valheim 1.0.20 explained: improved trophy drops, fairer rare-drop tracking, Forge of Potential and cheated-item fixes, plus dedicated-server CPU usage."
   },
   {
+    "slug": "/patch-notes/v1-0-21",
+    "title": "Valheim 1.0.21: Kall, Food and Multiplayer Fixes",
+    "description": "Valheim 1.0.21 explained: Kall balance and drop fixes, moved Deep North recipes, plantable Timberwood, achievement repairs, and server notes."
+  },
+  {
     "slug": "/world/regions/ashlands",
     "title": "Valheim Ashlands Guide: Creatures, Flametal, and Fader",
     "description": "Ashlands biome guide for Valheim — Charred enemies, Flametal ore, cinder rain survival, and how to summon the boss Fader."
@@ -392,7 +397,7 @@
   {
     "slug": "/world/locations",
     "title": "Valheim Deep North Locations and Dungeons",
-    "description": "Browse Valheim 1.0 Deep North dungeons, points of interest, stations, and events in progression order, with requirements, rewards, and tactics."
+    "description": "Browse Valheim 1.0 Deep North dungeons, points of interest, and events in progression order, with requirements, rewards, and tactics."
   },
   {
     "slug": "/world/regions/deep-north",
@@ -402,7 +407,7 @@
   {
     "slug": "/resources/food-and-cooking",
     "title": "Valheim Food and Cooking Guide",
-    "description": "How Valheim's food system works — active food limits, cooking station progression, and what to eat at each stage of the game."
+    "description": "How Valheim's food system works — active food limits, cooking stations, and what to eat from Meadows through Deep North after patch 1.0.21."
   },
   {
     "slug": "/items",
@@ -431,8 +436,8 @@
   },
   {
     "slug": "/patch-notes",
-    "title": "Valheim Patch Notes: 1.0 Release Through 1.0.20",
-    "description": "Official-source summaries of Valheim 1.0 through patch 1.0.20, including Deep North balance, world saves, achievements, servers, and platform notes."
+    "title": "Valheim Patch Notes: 1.0 Release Through 1.0.21",
+    "description": "Official-source summaries of Valheim 1.0 through patch 1.0.21, including Deep North balance, world saves, achievements, servers, and platform notes."
   },
   {
     "slug": "/world/regions/plains",
