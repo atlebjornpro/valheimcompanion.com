@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 type SearchResult = {
@@ -9,12 +9,16 @@ type SearchResult = {
   description: string;
 };
 
+type IndexStatus = 'idle' | 'loading' | 'ready' | 'error';
+
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [index, setIndex] = useState<SearchResult[]>([]);
+  const [indexStatus, setIndexStatus] = useState<IndexStatus>('idle');
+  const [requestAttempt, setRequestAttempt] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const indexRequestedRef = useRef(false);
+  const indexLoadedRef = useRef(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -33,17 +37,36 @@ export default function Search() {
   }, []);
 
   useEffect(() => {
-    if (!isOpen || indexRequestedRef.current) return;
-    indexRequestedRef.current = true;
+    if (!isOpen || indexLoadedRef.current) return;
 
-    fetch('/search-index.json')
-      .then((res) => res.json())
-      .then((data) => setIndex(data))
-      .catch((err) => {
-        indexRequestedRef.current = false;
-        console.error('Failed to load search index', err);
-      });
-  }, [isOpen]);
+    const controller = new AbortController();
+    setIndexStatus('loading');
+
+    async function loadIndex() {
+      try {
+        const response = await fetch('/search-index.json', { signal: controller.signal });
+        if (!response.ok) {
+          throw new Error(`Search index request failed with status ${response.status}`);
+        }
+
+        const data: unknown = await response.json();
+        if (!Array.isArray(data)) {
+          throw new Error('Search index response was not an array');
+        }
+
+        setIndex(data as SearchResult[]);
+        indexLoadedRef.current = true;
+        setIndexStatus('ready');
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        console.error('Failed to load search index', error);
+        setIndexStatus('error');
+      }
+    }
+
+    void loadIndex();
+    return () => controller.abort();
+  }, [isOpen, requestAttempt]);
 
   useEffect(() => {
     if (isOpen) {
@@ -52,13 +75,17 @@ export default function Search() {
   }, [isOpen]);
 
   const results = useMemo(() => {
-    if (!query) return [];
+    if (!query || indexStatus !== 'ready') return [];
     const lowerQuery = query.toLowerCase();
     return index.filter((item) =>
       item.title.toLowerCase().includes(lowerQuery) ||
       item.description.toLowerCase().includes(lowerQuery)
     );
-  }, [query, index]);
+  }, [query, index, indexStatus]);
+
+  const retryIndex = useCallback(() => {
+    setRequestAttempt((attempt) => attempt + 1);
+  }, []);
 
   const handleSelect = (slug: string) => {
     setIsOpen(false);
@@ -69,7 +96,9 @@ export default function Search() {
   return (
     <>
       <button
+        type="button"
         onClick={() => setIsOpen(true)}
+        aria-haspopup="dialog"
         className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-md border border-gray-200 dark:border-gray-700 w-full"
       >
         <svg
@@ -95,6 +124,9 @@ export default function Search() {
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/50 backdrop-blur-sm p-4" onClick={() => setIsOpen(false)}>
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search documentation"
             className="w-full max-w-lg bg-white dark:bg-gray-900 rounded-lg shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-800 animate-in fade-in zoom-in-95 duration-100"
             onClick={(e) => e.stopPropagation()}
           >
@@ -119,13 +151,32 @@ export default function Search() {
             </div>
 
             <div className="max-h-[60vh] overflow-y-auto py-2">
-              {results.length === 0 && query && (
+              {indexStatus === 'loading' && (
+                <p className="px-4 py-8 text-center text-sm text-gray-500" role="status">
+                  Loading search…
+                </p>
+              )}
+
+              {indexStatus === 'error' && (
+                <div className="px-4 py-8 text-center text-sm text-gray-500" role="alert">
+                  <p>Search could not be loaded.</p>
+                  <button
+                    type="button"
+                    className="mt-3 rounded-md border border-gray-300 px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+                    onClick={retryIndex}
+                  >
+                    Try again
+                  </button>
+                </div>
+              )}
+
+              {indexStatus === 'ready' && results.length === 0 && query && (
                 <p className="px-4 py-8 text-center text-sm text-gray-500">
                   No results found for &quot;{query}&quot;
                 </p>
               )}
 
-              {results.length === 0 && !query && (
+              {indexStatus === 'ready' && results.length === 0 && !query && (
                  <p className="px-4 py-8 text-center text-sm text-gray-500">
                   Type to search...
                 </p>
